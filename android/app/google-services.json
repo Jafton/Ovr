@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "714168235896",
+    "project_id": "ovr-connect-3952a",
+    "storage_bucket": "ovr-connect-3952a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:714168235896:android:eed6ef9735448ec9493a8d",
+        "android_client_info": {
+          "package_name": "com.ovr.ovrPerformance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "714168235896-u4vvflc57udbtd5mshvk1utoqcm530m9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ovr.ovrPerformance",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "714168235896-hj03iv3kj9ks3pagaepavrt7udjhu8v6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCy69IEZ1L-N3U5rW6nutf3hYHEGh09L6w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "714168235896-hj03iv3kj9ks3pagaepavrt7udjhu8v6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "714168235896-hrrb16p4suupfkkfpbf9rliptemrq5hu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ovr.ovrPerformance"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

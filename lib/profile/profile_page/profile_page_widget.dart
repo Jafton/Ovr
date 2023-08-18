@@ -15,8 +15,10 @@ import '/velocity/velocity_or_jump/velocity_or_jump_widget.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_dialog/aligned_dialog.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'profile_page_model.dart';
@@ -38,6 +40,13 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ProfilePageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        FFAppState().croppedImage = currentUserPhoto;
+      });
+    });
 
     _model.textController ??= TextEditingController();
   }
@@ -246,8 +255,13 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           8.0),
-                                                  child: Image.network(
-                                                    currentUserPhoto,
+                                                  child: CachedNetworkImage(
+                                                    fadeInDuration: Duration(
+                                                        milliseconds: 500),
+                                                    fadeOutDuration: Duration(
+                                                        milliseconds: 500),
+                                                    imageUrl: FFAppState()
+                                                        .croppedImage,
                                                     width: 100.0,
                                                     height: 100.0,
                                                     fit: BoxFit.cover,
@@ -633,6 +647,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                         height: 26.0,
                                         state: 'user_filter_jumps',
                                         docReference: currentUserUid,
+                                        setGoal: false,
                                       ),
                                     ),
                                   ],
@@ -689,6 +704,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                         height: 26.0,
                                         state: 'user_eccentric',
                                         docReference: currentUserUid,
+                                        setGoal: false,
                                       ),
                                     ),
                                   ],
@@ -745,6 +761,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                         height: 26.0,
                                         state: 'user_show_fatigue',
                                         docReference: currentUserUid,
+                                        setGoal: false,
                                       ),
                                     ),
                                   ],
@@ -1183,47 +1200,58 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                       ),
-                      child: FFButtonWidget(
-                        onPressed: () async {
-                          await showModalBottomSheet(
-                            isScrollControlled: true,
-                            backgroundColor: Colors.transparent,
-                            context: context,
-                            builder: (context) {
-                              return GestureDetector(
-                                onTap: () => FocusScope.of(context)
-                                    .requestFocus(_model.unfocusNode),
-                                child: Padding(
-                                  padding: MediaQuery.viewInsetsOf(context),
-                                  child: CheckingWidget(),
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            await showModalBottomSheet(
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              context: context,
+                              builder: (context) {
+                                return GestureDetector(
+                                  onTap: () => FocusScope.of(context)
+                                      .requestFocus(_model.unfocusNode),
+                                  child: Padding(
+                                    padding: MediaQuery.viewInsetsOf(context),
+                                    child: CheckingWidget(),
+                                  ),
+                                );
+                              },
+                            ).then((value) => setState(() {}));
+                          },
+                          text: 'CHECK FOR UPDATES',
+                          options: FFButtonOptions(
+                            width: double.infinity,
+                            height: 55.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: FlutterFlowTheme.of(context).bgBg,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .labelLarge
+                                .override(
+                                  fontFamily: 'Bicyclette',
+                                  color: FlutterFlowTheme.of(context).txtText2,
+                                  useGoogleFonts: false,
                                 ),
-                              );
-                            },
-                          ).then((value) => setState(() {}));
-                        },
-                        text: 'CHECK FOR UPDATES',
-                        options: FFButtonOptions(
-                          width: double.infinity,
-                          height: 55.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).bgBg,
-                          textStyle: FlutterFlowTheme.of(context)
-                              .labelLarge
-                              .override(
-                                fontFamily: 'Bicyclette',
-                                color: FlutterFlowTheme.of(context).txtText2,
-                                useGoogleFonts: false,
-                              ),
-                          elevation: 3.0,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
+                            elevation: 3.0,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
-                          borderRadius: BorderRadius.circular(8.0),
                         ),
+                      ),
+                    ),
+                    Container(
+                      width: 100.0,
+                      height: 100.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
                       ),
                     ),
                   ],

@@ -158,7 +158,7 @@ class _PhotoUploadWidgetState extends State<PhotoUploadWidget> {
                       if (_model.uploadedLocalFile1 != null &&
                           (_model.uploadedLocalFile1.bytes?.isNotEmpty ??
                               false)) {
-                        await showModalBottomSheet(
+                        showModalBottomSheet(
                           isScrollControlled: true,
                           backgroundColor: Colors.transparent,
                           enableDrag: false,
@@ -309,7 +309,7 @@ class _PhotoUploadWidgetState extends State<PhotoUploadWidget> {
                       if (_model.uploadedLocalFile2 != null &&
                           (_model.uploadedLocalFile2.bytes?.isNotEmpty ??
                               false)) {
-                        await showModalBottomSheet(
+                        showModalBottomSheet(
                           isScrollControlled: true,
                           backgroundColor: Colors.transparent,
                           enableDrag: false,

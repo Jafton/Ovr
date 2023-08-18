@@ -75,7 +75,7 @@ class FFAppState extends ChangeNotifier {
     _dateOfBirth = _value;
   }
 
-  String _heightUnit = '';
+  String _heightUnit = 'ft';
   String get heightUnit => _heightUnit;
   set heightUnit(String _value) {
     _heightUnit = _value;

@@ -179,7 +179,7 @@ class _ExerciseCopyWidgetState extends State<ExerciseCopyWidget> {
                 alignment: AlignmentDirectional(0.0, 1.0),
                 child: Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 20.0),
+                      EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -200,8 +200,10 @@ class _ExerciseCopyWidgetState extends State<ExerciseCopyWidget> {
                         ),
                       ),
                       Text(
-                        containerExerciseRecord.name,
+                        containerExerciseRecord.name
+                            .maybeHandleOverflow(maxChars: 25),
                         textAlign: TextAlign.center,
+                        maxLines: 2,
                         style: FlutterFlowTheme.of(context)
                             .labelMedium
                             .override(

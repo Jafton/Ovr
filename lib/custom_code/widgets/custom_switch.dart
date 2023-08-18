@@ -19,12 +19,14 @@ class CustomSwitch extends StatefulWidget {
     this.height,
     this.state,
     this.docReference,
+    required this.setGoal,
   }) : super(key: key);
 
   final double? width;
   final double? height;
   final String? state;
   final String? docReference;
+  final bool setGoal;
 
   @override
   _CustomSwitchState createState() => _CustomSwitchState();
@@ -38,22 +40,34 @@ class _CustomSwitchState extends State<CustomSwitch> {
   void initState() {
     super.initState();
     CollectionReference users = FirebaseFirestore.instance.collection('user');
-
     _controller.addListener(() {
       setState(() {
         if (_controller.value) {
           // Fixed this line
           users
               .doc('${widget.docReference}')
-              .update({'${widget.state}': true}) // Fixed this line
+              .update({'${widget.state}': true})
               .then((value) => print("User Updated"))
               .catchError((error) => print("Failed to update user: $error"));
+
+          if (widget.setGoal) {
+            FFAppState().update(() {
+              FFAppState().isGoalSwitchedOn = true;
+            });
+          }
         } else {
           users
               .doc('${widget.docReference}')
-              .update({'${widget.state}': false}) // Fixed this line
+              .update({'${widget.state}': false})
               .then((value) => print("User Updated"))
               .catchError((error) => print("Failed to update user: $error"));
+
+          if (widget.setGoal) {
+            FFAppState().update(() {
+              FFAppState().isGoalSwitchedOn = false;
+              FFAppState().setGoal = '';
+            });
+          }
         }
       });
     });

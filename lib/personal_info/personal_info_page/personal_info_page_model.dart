@@ -10,6 +10,7 @@ import '/personal_info/country_selector/country_selector_widget.dart';
 import '/profile/level_select/level_select_widget.dart';
 import '/profile/mass_unit_selector/mass_unit_selector_widget.dart';
 import '/velocity/error_dialog/error_dialog_widget.dart';
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:aligned_dialog/aligned_dialog.dart';

@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -337,35 +338,16 @@ class _WeightInputWidgetState extends State<WeightInputWidget> {
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 24.0, 0.0),
-                                          child: Switch.adaptive(
-                                            value: _model.switchValue ??= false,
-                                            onChanged: (newValue) async {
-                                              setState(() => _model
-                                                  .switchValue = newValue!);
-                                              if (newValue!) {
-                                                setState(() {
-                                                  FFAppState()
-                                                      .isGoalSwitchedOn = true;
-                                                });
-                                              } else {
-                                                setState(() {
-                                                  FFAppState()
-                                                      .isGoalSwitchedOn = false;
-                                                });
-                                              }
-                                            },
-                                            activeColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .btnDefault,
-                                            activeTrackColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .btnDefault,
-                                            inactiveTrackColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .bgBg6,
-                                            inactiveThumbColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .btnDefault,
+                                          child: Container(
+                                            width: 48.0,
+                                            height: 26.0,
+                                            child: custom_widgets.CustomSwitch(
+                                              width: 48.0,
+                                              height: 26.0,
+                                              state: 'jnk',
+                                              docReference: 'jnk',
+                                              setGoal: true,
+                                            ),
                                           ),
                                         ),
                                       ],

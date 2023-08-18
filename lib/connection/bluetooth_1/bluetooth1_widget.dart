@@ -64,19 +64,28 @@ class _Bluetooth1WidgetState extends State<Bluetooth1Widget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
-                        height: 50.0,
-                        decoration: BoxDecoration(
-                          color: Color(0x9A121B26),
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 10.0, 16.0, 10.0),
-                          child: Icon(
-                            FFIcons.karrowLeft,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            size: 24.0,
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.safePop();
+                        },
+                        child: Container(
+                          height: 50.0,
+                          decoration: BoxDecoration(
+                            color: Color(0x9A121B26),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                16.0, 10.0, 16.0, 10.0),
+                            child: Icon(
+                              FFIcons.karrowLeft,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 24.0,
+                            ),
                           ),
                         ),
                       ),

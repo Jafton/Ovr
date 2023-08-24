@@ -29,8 +29,15 @@ class Height extends StatefulWidget {
 enum HeightUnit { ft, cm }
 
 class _HeightState extends State<Height> {
-  HeightUnit selectedUnit = HeightUnit.ft;
+  HeightUnit selectedUnit =
+      FFAppState().heightUnit == 'ft' ? HeightUnit.ft : HeightUnit.cm;
   TextEditingController heightController = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    heightController.text = FFAppState().height;
+  }
+
   int ft = 0;
   int inches = 0;
   String cm = '';
@@ -43,7 +50,7 @@ class _HeightState extends State<Height> {
 
   inchesToCm() {
     int inchesTotal = (ft * 12) + inches;
-    cm = (inchesTotal * 2.54).toStringAsPrecision(5);
+    cm = (inchesTotal * 2.54).toStringAsFixed(0);
     heightController.text = cm;
   }
 
@@ -116,9 +123,13 @@ class _HeightState extends State<Height> {
                                             ft = (index + 1);
                                             heightController.text =
                                                 "$ft' $inches\"";
+                                            FFAppState().update(() {
+                                              FFAppState().height =
+                                                  '$ft\' $inches"';
+                                            });
                                           });
                                         },
-                                        children: List.generate(12, (index) {
+                                        children: List.generate(8, (index) {
                                           return Center(
                                             child: Text('${index + 1}'),
                                           );
@@ -156,6 +167,10 @@ class _HeightState extends State<Height> {
                                             inches = (index);
                                             heightController.text =
                                                 "$ft' $inches\"";
+                                            FFAppState().update(() {
+                                              FFAppState().height =
+                                                  '$ft\' $inches"';
+                                            });
                                           });
                                         },
                                         children: List.generate(12, (index) {
@@ -187,6 +202,12 @@ class _HeightState extends State<Height> {
                       }
                     : null,
                 controller: heightController,
+                //  initialValue: FFAppState().height,
+                onChanged: (text) {
+                  FFAppState().update(() {
+                    FFAppState().height = heightController.text;
+                  });
+                },
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Bicyclette',
                       color: FlutterFlowTheme.of(context).txtText1,
@@ -198,7 +219,8 @@ class _HeightState extends State<Height> {
                 textAlign: TextAlign.center,
                 cursorColor: Color(0xFF314A68),
                 decoration: InputDecoration(
-                    hintText: selectedUnit == HeightUnit.ft ? "__' __\"" : '0',
+                    hintText: FFAppState().height,
+                    //selectedUnit == HeightUnit.ft ? "__' __\"" : '0',
                     hintStyle: TextStyle(color: Colors.white),
                     contentPadding: EdgeInsets.symmetric(vertical: 18),
                     filled: true,
@@ -216,28 +238,24 @@ class _HeightState extends State<Height> {
                       borderSide: BorderSide(color: Color(0xff121B26)),
                     )),
                 inputFormatters: [
-                  FilteringTextInputFormatter.allow(
-                      RegExp("^(?:\d{1,3}(?:\.\d{0,2})?)"))
+                  FilteringTextInputFormatter.allow(RegExp(r'^\d{1,3}'))
                 ],
               ),
             ),
-            SizedBox(width: 25),
+            SizedBox(width: 3),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 3),
               child: GestureDetector(
                 onTap: () {
+                  FFAppState().update(() {
+                    FFAppState().heightUnit = 'ft';
+                  });
                   setState(() {
                     if (heightController.text.isEmpty) {
                       selectedUnit = HeightUnit.ft;
-                      FFAppState().update(() {
-                        FFAppState().heightUnit = 'ft';
-                      });
                     } else {
                       selectedUnit = HeightUnit.ft;
                       checkHeightUnit();
-                      FFAppState().update(() {
-                        FFAppState().heightUnit = 'ft';
-                      });
                     }
                   });
                 },
@@ -269,18 +287,15 @@ class _HeightState extends State<Height> {
               padding: const EdgeInsets.symmetric(horizontal: 3),
               child: GestureDetector(
                 onTap: () {
+                  FFAppState().update(() {
+                    FFAppState().heightUnit = 'cm';
+                  });
                   setState(() {
                     if (heightController.text.isEmpty) {
                       selectedUnit = HeightUnit.cm;
-                      FFAppState().update(() {
-                        FFAppState().heightUnit = 'cm';
-                      });
                     } else {
                       selectedUnit = HeightUnit.cm;
                       checkHeightUnit();
-                      FFAppState().update(() {
-                        FFAppState().heightUnit = 'cm';
-                      });
                     }
                   });
                 },

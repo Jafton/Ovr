@@ -20,6 +20,8 @@ class CustomSwitch extends StatefulWidget {
     this.state,
     this.docReference,
     required this.setGoal,
+    required this.boolOfSwitch,
+    required this.jumpSandboxMode,
   }) : super(key: key);
 
   final double? width;
@@ -27,18 +29,27 @@ class CustomSwitch extends StatefulWidget {
   final String? state;
   final String? docReference;
   final bool setGoal;
+  final bool boolOfSwitch;
+  final bool jumpSandboxMode;
 
   @override
   _CustomSwitchState createState() => _CustomSwitchState();
 }
 
 class _CustomSwitchState extends State<CustomSwitch> {
-  bool status = false;
-  final _controller = ValueNotifier<bool>(false);
+  late final ValueNotifier<bool> _controller;
 
   @override
   void initState() {
     super.initState();
+    if (widget.jumpSandboxMode) {
+      _controller = ValueNotifier<bool>(FFAppState().jumpSandboxMode);
+    } else if (widget.setGoal) {
+      _controller = ValueNotifier<bool>(FFAppState().isGoalSwitchedOn);
+    } else {
+      _controller = ValueNotifier<bool>(widget.boolOfSwitch);
+    }
+
     CollectionReference users = FirebaseFirestore.instance.collection('user');
     _controller.addListener(() {
       setState(() {
@@ -55,6 +66,11 @@ class _CustomSwitchState extends State<CustomSwitch> {
               FFAppState().isGoalSwitchedOn = true;
             });
           }
+          if (widget.jumpSandboxMode) {
+            FFAppState().update(() {
+              FFAppState().jumpSandboxMode = true;
+            });
+          }
         } else {
           users
               .doc('${widget.docReference}')
@@ -66,6 +82,12 @@ class _CustomSwitchState extends State<CustomSwitch> {
             FFAppState().update(() {
               FFAppState().isGoalSwitchedOn = false;
               FFAppState().setGoal = '';
+            });
+          }
+
+          if (widget.jumpSandboxMode) {
+            FFAppState().update(() {
+              FFAppState().jumpSandboxMode = false;
             });
           }
         }

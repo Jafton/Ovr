@@ -81,13 +81,13 @@ class FFAppState extends ChangeNotifier {
     _heightUnit = _value;
   }
 
-  String _height = '';
+  String _height = '5\'9\"';
   String get height => _height;
   set height(String _value) {
     _height = _value;
   }
 
-  String _weightUnit = '';
+  String _weightUnit = 'lbs';
   String get weightUnit => _weightUnit;
   set weightUnit(String _value) {
     _weightUnit = _value;
@@ -248,7 +248,7 @@ class FFAppState extends ChangeNotifier {
     _iconSelected = _value;
   }
 
-  String _sortState = 'ascending';
+  String _sortState = '';
   String get sortState => _sortState;
   set sortState(String _value) {
     _sortState = _value;
@@ -313,6 +313,18 @@ class FFAppState extends ChangeNotifier {
   String get string => _string;
   set string(String _value) {
     _string = _value;
+  }
+
+  bool _jumpSandboxMode = false;
+  bool get jumpSandboxMode => _jumpSandboxMode;
+  set jumpSandboxMode(bool _value) {
+    _jumpSandboxMode = _value;
+  }
+
+  String _sortStateNotApplied = '';
+  String get sortStateNotApplied => _sortStateNotApplied;
+  set sortStateNotApplied(String _value) {
+    _sortStateNotApplied = _value;
   }
 }
 

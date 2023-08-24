@@ -87,11 +87,15 @@ class _ReturnToHomepageWidgetState extends State<ReturnToHomepageWidget> {
             ),
             FFButtonWidget(
               onPressed: () async {
-                setState(() {
-                  FFAppState().pageIndex = 1;
-                });
-
                 context.goNamed('MainPage');
+
+                FFAppState().update(() {
+                  FFAppState().pageIndex = 1;
+                  FFAppState().isGoalSwitchedOn = false;
+                  FFAppState().setGoal = '';
+                  FFAppState().weightSelection = '';
+                  FFAppState().jumpSandboxMode = false;
+                });
               },
               text: 'CONFIRM',
               options: FFButtonOptions(

@@ -61,6 +61,11 @@ class ExerciseRecord extends FirestoreRecord {
   bool get exerciseIsDeletable => _exerciseIsDeletable ?? false;
   bool hasExerciseIsDeletable() => _exerciseIsDeletable != null;
 
+  // "exercise_last_used" field.
+  DateTime? _exerciseLastUsed;
+  DateTime? get exerciseLastUsed => _exerciseLastUsed;
+  bool hasExerciseLastUsed() => _exerciseLastUsed != null;
+
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _exerciseE1RM = snapshotData['exercise_e1RM'] as String?;
@@ -71,6 +76,7 @@ class ExerciseRecord extends FirestoreRecord {
     _exercisePopularity = castToType<int>(snapshotData['exercise_popularity']);
     _exerciseIsVisible = snapshotData['exercise_is_visible'] as bool?;
     _exerciseIsDeletable = snapshotData['exercise_is_deletable'] as bool?;
+    _exerciseLastUsed = snapshotData['exercise_last_used'] as DateTime?;
   }
 
   static CollectionReference get collection =>
@@ -117,6 +123,7 @@ Map<String, dynamic> createExerciseRecordData({
   int? exercisePopularity,
   bool? exerciseIsVisible,
   bool? exerciseIsDeletable,
+  DateTime? exerciseLastUsed,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -129,6 +136,7 @@ Map<String, dynamic> createExerciseRecordData({
       'exercise_popularity': exercisePopularity,
       'exercise_is_visible': exerciseIsVisible,
       'exercise_is_deletable': exerciseIsDeletable,
+      'exercise_last_used': exerciseLastUsed,
     }.withoutNulls,
   );
 
@@ -148,7 +156,8 @@ class ExerciseRecordDocumentEquality implements Equality<ExerciseRecord> {
         e1?.exerciseType == e2?.exerciseType &&
         e1?.exercisePopularity == e2?.exercisePopularity &&
         e1?.exerciseIsVisible == e2?.exerciseIsVisible &&
-        e1?.exerciseIsDeletable == e2?.exerciseIsDeletable;
+        e1?.exerciseIsDeletable == e2?.exerciseIsDeletable &&
+        e1?.exerciseLastUsed == e2?.exerciseLastUsed;
   }
 
   @override
@@ -161,7 +170,8 @@ class ExerciseRecordDocumentEquality implements Equality<ExerciseRecord> {
         e?.exerciseType,
         e?.exercisePopularity,
         e?.exerciseIsVisible,
-        e?.exerciseIsDeletable
+        e?.exerciseIsDeletable,
+        e?.exerciseLastUsed
       ]);
 
   @override

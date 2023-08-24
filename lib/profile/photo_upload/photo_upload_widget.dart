@@ -1,9 +1,9 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/components/crop_u_i_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import '/profile/crop_u_i_copy/crop_u_i_copy_widget.dart';
 import '/profile/remove_picture/remove_picture_widget.dart';
 import '/velocity/error_dialog/error_dialog_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
@@ -75,58 +75,93 @@ class _PhotoUploadWidgetState extends State<PhotoUploadWidget> {
                 ),
               ),
             ),
-            Align(
-              alignment: AlignmentDirectional(-1.0, 0.0),
-              child: Builder(
-                builder: (context) => FFButtonWidget(
-                  onPressed: () async {
-                    final selectedMedia = await selectMedia(
-                      mediaSource: MediaSource.photoGallery,
-                      multiImage: false,
-                    );
-                    if (selectedMedia != null &&
-                        selectedMedia.every((m) =>
-                            validateFileFormat(m.storagePath, context))) {
-                      setState(() => _model.isDataUploading1 = true);
-                      var selectedUploadedFiles = <FFUploadedFile>[];
+            Builder(
+              builder: (context) => FFButtonWidget(
+                onPressed: () async {
+                  final selectedMedia = await selectMedia(
+                    mediaSource: MediaSource.photoGallery,
+                    multiImage: false,
+                  );
+                  if (selectedMedia != null &&
+                      selectedMedia.every(
+                          (m) => validateFileFormat(m.storagePath, context))) {
+                    setState(() => _model.isDataUploading1 = true);
+                    var selectedUploadedFiles = <FFUploadedFile>[];
 
-                      try {
-                        showUploadMessage(
-                          context,
-                          'Uploading file...',
-                          showLoading: true,
-                        );
-                        selectedUploadedFiles = selectedMedia
-                            .map((m) => FFUploadedFile(
-                                  name: m.storagePath.split('/').last,
-                                  bytes: m.bytes,
-                                  height: m.dimensions?.height,
-                                  width: m.dimensions?.width,
-                                  blurHash: m.blurHash,
-                                ))
-                            .toList();
-                      } finally {
-                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                        _model.isDataUploading1 = false;
-                      }
-                      if (selectedUploadedFiles.length ==
-                          selectedMedia.length) {
-                        setState(() {
-                          _model.uploadedLocalFile1 =
-                              selectedUploadedFiles.first;
-                        });
-                        showUploadMessage(context, 'Success!');
-                      } else {
-                        setState(() {});
-                        showUploadMessage(context, 'Failed to upload data');
-                        return;
-                      }
+                    try {
+                      selectedUploadedFiles = selectedMedia
+                          .map((m) => FFUploadedFile(
+                                name: m.storagePath.split('/').last,
+                                bytes: m.bytes,
+                                height: m.dimensions?.height,
+                                width: m.dimensions?.width,
+                                blurHash: m.blurHash,
+                              ))
+                          .toList();
+                    } finally {
+                      _model.isDataUploading1 = false;
                     }
+                    if (selectedUploadedFiles.length == selectedMedia.length) {
+                      setState(() {
+                        _model.uploadedLocalFile1 = selectedUploadedFiles.first;
+                      });
+                    } else {
+                      setState(() {});
+                      return;
+                    }
+                  }
 
-                    _model.result = await actions.returnSizeInBytes(
-                      _model.uploadedLocalFile1,
-                    );
-                    if (_model.result! > 5000000) {
+                  _model.result = await actions.returnSizeInBytes(
+                    _model.uploadedLocalFile1,
+                  );
+                  if (_model.result! > 5000000) {
+                    showAlignedDialog(
+                      barrierColor: Colors.transparent,
+                      context: context,
+                      isGlobal: true,
+                      avoidOverflow: false,
+                      targetAnchor: AlignmentDirectional(0.0, 0.0)
+                          .resolve(Directionality.of(context)),
+                      followerAnchor: AlignmentDirectional(0.0, -1.0)
+                          .resolve(Directionality.of(context)),
+                      builder: (dialogContext) {
+                        return Material(
+                          color: Colors.transparent,
+                          child: ErrorDialogWidget(
+                            text:
+                                'The photo exceeds the maximum file size limit of 5MB.',
+                          ),
+                        );
+                      },
+                    ).then((value) => setState(() {}));
+
+                    setState(() {
+                      _model.isDataUploading1 = false;
+                      _model.uploadedLocalFile1 =
+                          FFUploadedFile(bytes: Uint8List.fromList([]));
+                    });
+
+                    Navigator.pop(context);
+                  } else {
+                    if (_model.uploadedLocalFile1 != null &&
+                        (_model.uploadedLocalFile1.bytes?.isNotEmpty ??
+                            false)) {
+                      Navigator.pop(context);
+                      showModalBottomSheet(
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        enableDrag: false,
+                        context: context,
+                        builder: (context) {
+                          return Padding(
+                            padding: MediaQuery.viewInsetsOf(context),
+                            child: CropUICopyWidget(
+                              image: _model.uploadedLocalFile1,
+                            ),
+                          );
+                        },
+                      ).then((value) => setState(() {}));
+                    } else {
                       showAlignedDialog(
                         barrierColor: Colors.transparent,
                         context: context,
@@ -140,144 +175,129 @@ class _PhotoUploadWidgetState extends State<PhotoUploadWidget> {
                           return Material(
                             color: Colors.transparent,
                             child: ErrorDialogWidget(
-                              text:
-                                  'The photo exceeds the maximum file size limit of 5MB.',
+                              text: 'Error occured.',
                             ),
                           );
                         },
                       ).then((value) => setState(() {}));
-
-                      setState(() {
-                        _model.isDataUploading1 = false;
-                        _model.uploadedLocalFile1 =
-                            FFUploadedFile(bytes: Uint8List.fromList([]));
-                      });
-
-                      Navigator.pop(context);
-                    } else {
-                      if (_model.uploadedLocalFile1 != null &&
-                          (_model.uploadedLocalFile1.bytes?.isNotEmpty ??
-                              false)) {
-                        showModalBottomSheet(
-                          isScrollControlled: true,
-                          backgroundColor: Colors.transparent,
-                          enableDrag: false,
-                          context: context,
-                          builder: (context) {
-                            return Padding(
-                              padding: MediaQuery.viewInsetsOf(context),
-                              child: CropUIWidget(
-                                image: _model.uploadedLocalFile1,
-                              ),
-                            );
-                          },
-                        ).then((value) => setState(() {}));
-
-                        Navigator.pop(context);
-                      } else {
-                        showAlignedDialog(
-                          barrierColor: Colors.transparent,
-                          context: context,
-                          isGlobal: true,
-                          avoidOverflow: false,
-                          targetAnchor: AlignmentDirectional(0.0, 0.0)
-                              .resolve(Directionality.of(context)),
-                          followerAnchor: AlignmentDirectional(0.0, -1.0)
-                              .resolve(Directionality.of(context)),
-                          builder: (dialogContext) {
-                            return Material(
-                              color: Colors.transparent,
-                              child: ErrorDialogWidget(
-                                text: 'Error occured.',
-                              ),
-                            );
-                          },
-                        ).then((value) => setState(() {}));
-                      }
                     }
+                  }
 
-                    setState(() {});
-                  },
-                  text: 'Select From Library',
-                  icon: Icon(
-                    FFIcons.kgallery,
-                    size: 20.0,
+                  setState(() {});
+                },
+                text: 'Select From Library',
+                icon: Icon(
+                  FFIcons.kgallery,
+                  size: 20.0,
+                ),
+                options: FFButtonOptions(
+                  width: double.infinity,
+                  height: 44.0,
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  iconPadding:
+                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  color: FlutterFlowTheme.of(context).bgBg5,
+                  textStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                        fontFamily: 'SF Pro Display',
+                        color: FlutterFlowTheme.of(context).txtText2,
+                        fontWeight: FontWeight.w500,
+                        useGoogleFonts: false,
+                      ),
+                  elevation: 0.0,
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
                   ),
-                  options: FFButtonOptions(
-                    width: double.infinity,
-                    height: 44.0,
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).bgBg5,
-                    textStyle:
-                        FlutterFlowTheme.of(context).labelMedium.override(
-                              fontFamily: 'SF Pro Display',
-                              color: FlutterFlowTheme.of(context).txtText2,
-                              fontWeight: FontWeight.w500,
-                              useGoogleFonts: false,
-                            ),
-                    elevation: 0.0,
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                    ),
-                    borderRadius: BorderRadius.circular(8.0),
-                    hoverColor: FlutterFlowTheme.of(context).bgStroke,
-                  ),
+                  borderRadius: BorderRadius.circular(8.0),
+                  hoverColor: FlutterFlowTheme.of(context).bgStroke,
                 ),
               ),
             ),
-            Align(
-              alignment: AlignmentDirectional(-1.0, 0.0),
-              child: Builder(
-                builder: (context) => FFButtonWidget(
-                  onPressed: () async {
-                    final selectedMedia = await selectMedia(
-                      multiImage: false,
-                    );
-                    if (selectedMedia != null &&
-                        selectedMedia.every((m) =>
-                            validateFileFormat(m.storagePath, context))) {
-                      setState(() => _model.isDataUploading2 = true);
-                      var selectedUploadedFiles = <FFUploadedFile>[];
+            Builder(
+              builder: (context) => FFButtonWidget(
+                onPressed: () async {
+                  final selectedMedia = await selectMedia(
+                    multiImage: false,
+                  );
+                  if (selectedMedia != null &&
+                      selectedMedia.every(
+                          (m) => validateFileFormat(m.storagePath, context))) {
+                    setState(() => _model.isDataUploading2 = true);
+                    var selectedUploadedFiles = <FFUploadedFile>[];
 
-                      try {
-                        showUploadMessage(
-                          context,
-                          'Uploading file...',
-                          showLoading: true,
-                        );
-                        selectedUploadedFiles = selectedMedia
-                            .map((m) => FFUploadedFile(
-                                  name: m.storagePath.split('/').last,
-                                  bytes: m.bytes,
-                                  height: m.dimensions?.height,
-                                  width: m.dimensions?.width,
-                                  blurHash: m.blurHash,
-                                ))
-                            .toList();
-                      } finally {
-                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                        _model.isDataUploading2 = false;
-                      }
-                      if (selectedUploadedFiles.length ==
-                          selectedMedia.length) {
-                        setState(() {
-                          _model.uploadedLocalFile2 =
-                              selectedUploadedFiles.first;
-                        });
-                        showUploadMessage(context, 'Success!');
-                      } else {
-                        setState(() {});
-                        showUploadMessage(context, 'Failed to upload data');
-                        return;
-                      }
+                    try {
+                      selectedUploadedFiles = selectedMedia
+                          .map((m) => FFUploadedFile(
+                                name: m.storagePath.split('/').last,
+                                bytes: m.bytes,
+                                height: m.dimensions?.height,
+                                width: m.dimensions?.width,
+                                blurHash: m.blurHash,
+                              ))
+                          .toList();
+                    } finally {
+                      _model.isDataUploading2 = false;
                     }
+                    if (selectedUploadedFiles.length == selectedMedia.length) {
+                      setState(() {
+                        _model.uploadedLocalFile2 = selectedUploadedFiles.first;
+                      });
+                    } else {
+                      setState(() {});
+                      return;
+                    }
+                  }
 
-                    _model.resultCopy = await actions.returnSizeInBytes(
-                      _model.uploadedLocalFile2,
-                    );
-                    if (_model.result! > 5000000) {
+                  _model.resultCopy = await actions.returnSizeInBytes(
+                    _model.uploadedLocalFile2,
+                  );
+                  if (_model.resultCopy! > 5000000) {
+                    showAlignedDialog(
+                      barrierColor: Colors.transparent,
+                      context: context,
+                      isGlobal: true,
+                      avoidOverflow: false,
+                      targetAnchor: AlignmentDirectional(0.0, 0.0)
+                          .resolve(Directionality.of(context)),
+                      followerAnchor: AlignmentDirectional(0.0, -1.0)
+                          .resolve(Directionality.of(context)),
+                      builder: (dialogContext) {
+                        return Material(
+                          color: Colors.transparent,
+                          child: ErrorDialogWidget(
+                            text:
+                                'The photo exceeds the maximum file size limit of 5MB.',
+                          ),
+                        );
+                      },
+                    ).then((value) => setState(() {}));
+
+                    setState(() {
+                      _model.isDataUploading2 = false;
+                      _model.uploadedLocalFile2 =
+                          FFUploadedFile(bytes: Uint8List.fromList([]));
+                    });
+
+                    Navigator.pop(context);
+                  } else {
+                    if (_model.uploadedLocalFile2 != null &&
+                        (_model.uploadedLocalFile2.bytes?.isNotEmpty ??
+                            false)) {
+                      Navigator.pop(context);
+                      await showModalBottomSheet(
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        enableDrag: false,
+                        context: context,
+                        builder: (context) {
+                          return Padding(
+                            padding: MediaQuery.viewInsetsOf(context),
+                            child: CropUICopyWidget(
+                              image: _model.uploadedLocalFile2,
+                            ),
+                          );
+                        },
+                      ).then((value) => setState(() {}));
+                    } else {
                       showAlignedDialog(
                         barrierColor: Colors.transparent,
                         context: context,
@@ -291,90 +311,40 @@ class _PhotoUploadWidgetState extends State<PhotoUploadWidget> {
                           return Material(
                             color: Colors.transparent,
                             child: ErrorDialogWidget(
-                              text:
-                                  'The photo exceeds the maximum file size limit of 5MB.',
+                              text: 'Error occured.',
                             ),
                           );
                         },
                       ).then((value) => setState(() {}));
-
-                      setState(() {
-                        _model.isDataUploading2 = false;
-                        _model.uploadedLocalFile2 =
-                            FFUploadedFile(bytes: Uint8List.fromList([]));
-                      });
-
-                      Navigator.pop(context);
-                    } else {
-                      if (_model.uploadedLocalFile2 != null &&
-                          (_model.uploadedLocalFile2.bytes?.isNotEmpty ??
-                              false)) {
-                        showModalBottomSheet(
-                          isScrollControlled: true,
-                          backgroundColor: Colors.transparent,
-                          enableDrag: false,
-                          context: context,
-                          builder: (context) {
-                            return Padding(
-                              padding: MediaQuery.viewInsetsOf(context),
-                              child: CropUIWidget(
-                                image: _model.uploadedLocalFile2,
-                              ),
-                            );
-                          },
-                        ).then((value) => setState(() {}));
-
-                        Navigator.pop(context);
-                      } else {
-                        showAlignedDialog(
-                          barrierColor: Colors.transparent,
-                          context: context,
-                          isGlobal: true,
-                          avoidOverflow: false,
-                          targetAnchor: AlignmentDirectional(0.0, 0.0)
-                              .resolve(Directionality.of(context)),
-                          followerAnchor: AlignmentDirectional(0.0, -1.0)
-                              .resolve(Directionality.of(context)),
-                          builder: (dialogContext) {
-                            return Material(
-                              color: Colors.transparent,
-                              child: ErrorDialogWidget(
-                                text: 'Error occured.',
-                              ),
-                            );
-                          },
-                        ).then((value) => setState(() {}));
-                      }
                     }
+                  }
 
-                    setState(() {});
-                  },
-                  text: 'Take Photo',
-                  icon: Icon(
-                    FFIcons.kgallery,
-                    size: 20.0,
+                  setState(() {});
+                },
+                text: 'Take Photo',
+                icon: Icon(
+                  FFIcons.kgallery,
+                  size: 20.0,
+                ),
+                options: FFButtonOptions(
+                  width: double.infinity,
+                  height: 44.0,
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  iconPadding:
+                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  color: FlutterFlowTheme.of(context).bgBg5,
+                  textStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                        fontFamily: 'SF Pro Display',
+                        color: FlutterFlowTheme.of(context).txtText2,
+                        fontWeight: FontWeight.w500,
+                        useGoogleFonts: false,
+                      ),
+                  elevation: 0.0,
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
                   ),
-                  options: FFButtonOptions(
-                    width: double.infinity,
-                    height: 44.0,
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).bgBg5,
-                    textStyle:
-                        FlutterFlowTheme.of(context).labelMedium.override(
-                              fontFamily: 'SF Pro Display',
-                              color: FlutterFlowTheme.of(context).txtText2,
-                              fontWeight: FontWeight.w500,
-                              useGoogleFonts: false,
-                            ),
-                    elevation: 0.0,
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                    ),
-                    borderRadius: BorderRadius.circular(8.0),
-                    hoverColor: FlutterFlowTheme.of(context).bgStroke,
-                  ),
+                  borderRadius: BorderRadius.circular(8.0),
+                  hoverColor: FlutterFlowTheme.of(context).bgStroke,
                 ),
               ),
             ),
@@ -385,6 +355,7 @@ class _PhotoUploadWidgetState extends State<PhotoUploadWidget> {
                   builder: (context) => AuthUserStreamWidget(
                     builder: (context) => FFButtonWidget(
                       onPressed: () async {
+                        Navigator.pop(context);
                         showAlignedDialog(
                           context: context,
                           isGlobal: true,

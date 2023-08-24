@@ -42,7 +42,7 @@ Future exerciseCreator(DocumentReference owner, String userid) async {
       'exercise_owner': owner,
       'userid': userid,
       'exercise_type': entry.value,
-      'exercise_is_deleteble': false
+      'exercise_is_deleteble': false,
     });
   }
 

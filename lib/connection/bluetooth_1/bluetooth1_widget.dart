@@ -1,6 +1,9 @@
+import '/connection/ovr_velocity_grid/ovr_velocity_grid_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'bluetooth1_model.dart';
@@ -22,6 +25,44 @@ class _Bluetooth1WidgetState extends State<Bluetooth1Widget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => Bluetooth1Model());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await actions.saved();
+      _model.result = await actions.searchingDevice();
+      if (_model.result!) {
+        showModalBottomSheet(
+          isScrollControlled: true,
+          backgroundColor: Colors.transparent,
+          context: context,
+          builder: (context) {
+            return GestureDetector(
+              onTap: () =>
+                  FocusScope.of(context).requestFocus(_model.unfocusNode),
+              child: Padding(
+                padding: MediaQuery.viewInsetsOf(context),
+                child: OvrVelocityGridWidget(),
+              ),
+            );
+          },
+        ).then((value) => setState(() {}));
+      } else {
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: Text('Could not find any device!'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            );
+          },
+        );
+      }
+    });
   }
 
   @override
@@ -102,19 +143,64 @@ class _Bluetooth1WidgetState extends State<Bluetooth1Widget> {
                               useGoogleFonts: false,
                             ),
                       ),
-                      Container(
-                        height: MediaQuery.sizeOf(context).height * 0.05,
-                        decoration: BoxDecoration(
-                          color: Color(0x9A121B26),
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 10.0, 16.0, 10.0),
-                          child: Icon(
-                            FFIcons.kconnection,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            size: 24.0,
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          _model.resultOfButton =
+                              await actions.searchingDevice();
+                          if (_model.resultOfButton!) {
+                            showModalBottomSheet(
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              context: context,
+                              builder: (context) {
+                                return GestureDetector(
+                                  onTap: () => FocusScope.of(context)
+                                      .requestFocus(_model.unfocusNode),
+                                  child: Padding(
+                                    padding: MediaQuery.viewInsetsOf(context),
+                                    child: OvrVelocityGridWidget(),
+                                  ),
+                                );
+                              },
+                            ).then((value) => setState(() {}));
+                          } else {
+                            await showDialog(
+                              context: context,
+                              builder: (alertDialogContext) {
+                                return AlertDialog(
+                                  title: Text('Could not find any device!'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(alertDialogContext),
+                                      child: Text('Ok'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          }
+
+                          setState(() {});
+                        },
+                        child: Container(
+                          height: 50.0,
+                          decoration: BoxDecoration(
+                            color: Color(0x9A121B26),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                16.0, 10.0, 16.0, 10.0),
+                            child: Icon(
+                              FFIcons.kconnection,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 24.0,
+                            ),
                           ),
                         ),
                       ),

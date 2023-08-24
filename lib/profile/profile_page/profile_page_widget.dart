@@ -15,7 +15,6 @@ import '/velocity/velocity_or_jump/velocity_or_jump_widget.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_dialog/aligned_dialog.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -255,13 +254,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           8.0),
-                                                  child: CachedNetworkImage(
-                                                    fadeInDuration: Duration(
-                                                        milliseconds: 500),
-                                                    fadeOutDuration: Duration(
-                                                        milliseconds: 500),
-                                                    imageUrl: FFAppState()
-                                                        .croppedImage,
+                                                  child: Image.network(
+                                                    FFAppState().croppedImage,
                                                     width: 100.0,
                                                     height: 100.0,
                                                     fit: BoxFit.cover,
@@ -353,10 +347,6 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
-                                          setState(() {
-                                            _model.textController?.text =
-                                                currentUserDisplayName;
-                                          });
                                           setState(() {
                                             FFAppState().isNameEditing = true;
                                           });
@@ -639,15 +629,22 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                         ),
                                       ],
                                     ),
-                                    Container(
-                                      width: 48.0,
-                                      height: 26.0,
-                                      child: custom_widgets.CustomSwitch(
+                                    AuthUserStreamWidget(
+                                      builder: (context) => Container(
                                         width: 48.0,
                                         height: 26.0,
-                                        state: 'user_filter_jumps',
-                                        docReference: currentUserUid,
-                                        setGoal: false,
+                                        child: custom_widgets.CustomSwitch(
+                                          width: 48.0,
+                                          height: 26.0,
+                                          state: 'user_filter_jumps',
+                                          docReference: currentUserUid,
+                                          setGoal: false,
+                                          boolOfSwitch: valueOrDefault<bool>(
+                                              currentUserDocument
+                                                  ?.userFilterJumps,
+                                              false),
+                                          jumpSandboxMode: false,
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -696,15 +693,22 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                         ),
                                       ],
                                     ),
-                                    Container(
-                                      width: 48.0,
-                                      height: 26.0,
-                                      child: custom_widgets.CustomSwitch(
+                                    AuthUserStreamWidget(
+                                      builder: (context) => Container(
                                         width: 48.0,
                                         height: 26.0,
-                                        state: 'user_eccentric',
-                                        docReference: currentUserUid,
-                                        setGoal: false,
+                                        child: custom_widgets.CustomSwitch(
+                                          width: 48.0,
+                                          height: 26.0,
+                                          state: 'user_eccentric',
+                                          docReference: currentUserUid,
+                                          setGoal: false,
+                                          boolOfSwitch: valueOrDefault<bool>(
+                                              currentUserDocument
+                                                  ?.userEccentric,
+                                              false),
+                                          jumpSandboxMode: false,
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -753,15 +757,22 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                         ),
                                       ],
                                     ),
-                                    Container(
-                                      width: 48.0,
-                                      height: 26.0,
-                                      child: custom_widgets.CustomSwitch(
+                                    AuthUserStreamWidget(
+                                      builder: (context) => Container(
                                         width: 48.0,
                                         height: 26.0,
-                                        state: 'user_show_fatigue',
-                                        docReference: currentUserUid,
-                                        setGoal: false,
+                                        child: custom_widgets.CustomSwitch(
+                                          width: 48.0,
+                                          height: 26.0,
+                                          state: 'user_show_fatigue',
+                                          docReference: currentUserUid,
+                                          setGoal: false,
+                                          boolOfSwitch: valueOrDefault<bool>(
+                                              currentUserDocument
+                                                  ?.userShowFatigue,
+                                              false),
+                                          jumpSandboxMode: false,
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -1201,8 +1212,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                       ),
                       child: Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            0.0, 0.0, 0.0, 120.0),
                         child: FFButtonWidget(
                           onPressed: () async {
                             await showModalBottomSheet(
@@ -1245,13 +1256,6 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                         ),
-                      ),
-                    ),
-                    Container(
-                      width: 100.0,
-                      height: 100.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
                       ),
                     ),
                   ],

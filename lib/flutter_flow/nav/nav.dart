@@ -103,11 +103,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => PersonalInfoPageWidget(),
         ),
         FFRoute(
-          name: 'ProfilePage',
-          path: '/profilePage',
-          builder: (context, params) => ProfilePageWidget(),
-        ),
-        FFRoute(
           name: 'ChangePasswordPage',
           path: '/changePasswordPage',
           builder: (context, params) => ChangePasswordPageWidget(),
@@ -191,10 +186,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => JumpModeSelectionWidget(),
         ),
         FFRoute(
-          name: 'NewExercisePageCopy',
-          path: '/newExercisePageCopy',
-          builder: (context, params) => NewExercisePageCopyWidget(
+          name: 'NewExercisePageJump',
+          path: '/newExercisePageJump',
+          asyncParams: {
+            'exerciseDocuments':
+                getDocList(['exercise'], ExerciseRecord.fromSnapshot),
+          },
+          builder: (context, params) => NewExercisePageJumpWidget(
             exerciseType: params.getParam('exerciseType', ParamType.String),
+            exerciseDocuments: params.getParam<ExerciseRecord>(
+                'exerciseDocuments', ParamType.Document, true),
           ),
         ),
         FFRoute(
@@ -251,6 +252,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'VerticalJumpLiveData',
           path: '/verticalJumpLiveData',
           builder: (context, params) => VerticalJumpLiveDataWidget(),
+        ),
+        FFRoute(
+          name: 'ProfilePage',
+          path: '/profilePage',
+          builder: (context, params) => ProfilePageWidget(),
+        ),
+        FFRoute(
+          name: 'JumpExerciseSelection',
+          path: '/jumpExerciseSelection',
+          builder: (context, params) => JumpExerciseSelectionWidget(
+            exerciseType: params.getParam('exerciseType', ParamType.String),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

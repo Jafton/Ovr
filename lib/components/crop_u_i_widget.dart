@@ -48,11 +48,11 @@ class _CropUIWidgetState extends State<CropUIWidget> {
     context.watch<FFAppState>();
 
     return Container(
-      width: double.infinity,
-      height: double.infinity,
+      width: MediaQuery.sizeOf(context).width * 1.0,
+      height: MediaQuery.sizeOf(context).height * 1.0,
       child: custom_widgets.PhotoCropUI(
-        width: double.infinity,
-        height: double.infinity,
+        width: MediaQuery.sizeOf(context).width * 1.0,
+        height: MediaQuery.sizeOf(context).height * 1.0,
         top: 0.0,
         right: 0.0,
         bottom: 0.0,

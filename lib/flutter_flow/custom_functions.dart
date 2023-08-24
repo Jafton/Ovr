@@ -283,13 +283,17 @@ List<ExerciseRecord> sortFunction(
       documents
           .sort((a, b) => b.name.toLowerCase().compareTo(a.name.toLowerCase()));
       break;
-    case 'Least popular':
-      documents
-          .sort((a, b) => a.exercisePopularity.compareTo(b.exercisePopularity));
+    case 'Last used':
+      documents.sort((a, b) {
+        // Handle nullable DateTime values
+        final aDate = a.exerciseLastUsed ?? DateTime(0);
+        final bDate = b.exerciseLastUsed ?? DateTime(0);
+        return bDate.compareTo(aDate);
+      });
       break;
     case 'Most popular':
-      documents
-          .sort((a, b) => b.exercisePopularity.compareTo(a.exercisePopularity));
+      documents.sort((a, b) =>
+          (b.exercisePopularity ?? 0).compareTo(a.exercisePopularity ?? 0));
       break;
   }
 
@@ -309,4 +313,16 @@ String removeLeadingZero(String input) {
     return input.substring(1);
   }
   return input;
+}
+
+bool containsDot(
+  String? string,
+  String? substring,
+) {
+  // check if string contains substring and length > 3 return true or false
+  if (string == null || substring == null) {
+    return false;
+  }
+
+  return string.contains('$substring');
 }

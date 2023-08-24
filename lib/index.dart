@@ -4,7 +4,6 @@ export '/sign_up/forgot_password/forgot_password_widget.dart'
     show ForgotPasswordWidget;
 export '/personal_info/personal_info_page/personal_info_page_widget.dart'
     show PersonalInfoPageWidget;
-export '/profile/profile_page/profile_page_widget.dart' show ProfilePageWidget;
 export '/profile/settings/change_password_page/change_password_page_widget.dart'
     show ChangePasswordPageWidget;
 export '/profile/settings/verify_password_page/verify_password_page_widget.dart'
@@ -29,8 +28,8 @@ export '/velocity_export/view_data_copy/view_data_copy_widget.dart'
     show ViewDataCopyWidget;
 export '/jump/jump_mode_selection/jump_mode_selection_widget.dart'
     show JumpModeSelectionWidget;
-export '/jump/new_exercise_page_copy/new_exercise_page_copy_widget.dart'
-    show NewExercisePageCopyWidget;
+export '/jump/new_exercise_page_jump/new_exercise_page_jump_widget.dart'
+    show NewExercisePageJumpWidget;
 export '/jump/view_data_copy2/view_data_copy2_widget.dart'
     show ViewDataCopy2Widget;
 export '/jump/vertical_jump/vertical_jump_widget.dart' show VerticalJumpWidget;
@@ -48,3 +47,6 @@ export '/main_page/main_page_widget.dart' show MainPageWidget;
 export '/icons_testing/icons_testing_widget.dart' show IconsTestingWidget;
 export '/jump/vertical_jump_live_data/vertical_jump_live_data_widget.dart'
     show VerticalJumpLiveDataWidget;
+export '/profile/profile_page/profile_page_widget.dart' show ProfilePageWidget;
+export '/jump/jump_exercise_selection/jump_exercise_selection_widget.dart'
+    show JumpExerciseSelectionWidget;

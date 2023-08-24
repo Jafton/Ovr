@@ -1,9 +1,9 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/components/crop_u_i_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import '/profile/crop_u_i_copy/crop_u_i_copy_widget.dart';
 import '/profile/remove_picture/remove_picture_widget.dart';
 import '/velocity/error_dialog/error_dialog_widget.dart';
 import '/custom_code/actions/index.dart' as actions;

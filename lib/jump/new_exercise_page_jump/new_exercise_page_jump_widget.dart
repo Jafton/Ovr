@@ -12,31 +12,33 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'new_exercise_page_copy_model.dart';
-export 'new_exercise_page_copy_model.dart';
+import 'new_exercise_page_jump_model.dart';
+export 'new_exercise_page_jump_model.dart';
 
-class NewExercisePageCopyWidget extends StatefulWidget {
-  const NewExercisePageCopyWidget({
+class NewExercisePageJumpWidget extends StatefulWidget {
+  const NewExercisePageJumpWidget({
     Key? key,
     this.exerciseType,
+    this.exerciseDocuments,
   }) : super(key: key);
 
   final String? exerciseType;
+  final List<ExerciseRecord>? exerciseDocuments;
 
   @override
-  _NewExercisePageCopyWidgetState createState() =>
-      _NewExercisePageCopyWidgetState();
+  _NewExercisePageJumpWidgetState createState() =>
+      _NewExercisePageJumpWidgetState();
 }
 
-class _NewExercisePageCopyWidgetState extends State<NewExercisePageCopyWidget> {
-  late NewExercisePageCopyModel _model;
+class _NewExercisePageJumpWidgetState extends State<NewExercisePageJumpWidget> {
+  late NewExercisePageJumpModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => NewExercisePageCopyModel());
+    _model = createModel(context, () => NewExercisePageJumpModel());
 
     _model.textController ??= TextEditingController();
   }
@@ -293,6 +295,8 @@ class _NewExercisePageCopyWidgetState extends State<NewExercisePageCopyWidget> {
                                                                 currentUserUid,
                                                             exerciseType: widget
                                                                 .exerciseType,
+                                                            exerciseIsDeletable:
+                                                                true,
                                                           ));
                                                       context.safePop();
                                                     } else {

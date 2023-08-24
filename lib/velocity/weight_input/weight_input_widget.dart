@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -344,9 +345,11 @@ class _WeightInputWidgetState extends State<WeightInputWidget> {
                                             child: custom_widgets.CustomSwitch(
                                               width: 48.0,
                                               height: 26.0,
-                                              state: 'jnk',
-                                              docReference: 'jnk',
+                                              state: '-',
+                                              docReference: '-',
                                               setGoal: true,
+                                              boolOfSwitch: false,
+                                              jumpSandboxMode: false,
                                             ),
                                           ),
                                         ),
@@ -382,20 +385,31 @@ class _WeightInputWidgetState extends State<WeightInputWidget> {
                                             if (FFAppState().isSelected) {
                                               if (FFAppState()
                                                   .isGoalSwitchedOn) {
+                                                if (!(FFAppState()
+                                                        .setGoal
+                                                        .length >=
+                                                    4)) {
+                                                  setState(() {
+                                                    FFAppState().setGoal =
+                                                        FFAppState().setGoal +
+                                                            numbersItem
+                                                                .toString();
+                                                  });
+                                                }
+                                              }
+                                            } else {
+                                              if (!(FFAppState()
+                                                      .weightSelection
+                                                      .length >=
+                                                  3)) {
                                                 setState(() {
-                                                  FFAppState().setGoal =
-                                                      FFAppState().setGoal +
+                                                  FFAppState().weightSelection =
+                                                      FFAppState()
+                                                              .weightSelection +
                                                           numbersItem
                                                               .toString();
                                                 });
                                               }
-                                            } else {
-                                              setState(() {
-                                                FFAppState().weightSelection =
-                                                    FFAppState()
-                                                            .weightSelection +
-                                                        numbersItem.toString();
-                                              });
                                             }
                                           },
                                           text: numbersItem.toString(),
@@ -455,22 +469,24 @@ class _WeightInputWidgetState extends State<WeightInputWidget> {
                                   scrollDirection: Axis.vertical,
                                   children: [
                                     FFButtonWidget(
-                                      onPressed: () async {
-                                        if (FFAppState().isSelected) {
-                                          if (FFAppState().isGoalSwitchedOn) {
-                                            setState(() {
-                                              FFAppState().setGoal =
-                                                  FFAppState().setGoal + '.';
-                                            });
-                                          }
-                                        } else {
-                                          setState(() {
-                                            FFAppState().weightSelection =
-                                                FFAppState().weightSelection +
-                                                    '.';
-                                          });
-                                        }
-                                      },
+                                      onPressed: !FFAppState().isSelected
+                                          ? null
+                                          : () async {
+                                              if (FFAppState().isSelected) {
+                                                if (FFAppState()
+                                                    .isGoalSwitchedOn) {
+                                                  if (!functions.containsDot(
+                                                      FFAppState().setGoal,
+                                                      '.')) {
+                                                    setState(() {
+                                                      FFAppState().setGoal =
+                                                          FFAppState().setGoal +
+                                                              '.';
+                                                    });
+                                                  }
+                                                }
+                                              }
+                                            },
                                       text: '.',
                                       options: FFButtonOptions(
                                         height: 40.0,
@@ -647,6 +663,13 @@ class _WeightInputWidgetState extends State<WeightInputWidget> {
                                             FFAppState().isSelected = false;
                                             FFAppState().weightSelection = '';
                                           });
+                                          if (double.parse(
+                                                  FFAppState().setGoal) >
+                                              2) {
+                                            setState(() {
+                                              FFAppState().setGoal = '2';
+                                            });
+                                          }
                                         },
                                   text: 'ENTER',
                                   options: FFButtonOptions(

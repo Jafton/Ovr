@@ -1,18 +1,16 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/components/date_time_picker_widget.dart';
-import '/components/sport_and_position_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/personal_info/country_selector/country_selector_widget.dart';
+import '/personal_info/date_time_picker/date_time_picker_widget.dart';
+import '/personal_info/sport_and_position_component/sport_and_position_component_widget.dart';
 import '/profile/level_select/level_select_widget.dart';
 import '/profile/mass_unit_selector/mass_unit_selector_widget.dart';
 import '/velocity/error_dialog/error_dialog_widget.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
-import 'package:smooth_page_indicator/smooth_page_indicator.dart'
-    as smooth_page_indicator;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
@@ -36,9 +34,6 @@ class PersonalInfoPageModel extends FlutterFlowModel {
   // State field(s) for UsernameField widget.
   TextEditingController? usernameFieldController;
   String? Function(BuildContext, String?)? usernameFieldControllerValidator;
-  // State field(s) for height widget.
-  TextEditingController? heightController;
-  String? Function(BuildContext, String?)? heightControllerValidator;
   // State field(s) for weight widget.
   TextEditingController? weightController;
   String? Function(BuildContext, String?)? weightControllerValidator;
@@ -50,7 +45,6 @@ class PersonalInfoPageModel extends FlutterFlowModel {
   void dispose() {
     unfocusNode.dispose();
     usernameFieldController?.dispose();
-    heightController?.dispose();
     weightController?.dispose();
   }
 

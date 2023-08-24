@@ -163,7 +163,7 @@ class _LiftSelectionWidgetState extends State<LiftSelectionWidget> {
                     ),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -388,88 +388,85 @@ class _LiftSelectionWidgetState extends State<LiftSelectionWidget> {
                           ),
                           if (!FFAppState().isExerciseEditing)
                             Expanded(
-                              child: Builder(
-                                builder: (context) {
-                                  final exercise = functions
-                                      .sortFunction(
-                                          liftSelectionExerciseRecordList
-                                              .toList(),
-                                          FFAppState().sortState)
-                                      .toList();
-                                  return GridView.builder(
-                                    padding: EdgeInsets.zero,
-                                    gridDelegate:
-                                        SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: () {
-                                        if (MediaQuery.sizeOf(context).width <
-                                            kBreakpointSmall) {
-                                          return 2;
-                                        } else if (MediaQuery.sizeOf(context)
-                                                .width <
-                                            kBreakpointMedium) {
-                                          return 3;
-                                        } else if (MediaQuery.sizeOf(context)
-                                                .width <
-                                            kBreakpointLarge) {
-                                          return 3;
-                                        } else {
-                                          return 2;
-                                        }
-                                      }(),
-                                      crossAxisSpacing: 16.0,
-                                      mainAxisSpacing: 16.0,
-                                      childAspectRatio:
-                                          MediaQuery.sizeOf(context).width <
-                                                  430.0
-                                              ? 1.0
-                                              : 1.5,
-                                    ),
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount: exercise.length,
-                                    itemBuilder: (context, exerciseIndex) {
-                                      final exerciseItem =
-                                          exercise[exerciseIndex];
-                                      return InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          context.pushNamed(
-                                            'WeightInput',
-                                            queryParameters: {
-                                              'exerciseName': serializeParam(
-                                                exerciseItem.name,
-                                                ParamType.String,
-                                              ),
-                                            }.withoutNulls,
-                                          );
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 100.0),
+                                child: Builder(
+                                  builder: (context) {
+                                    final exercise = functions
+                                        .sortFunction(
+                                            liftSelectionExerciseRecordList
+                                                .toList(),
+                                            FFAppState().sortState)
+                                        .toList();
+                                    return GridView.builder(
+                                      padding: EdgeInsets.zero,
+                                      gridDelegate:
+                                          SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: () {
+                                          if (MediaQuery.sizeOf(context).width <
+                                              kBreakpointSmall) {
+                                            return 2;
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              kBreakpointMedium) {
+                                            return 3;
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              kBreakpointLarge) {
+                                            return 3;
+                                          } else {
+                                            return 2;
+                                          }
+                                        }(),
+                                        crossAxisSpacing: 16.0,
+                                        mainAxisSpacing: 16.0,
+                                        childAspectRatio:
+                                            MediaQuery.sizeOf(context).width <
+                                                    430.0
+                                                ? 1.0
+                                                : 1.5,
+                                      ),
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: exercise.length,
+                                      itemBuilder: (context, exerciseIndex) {
+                                        final exerciseItem =
+                                            exercise[exerciseIndex];
+                                        return InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            context.pushNamed(
+                                              'WeightInput',
+                                              queryParameters: {
+                                                'exerciseName': serializeParam(
+                                                  exerciseItem.name,
+                                                  ParamType.String,
+                                                ),
+                                              }.withoutNulls,
+                                            );
 
-                                          await exerciseItem.reference.update({
-                                            'exercise_popularity':
-                                                FieldValue.increment(1),
-                                          });
-                                        },
-                                        child: ExerciseCopyWidget(
-                                          key: Key(
-                                              'Keyahr_${exerciseIndex}_of_${exercise.length}'),
-                                          exerciseRef: exerciseItem.reference,
-                                        ),
-                                      );
-                                    },
-                                  );
-                                },
+                                            await exerciseItem.reference
+                                                .update({
+                                              'exercise_popularity':
+                                                  FieldValue.increment(1),
+                                            });
+                                          },
+                                          child: ExerciseCopyWidget(
+                                            key: Key(
+                                                'Keyahr_${exerciseIndex}_of_${exercise.length}'),
+                                            exerciseRef: exerciseItem.reference,
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
                               ),
                             ),
-                          Container(
-                            width: 100.0,
-                            height: 100.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                            ),
-                          ),
                         ],
                       ),
                     ),

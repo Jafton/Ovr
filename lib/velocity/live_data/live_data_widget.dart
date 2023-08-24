@@ -127,12 +127,6 @@ class _LiveDataWidgetState extends State<LiveDataWidget> {
                                               );
                                             },
                                           ).then((value) => setState(() {}));
-
-                                          setState(() {
-                                            FFAppState().isGoalSwitchedOn =
-                                                false;
-                                            FFAppState().setGoal = '';
-                                          });
                                         },
                                       ),
                                       Text(
@@ -817,6 +811,7 @@ class _LiveDataWidgetState extends State<LiveDataWidget> {
                                 FFAppState().pageIndex = 0;
                                 FFAppState().isGoalSwitchedOn = false;
                                 FFAppState().setGoal = '';
+                                FFAppState().weightSelection = '';
                               });
 
                               context.goNamed('MainPage');
@@ -858,6 +853,7 @@ class _LiveDataWidgetState extends State<LiveDataWidget> {
                                 FFAppState().pageIndex = 0;
                                 FFAppState().isGoalSwitchedOn = false;
                                 FFAppState().setGoal = '';
+                                FFAppState().weightSelection = '';
                               });
 
                               context.goNamed(

@@ -14,3 +14,6 @@ export 'new_custom_action.dart' show newCustomAction;
 export 'sort.dart' show sort;
 export 'callback_action.dart' show callbackAction;
 export 'exercise_creator.dart' show exerciseCreator;
+export 'saved.dart' show saved;
+export 'searching_device.dart' show searchingDevice;
+export 'connecting_device.dart' show connectingDevice;

@@ -5,22 +5,23 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'page_weight_model.dart';
-export 'page_weight_model.dart';
+import 'page_height_copy_model.dart';
+export 'page_height_copy_model.dart';
 
-class PageWeightWidget extends StatefulWidget {
-  const PageWeightWidget({Key? key}) : super(key: key);
+class PageHeightCopyWidget extends StatefulWidget {
+  const PageHeightCopyWidget({Key? key}) : super(key: key);
 
   @override
-  _PageWeightWidgetState createState() => _PageWeightWidgetState();
+  _PageHeightCopyWidgetState createState() => _PageHeightCopyWidgetState();
 }
 
-class _PageWeightWidgetState extends State<PageWeightWidget> {
-  late PageWeightModel _model;
+class _PageHeightCopyWidgetState extends State<PageHeightCopyWidget> {
+  late PageHeightCopyModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -31,11 +32,11 @@ class _PageWeightWidgetState extends State<PageWeightWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => PageWeightModel());
+    _model = createModel(context, () => PageHeightCopyModel());
 
-    _model.weightController ??= TextEditingController(
+    _model.heightController ??= TextEditingController(
         text: functions.removeLettersFromString(
-            valueOrDefault(currentUserDocument?.userWeight, '')));
+            valueOrDefault(currentUserDocument?.userHeight, '')));
   }
 
   @override
@@ -65,10 +66,10 @@ class _PageWeightWidgetState extends State<PageWeightWidget> {
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 16.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -86,7 +87,7 @@ class _PageWeightWidgetState extends State<PageWeightWidget> {
                           ),
                         ),
                         Text(
-                          'What’s your weight?',
+                          'How tall are you?',
                           style: FlutterFlowTheme.of(context)
                               .labelMedium
                               .override(
@@ -102,85 +103,106 @@ class _PageWeightWidgetState extends State<PageWeightWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
-                  child: Image.asset(
-                    'assets/images/weightbody.png',
-                    height: MediaQuery.sizeOf(context).height * 0.25,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              AuthUserStreamWidget(
-                builder: (context) => Container(
-                  width: 163.0,
-                  child: TextFormField(
-                    controller: _model.weightController,
-                    obscureText: false,
-                    decoration: InputDecoration(
-                      hintText: '0',
-                      hintStyle: FlutterFlowTheme.of(context).displaySmall,
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0x00000000),
-                          width: 2.0,
-                        ),
-                        borderRadius: BorderRadius.circular(10.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                child: AuthUserStreamWidget(
+                  builder: (context) => Container(
+                    width: 163.0,
+                    child: TextFormField(
+                      controller: _model.heightController,
+                      onChanged: (_) => EasyDebounce.debounce(
+                        '_model.heightController',
+                        Duration(milliseconds: 100),
+                        () => setState(() {}),
                       ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0x00000000),
-                          width: 2.0,
+                      obscureText: false,
+                      decoration: InputDecoration(
+                        hintText: '0',
+                        hintStyle: FlutterFlowTheme.of(context).displaySmall,
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 2.0,
+                          ),
+                          borderRadius: BorderRadius.circular(10.0),
                         ),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).error,
-                          width: 2.0,
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 2.0,
+                          ),
+                          borderRadius: BorderRadius.circular(10.0),
                         ),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      focusedErrorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).error,
-                          width: 2.0,
+                        errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: FlutterFlowTheme.of(context).error,
+                            width: 2.0,
+                          ),
+                          borderRadius: BorderRadius.circular(10.0),
                         ),
-                        borderRadius: BorderRadius.circular(10.0),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: FlutterFlowTheme.of(context).error,
+                            width: 2.0,
+                          ),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        filled: true,
+                        fillColor: FlutterFlowTheme.of(context).bgBg2,
                       ),
-                      filled: true,
-                      fillColor: FlutterFlowTheme.of(context).bgBg2,
+                      style: FlutterFlowTheme.of(context).displaySmall,
+                      textAlign: TextAlign.center,
+                      keyboardType:
+                          const TextInputType.numberWithOptions(decimal: true),
+                      validator:
+                          _model.heightControllerValidator.asValidator(context),
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(RegExp('^[\\d.]+'))
+                      ],
                     ),
-                    style: FlutterFlowTheme.of(context).displaySmall,
-                    textAlign: TextAlign.center,
-                    keyboardType: TextInputType.number,
-                    validator:
-                        _model.weightControllerValidator.asValidator(context),
-                    inputFormatters: [
-                      FilteringTextInputFormatter.allow(RegExp('[0-9]'))
-                    ],
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
-                  child: Image.asset(
-                    'assets/images/Frame_113.png',
-                    fit: BoxFit.cover,
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: Image.asset(
+                        'assets/images/Frame_112.png',
+                        height: MediaQuery.sizeOf(context).height * 0.37,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Color(0xFF1F2F42),
-                    borderRadius: BorderRadius.circular(10.0),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: Image.asset(
+                        'assets/images/body__.png',
+                        height: MediaQuery.sizeOf(context).height * 0.37,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
                   ),
-                ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: Image.asset(
+                        'assets/images/Frame_113__.png',
+                        height: MediaQuery.sizeOf(context).height * 0.37,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                  ),
+                ],
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
@@ -207,7 +229,7 @@ class _PageWeightWidgetState extends State<PageWeightWidget> {
                               onTap: () async {
                                 await currentUserReference!
                                     .update(createUserRecordData(
-                                  userWeightUnit: 'lbs',
+                                  userHeightUnit: 'cm',
                                 ));
                               },
                               child: Container(
@@ -216,9 +238,9 @@ class _PageWeightWidgetState extends State<PageWeightWidget> {
                                 decoration: BoxDecoration(
                                   color: valueOrDefault(
                                               currentUserDocument
-                                                  ?.userWeightUnit,
+                                                  ?.userHeightUnit,
                                               '') ==
-                                          'lbs'
+                                          'cm'
                                       ? FlutterFlowTheme.of(context).bgBg6
                                       : FlutterFlowTheme.of(context).bgBg2,
                                   borderRadius: BorderRadius.circular(10.0),
@@ -226,14 +248,14 @@ class _PageWeightWidgetState extends State<PageWeightWidget> {
                                 child: Align(
                                   alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Text(
-                                    'lbs',
+                                    'cm',
                                     textAlign: TextAlign.start,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Bicyclette',
                                           color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
+                                              .txtText1,
                                           fontSize: 14.0,
                                           fontWeight: FontWeight.w500,
                                           useGoogleFonts: false,
@@ -258,7 +280,7 @@ class _PageWeightWidgetState extends State<PageWeightWidget> {
                               onTap: () async {
                                 await currentUserReference!
                                     .update(createUserRecordData(
-                                  userWeightUnit: 'kg',
+                                  userHeightUnit: 'ft',
                                 ));
                               },
                               child: Container(
@@ -267,9 +289,9 @@ class _PageWeightWidgetState extends State<PageWeightWidget> {
                                 decoration: BoxDecoration(
                                   color: valueOrDefault(
                                               currentUserDocument
-                                                  ?.userWeightUnit,
+                                                  ?.userHeightUnit,
                                               '') ==
-                                          'kg'
+                                          'ft'
                                       ? FlutterFlowTheme.of(context).bgBg6
                                       : FlutterFlowTheme.of(context).bgBg2,
                                   borderRadius: BorderRadius.circular(10.0),
@@ -277,14 +299,14 @@ class _PageWeightWidgetState extends State<PageWeightWidget> {
                                 child: Align(
                                   alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Text(
-                                    'kg',
+                                    'ft',
                                     textAlign: TextAlign.start,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Bicyclette',
                                           color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
+                                              .txtText1,
                                           fontSize: 14.0,
                                           fontWeight: FontWeight.w500,
                                           useGoogleFonts: false,
@@ -304,21 +326,21 @@ class _PageWeightWidgetState extends State<PageWeightWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
                 child: AuthUserStreamWidget(
                   builder: (context) => FFButtonWidget(
-                    onPressed: (_model.weightController.text == null ||
-                                _model.weightController.text == '') ||
-                            (valueOrDefault(currentUserDocument?.userWeightUnit,
+                    onPressed: (_model.heightController.text == null ||
+                                _model.heightController.text == '') ||
+                            (valueOrDefault(currentUserDocument?.userHeightUnit,
                                         '') ==
                                     null ||
                                 valueOrDefault(
-                                        currentUserDocument?.userWeightUnit,
+                                        currentUserDocument?.userHeightUnit,
                                         '') ==
                                     '')
                         ? null
                         : () async {
                             await currentUserReference!
                                 .update(createUserRecordData(
-                              userWeight:
-                                  '${_model.weightController.text}${valueOrDefault(currentUserDocument?.userWeightUnit, '')}',
+                              userHeight:
+                                  '${_model.heightController.text}${valueOrDefault(currentUserDocument?.userHeightUnit, '')}',
                             ));
                             Navigator.pop(context);
                           },

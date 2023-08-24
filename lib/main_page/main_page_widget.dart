@@ -48,7 +48,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
               Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Flexible(
+                  Expanded(
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 1.0,
                       height: MediaQuery.sizeOf(context).height * 1.0,

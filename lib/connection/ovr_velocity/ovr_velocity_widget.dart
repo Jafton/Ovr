@@ -1,3 +1,4 @@
+import '/connection/velocity_device/velocity_device_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -8,7 +9,12 @@ import 'ovr_velocity_model.dart';
 export 'ovr_velocity_model.dart';
 
 class OvrVelocityWidget extends StatefulWidget {
-  const OvrVelocityWidget({Key? key}) : super(key: key);
+  const OvrVelocityWidget({
+    Key? key,
+    this.result,
+  }) : super(key: key);
+
+  final bool? result;
 
   @override
   _OvrVelocityWidgetState createState() => _OvrVelocityWidgetState();
@@ -67,59 +73,11 @@ class _OvrVelocityWidgetState extends State<OvrVelocityWidget> {
                 ),
               ),
             ),
-            Container(
-              width: MediaQuery.sizeOf(context).width * 0.9,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).bgBg,
-                borderRadius: BorderRadius.circular(12.0),
-              ),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: Image.asset(
-                        'assets/images/Gravity_Box_Render_No_Background_1.png',
-                        height: MediaQuery.sizeOf(context).height * 0.2,
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                    Text(
-                      'GB-3CF9',
-                      style: FlutterFlowTheme.of(context).titleSmall.override(
-                            fontFamily: 'SF Pro Display',
-                            fontWeight: FontWeight.w600,
-                            useGoogleFonts: false,
-                          ),
-                    ),
-                    Text(
-                      'Connected',
-                      style: FlutterFlowTheme.of(context).bodySmall.override(
-                            fontFamily: 'SF Pro Display',
-                            color: FlutterFlowTheme.of(context).greenYes,
-                            fontSize: MediaQuery.sizeOf(context).width < 430.0
-                                ? 12.0
-                                : 14.0,
-                            fontWeight: FontWeight.w500,
-                            useGoogleFonts: false,
-                          ),
-                    ),
-                    Text(
-                      'Not connected',
-                      style: FlutterFlowTheme.of(context).bodySmall.override(
-                            fontFamily: 'SF Pro Display',
-                            color: FlutterFlowTheme.of(context).redNo,
-                            fontSize: MediaQuery.sizeOf(context).width < 430.0
-                                ? 12.0
-                                : 14.0,
-                            useGoogleFonts: false,
-                          ),
-                    ),
-                  ],
-                ),
+            wrapWithModel(
+              model: _model.velocityDeviceModel,
+              updateCallback: () => setState(() {}),
+              child: VelocityDeviceWidget(
+                isConnected: false,
               ),
             ),
             Padding(

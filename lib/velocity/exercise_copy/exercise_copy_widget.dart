@@ -189,13 +189,13 @@ class _ExerciseCopyWidgetState extends State<ExerciseCopyWidget> {
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 6.0),
                         child: Container(
-                          width: 50.0,
-                          height: 50.0,
+                          width: 55.0,
+                          height: 55.0,
                           child: custom_widgets.IconManagers(
-                            width: 50.0,
-                            height: 50.0,
+                            width: 55.0,
+                            height: 55.0,
                             nameOfIcon: containerExerciseRecord.exerciseIcon,
-                            size: 50.0,
+                            size: 55.0,
                           ),
                         ),
                       ),
@@ -212,8 +212,8 @@ class _ExerciseCopyWidgetState extends State<ExerciseCopyWidget> {
                                   ? FlutterFlowTheme.of(context).txtText1
                                   : FlutterFlowTheme.of(context).txtText3,
                               fontSize: MediaQuery.sizeOf(context).width < 430.0
-                                  ? 14.0
-                                  : 16.0,
+                                  ? 16.0
+                                  : 18.0,
                               useGoogleFonts: false,
                             ),
                       ),

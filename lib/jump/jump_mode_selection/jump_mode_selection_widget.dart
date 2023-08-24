@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/jump/jump_lift_selection/jump_lift_selection_widget.dart';
 import '/velocity/velocity_or_jump/velocity_or_jump_widget.dart';
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -144,19 +144,18 @@ class _JumpModeSelectionWidgetState extends State<JumpModeSelectionWidget> {
                             'Sandbox Mode',
                             style: FlutterFlowTheme.of(context).bodyLarge,
                           ),
-                          Switch.adaptive(
-                            value: _model.switchValue ??= false,
-                            onChanged: (newValue) async {
-                              setState(() => _model.switchValue = newValue!);
-                            },
-                            activeColor:
-                                FlutterFlowTheme.of(context).btnDefault,
-                            activeTrackColor:
-                                FlutterFlowTheme.of(context).btnDefault,
-                            inactiveTrackColor:
-                                FlutterFlowTheme.of(context).bgBg6,
-                            inactiveThumbColor:
-                                FlutterFlowTheme.of(context).btnDefault,
+                          Container(
+                            width: 48.0,
+                            height: 26.0,
+                            child: custom_widgets.CustomSwitch(
+                              width: 48.0,
+                              height: 26.0,
+                              state: '-',
+                              docReference: '-',
+                              setGoal: false,
+                              boolOfSwitch: false,
+                              jumpSandboxMode: true,
+                            ),
                           ),
                         ],
                       ),
@@ -176,31 +175,23 @@ class _JumpModeSelectionWidgetState extends State<JumpModeSelectionWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        await showModalBottomSheet(
-                          isScrollControlled: true,
-                          backgroundColor: Colors.transparent,
-                          enableDrag: false,
-                          context: context,
-                          builder: (context) {
-                            return GestureDetector(
-                              onTap: () => FocusScope.of(context)
-                                  .requestFocus(_model.unfocusNode),
-                              child: Padding(
-                                padding: MediaQuery.viewInsetsOf(context),
-                                child: Container(
-                                  height:
-                                      MediaQuery.sizeOf(context).height * 0.9,
-                                  child: JumpLiftSelectionWidget(
-                                    exerciseType: 'Vertical Jump',
-                                  ),
-                                ),
+                        if (FFAppState().jumpSandboxMode) {
+                          context.goNamed('VerticalJumpLiveData');
+                        } else {
+                          context.pushNamed(
+                            'JumpExerciseSelection',
+                            queryParameters: {
+                              'exerciseType': serializeParam(
+                                'Vertical Jump',
+                                ParamType.String,
                               ),
-                            );
-                          },
-                        ).then((value) => setState(() {}));
+                            }.withoutNulls,
+                          );
+                        }
                       },
                       child: Container(
                         width: MediaQuery.sizeOf(context).width * 0.9,
+                        height: MediaQuery.sizeOf(context).height * 0.18,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).bgBg5,
                           borderRadius: BorderRadius.circular(12.0),
@@ -264,31 +255,23 @@ class _JumpModeSelectionWidgetState extends State<JumpModeSelectionWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        await showModalBottomSheet(
-                          isScrollControlled: true,
-                          backgroundColor: Colors.transparent,
-                          enableDrag: false,
-                          context: context,
-                          builder: (context) {
-                            return GestureDetector(
-                              onTap: () => FocusScope.of(context)
-                                  .requestFocus(_model.unfocusNode),
-                              child: Padding(
-                                padding: MediaQuery.viewInsetsOf(context),
-                                child: Container(
-                                  height:
-                                      MediaQuery.sizeOf(context).height * 0.9,
-                                  child: JumpLiftSelectionWidget(
-                                    exerciseType: 'RSI Mode',
-                                  ),
-                                ),
+                        if (FFAppState().jumpSandboxMode) {
+                          context.goNamed('RSILiveData');
+                        } else {
+                          context.pushNamed(
+                            'JumpExerciseSelection',
+                            queryParameters: {
+                              'exerciseType': serializeParam(
+                                'RSI Mode',
+                                ParamType.String,
                               ),
-                            );
-                          },
-                        ).then((value) => setState(() {}));
+                            }.withoutNulls,
+                          );
+                        }
                       },
                       child: Container(
                         width: MediaQuery.sizeOf(context).width * 0.9,
+                        height: MediaQuery.sizeOf(context).height * 0.18,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).bgBg5,
                           borderRadius: BorderRadius.circular(12.0),
@@ -349,30 +332,23 @@ class _JumpModeSelectionWidgetState extends State<JumpModeSelectionWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      await showModalBottomSheet(
-                        isScrollControlled: true,
-                        backgroundColor: Colors.transparent,
-                        enableDrag: false,
-                        context: context,
-                        builder: (context) {
-                          return GestureDetector(
-                            onTap: () => FocusScope.of(context)
-                                .requestFocus(_model.unfocusNode),
-                            child: Padding(
-                              padding: MediaQuery.viewInsetsOf(context),
-                              child: Container(
-                                height: MediaQuery.sizeOf(context).height * 0.9,
-                                child: JumpLiftSelectionWidget(
-                                  exerciseType: 'GCT Mode',
-                                ),
-                              ),
+                      if (FFAppState().jumpSandboxMode) {
+                        context.goNamed('GCTLiveData');
+                      } else {
+                        context.pushNamed(
+                          'JumpExerciseSelection',
+                          queryParameters: {
+                            'exerciseType': serializeParam(
+                              'GCT Mode',
+                              ParamType.String,
                             ),
-                          );
-                        },
-                      ).then((value) => setState(() {}));
+                          }.withoutNulls,
+                        );
+                      }
                     },
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 0.9,
+                      height: MediaQuery.sizeOf(context).height * 0.18,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).bgBg5,
                         borderRadius: BorderRadius.circular(12.0),

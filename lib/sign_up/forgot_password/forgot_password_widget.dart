@@ -65,66 +65,76 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                 ),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 50.0, 0.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.safePop();
-                                },
-                                child: Container(
-                                  height: 50.0,
-                                  decoration: BoxDecoration(
-                                    color: Color(0x9A121B26),
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 10.0, 16.0, 10.0),
-                                    child: Icon(
-                                      FFIcons.karrowLeft,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 24.0,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                context.goNamed(
+                                  'GetStarted',
+                                  extra: <String, dynamic>{
+                                    kTransitionInfoKey: TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType: PageTransitionType.fade,
+                                      duration: Duration(milliseconds: 0),
                                     ),
+                                  },
+                                );
+                              },
+                              child: Container(
+                                height: 50.0,
+                                decoration: BoxDecoration(
+                                  color: Color(0x9A121B26),
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16.0, 10.0, 16.0, 10.0),
+                                  child: Icon(
+                                    FFIcons.karrowLeft,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    size: 24.0,
                                   ),
                                 ),
                               ),
-                              Text(
-                                'FORGOT PASSWORD',
-                                textAlign: TextAlign.end,
-                                style: FlutterFlowTheme.of(context)
-                                    .headlineSmall
-                                    .override(
-                                      fontFamily: 'Bicyclette',
-                                      fontSize:
-                                          MediaQuery.sizeOf(context).width <
-                                                  430.0
-                                              ? 24.0
-                                              : 36.0,
-                                      fontWeight: FontWeight.w900,
-                                      useGoogleFonts: false,
-                                    ),
-                              ),
-                            ],
-                          ),
+                            ),
+                            Text(
+                              'FORGOT PASSWORD',
+                              textAlign: TextAlign.end,
+                              style: FlutterFlowTheme.of(context)
+                                  .headlineSmall
+                                  .override(
+                                    fontFamily: 'Bicyclette',
+                                    fontSize:
+                                        MediaQuery.sizeOf(context).width < 430.0
+                                            ? 24.0
+                                            : 36.0,
+                                    fontWeight: FontWeight.w900,
+                                    useGoogleFonts: false,
+                                  ),
+                            ),
+                          ],
                         ),
-                        Align(
-                          alignment: AlignmentDirectional(0.0, 1.0),
+                      ),
+                      Align(
+                        alignment: AlignmentDirectional(0.0, 1.0),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 40.0),
                           child: Container(
                             width: MediaQuery.sizeOf(context).width * 0.9,
                             decoration: BoxDecoration(
@@ -374,11 +384,8 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                             ),
                           ),
                         ),
-                      ].divide(SizedBox(
-                          height: MediaQuery.sizeOf(context).width < 430.0
-                              ? 400.0
-                              : 650.0)),
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),

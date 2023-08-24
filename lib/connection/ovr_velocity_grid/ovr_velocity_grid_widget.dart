@@ -1,6 +1,9 @@
+import '/connection/jump_device/jump_device_widget.dart';
+import '/connection/velocity_device/velocity_device_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -82,182 +85,22 @@ class _OvrVelocityGridWidgetState extends State<OvrVelocityGridWidget> {
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).bgBg,
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            24.0, 24.0, 24.0, 24.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8.0),
-                              child: Image.asset(
-                                'assets/images/Gravity_Box_Render_No_Background_1.png',
-                                height:
-                                    MediaQuery.sizeOf(context).height * 0.07,
-                                fit: BoxFit.contain,
-                              ),
-                            ),
-                            Text(
-                              'GB-3CF9',
-                              style: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'SF Pro Display',
-                                    fontWeight: FontWeight.w600,
-                                    useGoogleFonts: false,
-                                  ),
-                            ),
-                            Text(
-                              'Connected',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodySmall
-                                  .override(
-                                    fontFamily: 'SF Pro Display',
-                                    color:
-                                        FlutterFlowTheme.of(context).greenYes,
-                                    fontSize:
-                                        MediaQuery.sizeOf(context).width < 430.0
-                                            ? 12.0
-                                            : 14.0,
-                                    fontWeight: FontWeight.w500,
-                                    useGoogleFonts: false,
-                                  ),
-                            ),
-                            Text(
-                              'Not connected',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodySmall
-                                  .override(
-                                    fontFamily: 'SF Pro Display',
-                                    color: FlutterFlowTheme.of(context).redNo,
-                                    fontSize:
-                                        MediaQuery.sizeOf(context).width < 430.0
-                                            ? 12.0
-                                            : 14.0,
-                                    useGoogleFonts: false,
-                                  ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).bgBg,
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            24.0, 24.0, 24.0, 24.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8.0),
-                              child: Image.asset(
-                                'assets/images/Gravity_Box_Render_No_Background_1.png',
-                                height:
-                                    MediaQuery.sizeOf(context).height * 0.07,
-                                fit: BoxFit.contain,
-                              ),
-                            ),
-                            Text(
-                              'GB-3CF9',
-                              style: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'SF Pro Display',
-                                    fontWeight: FontWeight.w600,
-                                    useGoogleFonts: false,
-                                  ),
-                            ),
-                            Text(
-                              'Connected',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodySmall
-                                  .override(
-                                    fontFamily: 'SF Pro Display',
-                                    color:
-                                        FlutterFlowTheme.of(context).greenYes,
-                                    fontWeight: FontWeight.w500,
-                                    useGoogleFonts: false,
-                                  ),
-                            ),
-                            Text(
-                              'Not connected',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodySmall
-                                  .override(
-                                    fontFamily: 'SF Pro Display',
-                                    color: FlutterFlowTheme.of(context).redNo,
-                                    useGoogleFonts: false,
-                                  ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).bgBg,
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            24.0, 24.0, 24.0, 24.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8.0),
-                              child: Image.asset(
-                                'assets/images/Gravity_Box_Render_No_Background_1.png',
-                                height:
-                                    MediaQuery.sizeOf(context).height * 0.07,
-                                fit: BoxFit.contain,
-                              ),
-                            ),
-                            Text(
-                              'GB-3CF9',
-                              style: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'SF Pro Display',
-                                    fontWeight: FontWeight.w600,
-                                    useGoogleFonts: false,
-                                  ),
-                            ),
-                            Text(
-                              'Connected',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodySmall
-                                  .override(
-                                    fontFamily: 'SF Pro Display',
-                                    color:
-                                        FlutterFlowTheme.of(context).greenYes,
-                                    fontWeight: FontWeight.w500,
-                                    useGoogleFonts: false,
-                                  ),
-                            ),
-                            Text(
-                              'Not connected',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodySmall
-                                  .override(
-                                    fontFamily: 'SF Pro Display',
-                                    color: FlutterFlowTheme.of(context).redNo,
-                                    useGoogleFonts: false,
-                                  ),
-                            ),
-                          ],
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        _model.isConnected = await actions.connectingDevice();
+
+                        setState(() {});
+                      },
+                      child: wrapWithModel(
+                        model: _model.velocityDeviceModel,
+                        updateCallback: () => setState(() {}),
+                        updateOnChange: true,
+                        child: VelocityDeviceWidget(
+                          isConnected: _model.isConnected,
                         ),
                       ),
                     ),
@@ -289,180 +132,21 @@ class _OvrVelocityGridWidgetState extends State<OvrVelocityGridWidget> {
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
                   children: [
-                    Container(
-                      width: 17.0,
-                      height: MediaQuery.sizeOf(context).height * 0.2,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).bgBg,
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            24.0, 24.0, 24.0, 24.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8.0),
-                              child: Image.asset(
-                                'assets/images/Gravity_Box_Render_No_Background_2.png',
-                                height:
-                                    MediaQuery.sizeOf(context).height * 0.07,
-                                fit: BoxFit.contain,
-                              ),
-                            ),
-                            Text(
-                              'GB-3CF9',
-                              style: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'SF Pro Display',
-                                    fontWeight: FontWeight.w600,
-                                    useGoogleFonts: false,
-                                  ),
-                            ),
-                            Text(
-                              'Connected',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodySmall
-                                  .override(
-                                    fontFamily: 'SF Pro Display',
-                                    color:
-                                        FlutterFlowTheme.of(context).greenYes,
-                                    fontWeight: FontWeight.w500,
-                                    useGoogleFonts: false,
-                                  ),
-                            ),
-                            Text(
-                              'Not connected',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodySmall
-                                  .override(
-                                    fontFamily: 'SF Pro Display',
-                                    color: FlutterFlowTheme.of(context).redNo,
-                                    useGoogleFonts: false,
-                                  ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: 17.0,
-                      height: MediaQuery.sizeOf(context).height * 0.2,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).bgBg,
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            24.0, 24.0, 24.0, 24.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8.0),
-                              child: Image.asset(
-                                'assets/images/Gravity_Box_Render_No_Background_2.png',
-                                height:
-                                    MediaQuery.sizeOf(context).height * 0.07,
-                                fit: BoxFit.contain,
-                              ),
-                            ),
-                            Text(
-                              'GB-3CF9',
-                              style: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'SF Pro Display',
-                                    fontWeight: FontWeight.w600,
-                                    useGoogleFonts: false,
-                                  ),
-                            ),
-                            Text(
-                              'Connected',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodySmall
-                                  .override(
-                                    fontFamily: 'SF Pro Display',
-                                    color:
-                                        FlutterFlowTheme.of(context).greenYes,
-                                    fontWeight: FontWeight.w500,
-                                    useGoogleFonts: false,
-                                  ),
-                            ),
-                            Text(
-                              'Not connected',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodySmall
-                                  .override(
-                                    fontFamily: 'SF Pro Display',
-                                    color: FlutterFlowTheme.of(context).redNo,
-                                    useGoogleFonts: false,
-                                  ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: 17.0,
-                      height: MediaQuery.sizeOf(context).height * 0.2,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).bgBg,
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            24.0, 24.0, 24.0, 24.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8.0),
-                              child: Image.asset(
-                                'assets/images/Gravity_Box_Render_No_Background_1.png',
-                                height:
-                                    MediaQuery.sizeOf(context).height * 0.07,
-                                fit: BoxFit.contain,
-                              ),
-                            ),
-                            Text(
-                              'GB-3CF9',
-                              style: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'SF Pro Display',
-                                    fontWeight: FontWeight.w600,
-                                    useGoogleFonts: false,
-                                  ),
-                            ),
-                            Text(
-                              'Connected',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodySmall
-                                  .override(
-                                    fontFamily: 'SF Pro Display',
-                                    color:
-                                        FlutterFlowTheme.of(context).greenYes,
-                                    fontWeight: FontWeight.w500,
-                                    useGoogleFonts: false,
-                                  ),
-                            ),
-                            Text(
-                              'Not connected',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodySmall
-                                  .override(
-                                    fontFamily: 'SF Pro Display',
-                                    color: FlutterFlowTheme.of(context).redNo,
-                                    useGoogleFonts: false,
-                                  ),
-                            ),
-                          ],
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        _model.isConnected2 = await actions.connectingDevice();
+
+                        setState(() {});
+                      },
+                      child: wrapWithModel(
+                        model: _model.jumpDeviceModel,
+                        updateCallback: () => setState(() {}),
+                        child: JumpDeviceWidget(
+                          isConnected: _model.isConnected2,
                         ),
                       ),
                     ),
@@ -470,8 +154,40 @@ class _OvrVelocityGridWidgetState extends State<OvrVelocityGridWidget> {
                 ),
               ),
               FFButtonWidget(
-                onPressed: () {
-                  print('Button pressed ...');
+                onPressed: () async {
+                  _model.resultCopy = await actions.searchingDevice();
+                  Navigator.pop(context);
+                  if (_model.resultCopy!) {
+                    showModalBottomSheet(
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      context: context,
+                      builder: (context) {
+                        return Padding(
+                          padding: MediaQuery.viewInsetsOf(context),
+                          child: OvrVelocityGridWidget(),
+                        );
+                      },
+                    ).then((value) => setState(() {}));
+                  } else {
+                    await showDialog(
+                      context: context,
+                      builder: (alertDialogContext) {
+                        return AlertDialog(
+                          title: Text('Could not find any device!'),
+                          actions: [
+                            TextButton(
+                              onPressed: () =>
+                                  Navigator.pop(alertDialogContext),
+                              child: Text('Ok'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  }
+
+                  setState(() {});
                 },
                 text: 'DEVICE SEARCH',
                 options: FFButtonOptions(

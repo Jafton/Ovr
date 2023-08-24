@@ -1,8 +1,6 @@
-import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -65,36 +63,471 @@ class _SortBottomSheetWidgetState extends State<SortBottomSheetWidget> {
               thickness: 1.0,
               color: FlutterFlowTheme.of(context).secondaryText,
             ),
-            Align(
-              alignment: AlignmentDirectional(-1.0, 0.0),
-              child: FlutterFlowRadioButton(
-                options: [
-                  'Name: a-z',
-                  'Name: z-a',
-                  'Most popular',
-                  'Least popular'
-                ].toList(),
-                onChanged: (val) => setState(() {}),
-                controller: _model.radioButtonValueController ??=
-                    FormFieldController<String>(FFAppState().sortState),
-                optionHeight: 32.0,
-                textStyle: FlutterFlowTheme.of(context).labelMedium,
-                selectedTextStyle: FlutterFlowTheme.of(context).titleMedium,
-                buttonPosition: RadioButtonPosition.left,
-                direction: Axis.vertical,
-                radioButtonColor: FlutterFlowTheme.of(context).primary,
-                inactiveRadioButtonColor:
-                    FlutterFlowTheme.of(context).secondaryText,
-                toggleable: false,
-                horizontalAlignment: WrapAlignment.start,
-                verticalAlignment: WrapCrossAlignment.start,
-              ),
+            Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      setState(() {
+                        FFAppState().sortStateNotApplied = 'Name: a-z';
+                      });
+                    },
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Builder(
+                          builder: (context) {
+                            if (FFAppState().sortStateNotApplied ==
+                                'Name: a-z') {
+                              return Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 6.0, 0.0),
+                                    child: Container(
+                                      width: 20.0,
+                                      height: 20.0,
+                                      decoration: BoxDecoration(
+                                        color:
+                                            FlutterFlowTheme.of(context).bgBg2,
+                                        borderRadius:
+                                            BorderRadius.circular(4.0),
+                                        shape: BoxShape.rectangle,
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .txtText1,
+                                          width: 2.5,
+                                        ),
+                                      ),
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        child: Container(
+                                          width: 10.0,
+                                          height: 10.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .txtText1,
+                                            borderRadius:
+                                                BorderRadius.circular(0.0),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    'Name: a-z',
+                                    style: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'SF Pro Display',
+                                          fontWeight: FontWeight.w900,
+                                          useGoogleFonts: false,
+                                        ),
+                                  ),
+                                ],
+                              );
+                            } else {
+                              return Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 6.0, 0.0),
+                                    child: Container(
+                                      width: 20.0,
+                                      height: 20.0,
+                                      decoration: BoxDecoration(
+                                        color:
+                                            FlutterFlowTheme.of(context).bgBg2,
+                                        borderRadius:
+                                            BorderRadius.circular(4.0),
+                                        shape: BoxShape.rectangle,
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .txtText2,
+                                          width: 2.5,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    'Name: a-z',
+                                    style: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'SF Pro Display',
+                                          color: FlutterFlowTheme.of(context)
+                                              .txtText2,
+                                          useGoogleFonts: false,
+                                        ),
+                                  ),
+                                ],
+                              );
+                            }
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      setState(() {
+                        FFAppState().sortStateNotApplied = 'Name: z-a';
+                      });
+                    },
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Builder(
+                          builder: (context) {
+                            if (FFAppState().sortStateNotApplied ==
+                                'Name: z-a') {
+                              return Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 6.0, 0.0),
+                                    child: Container(
+                                      width: 20.0,
+                                      height: 20.0,
+                                      decoration: BoxDecoration(
+                                        color:
+                                            FlutterFlowTheme.of(context).bgBg2,
+                                        borderRadius:
+                                            BorderRadius.circular(4.0),
+                                        shape: BoxShape.rectangle,
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .txtText1,
+                                          width: 2.5,
+                                        ),
+                                      ),
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        child: Container(
+                                          width: 10.0,
+                                          height: 10.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .txtText1,
+                                            borderRadius:
+                                                BorderRadius.circular(0.0),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    'Name: z-a',
+                                    style: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'SF Pro Display',
+                                          fontWeight: FontWeight.w900,
+                                          useGoogleFonts: false,
+                                        ),
+                                  ),
+                                ],
+                              );
+                            } else {
+                              return Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 6.0, 0.0),
+                                    child: Container(
+                                      width: 20.0,
+                                      height: 20.0,
+                                      decoration: BoxDecoration(
+                                        color:
+                                            FlutterFlowTheme.of(context).bgBg2,
+                                        borderRadius:
+                                            BorderRadius.circular(4.0),
+                                        shape: BoxShape.rectangle,
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .txtText2,
+                                          width: 2.5,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    'Name: z-a',
+                                    style: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'SF Pro Display',
+                                          color: FlutterFlowTheme.of(context)
+                                              .txtText2,
+                                          useGoogleFonts: false,
+                                        ),
+                                  ),
+                                ],
+                              );
+                            }
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                if (FFAppState().velocityOrJump == 'Velocity')
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        setState(() {
+                          FFAppState().sortStateNotApplied = 'Most popular';
+                        });
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Builder(
+                            builder: (context) {
+                              if (FFAppState().sortStateNotApplied ==
+                                  'Most popular') {
+                                return Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 6.0, 0.0),
+                                      child: Container(
+                                        width: 20.0,
+                                        height: 20.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .bgBg2,
+                                          borderRadius:
+                                              BorderRadius.circular(4.0),
+                                          shape: BoxShape.rectangle,
+                                          border: Border.all(
+                                            color: FlutterFlowTheme.of(context)
+                                                .txtText1,
+                                            width: 2.5,
+                                          ),
+                                        ),
+                                        child: Align(
+                                          alignment:
+                                              AlignmentDirectional(0.0, 0.0),
+                                          child: Container(
+                                            width: 10.0,
+                                            height: 10.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .txtText1,
+                                              borderRadius:
+                                                  BorderRadius.circular(0.0),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Text(
+                                      'Most popular',
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'SF Pro Display',
+                                            fontWeight: FontWeight.w900,
+                                            useGoogleFonts: false,
+                                          ),
+                                    ),
+                                  ],
+                                );
+                              } else {
+                                return Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 6.0, 0.0),
+                                      child: Container(
+                                        width: 20.0,
+                                        height: 20.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .bgBg2,
+                                          borderRadius:
+                                              BorderRadius.circular(4.0),
+                                          shape: BoxShape.rectangle,
+                                          border: Border.all(
+                                            color: FlutterFlowTheme.of(context)
+                                                .txtText2,
+                                            width: 2.5,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Text(
+                                      'Most popular',
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'SF Pro Display',
+                                            color: FlutterFlowTheme.of(context)
+                                                .txtText2,
+                                            useGoogleFonts: false,
+                                          ),
+                                    ),
+                                  ],
+                                );
+                              }
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                if (FFAppState().velocityOrJump != 'Velocity')
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        setState(() {
+                          FFAppState().sortStateNotApplied = 'Last used';
+                        });
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Builder(
+                            builder: (context) {
+                              if (FFAppState().sortStateNotApplied ==
+                                  'Last used') {
+                                return Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 6.0, 0.0),
+                                      child: Container(
+                                        width: 20.0,
+                                        height: 20.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .bgBg2,
+                                          borderRadius:
+                                              BorderRadius.circular(4.0),
+                                          shape: BoxShape.rectangle,
+                                          border: Border.all(
+                                            color: FlutterFlowTheme.of(context)
+                                                .txtText1,
+                                            width: 2.5,
+                                          ),
+                                        ),
+                                        child: Align(
+                                          alignment:
+                                              AlignmentDirectional(0.0, 0.0),
+                                          child: Container(
+                                            width: 10.0,
+                                            height: 10.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .txtText1,
+                                              borderRadius:
+                                                  BorderRadius.circular(0.0),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Text(
+                                      'Last used',
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'SF Pro Display',
+                                            fontWeight: FontWeight.w900,
+                                            useGoogleFonts: false,
+                                          ),
+                                    ),
+                                  ],
+                                );
+                              } else {
+                                return Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 6.0, 0.0),
+                                      child: Container(
+                                        width: 20.0,
+                                        height: 20.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .bgBg2,
+                                          borderRadius:
+                                              BorderRadius.circular(4.0),
+                                          shape: BoxShape.rectangle,
+                                          border: Border.all(
+                                            color: FlutterFlowTheme.of(context)
+                                                .txtText2,
+                                            width: 2.5,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Text(
+                                      'Last used',
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'SF Pro Display',
+                                            color: FlutterFlowTheme.of(context)
+                                                .txtText2,
+                                            useGoogleFonts: false,
+                                          ),
+                                    ),
+                                  ],
+                                );
+                              }
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+              ],
             ),
             FFButtonWidget(
               onPressed: () async {
-                if (_model.radioButtonValue != FFAppState().sortState) {
+                if (FFAppState().sortStateNotApplied !=
+                    FFAppState().sortState) {
                   setState(() {
-                    FFAppState().sortState = _model.radioButtonValue!;
+                    FFAppState().sortState = FFAppState().sortStateNotApplied;
                   });
                 }
                 Navigator.pop(context);

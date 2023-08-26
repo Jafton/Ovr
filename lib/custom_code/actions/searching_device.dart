@@ -11,7 +11,9 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 Future<bool> searchingDevice() async {
-  // action makes a dellay for 2 sec and returns randomly true or false
-  await Future.delayed(Duration(seconds: 2)); // wait for 2 seconds
-  return Random().nextBool(); // return a random boolean value}
+  // Simulate a delay for 2 seconds
+  await Future.delayed(Duration(seconds: 2));
+
+  // Return a random true or false value
+  return Random().nextBool();
 }

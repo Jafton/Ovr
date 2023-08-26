@@ -1,4 +1,3 @@
-import '/connection/jump_device/jump_device_widget.dart';
 import '/connection/velocity_device/velocity_device_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -131,61 +130,13 @@ class _OvrVelocityGridWidgetState extends State<OvrVelocityGridWidget> {
                   primary: false,
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
-                  children: [
-                    InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        _model.isConnected2 = await actions.connectingDevice();
-
-                        setState(() {});
-                      },
-                      child: wrapWithModel(
-                        model: _model.jumpDeviceModel,
-                        updateCallback: () => setState(() {}),
-                        child: JumpDeviceWidget(
-                          isConnected: _model.isConnected2,
-                        ),
-                      ),
-                    ),
-                  ],
+                  children: [],
                 ),
               ),
               FFButtonWidget(
                 onPressed: () async {
                   _model.resultCopy = await actions.searchingDevice();
                   Navigator.pop(context);
-                  if (_model.resultCopy!) {
-                    showModalBottomSheet(
-                      isScrollControlled: true,
-                      backgroundColor: Colors.transparent,
-                      context: context,
-                      builder: (context) {
-                        return Padding(
-                          padding: MediaQuery.viewInsetsOf(context),
-                          child: OvrVelocityGridWidget(),
-                        );
-                      },
-                    ).then((value) => setState(() {}));
-                  } else {
-                    await showDialog(
-                      context: context,
-                      builder: (alertDialogContext) {
-                        return AlertDialog(
-                          title: Text('Could not find any device!'),
-                          actions: [
-                            TextButton(
-                              onPressed: () =>
-                                  Navigator.pop(alertDialogContext),
-                              child: Text('Ok'),
-                            ),
-                          ],
-                        );
-                      },
-                    );
-                  }
 
                   setState(() {});
                 },

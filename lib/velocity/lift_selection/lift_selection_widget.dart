@@ -156,91 +156,41 @@ class _LiftSelectionWidgetState extends State<LiftSelectionWidget> {
                 top: true,
                 child: Align(
                   alignment: AlignmentDirectional(0.0, 0.0),
-                  child: Container(
-                    width: MediaQuery.sizeOf(context).width * 0.9,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                    ),
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                    child: Container(
+                      width: MediaQuery.sizeOf(context).width * 0.9,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                      ),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 16.0, 0.0, 8.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 5.0, 0.0),
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        context.pushNamed(
-                                          'WeightInput',
-                                          queryParameters: {
-                                            'exerciseName': serializeParam(
-                                              'Sandbox mode',
-                                              ParamType.String,
-                                            ),
-                                          }.withoutNulls,
-                                        );
-                                      },
-                                      child: Container(
-                                        width:
-                                            MediaQuery.sizeOf(context).width *
-                                                0.4,
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFF182433),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        child: Align(
-                                          alignment:
-                                              AlignmentDirectional(0.0, 0.0),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 24.0, 0.0, 24.0),
-                                            child: Text(
-                                              'Sandbox mode',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            'SF Pro Display',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .txtText1,
-                                                        fontSize: MediaQuery.sizeOf(
-                                                                        context)
-                                                                    .width <
-                                                                430.0
-                                                            ? 14.0
-                                                            : 16.0,
-                                                        useGoogleFonts: false,
-                                                      ),
-                                            ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 5.0, 0.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed(
+                                        'WeightInput',
+                                        queryParameters: {
+                                          'exerciseName': serializeParam(
+                                            'Sandbox mode',
+                                            ParamType.String,
                                           ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        5.0, 0.0, 0.0, 0.0),
+                                        }.withoutNulls,
+                                      );
+                                    },
                                     child: Container(
                                       width: MediaQuery.sizeOf(context).width *
                                           0.4,
@@ -249,138 +199,173 @@ class _LiftSelectionWidgetState extends State<LiftSelectionWidget> {
                                         borderRadius:
                                             BorderRadius.circular(12.0),
                                       ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 10.0, 10.0, 10.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Expanded(
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 3.0, 0.0),
-                                                child: FlutterFlowIconButton(
-                                                  borderColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bgBg2,
-                                                  borderRadius: 10.0,
-                                                  borderWidth: 1.0,
-                                                  buttonSize: 48.0,
-                                                  fillColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bgBg2,
-                                                  icon: Icon(
-                                                    FFIcons.kedit2,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .txtText2,
-                                                    size: 20.0,
-                                                  ),
-                                                  onPressed: () async {
-                                                    setState(() {
-                                                      FFAppState()
-                                                              .isExerciseEditing =
-                                                          true;
-                                                    });
-                                                    showModalBottomSheet(
-                                                      isScrollControlled: true,
-                                                      backgroundColor:
-                                                          Colors.transparent,
-                                                      isDismissible: false,
-                                                      enableDrag: false,
-                                                      context: context,
-                                                      builder: (context) {
-                                                        return GestureDetector(
-                                                          onTap: () => FocusScope
-                                                                  .of(context)
-                                                              .requestFocus(_model
-                                                                  .unfocusNode),
-                                                          child: Padding(
-                                                            padding: MediaQuery
-                                                                .viewInsetsOf(
-                                                                    context),
-                                                            child: Container(
-                                                              height: MediaQuery
-                                                                          .sizeOf(
-                                                                              context)
-                                                                      .height *
-                                                                  0.9,
-                                                              child:
-                                                                  EditExerciseWidget(),
-                                                            ),
-                                                          ),
-                                                        );
-                                                      },
-                                                    ).then((value) =>
-                                                        setState(() {}));
-                                                  },
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 24.0, 0.0, 24.0),
+                                          child: Text(
+                                            'Sandbox mode',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyLarge
+                                                .override(
+                                                  fontFamily: 'SF Pro Display',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .txtText1,
+                                                  fontSize:
+                                                      MediaQuery.sizeOf(context)
+                                                                  .width <
+                                                              430.0
+                                                          ? 14.0
+                                                          : 16.0,
+                                                  useGoogleFonts: false,
                                                 ),
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        3.0, 0.0, 0.0, 0.0),
-                                                child: FlutterFlowIconButton(
-                                                  borderColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bgBg2,
-                                                  borderRadius: 10.0,
-                                                  borderWidth: 1.0,
-                                                  buttonSize: 48.0,
-                                                  fillColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bgBg2,
-                                                  icon: Icon(
-                                                    FFIcons.ksort,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .txtText2,
-                                                    size: 20.0,
-                                                  ),
-                                                  onPressed: () async {
-                                                    await showModalBottomSheet(
-                                                      isScrollControlled: true,
-                                                      backgroundColor:
-                                                          Colors.transparent,
-                                                      context: context,
-                                                      builder: (context) {
-                                                        return GestureDetector(
-                                                          onTap: () => FocusScope
-                                                                  .of(context)
-                                                              .requestFocus(_model
-                                                                  .unfocusNode),
-                                                          child: Padding(
-                                                            padding: MediaQuery
-                                                                .viewInsetsOf(
-                                                                    context),
-                                                            child:
-                                                                SortBottomSheetWidget(),
-                                                          ),
-                                                        );
-                                                      },
-                                                    ).then((value) =>
-                                                        setState(() {}));
-                                                  },
-                                                ),
-                                              ),
-                                            ),
-                                          ],
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                              Expanded(
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5.0, 0.0, 0.0, 0.0),
+                                  child: Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 0.4,
+                                    decoration: BoxDecoration(
+                                      color: Color(0xFF182433),
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          6.0, 6.0, 6.0, 6.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Expanded(
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 3.0, 0.0),
+                                              child: FlutterFlowIconButton(
+                                                borderColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bgBg2,
+                                                borderRadius: 10.0,
+                                                borderWidth: 1.0,
+                                                buttonSize: 48.0,
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bgBg2,
+                                                icon: Icon(
+                                                  FFIcons.kedit2,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .txtText2,
+                                                  size: 20.0,
+                                                ),
+                                                onPressed: () async {
+                                                  setState(() {
+                                                    FFAppState()
+                                                            .isExerciseEditing =
+                                                        true;
+                                                  });
+                                                  showModalBottomSheet(
+                                                    isScrollControlled: true,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    isDismissible: false,
+                                                    enableDrag: false,
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return GestureDetector(
+                                                        onTap: () => FocusScope
+                                                                .of(context)
+                                                            .requestFocus(_model
+                                                                .unfocusNode),
+                                                        child: Padding(
+                                                          padding: MediaQuery
+                                                              .viewInsetsOf(
+                                                                  context),
+                                                          child: Container(
+                                                            height: MediaQuery
+                                                                        .sizeOf(
+                                                                            context)
+                                                                    .height *
+                                                                0.9,
+                                                            child:
+                                                                EditExerciseWidget(),
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ).then((value) =>
+                                                      setState(() {}));
+                                                },
+                                              ),
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(3.0, 0.0, 0.0, 0.0),
+                                              child: FlutterFlowIconButton(
+                                                borderColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bgBg2,
+                                                borderRadius: 10.0,
+                                                borderWidth: 1.0,
+                                                buttonSize: 48.0,
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bgBg2,
+                                                icon: Icon(
+                                                  FFIcons.ksort,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .txtText2,
+                                                  size: 20.0,
+                                                ),
+                                                onPressed: () async {
+                                                  await showModalBottomSheet(
+                                                    isScrollControlled: true,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return GestureDetector(
+                                                        onTap: () => FocusScope
+                                                                .of(context)
+                                                            .requestFocus(_model
+                                                                .unfocusNode),
+                                                        child: Padding(
+                                                          padding: MediaQuery
+                                                              .viewInsetsOf(
+                                                                  context),
+                                                          child:
+                                                              SortBottomSheetWidget(),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ).then((value) =>
+                                                      setState(() {}));
+                                                },
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                           Divider(
                             thickness: 1.0,

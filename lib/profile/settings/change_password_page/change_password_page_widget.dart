@@ -11,6 +11,7 @@ import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'change_password_page_model.dart';
@@ -59,50 +60,50 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
           top: true,
           child: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    FlutterFlowIconButton(
-                      borderColor: Colors.transparent,
-                      borderRadius: 10.0,
-                      borderWidth: 1.0,
-                      buttonSize: 52.0,
-                      fillColor: FlutterFlowTheme.of(context).bgBg4,
-                      icon: Icon(
-                        FFIcons.karrowLeft,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        size: 20.0,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      FlutterFlowIconButton(
+                        borderColor: Colors.transparent,
+                        borderRadius: 10.0,
+                        borderWidth: 1.0,
+                        buttonSize: 52.0,
+                        fillColor: FlutterFlowTheme.of(context).bgBg4,
+                        icon: Icon(
+                          FFIcons.karrowLeft,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          size: 20.0,
+                        ),
+                        onPressed: () async {
+                          setState(() {
+                            FFAppState().isCorrectPassword = false;
+                            FFAppState().isCurrentPasswordCorrect = false;
+                          });
+                          context.safePop();
+                        },
                       ),
-                      onPressed: () async {
-                        setState(() {
-                          FFAppState().isCorrectPassword = false;
-                          FFAppState().isCurrentPasswordCorrect = false;
-                        });
-                        context.safePop();
-                      },
-                    ),
-                    Text(
-                      'CHANGE\nPASSWORD',
-                      textAlign: TextAlign.end,
-                      style: FlutterFlowTheme.of(context)
-                          .headlineSmall
-                          .override(
-                            fontFamily: 'Bicyclette',
-                            fontSize: MediaQuery.sizeOf(context).width < 430.0
-                                ? 24.0
-                                : 36.0,
-                            fontWeight: FontWeight.w900,
-                            useGoogleFonts: false,
-                          ),
-                    ),
-                  ],
-                ),
-                SingleChildScrollView(
-                  child: Column(
+                      Text(
+                        'CHANGE\nPASSWORD',
+                        textAlign: TextAlign.end,
+                        style: FlutterFlowTheme.of(context)
+                            .headlineSmall
+                            .override(
+                              fontFamily: 'Bicyclette',
+                              fontSize: MediaQuery.sizeOf(context).width < 430.0
+                                  ? 24.0
+                                  : 36.0,
+                              fontWeight: FontWeight.w900,
+                              useGoogleFonts: false,
+                            ),
+                      ),
+                    ],
+                  ),
+                  Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -440,25 +441,31 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                             validator: _model
                                                 .newPasswordControllerValidator
                                                 .asValidator(context),
+                                            inputFormatters: [
+                                              FilteringTextInputFormatter.allow(
+                                                  RegExp('^.{1,64}'))
+                                            ],
                                           ),
                                         ),
-                                        if (functions.validatorPassHasMaxLength(
-                                                _model
-                                                    .newPasswordController.text,
-                                                64) ||
-                                            functions.validatorPassHasLowercase(
-                                                _model.newPasswordController
-                                                    .text) ||
-                                            functions.validatorPassHasDigits(
-                                                _model.newPasswordController
-                                                    .text) ||
-                                            functions.validatorPassHasMinLength(
-                                                _model
-                                                    .newPasswordController.text,
-                                                8) ||
-                                            functions.validatorPassHasUppercase(
-                                                _model.newPasswordController
-                                                    .text))
+                                        if ((functions.validatorPassHasMaxLength(
+                                                    _model.newPasswordController
+                                                        .text,
+                                                    64) ||
+                                                functions.validatorPassHasLowercase(
+                                                    _model.newPasswordController
+                                                        .text) ||
+                                                functions.validatorPassHasDigits(
+                                                    _model.newPasswordController
+                                                        .text) ||
+                                                functions.validatorPassHasMinLength(
+                                                    _model.newPasswordController
+                                                        .text,
+                                                    8) ||
+                                                functions.validatorPassHasUppercase(
+                                                    _model.newPasswordController
+                                                        .text)) &&
+                                            (_model.newPasswordController.text != null &&
+                                                _model.newPasswordController.text != ''))
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -480,6 +487,8 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondaryText,
+                                                        fontWeight:
+                                                            FontWeight.w500,
                                                         useGoogleFonts: false,
                                                       ),
                                                 ),
@@ -499,6 +508,8 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryText,
+                                                          fontWeight:
+                                                              FontWeight.w500,
                                                           useGoogleFonts: false,
                                                         ),
                                                   ),
@@ -518,6 +529,8 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryText,
+                                                          fontWeight:
+                                                              FontWeight.w500,
                                                           useGoogleFonts: false,
                                                         ),
                                                   ),
@@ -536,6 +549,8 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryText,
+                                                          fontWeight:
+                                                              FontWeight.w500,
                                                           useGoogleFonts: false,
                                                         ),
                                                   ),
@@ -556,26 +571,8 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryText,
-                                                          useGoogleFonts: false,
-                                                        ),
-                                                  ),
-                                                if (functions
-                                                    .validatorPassHasMaxLength(
-                                                        _model
-                                                            .newPasswordController
-                                                            .text,
-                                                        64))
-                                                  Text(
-                                                    '・max 64 characters',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'SF Pro Display',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryText,
+                                                          fontWeight:
+                                                              FontWeight.w500,
                                                           useGoogleFonts: false,
                                                         ),
                                                   ),
@@ -719,6 +716,10 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                             validator: _model
                                                 .confirmNewPasswordControllerValidator
                                                 .asValidator(context),
+                                            inputFormatters: [
+                                              FilteringTextInputFormatter.allow(
+                                                  RegExp('^.{1,64}'))
+                                            ],
                                           ),
                                         ),
                                       ],
@@ -964,10 +965,10 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                           ),
                         ),
                       ),
-                    ].divide(SizedBox(height: 200.0)),
+                    ].divide(SizedBox(height: 250.0)),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

@@ -82,6 +82,7 @@ class _WeightInputWidgetState extends State<WeightInputWidget> {
                             context.safePop();
                             setState(() {
                               FFAppState().setGoal = '';
+                              FFAppState().weightSelection = '';
                             });
                           },
                         ),
@@ -138,7 +139,7 @@ class _WeightInputWidgetState extends State<WeightInputWidget> {
                                       color: FFAppState().isSelected
                                           ? Color(0x00000000)
                                           : FlutterFlowTheme.of(context)
-                                              .bgStroke,
+                                              .btnDefault,
                                       width: 2.0,
                                     ),
                                   ),
@@ -231,7 +232,7 @@ class _WeightInputWidgetState extends State<WeightInputWidget> {
                                         color: FFAppState().isSelected &&
                                                 FFAppState().isGoalSwitchedOn
                                             ? FlutterFlowTheme.of(context)
-                                                .bgStroke
+                                                .btnDefault
                                             : Colors.transparent,
                                         width: 2.0,
                                       ),
@@ -385,10 +386,18 @@ class _WeightInputWidgetState extends State<WeightInputWidget> {
                                             if (FFAppState().isSelected) {
                                               if (FFAppState()
                                                   .isGoalSwitchedOn) {
-                                                if (!(FFAppState()
-                                                        .setGoal
-                                                        .length >=
-                                                    4)) {
+                                                if ((FFAppState()
+                                                            .setGoal
+                                                            .length <
+                                                        1) ||
+                                                    ((FFAppState()
+                                                                .setGoal
+                                                                .length <
+                                                            4) &&
+                                                        functions.containsDot(
+                                                            FFAppState()
+                                                                .setGoal,
+                                                            '.'))) {
                                                   setState(() {
                                                     FFAppState().setGoal =
                                                         FFAppState().setGoal +
@@ -472,12 +481,15 @@ class _WeightInputWidgetState extends State<WeightInputWidget> {
                                       onPressed: !FFAppState().isSelected
                                           ? null
                                           : () async {
-                                              if (FFAppState().isSelected) {
-                                                if (FFAppState()
-                                                    .isGoalSwitchedOn) {
-                                                  if (!functions.containsDot(
-                                                      FFAppState().setGoal,
-                                                      '.')) {
+                                              if (FFAppState()
+                                                  .isGoalSwitchedOn) {
+                                                if (!functions.containsDot(
+                                                    FFAppState().setGoal,
+                                                    '.')) {
+                                                  if (FFAppState().setGoal !=
+                                                          null &&
+                                                      FFAppState().setGoal !=
+                                                          '') {
                                                     setState(() {
                                                       FFAppState().setGoal =
                                                           FFAppState().setGoal +
@@ -522,17 +534,38 @@ class _WeightInputWidgetState extends State<WeightInputWidget> {
                                       onPressed: () async {
                                         if (FFAppState().isSelected) {
                                           if (FFAppState().isGoalSwitchedOn) {
-                                            setState(() {
-                                              FFAppState().setGoal =
-                                                  FFAppState().setGoal + '0';
-                                            });
+                                            if (((FFAppState().setGoal.length <
+                                                        1) ||
+                                                    ((FFAppState()
+                                                                .setGoal
+                                                                .length <
+                                                            4) &&
+                                                        functions.containsDot(
+                                                            FFAppState()
+                                                                .setGoal,
+                                                            '.'))) &&
+                                                (FFAppState().setGoal != '0')) {
+                                              setState(() {
+                                                FFAppState().setGoal =
+                                                    FFAppState().setGoal + '0';
+                                              });
+                                            }
                                           }
                                         } else {
-                                          setState(() {
-                                            FFAppState().weightSelection =
-                                                FFAppState().weightSelection +
-                                                    '0';
-                                          });
+                                          if (FFAppState()
+                                                      .weightSelection
+                                                      .length <
+                                                  3 &&
+                                              FFAppState()
+                                                      .weightSelection
+                                                      .length >
+                                                  0) {
+                                            setState(() {
+                                              FFAppState().weightSelection =
+                                                  FFAppState().weightSelection +
+                                                      '0';
+                                            });
+                                          }
                                         }
                                       },
                                       text: '0',
@@ -646,7 +679,12 @@ class _WeightInputWidgetState extends State<WeightInputWidget> {
                                           ((FFAppState().isGoalSwitchedOn ==
                                                   true) &&
                                               (FFAppState().setGoal == null ||
-                                                  FFAppState().setGoal == ''))
+                                                  FFAppState().setGoal ==
+                                                      '')) ||
+                                          (FFAppState().setGoal == '0') ||
+                                          (FFAppState().setGoal == '0.') ||
+                                          (FFAppState().setGoal == '0.0') ||
+                                          (FFAppState().setGoal == '0.00')
                                       ? null
                                       : () async {
                                           context.goNamed(

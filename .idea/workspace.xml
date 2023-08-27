@@ -4,11 +4,41 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e7c0780d-ad26-4583-8ff1-434af733d38b" name="Changes" comment="" />
+    <list default="true" id="e7c0780d-ad26-4583-8ff1-434af733d38b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/efde442e59d5aa61f9149c1e82e6b00c/debug_ios_bundle_flutter_assets.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/efde442e59d5aa61f9149c1e82e6b00c/debug_ios_bundle_flutter_assets.stamp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/efde442e59d5aa61f9149c1e82e6b00c/flutter_assets.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/efde442e59d5aa61f9149c1e82e6b00c/flutter_assets.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/Pods_Runner.framework/Pods_Runner" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/Pods_Runner.framework/Pods_Runner" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/Pods_Runner.framework/_CodeSignature/CodeDirectory" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/Pods_Runner.framework/_CodeSignature/CodeDirectory" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/Pods_Runner.framework/_CodeSignature/CodeRequirements-1" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/Pods_Runner.framework/_CodeSignature/CodeRequirements-1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/Runner.app/Runner" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/Runner.app/Runner" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/cloud_firestore/cloud_firestore.framework/_CodeSignature/CodeDirectory" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/cloud_firestore/cloud_firestore.framework/_CodeSignature/CodeDirectory" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/cloud_firestore/cloud_firestore.framework/_CodeSignature/CodeRequirements-1" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/cloud_firestore/cloud_firestore.framework/_CodeSignature/CodeRequirements-1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/cloud_firestore/cloud_firestore.framework/cloud_firestore" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/cloud_firestore/cloud_firestore.framework/cloud_firestore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/firebase_auth/firebase_auth.framework/_CodeSignature/CodeDirectory" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/firebase_auth/firebase_auth.framework/_CodeSignature/CodeDirectory" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/firebase_auth/firebase_auth.framework/_CodeSignature/CodeRequirements-1" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/firebase_auth/firebase_auth.framework/_CodeSignature/CodeRequirements-1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/firebase_auth/firebase_auth.framework/firebase_auth" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/firebase_auth/firebase_auth.framework/firebase_auth" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/firebase_core/firebase_core.framework/_CodeSignature/CodeDirectory" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/firebase_core/firebase_core.framework/_CodeSignature/CodeDirectory" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/firebase_core/firebase_core.framework/_CodeSignature/CodeRequirements-1" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/firebase_core/firebase_core.framework/_CodeSignature/CodeRequirements-1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/firebase_core/firebase_core.framework/firebase_core" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/firebase_core/firebase_core.framework/firebase_core" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/firebase_storage/firebase_storage.framework/_CodeSignature/CodeDirectory" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/firebase_storage/firebase_storage.framework/_CodeSignature/CodeDirectory" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/firebase_storage/firebase_storage.framework/_CodeSignature/CodeRequirements-1" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/firebase_storage/firebase_storage.framework/_CodeSignature/CodeRequirements-1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/firebase_storage/firebase_storage.framework/firebase_storage" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/firebase_storage/firebase_storage.framework/firebase_storage" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/google_sign_in_ios/google_sign_in_ios.framework/_CodeSignature/CodeDirectory" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/google_sign_in_ios/google_sign_in_ios.framework/_CodeSignature/CodeDirectory" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/google_sign_in_ios/google_sign_in_ios.framework/_CodeSignature/CodeRequirements-1" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/google_sign_in_ios/google_sign_in_ios.framework/_CodeSignature/CodeRequirements-1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/google_sign_in_ios/google_sign_in_ios.framework/google_sign_in_ios" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/Debug-iphonesimulator/google_sign_in_ios/google_sign_in_ios.framework/google_sign_in_ios" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/iphonesimulator/Runner.app/Runner" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/iphonesimulator/Runner.app/Runner" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/ios/pod_inputs.fingerprint" beforeDir="false" afterPath="$PROJECT_DIR$/build/ios/pod_inputs.fingerprint" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/update/checking/checking_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/update/checking/checking_model.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="flutterflow" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -22,6 +52,7 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/README.md" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/lib/main.dart" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="2U9CGcx9MGtspk6DHlqA8rAYTSP" />
@@ -36,7 +67,7 @@
     <property name="cidr.known.project.marker" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/bluetooth_manager" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="flutter.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />

@@ -11,7 +11,8 @@ class CheckingModel extends FlutterFlowModel {
 
   void initState(BuildContext context) {}
 
-  void dispose() {}
+  void dispose() {
+  }
 
   /// Action blocks are added here.
 

@@ -64,6 +64,14 @@ class _VelocityDeviceWidgetState extends State<VelocityDeviceWidget> {
                 fit: BoxFit.contain,
               ),
             ),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.asset(
+                'assets/images/Gravity_Box_Render_No_Background_2.png',
+                height: 72.0,
+                fit: BoxFit.contain,
+              ),
+            ),
             Text(
               'GB-3CF9',
               style: FlutterFlowTheme.of(context).titleSmall.override(
@@ -85,7 +93,7 @@ class _VelocityDeviceWidgetState extends State<VelocityDeviceWidget> {
                       useGoogleFonts: false,
                     ),
               ),
-            if ((widget.isConnected != null) && (widget.isConnected == false))
+            if (widget.isConnected == null)
               Text(
                 'Not connected',
                 style: FlutterFlowTheme.of(context).bodySmall.override(

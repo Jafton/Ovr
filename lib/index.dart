@@ -50,3 +50,7 @@ export '/jump/vertical_jump_live_data/vertical_jump_live_data_widget.dart'
 export '/profile/profile_page/profile_page_widget.dart' show ProfilePageWidget;
 export '/jump/jump_exercise_selection/jump_exercise_selection_widget.dart'
     show JumpExerciseSelectionWidget;
+export '/profile/weight_page/weight_page_widget.dart' show WeightPageWidget;
+export '/profile/height_page/height_page_widget.dart' show HeightPageWidget;
+export '/profile/sport_and_position_page/sport_and_position_page_widget.dart'
+    show SportAndPositionPageWidget;

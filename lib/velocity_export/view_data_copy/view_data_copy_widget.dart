@@ -423,7 +423,7 @@ class _ViewDataCopyWidgetState extends State<ViewDataCopyWidget> {
                             text: 'SHARE',
                             options: FFButtonOptions(
                               width: double.infinity,
-                              height: 55.0,
+                              height: 56.0,
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               iconPadding: EdgeInsetsDirectional.fromSTEB(
@@ -431,7 +431,7 @@ class _ViewDataCopyWidgetState extends State<ViewDataCopyWidget> {
                               color: FlutterFlowTheme.of(context).btnDefault,
                               textStyle:
                                   FlutterFlowTheme.of(context).titleMedium,
-                              elevation: 3.0,
+                              elevation: 0.0,
                               borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,

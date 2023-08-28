@@ -326,3 +326,8 @@ bool containsDot(
 
   return string.contains('$substring');
 }
+
+bool checkForDots(String string) {
+  final regex = RegExp(r'^(?!.*\.\.)[a-zA-Z0-9.]+$');
+  return regex.hasMatch(string);
+}

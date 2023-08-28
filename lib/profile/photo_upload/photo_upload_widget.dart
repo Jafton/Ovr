@@ -192,7 +192,7 @@ class _PhotoUploadWidgetState extends State<PhotoUploadWidget> {
                 ),
                 options: FFButtonOptions(
                   width: double.infinity,
-                  height: 44.0,
+                  height: 56.0,
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   iconPadding:
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
@@ -206,6 +206,7 @@ class _PhotoUploadWidgetState extends State<PhotoUploadWidget> {
                   elevation: 0.0,
                   borderSide: BorderSide(
                     color: Colors.transparent,
+                    width: 1.0,
                   ),
                   borderRadius: BorderRadius.circular(8.0),
                   hoverColor: FlutterFlowTheme.of(context).bgStroke,
@@ -328,7 +329,7 @@ class _PhotoUploadWidgetState extends State<PhotoUploadWidget> {
                 ),
                 options: FFButtonOptions(
                   width: double.infinity,
-                  height: 44.0,
+                  height: 56.0,
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   iconPadding:
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
@@ -342,6 +343,7 @@ class _PhotoUploadWidgetState extends State<PhotoUploadWidget> {
                   elevation: 0.0,
                   borderSide: BorderSide(
                     color: Colors.transparent,
+                    width: 1.0,
                   ),
                   borderRadius: BorderRadius.circular(8.0),
                   hoverColor: FlutterFlowTheme.of(context).bgStroke,
@@ -380,7 +382,7 @@ class _PhotoUploadWidgetState extends State<PhotoUploadWidget> {
                       ),
                       options: FFButtonOptions(
                         width: double.infinity,
-                        height: 44.0,
+                        height: 56.0,
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
@@ -396,6 +398,7 @@ class _PhotoUploadWidgetState extends State<PhotoUploadWidget> {
                         elevation: 0.0,
                         borderSide: BorderSide(
                           color: Colors.transparent,
+                          width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(8.0),
                         hoverColor: FlutterFlowTheme.of(context).bgStroke,

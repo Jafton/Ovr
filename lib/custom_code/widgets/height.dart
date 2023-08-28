@@ -83,8 +83,8 @@ class _HeightState extends State<Height> {
         child: Row(
           children: [
             SizedBox(
-              height: 72,
-              width: 168,
+              height: 50,
+              width: 120,
               child: TextFormField(
                 onTap: selectedUnit == HeightUnit.ft
                     ? () {
@@ -222,7 +222,7 @@ class _HeightState extends State<Height> {
                     hintText: FFAppState().height,
                     //selectedUnit == HeightUnit.ft ? "__' __\"" : '0',
                     hintStyle: TextStyle(color: Colors.white),
-                    contentPadding: EdgeInsets.symmetric(vertical: 18),
+                    contentPadding: EdgeInsets.only(top: 7.0, bottom: 7.0),
                     filled: true,
                     fillColor: Color(0xff121B26),
                     enabledBorder: UnderlineInputBorder(
@@ -266,7 +266,7 @@ class _HeightState extends State<Height> {
                           ? Color(0xFF314A68)
                           : Color(0xFF121B26)),
                   width: 50,
-                  height: 41,
+                  height: 50,
                   child: Center(
                     child: Text(
                       'ft',
@@ -306,7 +306,7 @@ class _HeightState extends State<Height> {
                           ? Color(0xFF314A68)
                           : Color(0xFF121B26)),
                   width: 50,
-                  height: 41,
+                  height: 50,
                   child: Center(
                     child: Text(
                       'cm',

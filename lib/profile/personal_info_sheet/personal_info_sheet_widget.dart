@@ -2,9 +2,6 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/profile/page_height/page_height_widget.dart';
-import '/profile/page_sport_and_position/page_sport_and_position_widget.dart';
-import '/profile/page_weight/page_weight_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -193,17 +190,8 @@ class _PersonalInfoSheetWidgetState extends State<PersonalInfoSheetWidget> {
                             valueOrDefault(
                                 currentUserDocument?.userHeight, ''));
                       });
-                      showModalBottomSheet(
-                        isScrollControlled: true,
-                        backgroundColor: Colors.transparent,
-                        context: context,
-                        builder: (context) {
-                          return Padding(
-                            padding: MediaQuery.viewInsetsOf(context),
-                            child: PageHeightWidget(),
-                          );
-                        },
-                      ).then((value) => setState(() {}));
+
+                      context.pushNamed('HeightPage');
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -265,17 +253,12 @@ class _PersonalInfoSheetWidgetState extends State<PersonalInfoSheetWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      await showModalBottomSheet(
-                        isScrollControlled: true,
-                        backgroundColor: Colors.transparent,
-                        context: context,
-                        builder: (context) {
-                          return Padding(
-                            padding: MediaQuery.viewInsetsOf(context),
-                            child: PageWeightWidget(),
-                          );
-                        },
-                      ).then((value) => setState(() {}));
+                      setState(() {
+                        FFAppState().weightUnit = valueOrDefault(
+                            currentUserDocument?.userWeightUnit, '');
+                      });
+
+                      context.pushNamed('WeightPage');
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -366,17 +349,8 @@ class _PersonalInfoSheetWidgetState extends State<PersonalInfoSheetWidget> {
                               FFAppState().boolean = true;
                             });
                           }
-                          await showModalBottomSheet(
-                            isScrollControlled: true,
-                            backgroundColor: Colors.transparent,
-                            context: context,
-                            builder: (context) {
-                              return Padding(
-                                padding: MediaQuery.viewInsetsOf(context),
-                                child: PageSportAndPositionWidget(),
-                              );
-                            },
-                          ).then((value) => setState(() {}));
+
+                          context.pushNamed('SportAndPositionPage');
                         },
                         child: Container(
                           decoration: BoxDecoration(

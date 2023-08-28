@@ -15,6 +15,7 @@ import '/velocity/velocity_or_jump/velocity_or_jump_widget.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_dialog/aligned_dialog.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -47,7 +48,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
       });
     });
 
-    _model.textController ??= TextEditingController();
+    _model.textController ??=
+        TextEditingController(text: currentUserDisplayName);
   }
 
   @override
@@ -254,8 +256,13 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           8.0),
-                                                  child: Image.network(
-                                                    FFAppState().croppedImage,
+                                                  child: CachedNetworkImage(
+                                                    fadeInDuration: Duration(
+                                                        milliseconds: 500),
+                                                    fadeOutDuration: Duration(
+                                                        milliseconds: 500),
+                                                    imageUrl: FFAppState()
+                                                        .croppedImage,
                                                     width: 100.0,
                                                     height: 100.0,
                                                     fit: BoxFit.cover,
@@ -391,88 +398,90 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Expanded(
-                                      child: TextFormField(
-                                        controller: _model.textController,
-                                        obscureText: false,
-                                        decoration: InputDecoration(
-                                          labelText: 'Full name',
-                                          labelStyle: FlutterFlowTheme.of(
-                                                  context)
+                                      child: AuthUserStreamWidget(
+                                        builder: (context) => TextFormField(
+                                          controller: _model.textController,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            labelText: 'Full name',
+                                            labelStyle: FlutterFlowTheme.of(
+                                                    context)
+                                                .bodyLarge
+                                                .override(
+                                                  fontFamily: 'SF Pro Display',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .txtText4,
+                                                  fontWeight: FontWeight.w500,
+                                                  useGoogleFonts: false,
+                                                ),
+                                            hintStyle: FlutterFlowTheme.of(
+                                                    context)
+                                                .bodyLarge
+                                                .override(
+                                                  fontFamily: 'SF Pro Display',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .txtText4,
+                                                  fontWeight: FontWeight.w500,
+                                                  useGoogleFonts: false,
+                                                ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 2.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 2.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 2.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 2.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+                                            ),
+                                            filled: true,
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .bgBg2,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
                                               .bodyLarge
                                               .override(
                                                 fontFamily: 'SF Pro Display',
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .txtText4,
+                                                        .txtText2,
                                                 fontWeight: FontWeight.w500,
                                                 useGoogleFonts: false,
                                               ),
-                                          hintStyle: FlutterFlowTheme.of(
-                                                  context)
-                                              .bodyLarge
-                                              .override(
-                                                fontFamily: 'SF Pro Display',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .txtText4,
-                                                fontWeight: FontWeight.w500,
-                                                useGoogleFonts: false,
-                                              ),
-                                          enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color(0x00000000),
-                                              width: 2.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(10.0),
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color(0x00000000),
-                                              width: 2.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(10.0),
-                                          ),
-                                          errorBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              width: 2.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(10.0),
-                                          ),
-                                          focusedErrorBorder:
-                                              OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              width: 2.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(10.0),
-                                          ),
-                                          filled: true,
-                                          fillColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .bgBg2,
+                                          validator: _model
+                                              .textControllerValidator
+                                              .asValidator(context),
                                         ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyLarge
-                                            .override(
-                                              fontFamily: 'SF Pro Display',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .txtText2,
-                                              fontWeight: FontWeight.w500,
-                                              useGoogleFonts: false,
-                                            ),
-                                        validator: _model
-                                            .textControllerValidator
-                                            .asValidator(context),
                                       ),
                                     ),
                                     Padding(
@@ -491,7 +500,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                         ),
                                         onPressed: () async {
                                           setState(() {
-                                            _model.textController?.clear();
+                                            _model.textController?.text =
+                                                currentUserDisplayName;
                                           });
                                           setState(() {
                                             FFAppState().isNameEditing = false;
@@ -515,9 +525,9 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                         ),
                                         onPressed: () async {
                                           if (functions
-                                              .validatorPassHasMaxLength(
+                                              .validatorPassHasMinLength(
                                                   _model.textController.text,
-                                                  70)) {
+                                                  2)) {
                                             showAlignedDialog(
                                               barrierColor: Colors.transparent,
                                               context: context,
@@ -544,22 +554,63 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                             _model.unfocusNode),
                                                     child: ErrorDialogWidget(
                                                       text:
-                                                          'Full name mustn’t be longer than 70 characters.',
+                                                          'Full name is required.',
                                                     ),
                                                   ),
                                                 );
                                               },
                                             ).then((value) => setState(() {}));
                                           } else {
-                                            await currentUserReference!
-                                                .update(createUserRecordData(
-                                              displayName:
-                                                  _model.textController.text,
-                                            ));
-                                            setState(() {
-                                              FFAppState().isNameEditing =
-                                                  false;
-                                            });
+                                            if (functions
+                                                .validatorPassHasMaxLength(
+                                                    _model.textController.text,
+                                                    70)) {
+                                              showAlignedDialog(
+                                                barrierColor:
+                                                    Colors.transparent,
+                                                context: context,
+                                                isGlobal: true,
+                                                avoidOverflow: false,
+                                                targetAnchor:
+                                                    AlignmentDirectional(
+                                                            0.0, 0.0)
+                                                        .resolve(
+                                                            Directionality.of(
+                                                                context)),
+                                                followerAnchor:
+                                                    AlignmentDirectional(
+                                                            0.0, -1.0)
+                                                        .resolve(
+                                                            Directionality.of(
+                                                                context)),
+                                                builder: (dialogContext) {
+                                                  return Material(
+                                                    color: Colors.transparent,
+                                                    child: GestureDetector(
+                                                      onTap: () => FocusScope
+                                                              .of(context)
+                                                          .requestFocus(_model
+                                                              .unfocusNode),
+                                                      child: ErrorDialogWidget(
+                                                        text:
+                                                            'Full name mustn’t be longer than 70 characters.',
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              ).then(
+                                                  (value) => setState(() {}));
+                                            } else {
+                                              await currentUserReference!
+                                                  .update(createUserRecordData(
+                                                displayName:
+                                                    _model.textController.text,
+                                              ));
+                                              setState(() {
+                                                FFAppState().isNameEditing =
+                                                    false;
+                                              });
+                                            }
                                           }
                                         },
                                       ),
@@ -1183,7 +1234,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                           text: 'EXPORT DATA',
                           options: FFButtonOptions(
                             width: double.infinity,
-                            height: 55.0,
+                            height: 56.0,
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
@@ -1196,7 +1247,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                   color: FlutterFlowTheme.of(context).txtText2,
                                   useGoogleFonts: false,
                                 ),
-                            elevation: 3.0,
+                            elevation: 0.0,
                             borderSide: BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
@@ -1235,7 +1286,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                           text: 'CHECK FOR UPDATES',
                           options: FFButtonOptions(
                             width: double.infinity,
-                            height: 55.0,
+                            height: 56.0,
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
@@ -1248,7 +1299,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                   color: FlutterFlowTheme.of(context).txtText2,
                                   useGoogleFonts: false,
                                 ),
-                            elevation: 3.0,
+                            elevation: 0.0,
                             borderSide: BorderSide(
                               color: Colors.transparent,
                               width: 1.0,

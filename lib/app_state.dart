@@ -81,7 +81,7 @@ class FFAppState extends ChangeNotifier {
     _heightUnit = _value;
   }
 
-  String _height = '5\'9\"';
+  String _height = '5\' 9\"';
   String get height => _height;
   set height(String _value) {
     _height = _value;

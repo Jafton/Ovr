@@ -264,6 +264,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => JumpExerciseSelectionWidget(
             exerciseType: params.getParam('exerciseType', ParamType.String),
           ),
+        ),
+        FFRoute(
+          name: 'WeightPage',
+          path: '/weightPage',
+          builder: (context, params) => WeightPageWidget(),
+        ),
+        FFRoute(
+          name: 'HeightPage',
+          path: '/heightPage',
+          builder: (context, params) => HeightPageWidget(),
+        ),
+        FFRoute(
+          name: 'SportAndPositionPage',
+          path: '/sportAndPositionPage',
+          builder: (context, params) => SportAndPositionPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

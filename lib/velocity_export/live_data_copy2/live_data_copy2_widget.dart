@@ -532,7 +532,7 @@ class _LiveDataCopy2WidgetState extends State<LiveDataCopy2Widget> {
                               text: 'LOG IN',
                               options: FFButtonOptions(
                                 width: double.infinity,
-                                height: 55.0,
+                                height: 56.0,
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 iconPadding: EdgeInsetsDirectional.fromSTEB(
@@ -540,7 +540,7 @@ class _LiveDataCopy2WidgetState extends State<LiveDataCopy2Widget> {
                                 color: FlutterFlowTheme.of(context).btnDefault,
                                 textStyle:
                                     FlutterFlowTheme.of(context).titleMedium,
-                                elevation: 3.0,
+                                elevation: 0.0,
                                 borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,

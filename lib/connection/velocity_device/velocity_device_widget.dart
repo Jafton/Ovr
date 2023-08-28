@@ -1,3 +1,5 @@
+import 'package:flutter_blue_plus/flutter_blue_plus.dart';
+
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -7,9 +9,12 @@ import 'velocity_device_model.dart';
 export 'velocity_device_model.dart';
 
 class VelocityDeviceWidget extends StatefulWidget {
+  //final BluetoothDevice bluetoothDevice;
+
   const VelocityDeviceWidget({
     Key? key,
     this.isConnected,
+//    required this.bluetoothDevice,
   }) : super(key: key);
 
   final bool? isConnected;
@@ -73,7 +78,7 @@ class _VelocityDeviceWidgetState extends State<VelocityDeviceWidget> {
               ),
             ),
             Text(
-              'GB-3CF9',
+              'widget.bluetoothDevice.localName',
               style: FlutterFlowTheme.of(context).titleSmall.override(
                     fontFamily: 'SF Pro Display',
                     fontWeight: FontWeight.w600,
@@ -86,9 +91,7 @@ class _VelocityDeviceWidgetState extends State<VelocityDeviceWidget> {
                 style: FlutterFlowTheme.of(context).bodySmall.override(
                       fontFamily: 'SF Pro Display',
                       color: FlutterFlowTheme.of(context).greenYes,
-                      fontSize: MediaQuery.sizeOf(context).width < 430.0
-                          ? 12.0
-                          : 14.0,
+                      fontSize: MediaQuery.sizeOf(context).width < 430.0 ? 12.0 : 14.0,
                       fontWeight: FontWeight.w500,
                       useGoogleFonts: false,
                     ),
@@ -99,9 +102,7 @@ class _VelocityDeviceWidgetState extends State<VelocityDeviceWidget> {
                 style: FlutterFlowTheme.of(context).bodySmall.override(
                       fontFamily: 'SF Pro Display',
                       color: FlutterFlowTheme.of(context).redNo,
-                      fontSize: MediaQuery.sizeOf(context).width < 430.0
-                          ? 12.0
-                          : 14.0,
+                      fontSize: MediaQuery.sizeOf(context).width < 430.0 ? 12.0 : 14.0,
                       useGoogleFonts: false,
                     ),
               ),

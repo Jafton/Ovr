@@ -1,3 +1,5 @@
+import 'package:flutter_blue_plus/flutter_blue_plus.dart';
+
 import '/connection/velocity_device/velocity_device_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -9,7 +11,9 @@ import 'single_device_model.dart';
 export 'single_device_model.dart';
 
 class SingleDeviceWidget extends StatefulWidget {
-  const SingleDeviceWidget({Key? key}) : super(key: key);
+  final List<BluetoothDevice> gravityBoxDeviceList;
+
+  const SingleDeviceWidget({Key? key, required this.gravityBoxDeviceList}) : super(key: key);
 
   @override
   _SingleDeviceWidgetState createState() => _SingleDeviceWidgetState();
@@ -57,50 +61,77 @@ class _SingleDeviceWidgetState extends State<SingleDeviceWidget> {
               ),
             ),
           ),
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: Image.asset(
-                'assets/images/OVR_JUMP_(app).png',
-                width: MediaQuery.sizeOf(context).width * 0.4,
-                fit: BoxFit.contain,
+          SizedBox(
+            height: 500,
+            child: GridView.builder(
+              padding: EdgeInsets.zero,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 16.0,
+                mainAxisSpacing: 10.0,
+                //childAspectRatio: 1,
               ),
-            ),
-          ),
-          GridView(
-            padding: EdgeInsets.zero,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 16.0,
-              mainAxisSpacing: 10.0,
-              childAspectRatio: 1.0,
-            ),
-            primary: false,
-            shrinkWrap: true,
-            scrollDirection: Axis.vertical,
-            children: [
-              InkWell(
-                splashColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                onTap: () async {
-                  _model.isConnected = await actions.connectingDevice();
-
-                  setState(() {});
-                },
-                child: wrapWithModel(
-                  model: _model.velocityDeviceModel,
-                  updateCallback: () => setState(() {}),
-                  updateOnChange: true,
+              itemCount: widget.gravityBoxDeviceList.length,
+              primary: false,
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (BuildContext context, int index) {
+                return InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    setState(() {});
+                  },
                   child: VelocityDeviceWidget(
-                    isConnected: _model.isConnected,
+                    isConnected: false,
                   ),
-                ),
-              ),
-            ],
+                );
+              },
+            ),
           ),
+          // Padding(
+          //   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+          //   child: ClipRRect(
+          //     borderRadius: BorderRadius.circular(8.0),
+          //     child: Image.asset(
+          //       'assets/images/OVR_JUMP_(app).png',
+          //       width: MediaQuery.sizeOf(context).width * 0.4,
+          //       fit: BoxFit.contain,
+          //     ),
+          //   ),
+          // ),
+          // SizedBox(
+          //   height: 500,
+          //   child: GridView.builder(
+          //     padding: EdgeInsets.zero,
+          //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          //       crossAxisCount: 2,
+          //       crossAxisSpacing: 16.0,
+          //       mainAxisSpacing: 10.0,
+          //       //childAspectRatio: 1,
+          //     ),
+          //     itemCount: 10,
+          //     primary: false,
+          //     shrinkWrap: true,
+          //     scrollDirection: Axis.horizontal,
+          //     itemBuilder: (BuildContext context, int index) {
+          //       return InkWell(
+          //         splashColor: Colors.transparent,
+          //         focusColor: Colors.transparent,
+          //         hoverColor: Colors.transparent,
+          //         highlightColor: Colors.transparent,
+          //         onTap: () async {
+          //           setState(() {});
+          //         },
+          //         child: VelocityDeviceWidget(
+          //           isConnected: false,
+          //         ),
+          //       );
+          //     },
+          //   ),
+          // ),
         ],
       ),
     );

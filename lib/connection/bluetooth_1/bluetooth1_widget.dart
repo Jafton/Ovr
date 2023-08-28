@@ -32,7 +32,7 @@ class _Bluetooth1WidgetState extends State<Bluetooth1Widget> {
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final List<BluetoothDevice> gravityBoxDeviceList = [];
+  final List<BluetoothDevice> velocityDeviceList = [];
   final List<BluetoothDevice> ovrJumpDeviceList = [];
 
   bool isLoading = true;
@@ -71,11 +71,11 @@ class _Bluetooth1WidgetState extends State<Bluetooth1Widget> {
       // Permission.location,
     ].request();
     streamSubscription = FlutterBluePlus.scanResults.listen((event) {
-      gravityBoxDeviceList.clear();
+      velocityDeviceList.clear();
       for (ScanResult value in event) {
-        if (value.device.localName.contains('GravityBox-3802')) gravityBoxDeviceList.add(value.device);
+        if (value.device.localName.contains('GravityBox-3802')) velocityDeviceList.add(value.device);
       }
-      print(gravityBoxDeviceList.toString());
+      print(velocityDeviceList.toString());
     });
     await FlutterBluePlus.startScan(timeout: Duration(seconds: 5)).whenComplete(() {
       setState(() {
@@ -217,7 +217,7 @@ class _Bluetooth1WidgetState extends State<Bluetooth1Widget> {
                 mainAxisSpacing: 10.0,
                 //childAspectRatio: 1,
               ),
-              itemCount: gravityBoxDeviceList.length,
+              itemCount: velocityDeviceList.length,
               primary: false,
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
@@ -229,22 +229,24 @@ class _Bluetooth1WidgetState extends State<Bluetooth1Widget> {
                   highlightColor: Colors.transparent,
                   onTap: () async {
                     bool isConnected = isConnectedDevice(
-                      bluetoothDevice: gravityBoxDeviceList[index],
-                      connectedDevice: AppBluetooth.connectedGravityBoxDevice,
+                      bluetoothDevice: velocityDeviceList[index],
+                      connectedDevice: AppBluetooth.connectedVelocityDevice,
                     );
 
-                    if (!isConnected)
-                      gravityBoxDeviceList[index].connect().then((value) {
-                        AppBluetooth.connectedGravityBoxDevice = gravityBoxDeviceList[index];
+                    if (!isConnected) {
+                      await AppBluetooth.connectedVelocityDevice!.disconnect();
+                      await velocityDeviceList[index].connect().then((value) {
+                        AppBluetooth.connectedVelocityDevice = velocityDeviceList[index];
                       });
+                    }
 
                     setState(() {});
                   },
                   child: DeviceComponent(
                     isVelocity: true,
                     isConnected: isConnectedDevice(
-                      bluetoothDevice: gravityBoxDeviceList[index],
-                      connectedDevice: AppBluetooth.connectedGravityBoxDevice,
+                      bluetoothDevice: velocityDeviceList[index],
+                      connectedDevice: AppBluetooth.connectedVelocityDevice,
                     ),
                   ),
                 );
@@ -282,13 +284,15 @@ class _Bluetooth1WidgetState extends State<Bluetooth1Widget> {
                   onTap: () async {
                     bool isConnected = isConnectedDevice(
                       bluetoothDevice: ovrJumpDeviceList[index],
-                      connectedDevice: AppBluetooth.connectedGravityBoxDevice,
+                      connectedDevice: AppBluetooth.connectedVelocityDevice,
                     );
 
-                    if (!isConnected)
-                      ovrJumpDeviceList[index].connect().then((value) {
+                    if (!isConnected) {
+                      await AppBluetooth.connectedOvrJumpDevice!.disconnect();
+                      await ovrJumpDeviceList[index].connect().then((value) {
                         AppBluetooth.connectedOvrJumpDevice = ovrJumpDeviceList[index];
                       });
+                    }
 
                     setState(() {});
                   },

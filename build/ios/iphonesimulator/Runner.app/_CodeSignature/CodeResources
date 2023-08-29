@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		I820aINKnhxN97HqUzEIJeA4tpg=
+		cnagwNJ3j7B0qJBDni1Zj6axboo=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -54,15 +54,15 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		a6LQcIh5wfK0+wJ/IByQfy8R1fY=
+		y+ZT8E7/xeTk4YAxPpprgsoupNE=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<data>
-		jWvllN/Xflh2At1fO+zOwX1WLKA=
+		dMJ2Sra+7PDkaTaPYrs3QFu/qlg=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<data>
-		pgXlKzPjGGl45/TiNMUQ7g9r+J4=
+		lgDFXrhn9/R4Y3LwYOnJZMmN3Nc=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
 		<data>
@@ -70,7 +70,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/NOTICES.Z</key>
 		<data>
-		z/mf4eek6behZNwDAgJbJ5j+40s=
+		OYAppON+C4guW3+W38gMf3P6Kg8=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/audios/favicon.png</key>
 		<data>
@@ -228,10 +228,6 @@
 		<data>
 		VXJLQ4zgveotsuTDRnUr4lCJme4=
 		</data>
-		<key>Frameworks/App.framework/flutter_assets/assets/images/animation.png</key>
-		<data>
-		gEe37jcZbpDMa/VZOVDjIgZ7suY=
-		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/animation_640_li8wvbwj_1.png</key>
 		<data>
 		DCEbczsf9tESkvZi8EF+sVXI4M8=
@@ -286,7 +282,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		Uz+inYnDdocH8O19GQeJAux3wrs=
+		dY66v7u7+5PNetnDz1Exhjq5KCI=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -1415,7 +1411,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		yRCszy9mVGm25qOMnQytakm54bM=
+		jiddB9NN0WmdMJz+fK/moK8diUY=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -1498,7 +1494,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			D06L6cMRxqQSbVCx8EvEOUydJp+pNMaecO7pl9mVIxs=
+			njdPuRF959fjAl9EDC2QEnDtd7O9K0Th2NWo1oWkgQw=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -1512,21 +1508,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			8uhdO9GPipbbuLCq+MaiCYNiKNFrQ6oRUkF3TtS24bg=
+			t4ybN4BG7r+NU+sb1gbP7SnnB1qe2WntB0jaCkzKJM0=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			H2nK7E6PN9Y7bReynRS2HcjVblbNK4g9Hq1yx59TKYU=
+			w2FPeesbD563f/bMYASQ3yeNDtqdUjRSOdf2PMYH66k=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			dC1k7JHn1R1Yi0P4IED2yzFIcmkXlZz1FLK4W58sgcU=
+			Vjbi4cinLhL4KzO0JZdQcZ5oxyrWCa4pgEFlf2IxSag=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
@@ -1540,7 +1536,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			39Lket2eFc63tZmRMBIm1UhDt219RIZ7JNrYIHii42E=
+			vTH1V0qvwn189VjRSHLecu7kaMLK5GLOX5z++709zaI=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/audios/favicon.png</key>
@@ -1816,13 +1812,6 @@
 			l/zW6iEsfoVX17c5yhw2sHyZZ3NwdvsVu5pGr40psbM=
 			</data>
 		</dict>
-		<key>Frameworks/App.framework/flutter_assets/assets/images/animation.png</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			xnHFdHpj+hXJ+ggA6Q1oGU8wXeFbZNPxVEbb3Lsy94w=
-			</data>
-		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/animation_640_li8wvbwj_1.png</key>
 		<dict>
 			<key>hash2</key>
@@ -1918,7 +1907,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			gQTG7/aFeUY+4J9D62SgeVXORw1aFX7imKg8YtK9BmQ=
+			3DwfKvKRggxDvcrQrXse3Hpx5pqfHYxd9lIJPiVyt5o=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>

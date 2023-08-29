@@ -50,7 +50,7 @@ class _DeviceComponentState extends State<DeviceComponent> {
               widget.isConnected ? 'Connected' : 'Not connected',
               style: FlutterFlowTheme.of(context).bodySmall.override(
                     fontFamily: 'SF Pro Display',
-                    color: FlutterFlowTheme.of(context).redNo,
+                    color: widget.isConnected ? FlutterFlowTheme.of(context).greenDone : FlutterFlowTheme.of(context).redNo,
                     fontSize: MediaQuery.sizeOf(context).width < 430.0 ? 12.0 : 14.0,
                     useGoogleFonts: false,
                   ),

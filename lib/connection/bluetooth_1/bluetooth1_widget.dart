@@ -70,6 +70,8 @@ class _Bluetooth1WidgetState extends State<Bluetooth1Widget> {
       // Permission.bluetoothAdvertise,
       // Permission.location,
     ].request();
+    streamSubscription?.cancel();
+
     streamSubscription = FlutterBluePlus.scanResults.listen((event) {
       velocityDeviceList.clear();
       for (ScanResult value in event) {
@@ -77,11 +79,24 @@ class _Bluetooth1WidgetState extends State<Bluetooth1Widget> {
       }
       print(velocityDeviceList.toString());
     });
+
     await FlutterBluePlus.startScan(timeout: Duration(seconds: 5)).whenComplete(() {
       setState(() {
         isLoading = false;
       });
     });
+    print('AAAAAAAAAAA');
+    try{
+      await FlutterBluePlus.scanResults.toList().then((value) {
+        print('BBBBBBBB');
+      }).onError((error, stackTrace) {
+        print('CCCCCCCC');
+      });
+    }catch(error){
+      print('DDDDDDDD');
+    }
+    // List<List<ScanResult>> list = await FlutterBluePlus.scanResults.toList();
+    // print(list.toString());
   }
 
   @override
@@ -198,115 +213,120 @@ class _Bluetooth1WidgetState extends State<Bluetooth1Widget> {
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
+          const Spacer(),
           SizedBox(height: 16),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8.0),
-            child: Image.asset(
-              'assets/images/OVR_VELOCITY_(app).png',
-              width: MediaQuery.sizeOf(context).width * 0.6,
-              fit: BoxFit.contain,
-            ),
-          ),
-          SizedBox(
-            height: 500,
-            child: GridView.builder(
-              padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 16.0,
-                mainAxisSpacing: 10.0,
-                //childAspectRatio: 1,
+          if (velocityDeviceList.isNotEmpty) ...[
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.asset(
+                'assets/images/OVR_VELOCITY_(app).png',
+                width: MediaQuery.sizeOf(context).width * 0.6,
+                fit: BoxFit.contain,
               ),
-              itemCount: velocityDeviceList.length,
-              primary: false,
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (BuildContext context, int index) {
-                return InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
-                    bool isConnected = isConnectedDevice(
-                      bluetoothDevice: velocityDeviceList[index],
-                      connectedDevice: AppBluetooth.connectedVelocityDevice,
-                    );
+            ),
+            SizedBox(
+              height: 500,
+              child: GridView.builder(
+                padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 16.0,
+                  mainAxisSpacing: 10.0,
+                  //childAspectRatio: 1,
+                ),
+                itemCount: velocityDeviceList.length,
+                primary: false,
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (BuildContext context, int index) {
+                  return InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      bool isConnected = isConnectedDevice(
+                        bluetoothDevice: velocityDeviceList[index],
+                        connectedDevice: AppBluetooth.connectedVelocityDevice,
+                      );
 
-                    if (!isConnected) {
-                      await AppBluetooth.connectedVelocityDevice!.disconnect();
-                      await velocityDeviceList[index].connect().then((value) {
-                        AppBluetooth.connectedVelocityDevice = velocityDeviceList[index];
-                      });
-                    }
+                      if (!isConnected) {
+                        await AppBluetooth.connectedVelocityDevice?.disconnect();
+                        await velocityDeviceList[index].connect().then((value) {
+                          AppBluetooth.connectedVelocityDevice = velocityDeviceList[index];
+                        });
+                      }
 
-                    setState(() {});
-                  },
-                  child: DeviceComponent(
-                    isVelocity: true,
-                    isConnected: isConnectedDevice(
-                      bluetoothDevice: velocityDeviceList[index],
-                      connectedDevice: AppBluetooth.connectedVelocityDevice,
+                      setState(() {});
+                    },
+                    child: DeviceComponent(
+                      isVelocity: true,
+                      isConnected: isConnectedDevice(
+                        bluetoothDevice: velocityDeviceList[index],
+                        connectedDevice: AppBluetooth.connectedVelocityDevice,
+                      ),
                     ),
-                  ),
-                );
-              },
-            ),
-          ),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8.0),
-            child: Image.asset(
-              'assets/images/OVR_JUMP_(app).png',
-              width: MediaQuery.sizeOf(context).width * 0.6,
-              fit: BoxFit.contain,
-            ),
-          ),
-          SizedBox(
-            height: 500,
-            child: GridView.builder(
-              padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 16.0,
-                mainAxisSpacing: 10.0,
-                //childAspectRatio: 1,
+                  );
+                },
               ),
-              itemCount: 10,
-              primary: false,
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (BuildContext context, int index) {
-                return InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
-                    bool isConnected = isConnectedDevice(
-                      bluetoothDevice: ovrJumpDeviceList[index],
-                      connectedDevice: AppBluetooth.connectedVelocityDevice,
-                    );
-
-                    if (!isConnected) {
-                      await AppBluetooth.connectedOvrJumpDevice!.disconnect();
-                      await ovrJumpDeviceList[index].connect().then((value) {
-                        AppBluetooth.connectedOvrJumpDevice = ovrJumpDeviceList[index];
-                      });
-                    }
-
-                    setState(() {});
-                  },
-                  child: DeviceComponent(
-                    isVelocity: false,
-                    isConnected: isConnectedDevice(
-                      bluetoothDevice: ovrJumpDeviceList[index],
-                      connectedDevice: AppBluetooth.connectedOvrJumpDevice,
-                    ),
-                  ),
-                );
-              },
+            )
+          ],
+          if (ovrJumpDeviceList.isNotEmpty) ...[
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.asset(
+                'assets/images/OVR_JUMP_(app).png',
+                width: MediaQuery.sizeOf(context).width * 0.6,
+                fit: BoxFit.contain,
+              ),
             ),
-          ),
+            SizedBox(
+              height: 500,
+              child: GridView.builder(
+                padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 16.0,
+                  mainAxisSpacing: 10.0,
+                  //childAspectRatio: 1,
+                ),
+                itemCount: ovrJumpDeviceList.length,
+                primary: false,
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (BuildContext context, int index) {
+                  return InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      bool isConnected = isConnectedDevice(
+                        bluetoothDevice: ovrJumpDeviceList[index],
+                        connectedDevice: AppBluetooth.connectedVelocityDevice,
+                      );
+
+                      if (!isConnected) {
+                        await AppBluetooth.connectedOvrJumpDevice!.disconnect();
+                        await ovrJumpDeviceList[index].connect().then((value) {
+                          AppBluetooth.connectedOvrJumpDevice = ovrJumpDeviceList[index];
+                        });
+                      }
+
+                      setState(() {});
+                    },
+                    child: DeviceComponent(
+                      isVelocity: false,
+                      isConnected: isConnectedDevice(
+                        bluetoothDevice: ovrJumpDeviceList[index],
+                        connectedDevice: AppBluetooth.connectedOvrJumpDevice,
+                      ),
+                    ),
+                  );
+                },
+              ),
+            )
+          ],
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(24.0, 32.0, 24.0, 24.0),
             child: FFButtonWidget(

@@ -18,11 +18,11 @@
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		VDDUmUfgJNV8P0iJtQM/9PZVtaM=
+		FRpp4ZN48LY2JNlxN/Em751TdZQ=
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		b6Uo6IZwmWZghTyWWOJPSFLvw9k=
+		7TG4bBbkvGsfSplM/CMoCSesdWk=
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -34,7 +34,7 @@
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		jaZ6xu3EhKL8VYsj5nT6qnWNQV4=
+		ZZy6V+BM3fxrn4a6rJTaAoyCNMw=
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -46,7 +46,7 @@
 		</data>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		yt2Uxa5zobqzmhsUpnjCFvtKIbg=
+		kz7zRGhksI2IERmvZPV7lR4HR0Y=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -73,14 +73,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			PzAL7DB38odmFB7Zt53QYzFj5O5rYKVy2Hu0h1urmZw=
+			zBd5Z5TplWsKhTfv/rnLUXPHjNhtMlr6k8DMp64btrc=
 			</data>
 		</dict>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			HLhLs2bD3ZBDfqacAu2EOFonR9c10MiLHJC3VboLJ7U=
+			1oUlSvpuFpMysXIqZFBfEmOTKy6cBtl4f6ZJ1fhVyT8=
 			</data>
 		</dict>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -101,7 +101,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			1DZOH4BjYO42PM8lSK6jgJB6vGO+1IrlydrxKgt2hCw=
+			B9LK1IdOqU/80vpBPpVM6kx4F9x8Gb5UiH9Z2dDNBK0=
 			</data>
 		</dict>
 		<key>Modules/FirebaseCoreInternal.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
@@ -122,7 +122,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			cayKtgjVoTYamCtdrfXli7JiCl/Pz4pPP6xtuZoTR5Q=
+			6NUWvSjdfY95pU51GZlyqyFWxpGgVKBRO6KX7hkDO9M=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

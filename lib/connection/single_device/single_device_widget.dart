@@ -41,6 +41,7 @@ class _SingleDeviceWidgetState extends State<SingleDeviceWidget> {
     super.dispose();
   }
 
+
   @override
   Widget build(BuildContext context) {
     context.watch<FFAppState>();

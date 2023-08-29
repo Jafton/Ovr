@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 
 import '../../auth/base_auth_user_provider.dart';
 
@@ -161,6 +162,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/weightInput',
           builder: (context, params) => WeightInputWidget(
             exerciseName: params.getParam('exerciseName', ParamType.String),
+            exerciseRef: params.getParam('exerciseRef',
+                ParamType.DocumentReference, false, ['exercise']),
           ),
         ),
         FFRoute(
@@ -168,6 +171,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/liveData',
           builder: (context, params) => LiveDataWidget(
             exerciseName: params.getParam('exerciseName', ParamType.String),
+            exerciseRef: params.getParam('exerciseRef',
+                ParamType.DocumentReference, false, ['exercise']),
           ),
         ),
         FFRoute(
@@ -279,6 +284,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'SportAndPositionPage',
           path: '/sportAndPositionPage',
           builder: (context, params) => SportAndPositionPageWidget(),
+        ),
+        FFRoute(
+          name: 'test',
+          path: '/test',
+          builder: (context, params) => TestWidget(
+            ref: params.getParam(
+                'ref', ParamType.DocumentReference, false, ['exercise']),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

@@ -431,6 +431,10 @@ class _LiftSelectionWidgetState extends State<LiftSelectionWidget> {
                                                   exerciseItem.name,
                                                   ParamType.String,
                                                 ),
+                                                'exerciseRef': serializeParam(
+                                                  exerciseItem.reference,
+                                                  ParamType.DocumentReference,
+                                                ),
                                               }.withoutNulls,
                                             );
 

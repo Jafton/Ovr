@@ -5,14 +5,21 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/velocity/return_to_homepage/return_to_homepage_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class LiveDataModel extends FlutterFlowModel {
+class TestModel extends FlutterFlowModel {
+  ///  Local state fields for this page.
+
+  List<RepStruct> listOfReps = [];
+  void addToListOfReps(RepStruct item) => listOfReps.add(item);
+  void removeFromListOfReps(RepStruct item) => listOfReps.remove(item);
+  void removeAtIndexFromListOfReps(int index) => listOfReps.removeAt(index);
+  void updateListOfRepsAtIndex(int index, Function(RepStruct) updateFn) =>
+      listOfReps[index] = updateFn(listOfReps[index]);
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

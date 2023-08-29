@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import 'backend/api_requests/api_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
@@ -325,6 +326,31 @@ class FFAppState extends ChangeNotifier {
   String get sortStateNotApplied => _sortStateNotApplied;
   set sortStateNotApplied(String _value) {
     _sortStateNotApplied = _value;
+  }
+
+  List<RepStruct> _listOfReps = [];
+  List<RepStruct> get listOfReps => _listOfReps;
+  set listOfReps(List<RepStruct> _value) {
+    _listOfReps = _value;
+  }
+
+  void addToListOfReps(RepStruct _value) {
+    _listOfReps.add(_value);
+  }
+
+  void removeFromListOfReps(RepStruct _value) {
+    _listOfReps.remove(_value);
+  }
+
+  void removeAtIndexFromListOfReps(int _index) {
+    _listOfReps.removeAt(_index);
+  }
+
+  void updateListOfRepsAtIndex(
+    int _index,
+    RepStruct Function(RepStruct) updateFn,
+  ) {
+    _listOfReps[_index] = updateFn(_listOfReps[_index]);
   }
 }
 

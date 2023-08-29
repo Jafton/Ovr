@@ -54,3 +54,4 @@ export '/profile/weight_page/weight_page_widget.dart' show WeightPageWidget;
 export '/profile/height_page/height_page_widget.dart' show HeightPageWidget;
 export '/profile/sport_and_position_page/sport_and_position_page_widget.dart'
     show SportAndPositionPageWidget;
+export '/test/test_widget.dart' show TestWidget;

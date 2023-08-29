@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -95,6 +96,7 @@ class _ReturnToHomepageWidgetState extends State<ReturnToHomepageWidget> {
                   FFAppState().setGoal = '';
                   FFAppState().weightSelection = '';
                   FFAppState().jumpSandboxMode = false;
+                  FFAppState().listOfReps = [];
                 });
               },
               text: 'CONFIRM',

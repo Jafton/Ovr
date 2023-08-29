@@ -6,3 +6,4 @@ export 'custom_switch.dart' show CustomSwitch;
 export 'height.dart' show Height;
 export 'photo_crop_u_i_copy.dart' show PhotoCropUICopy;
 export 'radar_animation.dart' show RadarAnimation;
+export 'camera_page.dart' show CameraPage;

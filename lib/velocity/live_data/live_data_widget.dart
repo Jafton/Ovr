@@ -1,9 +1,12 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/velocity/return_to_homepage/return_to_homepage_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,9 +18,11 @@ class LiveDataWidget extends StatefulWidget {
   const LiveDataWidget({
     Key? key,
     this.exerciseName,
+    this.exerciseRef,
   }) : super(key: key);
 
   final String? exerciseName;
+  final DocumentReference? exerciseRef;
 
   @override
   _LiveDataWidgetState createState() => _LiveDataWidgetState();
@@ -196,7 +201,10 @@ class _LiveDataWidgetState extends State<LiveDataWidget> {
                                                 MainAxisAlignment.center,
                                             children: [
                                               Text(
-                                                '2.21',
+                                                FFAppState()
+                                                    .listOfReps
+                                                    .last
+                                                    .repVelocity,
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .displayLarge
@@ -250,7 +258,10 @@ class _LiveDataWidgetState extends State<LiveDataWidget> {
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   Text(
-                                                    '27%',
+                                                    FFAppState()
+                                                        .listOfReps
+                                                        .last
+                                                        .repFatigue,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .titleSmall
@@ -422,7 +433,8 @@ class _LiveDataWidgetState extends State<LiveDataWidget> {
                                                 text: TextSpan(
                                                   children: [
                                                     TextSpan(
-                                                      text: '185',
+                                                      text: FFAppState()
+                                                          .weightSelection,
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -438,7 +450,10 @@ class _LiveDataWidgetState extends State<LiveDataWidget> {
                                                               ),
                                                     ),
                                                     TextSpan(
-                                                      text: ' lb',
+                                                      text: valueOrDefault(
+                                                          currentUserDocument
+                                                              ?.userUnits,
+                                                          ''),
                                                       style: TextStyle(),
                                                     )
                                                   ],
@@ -472,7 +487,10 @@ class _LiveDataWidgetState extends State<LiveDataWidget> {
                                                 text: TextSpan(
                                                   children: [
                                                     TextSpan(
-                                                      text: '185',
+                                                      text: FFAppState()
+                                                          .listOfReps
+                                                          .last
+                                                          .repMaxVelocity,
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -545,7 +563,10 @@ class _LiveDataWidgetState extends State<LiveDataWidget> {
                                                       text: TextSpan(
                                                         children: [
                                                           TextSpan(
-                                                            text: '185',
+                                                            text: FFAppState()
+                                                                .listOfReps
+                                                                .last
+                                                                .repMaxVelocity,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .labelMedium,
@@ -617,13 +638,16 @@ class _LiveDataWidgetState extends State<LiveDataWidget> {
                                                       text: TextSpan(
                                                         children: [
                                                           TextSpan(
-                                                            text: '185',
+                                                            text: FFAppState()
+                                                                .listOfReps
+                                                                .last
+                                                                .repRangeOfMotion,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .labelMedium,
                                                           ),
                                                           TextSpan(
-                                                            text: ' m/s',
+                                                            text: ' in',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .labelMedium
@@ -689,13 +713,16 @@ class _LiveDataWidgetState extends State<LiveDataWidget> {
                                                       text: TextSpan(
                                                         children: [
                                                           TextSpan(
-                                                            text: '185',
+                                                            text: FFAppState()
+                                                                .listOfReps
+                                                                .last
+                                                                .repPower,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .labelMedium,
                                                           ),
                                                           TextSpan(
-                                                            text: ' m/s',
+                                                            text: ' w',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .labelMedium
@@ -745,6 +772,29 @@ class _LiveDataWidgetState extends State<LiveDataWidget> {
                       ],
                     ),
                   ),
+                ),
+              ),
+              FFButtonWidget(
+                onPressed: () async {
+                  setState(() {
+                    FFAppState().addToListOfReps(null!);
+                  });
+                },
+                text: 'ADD REP',
+                options: FFButtonOptions(
+                  width: double.infinity,
+                  height: 56.0,
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  iconPadding:
+                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  color: FlutterFlowTheme.of(context).btnDefault,
+                  textStyle: FlutterFlowTheme.of(context).titleMedium,
+                  elevation: 0.0,
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                    width: 1.0,
+                  ),
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
               ),
               Container(
@@ -807,11 +857,24 @@ class _LiveDataWidgetState extends State<LiveDataWidget> {
                               0.0, 0.0, 3.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
+                              await SetRecord.createDoc(widget.exerciseRef!)
+                                  .set({
+                                ...createSetRecordData(
+                                  setCreationDate: getCurrentTimestamp,
+                                  setExerciseRef: widget.exerciseRef,
+                                  setWeight: FFAppState().weightSelection,
+                                  setGoal: FFAppState().setGoal,
+                                ),
+                                'set_list_of_rep': getRepListFirestoreData(
+                                  FFAppState().listOfReps,
+                                ),
+                              });
                               setState(() {
                                 FFAppState().pageIndex = 0;
                                 FFAppState().isGoalSwitchedOn = false;
                                 FFAppState().setGoal = '';
                                 FFAppState().weightSelection = '';
+                                FFAppState().listOfReps = [];
                               });
 
                               context.goNamed('MainPage');
@@ -849,11 +912,24 @@ class _LiveDataWidgetState extends State<LiveDataWidget> {
                               3.0, 0.0, 0.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
+                              await SetRecord.createDoc(widget.exerciseRef!)
+                                  .set({
+                                ...createSetRecordData(
+                                  setCreationDate: getCurrentTimestamp,
+                                  setExerciseRef: widget.exerciseRef,
+                                  setWeight: FFAppState().weightSelection,
+                                  setGoal: FFAppState().setGoal,
+                                ),
+                                'set_list_of_rep': getRepListFirestoreData(
+                                  FFAppState().listOfReps,
+                                ),
+                              });
                               setState(() {
                                 FFAppState().pageIndex = 0;
                                 FFAppState().isGoalSwitchedOn = false;
                                 FFAppState().setGoal = '';
                                 FFAppState().weightSelection = '';
+                                FFAppState().listOfReps = [];
                               });
 
                               context.goNamed(
@@ -862,6 +938,10 @@ class _LiveDataWidgetState extends State<LiveDataWidget> {
                                   'exerciseName': serializeParam(
                                     widget.exerciseName,
                                     ParamType.String,
+                                  ),
+                                  'exerciseRef': serializeParam(
+                                    widget.exerciseRef,
+                                    ParamType.DocumentReference,
                                   ),
                                 }.withoutNulls,
                               );

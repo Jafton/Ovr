@@ -65,17 +65,20 @@ class _Bluetooth1WidgetState extends State<Bluetooth1Widget> {
     });
     Map<Permission, PermissionStatus> statuses = await [
       Permission.bluetooth,
-      // Permission.bluetoothScan,
-      // Permission.bluetoothConnect,
-      // Permission.bluetoothAdvertise,
-      // Permission.location,
+      Permission.bluetoothScan,
+      Permission.bluetoothConnect,
+      Permission.bluetoothAdvertise,
+      Permission.location,
     ].request();
     streamSubscription?.cancel();
 
     streamSubscription = FlutterBluePlus.scanResults.listen((event) {
+      print(event);
       velocityDeviceList.clear();
       for (ScanResult value in event) {
-        if (value.device.localName.contains('GravityBox-3802')) velocityDeviceList.add(value.device);
+        if (value.device.localName.contains('GravityBox-3802')) {
+          velocityDeviceList.add(value.device);
+        }
       }
       print(velocityDeviceList.toString());
     });
@@ -95,8 +98,7 @@ class _Bluetooth1WidgetState extends State<Bluetooth1Widget> {
     }catch(error){
       print('DDDDDDDD');
     }
-    // List<List<ScanResult>> list = await FlutterBluePlus.scanResults.toList();
-    // print(list.toString());
+
   }
 
   @override

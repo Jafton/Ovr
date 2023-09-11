@@ -17,3 +17,6 @@ export 'exercise_creator.dart' show exerciseCreator;
 export 'saved.dart' show saved;
 export 'searching_device.dart' show searchingDevice;
 export 'connecting_device.dart' show connectingDevice;
+export 'delete_video.dart' show deleteVideo;
+export 'connected.dart' show connected;
+export 'make_api_call.dart' show makeApiCall;

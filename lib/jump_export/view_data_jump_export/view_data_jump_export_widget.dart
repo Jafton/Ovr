@@ -114,7 +114,7 @@ class _ViewDataJumpExportWidgetState extends State<ViewDataJumpExportWidget> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.00, -1.00),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                   child: SingleChildScrollView(
@@ -153,6 +153,8 @@ class _ViewDataJumpExportWidgetState extends State<ViewDataJumpExportWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 18.0, 0.0, 18.0),
                           child: RichText(
+                            textScaleFactor:
+                                MediaQuery.of(context).textScaleFactor,
                             text: TextSpan(
                               children: [
                                 TextSpan(
@@ -253,6 +255,9 @@ class _ViewDataJumpExportWidgetState extends State<ViewDataJumpExportWidget> {
                                             ),
                                           ),
                                           RichText(
+                                            textScaleFactor:
+                                                MediaQuery.of(context)
+                                                    .textScaleFactor,
                                             text: TextSpan(
                                               children: [
                                                 TextSpan(
@@ -300,6 +305,9 @@ class _ViewDataJumpExportWidgetState extends State<ViewDataJumpExportWidget> {
                                             ),
                                           ),
                                           RichText(
+                                            textScaleFactor:
+                                                MediaQuery.of(context)
+                                                    .textScaleFactor,
                                             text: TextSpan(
                                               children: [
                                                 TextSpan(
@@ -347,6 +355,9 @@ class _ViewDataJumpExportWidgetState extends State<ViewDataJumpExportWidget> {
                                             ),
                                           ),
                                           RichText(
+                                            textScaleFactor:
+                                                MediaQuery.of(context)
+                                                    .textScaleFactor,
                                             text: TextSpan(
                                               children: [
                                                 TextSpan(
@@ -429,6 +440,9 @@ class _ViewDataJumpExportWidgetState extends State<ViewDataJumpExportWidget> {
                                             ),
                                           ),
                                           RichText(
+                                            textScaleFactor:
+                                                MediaQuery.of(context)
+                                                    .textScaleFactor,
                                             text: TextSpan(
                                               children: [
                                                 TextSpan(
@@ -476,6 +490,9 @@ class _ViewDataJumpExportWidgetState extends State<ViewDataJumpExportWidget> {
                                             ),
                                           ),
                                           RichText(
+                                            textScaleFactor:
+                                                MediaQuery.of(context)
+                                                    .textScaleFactor,
                                             text: TextSpan(
                                               children: [
                                                 TextSpan(
@@ -523,6 +540,9 @@ class _ViewDataJumpExportWidgetState extends State<ViewDataJumpExportWidget> {
                                             ),
                                           ),
                                           RichText(
+                                            textScaleFactor:
+                                                MediaQuery.of(context)
+                                                    .textScaleFactor,
                                             text: TextSpan(
                                               children: [
                                                 TextSpan(
@@ -605,6 +625,9 @@ class _ViewDataJumpExportWidgetState extends State<ViewDataJumpExportWidget> {
                                             ),
                                           ),
                                           RichText(
+                                            textScaleFactor:
+                                                MediaQuery.of(context)
+                                                    .textScaleFactor,
                                             text: TextSpan(
                                               children: [
                                                 TextSpan(
@@ -652,6 +675,9 @@ class _ViewDataJumpExportWidgetState extends State<ViewDataJumpExportWidget> {
                                             ),
                                           ),
                                           RichText(
+                                            textScaleFactor:
+                                                MediaQuery.of(context)
+                                                    .textScaleFactor,
                                             text: TextSpan(
                                               children: [
                                                 TextSpan(
@@ -699,6 +725,9 @@ class _ViewDataJumpExportWidgetState extends State<ViewDataJumpExportWidget> {
                                             ),
                                           ),
                                           RichText(
+                                            textScaleFactor:
+                                                MediaQuery.of(context)
+                                                    .textScaleFactor,
                                             text: TextSpan(
                                               children: [
                                                 TextSpan(

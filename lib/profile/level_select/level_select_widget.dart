@@ -55,7 +55,7 @@ class _LevelSelectWidgetState extends State<LevelSelectWidget> {
         ),
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+        padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 42.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -72,13 +72,14 @@ class _LevelSelectWidgetState extends State<LevelSelectWidget> {
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(-1.0, 0.0),
+              alignment: AlignmentDirectional(-1.00, 0.00),
               child: FFButtonWidget(
                 onPressed: () async {
+                  Navigator.pop(context);
+
                   await currentUserReference!.update(createUserRecordData(
                     userLifterExperience: 'Novice',
                   ));
-                  Navigator.pop(context);
                 },
                 text: 'Novice',
                 options: FFButtonOptions(
@@ -105,13 +106,14 @@ class _LevelSelectWidgetState extends State<LevelSelectWidget> {
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(-1.0, 0.0),
+              alignment: AlignmentDirectional(-1.00, 0.00),
               child: FFButtonWidget(
                 onPressed: () async {
+                  Navigator.pop(context);
+
                   await currentUserReference!.update(createUserRecordData(
                     userLifterExperience: 'Intermediate',
                   ));
-                  Navigator.pop(context);
                 },
                 text: 'Intermediate',
                 options: FFButtonOptions(
@@ -138,13 +140,14 @@ class _LevelSelectWidgetState extends State<LevelSelectWidget> {
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(-1.0, 0.0),
+              alignment: AlignmentDirectional(-1.00, 0.00),
               child: FFButtonWidget(
                 onPressed: () async {
+                  Navigator.pop(context);
+
                   await currentUserReference!.update(createUserRecordData(
                     userLifterExperience: 'Advanced',
                   ));
-                  Navigator.pop(context);
                 },
                 text: 'Advanced',
                 options: FFButtonOptions(

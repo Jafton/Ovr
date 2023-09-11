@@ -58,7 +58,7 @@ class _WeightInputWidgetState extends State<WeightInputWidget> {
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.0, -1.0),
+            alignment: AlignmentDirectional(0.00, -1.00),
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 20.0),
               child: SingleChildScrollView(
@@ -168,6 +168,9 @@ class _WeightInputWidgetState extends State<WeightInputWidget> {
                                               ),
                                         ),
                                         RichText(
+                                          textScaleFactor:
+                                              MediaQuery.of(context)
+                                                  .textScaleFactor,
                                           text: TextSpan(
                                             children: [
                                               TextSpan(
@@ -270,6 +273,9 @@ class _WeightInputWidgetState extends State<WeightInputWidget> {
                                                         ),
                                               ),
                                               RichText(
+                                                textScaleFactor:
+                                                    MediaQuery.of(context)
+                                                        .textScaleFactor,
                                                 text: TextSpan(
                                                   children: [
                                                     TextSpan(

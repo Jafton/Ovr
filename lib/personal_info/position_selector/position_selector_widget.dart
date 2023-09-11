@@ -70,6 +70,9 @@ class _PositionSelectorWidgetState extends State<PositionSelectorWidget> {
         final containerSportAndPositionRecord = snapshot.data!;
         return Container(
           width: double.infinity,
+          constraints: BoxConstraints(
+            maxHeight: MediaQuery.sizeOf(context).width < 430.0 ? 400.0 : 500.0,
+          ),
           decoration: BoxDecoration(
             color: Color(0xFF182433),
             borderRadius: BorderRadius.only(
@@ -85,109 +88,111 @@ class _PositionSelectorWidgetState extends State<PositionSelectorWidget> {
               children: [
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            0.0, 24.0, 0.0, 16.0),
-                        child: Container(
-                          width: 50.0,
-                          height: 5.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).bgBg6,
+                      EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 42.0),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 24.0, 0.0, 16.0),
+                          child: Container(
+                            width: 50.0,
+                            height: 5.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).bgBg6,
+                            ),
                           ),
                         ),
-                      ),
-                      Text(
-                        valueOrDefault<String>(
-                          widget.sport,
-                          'Sport',
-                        ),
-                        style:
-                            FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: 'SF Pro Display',
-                                  fontWeight: FontWeight.w500,
-                                  useGoogleFonts: false,
-                                ),
-                      ),
-                      Divider(
-                        thickness: 1.0,
-                        color: FlutterFlowTheme.of(context).btnBtn,
-                      ),
-                      StreamBuilder<List<PositionRecord>>(
-                        stream: queryPositionRecord(
-                          parent: containerSportAndPositionRecord.sportRef,
-                        ),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 50.0,
-                                height: 50.0,
-                                child: CircularProgressIndicator(
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                    FlutterFlowTheme.of(context).primary,
+                        Text(
+                          valueOrDefault<String>(
+                            widget.sport,
+                            'Sport',
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'SF Pro Display',
+                                    fontWeight: FontWeight.w500,
+                                    useGoogleFonts: false,
                                   ),
-                                ),
-                              ),
-                            );
-                          }
-                          List<PositionRecord> listViewPositionRecordList =
-                              snapshot.data!;
-                          return ListView.builder(
-                            padding: EdgeInsets.zero,
-                            shrinkWrap: true,
-                            scrollDirection: Axis.vertical,
-                            itemCount: listViewPositionRecordList.length,
-                            itemBuilder: (context, listViewIndex) {
-                              final listViewPositionRecord =
-                                  listViewPositionRecordList[listViewIndex];
-                              return FFButtonWidget(
-                                onPressed: () async {
-                                  await widget.sportAndpositionRef!
-                                      .update(createSportAndPositionRecordData(
-                                    position: listViewPositionRecord.short,
-                                  ));
-                                  Navigator.pop(context);
-                                },
-                                text: listViewPositionRecord.positionName,
-                                options: FFButtonOptions(
-                                  width: double.infinity,
-                                  height: 40.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context).bgBg5,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .override(
-                                        fontFamily: 'SF Pro Display',
-                                        color: FlutterFlowTheme.of(context)
-                                            .txtText2,
-                                        fontWeight: FontWeight.w500,
-                                        useGoogleFonts: false,
-                                      ),
-                                  elevation: 0.0,
-                                  borderSide: BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1.0,
+                        ),
+                        Divider(
+                          thickness: 1.0,
+                          color: FlutterFlowTheme.of(context).btnBtn,
+                        ),
+                        StreamBuilder<List<PositionRecord>>(
+                          stream: queryPositionRecord(
+                            parent: containerSportAndPositionRecord.sportRef,
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      FlutterFlowTheme.of(context).primary,
+                                    ),
                                   ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  hoverColor:
-                                      FlutterFlowTheme.of(context).bgStroke,
-                                  hoverElevation: 0.0,
                                 ),
                               );
-                            },
-                          );
-                        },
-                      ),
-                    ],
+                            }
+                            List<PositionRecord> columnPositionRecordList =
+                                snapshot.data!;
+                            return Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children:
+                                  List.generate(columnPositionRecordList.length,
+                                      (columnIndex) {
+                                final columnPositionRecord =
+                                    columnPositionRecordList[columnIndex];
+                                return FFButtonWidget(
+                                  onPressed: () async {
+                                    Navigator.pop(context);
+
+                                    await widget.sportAndpositionRef!.update(
+                                        createSportAndPositionRecordData(
+                                      position: columnPositionRecord.short,
+                                    ));
+                                  },
+                                  text: columnPositionRecord.positionName,
+                                  options: FFButtonOptions(
+                                    width: double.infinity,
+                                    height: 40.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: FlutterFlowTheme.of(context).bgBg5,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'SF Pro Display',
+                                          color: FlutterFlowTheme.of(context)
+                                              .txtText2,
+                                          fontWeight: FontWeight.w500,
+                                          useGoogleFonts: false,
+                                        ),
+                                    elevation: 0.0,
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    hoverColor:
+                                        FlutterFlowTheme.of(context).bgStroke,
+                                    hoverElevation: 0.0,
+                                  ),
+                                );
+                              }),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],

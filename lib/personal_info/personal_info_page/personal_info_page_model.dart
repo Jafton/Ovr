@@ -15,7 +15,6 @@ import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -34,9 +33,6 @@ class PersonalInfoPageModel extends FlutterFlowModel {
   // State field(s) for UsernameField widget.
   TextEditingController? usernameFieldController;
   String? Function(BuildContext, String?)? usernameFieldControllerValidator;
-  // State field(s) for weight widget.
-  TextEditingController? weightController;
-  String? Function(BuildContext, String?)? weightControllerValidator;
 
   /// Initialization and disposal methods.
 
@@ -45,7 +41,6 @@ class PersonalInfoPageModel extends FlutterFlowModel {
   void dispose() {
     unfocusNode.dispose();
     usernameFieldController?.dispose();
-    weightController?.dispose();
   }
 
   /// Action blocks are added here.

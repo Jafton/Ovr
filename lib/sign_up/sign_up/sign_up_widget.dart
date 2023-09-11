@@ -198,7 +198,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                     children: [
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(-1.0, 0.0),
+                                            AlignmentDirectional(-1.00, 0.00),
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
@@ -206,7 +206,12 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                           child: Text(
                                             'TRAINING. SMARTER. ',
                                             style: FlutterFlowTheme.of(context)
-                                                .headlineMedium,
+                                                .headlineMedium
+                                                .override(
+                                                  fontFamily: 'Bicyclette',
+                                                  fontSize: 27.0,
+                                                  useGoogleFonts: false,
+                                                ),
                                           ),
                                         ),
                                       ),
@@ -332,7 +337,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                                               context)
                                                           .bgBg2,
                                                   prefixIcon: Icon(
-                                                    FFIcons.kuser,
+                                                    FFIcons.kuserWithTick,
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .txtText4,
@@ -1493,6 +1498,9 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 16.0, 0.0, 16.0),
                                         child: RichText(
+                                          textScaleFactor:
+                                              MediaQuery.of(context)
+                                                  .textScaleFactor,
                                           text: TextSpan(
                                             children: [
                                               TextSpan(

@@ -143,7 +143,7 @@ class _PhotoCropUICopyState extends State<PhotoCropUICopy> {
                   await Future.delayed(const Duration(milliseconds: 1000));
                   Navigator.pop(context);
                 },
-                text: 'Set photo',
+                text: 'SET PHOTO',
                 options: FFButtonOptions(
                   width: double.infinity,
                   height: 55,

@@ -43,224 +43,206 @@ class _SportAndPositionPageWidgetState
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).bgBg5,
-        appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).bgBg4,
-          automaticallyImplyLeading: false,
-          title: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              FlutterFlowIconButton(
-                borderColor: Colors.transparent,
-                borderRadius: 10.0,
-                borderWidth: 1.0,
-                buttonSize: 52.0,
-                fillColor: FlutterFlowTheme.of(context).bgStroke,
-                icon: Icon(
-                  FFIcons.karrowLeft,
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  size: 20.0,
+    return StreamBuilder<List<SportAndPositionRecord>>(
+      stream: querySportAndPositionRecord(
+        parent: currentUserReference,
+        queryBuilder: (sportAndPositionRecord) =>
+            sportAndPositionRecord.orderBy('creation_date'),
+      ),
+      builder: (context, snapshot) {
+        // Customize what your widget looks like when it's loading.
+        if (!snapshot.hasData) {
+          return Scaffold(
+            backgroundColor: FlutterFlowTheme.of(context).bgBg5,
+            body: Center(
+              child: SizedBox(
+                width: 50.0,
+                height: 50.0,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    FlutterFlowTheme.of(context).primary,
+                  ),
                 ),
-                onPressed: () async {
-                  context.safePop();
-                  setState(() {
-                    FFAppState().heightUnit = 'ft';
-                  });
-                },
               ),
-              Text(
-                'CHANGE\nSPORT',
-                textAlign: TextAlign.end,
-                style: FlutterFlowTheme.of(context).headlineSmall.override(
-                      fontFamily: 'Bicyclette',
-                      fontWeight: FontWeight.w900,
-                      useGoogleFonts: false,
-                    ),
-              ),
-            ],
-          ),
-          actions: [],
-          centerTitle: false,
-          elevation: 0.0,
-        ),
-        body: SafeArea(
-          top: true,
-          child: Align(
-            alignment: AlignmentDirectional(0.0, 0.0),
-            child: SingleChildScrollView(
-              child: Column(
+            ),
+          );
+        }
+        List<SportAndPositionRecord>
+            sportAndPositionPageSportAndPositionRecordList = snapshot.data!;
+        return GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+          child: Scaffold(
+            key: scaffoldKey,
+            backgroundColor: FlutterFlowTheme.of(context).bgBg5,
+            appBar: AppBar(
+              backgroundColor: FlutterFlowTheme.of(context).bgBg4,
+              automaticallyImplyLeading: false,
+              title: Row(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    width: MediaQuery.sizeOf(context).width * 1.0,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF182433),
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(0.0),
-                        bottomRight: Radius.circular(0.0),
-                        topLeft: Radius.circular(16.0),
-                        topRight: Radius.circular(16.0),
-                      ),
+                  FlutterFlowIconButton(
+                    borderColor: Colors.transparent,
+                    borderRadius: 10.0,
+                    borderWidth: 1.0,
+                    buttonSize: 52.0,
+                    fillColor: FlutterFlowTheme.of(context).bgStroke,
+                    icon: Icon(
+                      FFIcons.karrowLeft,
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      size: 20.0,
                     ),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          16.0, 16.0, 16.0, 16.0),
-                      child: SingleChildScrollView(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  8.0, 0.0, 8.0, 16.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Column(
+                    onPressed: () async {
+                      context.safePop();
+                      if (sportAndPositionPageSportAndPositionRecordList
+                                  .last.sport ==
+                              null ||
+                          sportAndPositionPageSportAndPositionRecordList
+                                  .last.sport ==
+                              '') {
+                        await sportAndPositionPageSportAndPositionRecordList
+                            .last.reference
+                            .delete();
+                      }
+                    },
+                  ),
+                  Text(
+                    'CHANGE\nSPORT',
+                    textAlign: TextAlign.end,
+                    style: FlutterFlowTheme.of(context).headlineSmall.override(
+                          fontFamily: 'Bicyclette',
+                          fontWeight: FontWeight.w900,
+                          useGoogleFonts: false,
+                        ),
+                  ),
+                ],
+              ),
+              actions: [],
+              centerTitle: false,
+              elevation: 0.0,
+            ),
+            body: SafeArea(
+              top: true,
+              child: Align(
+                alignment: AlignmentDirectional(0.00, 0.00),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: MediaQuery.sizeOf(context).width * 1.0,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF182433),
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(0.0),
+                            bottomRight: Radius.circular(0.0),
+                            topLeft: Radius.circular(16.0),
+                            topRight: Radius.circular(16.0),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              16.0, 16.0, 16.0, 16.0),
+                          child: SingleChildScrollView(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      8.0, 0.0, 8.0, 16.0),
+                                  child: Row(
                                     mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
                                     children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 8.0),
-                                        child: Text(
-                                          'PERSONAL INFO',
-                                          textAlign: TextAlign.start,
-                                          style: FlutterFlowTheme.of(context)
-                                              .headlineMedium,
-                                        ),
-                                      ),
-                                      Text(
-                                        'Sport · Position',
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .override(
-                                              fontFamily: 'SF Pro Display',
-                                              color:
+                                      Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 8.0),
+                                            child: Text(
+                                              'PERSONAL INFO',
+                                              textAlign: TextAlign.start,
+                                              style:
                                                   FlutterFlowTheme.of(context)
-                                                      .txtText2,
-                                              useGoogleFonts: false,
+                                                      .headlineMedium,
                                             ),
+                                          ),
+                                          Text(
+                                            'Sport · Position',
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelMedium
+                                                .override(
+                                                  fontFamily: 'SF Pro Display',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .txtText2,
+                                                  useGoogleFonts: false,
+                                                ),
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
-                                ],
-                              ),
-                            ),
-                            StreamBuilder<List<SportAndPositionRecord>>(
-                              stream: querySportAndPositionRecord(
-                                parent: currentUserReference,
-                                queryBuilder: (sportAndPositionRecord) =>
-                                    sportAndPositionRecord
-                                        .orderBy('creation_date'),
-                              ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      child: CircularProgressIndicator(
-                                        valueColor:
-                                            AlwaysStoppedAnimation<Color>(
-                                          FlutterFlowTheme.of(context).primary,
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                }
-                                List<SportAndPositionRecord>
-                                    listViewSportAndPositionRecordList =
-                                    snapshot.data!;
-                                return ListView.builder(
-                                  padding: EdgeInsets.zero,
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.vertical,
-                                  itemCount:
-                                      listViewSportAndPositionRecordList.length,
-                                  itemBuilder: (context, listViewIndex) {
-                                    final listViewSportAndPositionRecord =
-                                        listViewSportAndPositionRecordList[
-                                            listViewIndex];
-                                    return SportAndPositionComponentWidget(
-                                      key: Key(
-                                          'Keycel_${listViewIndex}_of_${listViewSportAndPositionRecordList.length}'),
-                                      sport:
-                                          listViewSportAndPositionRecord.sport,
-                                      position: listViewSportAndPositionRecord
-                                          .position,
-                                      sportAndPositionRef:
-                                          listViewSportAndPositionRecord
-                                              .reference,
-                                      short: listViewSportAndPositionRecord
-                                          .position,
+                                ),
+                                Builder(
+                                  builder: (context) {
+                                    final sport =
+                                        sportAndPositionPageSportAndPositionRecordList
+                                            .toList();
+                                    return ListView.builder(
+                                      padding: EdgeInsets.zero,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: sport.length,
+                                      itemBuilder: (context, sportIndex) {
+                                        final sportItem = sport[sportIndex];
+                                        return SportAndPositionComponentWidget(
+                                          key: Key(
+                                              'Key5ij_${sportIndex}_of_${sport.length}'),
+                                          sport: sportItem.sport,
+                                          position: sportItem.position,
+                                          sportAndPositionRef:
+                                              sportItem.reference,
+                                          short: sportItem.position,
+                                        );
+                                      },
                                     );
                                   },
-                                );
-                              },
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 10.0, 0.0, 16.0),
-                              child:
-                                  StreamBuilder<List<SportAndPositionRecord>>(
-                                stream: querySportAndPositionRecord(
-                                  parent: currentUserReference,
-                                  queryBuilder: (sportAndPositionRecord) =>
-                                      sportAndPositionRecord
-                                          .orderBy('creation_date'),
                                 ),
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50.0,
-                                        height: 50.0,
-                                        child: CircularProgressIndicator(
-                                          valueColor:
-                                              AlwaysStoppedAnimation<Color>(
-                                            FlutterFlowTheme.of(context)
-                                                .primary,
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                  List<SportAndPositionRecord>
-                                      buttonSportAndPositionRecordList =
-                                      snapshot.data!;
-                                  return FFButtonWidget(
-                                    onPressed: buttonSportAndPositionRecordList
-                                                .length >=
-                                            3
-                                        ? null
-                                        : () async {
-                                            if ((buttonSportAndPositionRecordList
-                                                        .length <
-                                                    1) ||
-                                                FFAppState().boolean) {
-                                              await SportAndPositionRecord
-                                                      .createDoc(
-                                                          currentUserReference!)
-                                                  .set(
-                                                      createSportAndPositionRecordData(
-                                                creationDate:
-                                                    getCurrentTimestamp,
-                                              ));
-                                              setState(() {
-                                                FFAppState().boolean = false;
-                                              });
-                                            }
-                                          },
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 10.0, 0.0, 16.0),
+                                  child: FFButtonWidget(
+                                    onPressed:
+                                        sportAndPositionPageSportAndPositionRecordList
+                                                    .length >=
+                                                3
+                                            ? null
+                                            : () async {
+                                                if ((sportAndPositionPageSportAndPositionRecordList
+                                                            .length <
+                                                        1) ||
+                                                    (sportAndPositionPageSportAndPositionRecordList
+                                                                .last.sport !=
+                                                            null &&
+                                                        sportAndPositionPageSportAndPositionRecordList
+                                                                .last.sport !=
+                                                            '')) {
+                                                  await SportAndPositionRecord
+                                                          .createDoc(
+                                                              currentUserReference!)
+                                                      .set(
+                                                          createSportAndPositionRecordData(
+                                                    creationDate:
+                                                        getCurrentTimestamp,
+                                                  ));
+                                                }
+                                              },
                                     text: 'ADD MORE SPORTS',
                                     options: FFButtonOptions(
                                       width: double.infinity,
@@ -283,40 +265,24 @@ class _SportAndPositionPageWidgetState
                                       disabledTextColor:
                                           FlutterFlowTheme.of(context).txtText2,
                                     ),
-                                  );
-                                },
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 16.0),
-                              child: StreamBuilder<UserRecord>(
-                                stream: UserRecord.getDocument(
-                                    currentUserReference!),
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50.0,
-                                        height: 50.0,
-                                        child: CircularProgressIndicator(
-                                          valueColor:
-                                              AlwaysStoppedAnimation<Color>(
-                                            FlutterFlowTheme.of(context)
-                                                .primary,
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                  final buttonUserRecord = snapshot.data!;
-                                  return FFButtonWidget(
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 16.0),
+                                  child: FFButtonWidget(
                                     onPressed: () async {
-                                      setState(() {
-                                        FFAppState().boolean = false;
-                                      });
-                                      Navigator.pop(context);
+                                      context.safePop();
+                                      if (sportAndPositionPageSportAndPositionRecordList
+                                                  .last.sport ==
+                                              null ||
+                                          sportAndPositionPageSportAndPositionRecordList
+                                                  .last.sport ==
+                                              '') {
+                                        await sportAndPositionPageSportAndPositionRecordList
+                                            .last.reference
+                                            .delete();
+                                      }
                                     },
                                     text: 'CONFIRM',
                                     options: FFButtonOptions(
@@ -338,21 +304,21 @@ class _SportAndPositionPageWidgetState
                                       ),
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
-                                  );
-                                },
-                              ),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

@@ -40,7 +40,7 @@ class _WrongCodeDialogWidgetState extends State<WrongCodeDialogWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.00, 0.00),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
         child: Container(
@@ -122,9 +122,9 @@ class _WrongCodeDialogWidgetState extends State<WrongCodeDialogWidget> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(0.0),
                     ),
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.00, 0.00),
                     child: Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.00, 0.00),
                       child: Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 7.0, 0.0, 5.0),

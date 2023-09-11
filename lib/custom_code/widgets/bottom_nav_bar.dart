@@ -38,7 +38,8 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
   Widget build(BuildContext context) {
     List<Widget> _widgetOptions = <Widget>[
-      widget.type == 'Velocity' ? ViewDataWidget() : ViewDataCopy2Widget(),
+      ViewDataWidget(),
+      // widget.type == 'Velocity' ? ViewDataWidget() : ViewDataCopy2Widget(),
       widget.type == 'Velocity'
           ? LiftSelectionWidget()
           : JumpModeSelectionWidget(),

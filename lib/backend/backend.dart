@@ -12,6 +12,7 @@ import 'schema/position_record.dart';
 import 'schema/privacy_policy_table_record.dart';
 import 'schema/exercise_record.dart';
 import 'schema/set_record.dart';
+import 'schema/date_of_exercise_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -26,6 +27,7 @@ export 'schema/position_record.dart';
 export 'schema/privacy_policy_table_record.dart';
 export 'schema/exercise_record.dart';
 export 'schema/set_record.dart';
+export 'schema/date_of_exercise_record.dart';
 
 /// Functions to query UserRecords (as a Stream and as a Future).
 Future<int> queryUserRecordCount({
@@ -295,6 +297,46 @@ Future<List<SetRecord>> querySetRecordOnce({
       singleRecord: singleRecord,
     );
 
+/// Functions to query DateOfExerciseRecords (as a Stream and as a Future).
+Future<int> queryDateOfExerciseRecordCount({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      DateOfExerciseRecord.collection(parent),
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<DateOfExerciseRecord>> queryDateOfExerciseRecord({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      DateOfExerciseRecord.collection(parent),
+      DateOfExerciseRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<DateOfExerciseRecord>> queryDateOfExerciseRecordOnce({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      DateOfExerciseRecord.collection(parent),
+      DateOfExerciseRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
 Future<int> queryCollectionCount(
   Query collection, {
   Query Function(Query)? queryBuilder,
@@ -432,7 +474,8 @@ Future maybeCreateUser(User user) async {
 
   final userData = createUserRecordData(
     email: user.email,
-    displayName: user.displayName,
+    displayName:
+        user.displayName ?? FirebaseAuth.instance.currentUser?.displayName,
     photoUrl: user.photoURL,
     uid: user.uid,
     phoneNumber: user.phoneNumber,

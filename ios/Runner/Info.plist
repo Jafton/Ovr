@@ -54,7 +54,9 @@
 	<true/>
 
 	<key>NSCameraUsageDescription</key>
-    <string>In order to take a picture or video, this app requires permission to access the camera.</string>
+    <string>Allow the camera to be used in this application</string>
+	<key>NSMicrophoneUsageDescription</key>
+    <string>Allow the microphone to be used in this application</string>
 	<key>NSPhotoLibraryUsageDescription</key>
     <string>In order to upload data, this app requires permission to access the photo library.</string>
 

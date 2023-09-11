@@ -7,13 +7,17 @@ import 'flutter_flow/flutter_flow_util.dart';
 import 'dart:convert';
 
 class FFAppState extends ChangeNotifier {
-  static final FFAppState _instance = FFAppState._internal();
+  static FFAppState _instance = FFAppState._internal();
 
   factory FFAppState() {
     return _instance;
   }
 
   FFAppState._internal();
+
+  static void reset() {
+    _instance = FFAppState._internal();
+  }
 
   Future initializePersistedState() async {
     prefs = await SharedPreferences.getInstance();
@@ -94,7 +98,7 @@ class FFAppState extends ChangeNotifier {
     _weightUnit = _value;
   }
 
-  String _weight = '';
+  String _weight = '180';
   String get weight => _weight;
   set weight(String _value) {
     _weight = _value;
@@ -147,6 +151,10 @@ class FFAppState extends ChangeNotifier {
     int Function(int) updateFn,
   ) {
     _sportsCountList[_index] = updateFn(_sportsCountList[_index]);
+  }
+
+  void insertAtIndexInSportsCountList(int _index, int _value) {
+    _sportsCountList.insert(_index, _value);
   }
 
   bool _isCorrectPassword = false;
@@ -243,6 +251,10 @@ class FFAppState extends ChangeNotifier {
     _iconSelection[_index] = updateFn(_iconSelection[_index]);
   }
 
+  void insertAtIndexInIconSelection(int _index, String _value) {
+    _iconSelection.insert(_index, _value);
+  }
+
   String _iconSelected = '';
   String get iconSelected => _iconSelected;
   set iconSelected(String _value) {
@@ -278,6 +290,10 @@ class FFAppState extends ChangeNotifier {
     int Function(int) updateFn,
   ) {
     _numbers[_index] = updateFn(_numbers[_index]);
+  }
+
+  void insertAtIndexInNumbers(int _index, int _value) {
+    _numbers.insert(_index, _value);
   }
 
   String _weightSelection = '';
@@ -328,7 +344,20 @@ class FFAppState extends ChangeNotifier {
     _sortStateNotApplied = _value;
   }
 
-  List<RepStruct> _listOfReps = [];
+  List<RepStruct> _listOfReps = [
+    RepStruct.fromSerializableMap(jsonDecode(
+        '{\"rep_velocity\":\"2\",\"rep_fatigue\":\"Hello World\",\"rep_max_velocity\":\"Hello World\",\"rep_range_of_motion\":\"Hello World\",\"rep_power\":\"1\"}')),
+    RepStruct.fromSerializableMap(jsonDecode(
+        '{\"rep_velocity\":\"1\",\"rep_fatigue\":\"Hello World\",\"rep_max_velocity\":\"Hello World\",\"rep_range_of_motion\":\"Hello World\",\"rep_power\":\"Hello World\"}')),
+    RepStruct.fromSerializableMap(jsonDecode(
+        '{\"rep_velocity\":\"4\",\"rep_fatigue\":\"Hello World\",\"rep_max_velocity\":\"Hello World\",\"rep_range_of_motion\":\"Hello World\",\"rep_power\":\"Hello World\"}')),
+    RepStruct.fromSerializableMap(jsonDecode(
+        '{\"rep_velocity\":\"3\",\"rep_fatigue\":\"Hello World\",\"rep_max_velocity\":\"Hello World\",\"rep_range_of_motion\":\"Hello World\",\"rep_power\":\"Hello World\"}')),
+    RepStruct.fromSerializableMap(jsonDecode(
+        '{\"rep_velocity\":\"2\",\"rep_fatigue\":\"Hello World\",\"rep_max_velocity\":\"Hello World\",\"rep_range_of_motion\":\"Hello World\",\"rep_power\":\"Hello World\"}')),
+    RepStruct.fromSerializableMap(jsonDecode(
+        '{\"rep_velocity\":\"1\",\"rep_fatigue\":\"Hello World\",\"rep_max_velocity\":\"Hello World\",\"rep_range_of_motion\":\"Hello World\",\"rep_power\":\"Hello World\"}'))
+  ];
   List<RepStruct> get listOfReps => _listOfReps;
   set listOfReps(List<RepStruct> _value) {
     _listOfReps = _value;
@@ -351,6 +380,80 @@ class FFAppState extends ChangeNotifier {
     RepStruct Function(RepStruct) updateFn,
   ) {
     _listOfReps[_index] = updateFn(_listOfReps[_index]);
+  }
+
+  void insertAtIndexInListOfReps(int _index, RepStruct _value) {
+    _listOfReps.insert(_index, _value);
+  }
+
+  List<int> _chartData = [1, 2, 3, 4, 5, 6, 7];
+  List<int> get chartData => _chartData;
+  set chartData(List<int> _value) {
+    _chartData = _value;
+  }
+
+  void addToChartData(int _value) {
+    _chartData.add(_value);
+  }
+
+  void removeFromChartData(int _value) {
+    _chartData.remove(_value);
+  }
+
+  void removeAtIndexFromChartData(int _index) {
+    _chartData.removeAt(_index);
+  }
+
+  void updateChartDataAtIndex(
+    int _index,
+    int Function(int) updateFn,
+  ) {
+    _chartData[_index] = updateFn(_chartData[_index]);
+  }
+
+  void insertAtIndexInChartData(int _index, int _value) {
+    _chartData.insert(_index, _value);
+  }
+
+  List<int> _chartDataY = [8, 9, 2, 3, 5, 4, 0];
+  List<int> get chartDataY => _chartDataY;
+  set chartDataY(List<int> _value) {
+    _chartDataY = _value;
+  }
+
+  void addToChartDataY(int _value) {
+    _chartDataY.add(_value);
+  }
+
+  void removeFromChartDataY(int _value) {
+    _chartDataY.remove(_value);
+  }
+
+  void removeAtIndexFromChartDataY(int _index) {
+    _chartDataY.removeAt(_index);
+  }
+
+  void updateChartDataYAtIndex(
+    int _index,
+    int Function(int) updateFn,
+  ) {
+    _chartDataY[_index] = updateFn(_chartDataY[_index]);
+  }
+
+  void insertAtIndexInChartDataY(int _index, int _value) {
+    _chartDataY.insert(_index, _value);
+  }
+
+  bool _isOfflineMode = false;
+  bool get isOfflineMode => _isOfflineMode;
+  set isOfflineMode(bool _value) {
+    _isOfflineMode = _value;
+  }
+
+  bool _connected = false;
+  bool get connected => _connected;
+  set connected(bool _value) {
+    _connected = _value;
   }
 }
 

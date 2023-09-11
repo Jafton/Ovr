@@ -87,7 +87,7 @@ class _HeightPageWidgetState extends State<HeightPageWidget> {
           elevation: 0.0,
         ),
         body: Align(
-          alignment: AlignmentDirectional(0.0, 0.0),
+          alignment: AlignmentDirectional(0.00, 0.00),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -216,10 +216,14 @@ class _HeightPageWidgetState extends State<HeightPageWidget> {
                                 : () async {
                                     await currentUserReference!
                                         .update(createUserRecordData(
-                                      userHeight:
-                                          '${FFAppState().height} ${FFAppState().heightUnit}',
+                                      userHeight: FFAppState().height,
+                                      userHeightUnit: FFAppState().heightUnit,
                                     ));
                                     context.safePop();
+                                    setState(() {
+                                      FFAppState().height = '5\' 9\"';
+                                      FFAppState().heightUnit = 'ft';
+                                    });
                                   },
                             text: 'CONFIRM',
                             options: FFButtonOptions(

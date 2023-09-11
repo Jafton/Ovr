@@ -62,7 +62,7 @@ class _GetStartedWidgetState extends State<GetStartedWidget> {
               ),
             ),
             child: Align(
-              alignment: AlignmentDirectional(0.0, 0.0),
+              alignment: AlignmentDirectional(0.00, 0.00),
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(16.0, 30.0, 16.0, 30.0),
                 child: Column(
@@ -85,7 +85,7 @@ class _GetStartedWidgetState extends State<GetStartedWidget> {
                     Spacer(),
                     if (MediaQuery.sizeOf(context).width > 430.0)
                       Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.00, 0.00),
                         child: Text(
                           'METRICS MADE EASY',
                           textAlign: TextAlign.center,
@@ -103,7 +103,7 @@ class _GetStartedWidgetState extends State<GetStartedWidget> {
                       ),
                     if (MediaQuery.sizeOf(context).width < 430.0)
                       Align(
-                        alignment: AlignmentDirectional(-1.0, 0.0),
+                        alignment: AlignmentDirectional(-1.00, 0.00),
                         child: Text(
                           'METRICS MADE EASY',
                           textAlign: TextAlign.start,
@@ -118,7 +118,7 @@ class _GetStartedWidgetState extends State<GetStartedWidget> {
                       ),
                     if (MediaQuery.sizeOf(context).width < 430.0)
                       Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.00, 0.00),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 16.0, 0.0, 16.0),
@@ -141,7 +141,7 @@ class _GetStartedWidgetState extends State<GetStartedWidget> {
                       ),
                     if (MediaQuery.sizeOf(context).width > 430.0)
                       Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.00, 0.00),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 16.0, 0.0, 168.0),
@@ -166,6 +166,7 @@ class _GetStartedWidgetState extends State<GetStartedWidget> {
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                       child: RichText(
+                        textScaleFactor: MediaQuery.of(context).textScaleFactor,
                         text: TextSpan(
                           children: [
                             TextSpan(
@@ -299,6 +300,7 @@ class _GetStartedWidgetState extends State<GetStartedWidget> {
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
                       child: RichText(
+                        textScaleFactor: MediaQuery.of(context).textScaleFactor,
                         text: TextSpan(
                           children: [
                             TextSpan(

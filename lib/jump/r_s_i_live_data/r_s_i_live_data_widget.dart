@@ -52,7 +52,7 @@ class _RSILiveDataWidgetState extends State<RSILiveDataWidget> {
             children: [
               Expanded(
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.00, 0.00),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -259,7 +259,7 @@ class _RSILiveDataWidgetState extends State<RSILiveDataWidget> {
                                               ),
                                               child: Align(
                                                 alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
+                                                    0.00, 0.00),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(10.0, 10.0,
@@ -297,7 +297,7 @@ class _RSILiveDataWidgetState extends State<RSILiveDataWidget> {
                                               ),
                                               child: Align(
                                                 alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
+                                                    0.00, 0.00),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(10.0, 10.0,
@@ -335,7 +335,7 @@ class _RSILiveDataWidgetState extends State<RSILiveDataWidget> {
                                               ),
                                               child: Align(
                                                 alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
+                                                    0.00, 0.00),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(10.0, 10.0,
@@ -373,7 +373,7 @@ class _RSILiveDataWidgetState extends State<RSILiveDataWidget> {
                                               ),
                                               child: Align(
                                                 alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
+                                                    0.00, 0.00),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(10.0, 10.0,
@@ -411,7 +411,7 @@ class _RSILiveDataWidgetState extends State<RSILiveDataWidget> {
                                               ),
                                               child: Align(
                                                 alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
+                                                    0.00, 0.00),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(10.0, 10.0,
@@ -465,6 +465,9 @@ class _RSILiveDataWidgetState extends State<RSILiveDataWidget> {
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
                                                 RichText(
+                                                  textScaleFactor:
+                                                      MediaQuery.of(context)
+                                                          .textScaleFactor,
                                                   text: TextSpan(
                                                     children: [
                                                       TextSpan(
@@ -532,7 +535,7 @@ class _RSILiveDataWidgetState extends State<RSILiveDataWidget> {
                                                           child: Align(
                                                             alignment:
                                                                 AlignmentDirectional(
-                                                                    0.0, 0.0),
+                                                                    0.00, 0.00),
                                                             child: Padding(
                                                               padding:
                                                                   EdgeInsetsDirectional
@@ -576,7 +579,7 @@ class _RSILiveDataWidgetState extends State<RSILiveDataWidget> {
                                                         child: Align(
                                                           alignment:
                                                               AlignmentDirectional(
-                                                                  0.0, 0.0),
+                                                                  0.00, 0.00),
                                                           child: Padding(
                                                             padding:
                                                                 EdgeInsetsDirectional
@@ -634,6 +637,9 @@ class _RSILiveDataWidgetState extends State<RSILiveDataWidget> {
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
                                                 RichText(
+                                                  textScaleFactor:
+                                                      MediaQuery.of(context)
+                                                          .textScaleFactor,
                                                   text: TextSpan(
                                                     children: [
                                                       TextSpan(
@@ -701,7 +707,7 @@ class _RSILiveDataWidgetState extends State<RSILiveDataWidget> {
                                                           child: Align(
                                                             alignment:
                                                                 AlignmentDirectional(
-                                                                    0.0, 0.0),
+                                                                    0.00, 0.00),
                                                             child: Padding(
                                                               padding:
                                                                   EdgeInsetsDirectional
@@ -745,7 +751,7 @@ class _RSILiveDataWidgetState extends State<RSILiveDataWidget> {
                                                         child: Align(
                                                           alignment:
                                                               AlignmentDirectional(
-                                                                  0.0, 0.0),
+                                                                  0.00, 0.00),
                                                           child: Padding(
                                                             padding:
                                                                 EdgeInsetsDirectional

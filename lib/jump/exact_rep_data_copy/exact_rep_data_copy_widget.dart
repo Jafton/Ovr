@@ -200,6 +200,7 @@ class _ExactRepDataCopyWidgetState extends State<ExactRepDataCopyWidget> {
                     scrollDirection: Axis.vertical,
                     children: [
                       RichText(
+                        textScaleFactor: MediaQuery.of(context).textScaleFactor,
                         text: TextSpan(
                           children: [
                             TextSpan(
@@ -231,6 +232,7 @@ class _ExactRepDataCopyWidgetState extends State<ExactRepDataCopyWidget> {
                         ),
                       ),
                       RichText(
+                        textScaleFactor: MediaQuery.of(context).textScaleFactor,
                         text: TextSpan(
                           children: [
                             TextSpan(
@@ -253,6 +255,7 @@ class _ExactRepDataCopyWidgetState extends State<ExactRepDataCopyWidget> {
                         ),
                       ),
                       RichText(
+                        textScaleFactor: MediaQuery.of(context).textScaleFactor,
                         text: TextSpan(
                           children: [
                             TextSpan(
@@ -275,6 +278,7 @@ class _ExactRepDataCopyWidgetState extends State<ExactRepDataCopyWidget> {
                         ),
                       ),
                       RichText(
+                        textScaleFactor: MediaQuery.of(context).textScaleFactor,
                         text: TextSpan(
                           children: [
                             TextSpan(
@@ -297,6 +301,7 @@ class _ExactRepDataCopyWidgetState extends State<ExactRepDataCopyWidget> {
                         ),
                       ),
                       RichText(
+                        textScaleFactor: MediaQuery.of(context).textScaleFactor,
                         text: TextSpan(
                           children: [
                             TextSpan(
@@ -319,6 +324,7 @@ class _ExactRepDataCopyWidgetState extends State<ExactRepDataCopyWidget> {
                         ),
                       ),
                       RichText(
+                        textScaleFactor: MediaQuery.of(context).textScaleFactor,
                         text: TextSpan(
                           children: [
                             TextSpan(
@@ -341,6 +347,7 @@ class _ExactRepDataCopyWidgetState extends State<ExactRepDataCopyWidget> {
                         ),
                       ),
                       RichText(
+                        textScaleFactor: MediaQuery.of(context).textScaleFactor,
                         text: TextSpan(
                           children: [
                             TextSpan(
@@ -408,6 +415,7 @@ class _ExactRepDataCopyWidgetState extends State<ExactRepDataCopyWidget> {
                                 ),
                       ),
                       RichText(
+                        textScaleFactor: MediaQuery.of(context).textScaleFactor,
                         text: TextSpan(
                           children: [
                             TextSpan(

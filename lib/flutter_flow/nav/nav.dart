@@ -249,11 +249,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => MainPageWidget(),
         ),
         FFRoute(
-          name: 'iconsTesting',
-          path: '/iconsTesting',
-          builder: (context, params) => IconsTestingWidget(),
-        ),
-        FFRoute(
           name: 'VerticalJumpLiveData',
           path: '/verticalJumpLiveData',
           builder: (context, params) => VerticalJumpLiveDataWidget(),
@@ -281,17 +276,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => HeightPageWidget(),
         ),
         FFRoute(
+          name: 'VideoRecording',
+          path: '/videoRecording',
+          builder: (context, params) => VideoRecordingWidget(),
+        ),
+        FFRoute(
           name: 'SportAndPositionPage',
           path: '/sportAndPositionPage',
           builder: (context, params) => SportAndPositionPageWidget(),
         ),
         FFRoute(
-          name: 'test',
-          path: '/test',
-          builder: (context, params) => TestWidget(
-            ref: params.getParam(
-                'ref', ParamType.DocumentReference, false, ['exercise']),
-          ),
+          name: 'LiftSelectionCopy',
+          path: '/liftSelectionCopy',
+          builder: (context, params) => LiftSelectionCopyWidget(),
+        ),
+        FFRoute(
+          name: 'JumpModeSelectionCopy',
+          path: '/jumpModeSelectionCopy',
+          builder: (context, params) => JumpModeSelectionCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -471,15 +473,11 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primary,
-                      ),
-                    ),
+              ? Container(
+                  color: Colors.transparent,
+                  child: Image.asset(
+                    'assets/images/LOADER.png',
+                    fit: BoxFit.cover,
                   ),
                 )
               : page;

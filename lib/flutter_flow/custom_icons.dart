@@ -6,6 +6,7 @@ class FFIcons {
   static const String _twoIconsFamily = 'TwoIcons';
   static const String _newIconsFamily = 'NewIcons';
   static const String _appFamily = 'App';
+  static const String _userWithhTickFamily = 'UserWithhTick';
 
   // two_icons
   static const IconData ksms = IconData(0xe800, fontFamily: _twoIconsFamily);
@@ -86,4 +87,8 @@ class FFIcons {
   static const IconData kweight1 = IconData(0xe842, fontFamily: _appFamily);
   static const IconData kweight = IconData(0xe843, fontFamily: _appFamily);
   static const IconData kyoutube = IconData(0xe844, fontFamily: _appFamily);
+
+  // UserWithhTick
+  static const IconData kuserWithTick =
+      IconData(0xe800, fontFamily: _userWithhTickFamily);
 }

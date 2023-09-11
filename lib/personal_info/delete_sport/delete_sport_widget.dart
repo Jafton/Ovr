@@ -65,7 +65,7 @@ class _DeleteSportWidgetState extends State<DeleteSportWidget> {
         ),
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
+        padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 40.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -81,11 +81,9 @@ class _DeleteSportWidgetState extends State<DeleteSportWidget> {
             ),
             FFButtonWidget(
               onPressed: () async {
-                await widget.sportAndPositionRef!.delete();
-                _model.updatePage(() {
-                  FFAppState().boolean = true;
-                });
                 Navigator.pop(context);
+                await widget.sportAndPositionRef!.delete();
+                _model.updatePage(() {});
               },
               text: 'DELETE',
               options: FFButtonOptions(

@@ -109,7 +109,7 @@ class _ViewDataCopyWidgetState extends State<ViewDataCopyWidget> {
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.0, -1.0),
+            alignment: AlignmentDirectional(0.00, -1.00),
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
               child: SingleChildScrollView(
@@ -146,6 +146,7 @@ class _ViewDataCopyWidgetState extends State<ViewDataCopyWidget> {
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 18.0, 0.0, 18.0),
                       child: RichText(
+                        textScaleFactor: MediaQuery.of(context).textScaleFactor,
                         text: TextSpan(
                           children: [
                             TextSpan(
@@ -241,6 +242,8 @@ class _ViewDataCopyWidgetState extends State<ViewDataCopyWidget> {
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   RichText(
+                                    textScaleFactor:
+                                        MediaQuery.of(context).textScaleFactor,
                                     text: TextSpan(
                                       children: [
                                         TextSpan(
@@ -281,6 +284,8 @@ class _ViewDataCopyWidgetState extends State<ViewDataCopyWidget> {
                                     ),
                                   ),
                                   RichText(
+                                    textScaleFactor:
+                                        MediaQuery.of(context).textScaleFactor,
                                     text: TextSpan(
                                       children: [
                                         TextSpan(
@@ -321,6 +326,8 @@ class _ViewDataCopyWidgetState extends State<ViewDataCopyWidget> {
                                     ),
                                   ),
                                   RichText(
+                                    textScaleFactor:
+                                        MediaQuery.of(context).textScaleFactor,
                                     text: TextSpan(
                                       children: [
                                         TextSpan(
@@ -361,6 +368,8 @@ class _ViewDataCopyWidgetState extends State<ViewDataCopyWidget> {
                                     ),
                                   ),
                                   RichText(
+                                    textScaleFactor:
+                                        MediaQuery.of(context).textScaleFactor,
                                     text: TextSpan(
                                       children: [
                                         TextSpan(
@@ -415,7 +424,7 @@ class _ViewDataCopyWidgetState extends State<ViewDataCopyWidget> {
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                         child: Align(
-                          alignment: AlignmentDirectional(0.0, 1.0),
+                          alignment: AlignmentDirectional(0.00, 1.00),
                           child: FFButtonWidget(
                             onPressed: () {
                               print('Button pressed ...');

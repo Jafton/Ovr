@@ -44,7 +44,6 @@ export '/velocity_export/live_data_copy2/live_data_copy2_widget.dart'
 export '/sign_up/sign_in/sign_in_widget.dart' show SignInWidget;
 export '/check_data/check_data_widget.dart' show CheckDataWidget;
 export '/main_page/main_page_widget.dart' show MainPageWidget;
-export '/icons_testing/icons_testing_widget.dart' show IconsTestingWidget;
 export '/jump/vertical_jump_live_data/vertical_jump_live_data_widget.dart'
     show VerticalJumpLiveDataWidget;
 export '/profile/profile_page/profile_page_widget.dart' show ProfilePageWidget;
@@ -52,6 +51,11 @@ export '/jump/jump_exercise_selection/jump_exercise_selection_widget.dart'
     show JumpExerciseSelectionWidget;
 export '/profile/weight_page/weight_page_widget.dart' show WeightPageWidget;
 export '/profile/height_page/height_page_widget.dart' show HeightPageWidget;
+export '/velocity/video_recording/video_recording_widget.dart'
+    show VideoRecordingWidget;
 export '/profile/sport_and_position_page/sport_and_position_page_widget.dart'
     show SportAndPositionPageWidget;
-export '/test/test_widget.dart' show TestWidget;
+export '/offline_mode/lift_selection_copy/lift_selection_copy_widget.dart'
+    show LiftSelectionCopyWidget;
+export '/offline_mode/jump_mode_selection_copy/jump_mode_selection_copy_widget.dart'
+    show JumpModeSelectionCopyWidget;

@@ -55,7 +55,7 @@ class _MassUnitSelectorWidgetState extends State<MassUnitSelectorWidget> {
         ),
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+        padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 42.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -72,13 +72,14 @@ class _MassUnitSelectorWidgetState extends State<MassUnitSelectorWidget> {
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(-1.0, 0.0),
+              alignment: AlignmentDirectional(-1.00, 0.00),
               child: FFButtonWidget(
                 onPressed: () async {
+                  Navigator.pop(context);
+
                   await currentUserReference!.update(createUserRecordData(
                     userUnits: 'lb',
                   ));
-                  Navigator.pop(context);
                 },
                 text: 'lb',
                 options: FFButtonOptions(
@@ -105,13 +106,14 @@ class _MassUnitSelectorWidgetState extends State<MassUnitSelectorWidget> {
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(-1.0, 0.0),
+              alignment: AlignmentDirectional(-1.00, 0.00),
               child: FFButtonWidget(
                 onPressed: () async {
+                  Navigator.pop(context);
+
                   await currentUserReference!.update(createUserRecordData(
                     userUnits: 'kg',
                   ));
-                  Navigator.pop(context);
                 },
                 text: 'kg',
                 options: FFButtonOptions(

@@ -21,6 +21,6 @@ Future callbackAction(
   users
       .doc(docReference)
       .update({'photo_url': '$photoPath'})
-      .then((value) => print("User Updated"))
+      .then((value) => print('uploaded'))
       .catchError((error) => print("Failed to update user: $error"));
 }

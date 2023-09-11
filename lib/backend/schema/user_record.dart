@@ -127,6 +127,16 @@ class UserRecord extends FirestoreRecord {
   String get userVelocityOrJump => _userVelocityOrJump ?? '';
   bool hasUserVelocityOrJump() => _userVelocityOrJump != null;
 
+  // "user_viewData_exercise" field.
+  String? _userViewDataExercise;
+  String get userViewDataExercise => _userViewDataExercise ?? '';
+  bool hasUserViewDataExercise() => _userViewDataExercise != null;
+
+  // "user_viewdata_exercise" field.
+  DocumentReference? _userViewdataExercise;
+  DocumentReference? get userViewdataExercise => _userViewdataExercise;
+  bool hasUserViewdataExercise() => _userViewdataExercise != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -150,6 +160,9 @@ class UserRecord extends FirestoreRecord {
     _userHeightUnit = snapshotData['user_height_unit'] as String?;
     _userWeightUnit = snapshotData['user_weight_unit'] as String?;
     _userVelocityOrJump = snapshotData['user_velocity_or_jump'] as String?;
+    _userViewDataExercise = snapshotData['user_viewData_exercise'] as String?;
+    _userViewdataExercise =
+        snapshotData['user_viewdata_exercise'] as DocumentReference?;
   }
 
   static CollectionReference get collection =>
@@ -207,6 +220,8 @@ Map<String, dynamic> createUserRecordData({
   String? userHeightUnit,
   String? userWeightUnit,
   String? userVelocityOrJump,
+  String? userViewDataExercise,
+  DocumentReference? userViewdataExercise,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -231,6 +246,8 @@ Map<String, dynamic> createUserRecordData({
       'user_height_unit': userHeightUnit,
       'user_weight_unit': userWeightUnit,
       'user_velocity_or_jump': userVelocityOrJump,
+      'user_viewData_exercise': userViewDataExercise,
+      'user_viewdata_exercise': userViewdataExercise,
     }.withoutNulls,
   );
 
@@ -265,7 +282,9 @@ class UserRecordDocumentEquality implements Equality<UserRecord> {
             e1?.userSportAndPosition, e2?.userSportAndPosition) &&
         e1?.userHeightUnit == e2?.userHeightUnit &&
         e1?.userWeightUnit == e2?.userWeightUnit &&
-        e1?.userVelocityOrJump == e2?.userVelocityOrJump;
+        e1?.userVelocityOrJump == e2?.userVelocityOrJump &&
+        e1?.userViewDataExercise == e2?.userViewDataExercise &&
+        e1?.userViewdataExercise == e2?.userViewdataExercise;
   }
 
   @override
@@ -291,7 +310,9 @@ class UserRecordDocumentEquality implements Equality<UserRecord> {
         e?.userSportAndPosition,
         e?.userHeightUnit,
         e?.userWeightUnit,
-        e?.userVelocityOrJump
+        e?.userVelocityOrJump,
+        e?.userViewDataExercise,
+        e?.userViewdataExercise
       ]);
 
   @override

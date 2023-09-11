@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
@@ -41,7 +42,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
       onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).bgBg2,
         body: SafeArea(
           top: true,
           child: Stack(
@@ -63,7 +64,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                 ],
               ),
               Align(
-                alignment: AlignmentDirectional(0.0, 1.0),
+                alignment: AlignmentDirectional(0.00, 1.00),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(0.0),
                   child: BackdropFilter(
@@ -82,7 +83,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.0, 1.0),
+                alignment: AlignmentDirectional(0.00, 1.00),
                 child: Container(
                   width: double.infinity,
                   height: 100.0,
@@ -121,37 +122,70 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                           ),
                         ),
                       ),
-                      InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          setState(() {
-                            FFAppState().pageIndex = 1;
-                          });
-                        },
-                        child: Container(
-                          width: 64.0,
-                          height: 64.0,
-                          decoration: BoxDecoration(
-                            color: FFAppState().pageIndex == 1
-                                ? FlutterFlowTheme.of(context).btnDefault
-                                : Color(0x00000000),
-                            borderRadius: BorderRadius.circular(16.0),
-                          ),
-                          child: Icon(
-                            FFIcons.kweight,
-                            color: valueOrDefault<Color>(
-                              FFAppState().pageIndex == 1
-                                  ? FlutterFlowTheme.of(context).txtText1
-                                  : FlutterFlowTheme.of(context).txtText2,
-                              FlutterFlowTheme.of(context).txtText2,
+                      if (FFAppState().velocityOrJump == 'Velocity')
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            setState(() {
+                              FFAppState().pageIndex = 1;
+                            });
+                          },
+                          child: Container(
+                            width: 64.0,
+                            height: 64.0,
+                            decoration: BoxDecoration(
+                              color: FFAppState().pageIndex == 1
+                                  ? FlutterFlowTheme.of(context).btnDefault
+                                  : Color(0x00000000),
+                              borderRadius: BorderRadius.circular(16.0),
                             ),
-                            size: 24.0,
+                            child: Icon(
+                              FFIcons.kweight,
+                              color: valueOrDefault<Color>(
+                                FFAppState().pageIndex == 1
+                                    ? FlutterFlowTheme.of(context).txtText1
+                                    : FlutterFlowTheme.of(context).txtText2,
+                                FlutterFlowTheme.of(context).txtText2,
+                              ),
+                              size: 24.0,
+                            ),
                           ),
                         ),
-                      ),
+                      if (FFAppState().velocityOrJump != 'Velocity')
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            setState(() {
+                              FFAppState().pageIndex = 1;
+                            });
+                          },
+                          child: Container(
+                            width: 64.0,
+                            height: 64.0,
+                            decoration: BoxDecoration(
+                              color: FFAppState().pageIndex == 1
+                                  ? FlutterFlowTheme.of(context).btnDefault
+                                  : Color(0x00000000),
+                              borderRadius: BorderRadius.circular(16.0),
+                            ),
+                            child: Icon(
+                              FFIcons.kforward,
+                              color: valueOrDefault<Color>(
+                                FFAppState().pageIndex == 1
+                                    ? FlutterFlowTheme.of(context).txtText1
+                                    : FlutterFlowTheme.of(context).txtText2,
+                                FlutterFlowTheme.of(context).txtText2,
+                              ),
+                              size: 24.0,
+                            ),
+                          ),
+                        ),
                       InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -168,7 +202,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                           decoration: BoxDecoration(
                             color: FFAppState().pageIndex == 2
                                 ? FlutterFlowTheme.of(context).btnDefault
-                                : Color(0xF1121B26),
+                                : Color(0x00121B26),
                             borderRadius: BorderRadius.circular(16.0),
                           ),
                           child: Icon(

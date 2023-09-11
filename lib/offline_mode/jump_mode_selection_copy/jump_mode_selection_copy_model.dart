@@ -1,24 +1,16 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import '/offline_mode/velocity_or_jump_copy/velocity_or_jump_copy_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class TestModel extends FlutterFlowModel {
+class JumpModeSelectionCopyModel extends FlutterFlowModel {
   ///  Local state fields for this page.
 
-  List<RepStruct> listOfReps = [];
-  void addToListOfReps(RepStruct item) => listOfReps.add(item);
-  void removeFromListOfReps(RepStruct item) => listOfReps.remove(item);
-  void removeAtIndexFromListOfReps(int index) => listOfReps.removeAt(index);
-  void updateListOfRepsAtIndex(int index, Function(RepStruct) updateFn) =>
-      listOfReps[index] = updateFn(listOfReps[index]);
+  bool isEditiingName = false;
 
   ///  State fields for stateful widgets in this page.
 

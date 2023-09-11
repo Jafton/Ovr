@@ -29,19 +29,45 @@ class Height extends StatefulWidget {
 
 enum HeightUnit { ft, cm }
 
+Map<String, int> extractFeetAndInches(String input) {
+  // Split the input string by the single quote (') and remove any extra spaces
+  List<String> parts = input.split("'").map((s) => s.trim()).toList();
+
+  int feet = 0;
+  int inches = 0;
+
+  if (parts.isNotEmpty) {
+    // Extract feet if it exists
+    feet = int.tryParse(parts[0]) ?? 0;
+
+    if (parts.length > 1) {
+      // Extract inches if it exists
+      List<String> inchParts =
+          parts[1].split('"').map((s) => s.trim()).toList();
+      inches = int.tryParse(inchParts[0]) ?? 0;
+    }
+  }
+
+  return {'feet': feet, 'inches': inches};
+}
+
 class _HeightState extends State<Height> {
   HeightUnit selectedUnit =
       FFAppState().heightUnit == 'ft' ? HeightUnit.ft : HeightUnit.cm;
   TextEditingController heightController = TextEditingController();
+  int ft = 5;
+  int inches = 9;
+
   @override
   void initState() {
     super.initState();
     heightController.text = FFAppState().height;
+    Map<String, int> result = extractFeetAndInches(FFAppState().height);
+    ft = result['feet'] ?? 0;
+    inches = result['inches'] ?? 0;
   }
 
-  int ft = 0;
-  int inches = 0;
-  String cm = '';
+  String cm = FFAppState().height;
 
   cmToInches(inchess) {
     ft = inchess ~/ 12;
@@ -51,14 +77,15 @@ class _HeightState extends State<Height> {
 
   inchesToCm() {
     int inchesTotal = (ft * 12) + inches;
-    cm = (inchesTotal * 2.54).toStringAsFixed(0);
+    cm = ((inchesTotal * 2.54).round()).toStringAsFixed(0);
     heightController.text = cm;
   }
 
   void checkHeightUnit() {
     if (selectedUnit == HeightUnit.ft) {
       setState(() {
-        int inchess = (double.parse(heightController.text) ~/ 2.54).toInt();
+        int inchess =
+            ((double.parse(heightController.text) / 2.54).round()).toInt();
         cmToInches(inchess);
         heightController.text = '$ft\' $inches"';
         FFAppState().update(() {
@@ -99,9 +126,7 @@ class _HeightState extends State<Height> {
                                 color: Color(0xFF1A2432),
                                 borderRadius: BorderRadius.only(
                                   topRight: Radius.circular(16.0),
-                                  //  bottomRight: Radius.circular(40.0),
                                   topLeft: Radius.circular(16.0),
-                                  // bottomLeft: Radius.circular(40.0)),
                                 ),
                               ),
                               child: Row(
@@ -116,12 +141,12 @@ class _HeightState extends State<Height> {
                                         itemExtent: 32.0,
                                         scrollController:
                                             FixedExtentScrollController(
-                                          initialItem: ft - 1,
+                                          initialItem: ft - 3,
                                         ),
                                         onSelectedItemChanged: (int index) {
-                                          print(index + 1);
+                                          print(index + 3);
                                           setState(() {
-                                            ft = (index + 1);
+                                            ft = (index + 3);
                                             heightController.text =
                                                 "$ft' $inches\"";
                                             FFAppState().update(() {
@@ -130,9 +155,9 @@ class _HeightState extends State<Height> {
                                             });
                                           });
                                         },
-                                        children: List.generate(8, (index) {
+                                        children: List.generate(5, (index) {
                                           return Center(
-                                            child: Text('${index + 1}'),
+                                            child: Text('${index + 3}'),
                                           );
                                         }),
                                       ),
@@ -145,6 +170,7 @@ class _HeightState extends State<Height> {
                                         'ft',
                                         style: TextStyle(
                                           decoration: TextDecoration.none,
+                                          fontFamily: 'SF Pro Display',
                                           fontSize: 16,
                                           color: Colors.white,
                                         ),
@@ -188,6 +214,7 @@ class _HeightState extends State<Height> {
                                       child: Text(
                                         'inches',
                                         style: TextStyle(
+                                          fontFamily: 'SF Pro Display',
                                           decoration: TextDecoration.none,
                                           fontSize: 16,
                                           color: Colors.white,
@@ -201,9 +228,76 @@ class _HeightState extends State<Height> {
                           },
                         );
                       }
-                    : null,
+                    : () {
+                        FocusScope.of(context).requestFocus(new FocusNode());
+                        showCupertinoModalPopup(
+                          context: context,
+                          builder: (context) {
+                            return Container(
+                              height: 300,
+                              decoration: BoxDecoration(
+                                color: Color(0xFF1A2432),
+                                borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(16.0),
+                                  topLeft: Radius.circular(16.0),
+                                ),
+                              ),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    flex: 3,
+                                    child: CupertinoTheme(
+                                      data: CupertinoThemeData(
+                                        brightness: Brightness.dark,
+                                      ),
+                                      child: CupertinoPicker(
+                                        itemExtent: 32.0,
+                                        scrollController:
+                                            FixedExtentScrollController(
+                                          initialItem: int.parse(cm) - 91,
+                                        ),
+                                        onSelectedItemChanged: (int index) {
+                                          print(index + 91);
+                                          setState(() {
+                                            cm = (index + 91).toString();
+                                            heightController.text = "$cm";
+                                            FFAppState().update(() {
+                                              FFAppState().height = '$cm';
+                                            });
+                                          });
+                                        },
+                                        children: List.generate(151, (index) {
+                                          return Center(
+                                            child: Text('${index + 91}'),
+                                          );
+                                        }),
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    flex: 1,
+                                    child: Center(
+                                      child: Text(
+                                        'cm',
+                                        style: TextStyle(
+                                          fontFamily: 'SF Pro Display',
+                                          decoration: TextDecoration.none,
+                                          fontSize: 16,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            );
+                          },
+                        );
+                      },
                 controller: heightController,
                 //  initialValue: FFAppState().height,
+                showCursor: false,
+                enableInteractiveSelection: false,
                 onChanged: (text) {
                   FFAppState().update(() {
                     FFAppState().height = heightController.text;
@@ -221,9 +315,8 @@ class _HeightState extends State<Height> {
                 cursorColor: Color(0xFF314A68),
                 decoration: InputDecoration(
                     hintText: FFAppState().height,
-                    //selectedUnit == HeightUnit.ft ? "__' __\"" : '0',
                     hintStyle: TextStyle(color: Colors.white),
-                    contentPadding: EdgeInsets.only(top: 7.0, bottom: 7.0),
+                    contentPadding: EdgeInsets.only(top: 12.0, bottom: 2.0),
                     filled: true,
                     fillColor: Color(0xff121B26),
                     enabledBorder: UnderlineInputBorder(
@@ -248,10 +341,10 @@ class _HeightState extends State<Height> {
               padding: const EdgeInsets.symmetric(horizontal: 3),
               child: GestureDetector(
                 onTap: () {
-                  FFAppState().update(() {
-                    FFAppState().heightUnit = 'ft';
-                  });
                   setState(() {
+                    FFAppState().update(() {
+                      FFAppState().heightUnit = 'ft';
+                    });
                     if (heightController.text.isEmpty) {
                       selectedUnit = HeightUnit.ft;
                     } else {
@@ -273,7 +366,7 @@ class _HeightState extends State<Height> {
                       'ft',
                       textAlign: TextAlign.start,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Bicyclette',
+                            fontFamily: 'SF Pro Display',
                             color: FlutterFlowTheme.of(context).txtText1,
                             fontSize: 14.0,
                             fontWeight: FontWeight.w500,
@@ -288,13 +381,15 @@ class _HeightState extends State<Height> {
               padding: const EdgeInsets.symmetric(horizontal: 3),
               child: GestureDetector(
                 onTap: () {
-                  FFAppState().update(() {
-                    FFAppState().heightUnit = 'cm';
-                  });
                   setState(() {
+                    FFAppState().update(() {
+                      FFAppState().heightUnit = 'cm';
+                    });
+
                     if (heightController.text.isEmpty) {
                       selectedUnit = HeightUnit.cm;
-                    } else {
+                    } else if (heightController.text.isNotEmpty &&
+                        selectedUnit == HeightUnit.ft) {
                       selectedUnit = HeightUnit.cm;
                       checkHeightUnit();
                     }
@@ -313,7 +408,7 @@ class _HeightState extends State<Height> {
                       'cm',
                       textAlign: TextAlign.start,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Bicyclette',
+                            fontFamily: 'SF Pro Display',
                             color: FlutterFlowTheme.of(context).txtText1,
                             fontSize: 14.0,
                             fontWeight: FontWeight.w500,

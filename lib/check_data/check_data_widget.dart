@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -29,40 +30,76 @@ class _CheckDataWidgetState extends State<CheckDataWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await actions.lockOrientation();
-      await Future.delayed(const Duration(milliseconds: 1500));
-      if ((currentUserDisplayName == null || currentUserDisplayName == '') ||
-          (valueOrDefault(currentUserDocument?.userUnits, '') == null ||
-              valueOrDefault(currentUserDocument?.userUnits, '') == '') ||
-          (valueOrDefault(currentUserDocument?.userHeight, '') == null ||
-              valueOrDefault(currentUserDocument?.userHeight, '') == '') ||
-          (valueOrDefault(currentUserDocument?.userWeight, '') == null ||
-              valueOrDefault(currentUserDocument?.userWeight, '') == '') ||
-          (currentUserDocument?.userDateOfBirth == null)) {
-        context.goNamed(
-          'PersonalInfoPage',
-          extra: <String, dynamic>{
-            kTransitionInfoKey: TransitionInfo(
-              hasTransition: true,
-              transitionType: PageTransitionType.fade,
-              duration: Duration(milliseconds: 0),
-            ),
+      if (true) {
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: Text('You are online '),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            );
           },
         );
+        await Future.delayed(const Duration(milliseconds: 1500));
+        if ((currentUserDisplayName == null || currentUserDisplayName == '') ||
+            (valueOrDefault(currentUserDocument?.userUnits, '') == null ||
+                valueOrDefault(currentUserDocument?.userUnits, '') == '') ||
+            (valueOrDefault(currentUserDocument?.userHeight, '') == null ||
+                valueOrDefault(currentUserDocument?.userHeight, '') == '') ||
+            (valueOrDefault(currentUserDocument?.userWeight, '') == null ||
+                valueOrDefault(currentUserDocument?.userWeight, '') == '') ||
+            (currentUserDocument?.userDateOfBirth == null)) {
+          context.goNamed(
+            'PersonalInfoPage',
+            extra: <String, dynamic>{
+              kTransitionInfoKey: TransitionInfo(
+                hasTransition: true,
+                transitionType: PageTransitionType.fade,
+                duration: Duration(milliseconds: 0),
+              ),
+            },
+          );
+        } else {
+          setState(() {
+            FFAppState().pageIndex = 1;
+          });
+
+          context.goNamed(
+            'MainPage',
+            extra: <String, dynamic>{
+              kTransitionInfoKey: TransitionInfo(
+                hasTransition: true,
+                transitionType: PageTransitionType.fade,
+                duration: Duration(milliseconds: 0),
+              ),
+            },
+          );
+        }
       } else {
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: Text('You are offline'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            );
+          },
+        );
         setState(() {
-          FFAppState().pageIndex = 1;
+          FFAppState().isOfflineMode = true;
         });
 
-        context.goNamed(
-          'MainPage',
-          extra: <String, dynamic>{
-            kTransitionInfoKey: TransitionInfo(
-              hasTransition: true,
-              transitionType: PageTransitionType.fade,
-              duration: Duration(milliseconds: 0),
-            ),
-          },
-        );
+        context.pushNamed('LiftSelectionCopy');
       }
     });
   }
@@ -83,49 +120,46 @@ class _CheckDataWidgetState extends State<CheckDataWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: SafeArea(
-          top: true,
-          child: Container(
-            decoration: BoxDecoration(
-              color: Color(0x00000099),
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: Image.asset(
-                  'assets/images/__2023-07-11__12.40.05.png',
-                ).image,
-              ),
+        body: Container(
+          decoration: BoxDecoration(
+            color: Color(0x00000099),
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: Image.asset(
+                'assets/images/__2023-07-11__12.40.05.png',
+              ).image,
             ),
-            child: Align(
-              alignment: AlignmentDirectional(0.0, 0.0),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 30.0, 16.0, 30.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
-                        child: Image.asset(
-                          'assets/images/logo.png',
-                          width: MediaQuery.sizeOf(context).width * 0.25,
-                          height: MediaQuery.sizeOf(context).height * 0.11,
-                          fit: BoxFit.contain,
-                        ),
-                      ),
-                    ),
-                    ClipRRect(
+          ),
+          child: Align(
+            alignment: AlignmentDirectional(0.00, 0.00),
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(16.0, 30.0, 16.0, 30.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+                    child: ClipRRect(
                       borderRadius: BorderRadius.circular(8.0),
                       child: Image.asset(
-                        'assets/images/animation_640_li8wvbwj_1.png',
+                        'assets/images/logo.png',
                         width: MediaQuery.sizeOf(context).width * 0.25,
-                        fit: BoxFit.fitWidth,
+                        height: MediaQuery.sizeOf(context).height * 0.11,
+                        fit: BoxFit.contain,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: Image.asset(
+                      'assets/images/animation_640_li8wvbwj_1.png',
+                      width: MediaQuery.sizeOf(context).width * 0.25,
+                      fit: BoxFit.fitWidth,
+                    ),
+                  ),
+                ],
               ),
             ),
           ),

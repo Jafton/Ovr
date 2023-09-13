@@ -294,6 +294,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'JumpModeSelectionCopy',
           path: '/jumpModeSelectionCopy',
           builder: (context, params) => JumpModeSelectionCopyWidget(),
+        ),
+        FFRoute(
+          name: 'ExactRepData',
+          path: '/exactRepData',
+          asyncParams: {
+            'setDocuments':
+                getDocList(['exercise', 'set'], SetRecord.fromSnapshot),
+          },
+          builder: (context, params) => ExactRepDataWidget(
+            exerciseName: params.getParam('exerciseName', ParamType.String),
+            date: params.getParam('date', ParamType.DateTime),
+            setDocuments: params.getParam<SetRecord>(
+                'setDocuments', ParamType.Document, true),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

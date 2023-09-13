@@ -14,12 +14,14 @@ class RepStruct extends FFFirebaseStruct {
     String? repMaxVelocity,
     String? repRangeOfMotion,
     String? repPower,
+    String? repMaxPower,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _repVelocity = repVelocity,
         _repFatigue = repFatigue,
         _repMaxVelocity = repMaxVelocity,
         _repRangeOfMotion = repRangeOfMotion,
         _repPower = repPower,
+        _repMaxPower = repMaxPower,
         super(firestoreUtilData);
 
   // "rep_velocity" field.
@@ -52,12 +54,19 @@ class RepStruct extends FFFirebaseStruct {
   set repPower(String? val) => _repPower = val;
   bool hasRepPower() => _repPower != null;
 
+  // "rep_max_power" field.
+  String? _repMaxPower;
+  String get repMaxPower => _repMaxPower ?? '';
+  set repMaxPower(String? val) => _repMaxPower = val;
+  bool hasRepMaxPower() => _repMaxPower != null;
+
   static RepStruct fromMap(Map<String, dynamic> data) => RepStruct(
         repVelocity: data['rep_velocity'] as String?,
         repFatigue: data['rep_fatigue'] as String?,
         repMaxVelocity: data['rep_max_velocity'] as String?,
         repRangeOfMotion: data['rep_range_of_motion'] as String?,
         repPower: data['rep_power'] as String?,
+        repMaxPower: data['rep_max_power'] as String?,
       );
 
   static RepStruct? maybeFromMap(dynamic data) =>
@@ -69,6 +78,7 @@ class RepStruct extends FFFirebaseStruct {
         'rep_max_velocity': _repMaxVelocity,
         'rep_range_of_motion': _repRangeOfMotion,
         'rep_power': _repPower,
+        'rep_max_power': _repMaxPower,
       }.withoutNulls;
 
   @override
@@ -91,6 +101,10 @@ class RepStruct extends FFFirebaseStruct {
         ),
         'rep_power': serializeParam(
           _repPower,
+          ParamType.String,
+        ),
+        'rep_max_power': serializeParam(
+          _repMaxPower,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -121,6 +135,11 @@ class RepStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        repMaxPower: deserializeParam(
+          data['rep_max_power'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -133,12 +152,19 @@ class RepStruct extends FFFirebaseStruct {
         repFatigue == other.repFatigue &&
         repMaxVelocity == other.repMaxVelocity &&
         repRangeOfMotion == other.repRangeOfMotion &&
-        repPower == other.repPower;
+        repPower == other.repPower &&
+        repMaxPower == other.repMaxPower;
   }
 
   @override
-  int get hashCode => const ListEquality().hash(
-      [repVelocity, repFatigue, repMaxVelocity, repRangeOfMotion, repPower]);
+  int get hashCode => const ListEquality().hash([
+        repVelocity,
+        repFatigue,
+        repMaxVelocity,
+        repRangeOfMotion,
+        repPower,
+        repMaxPower
+      ]);
 }
 
 RepStruct createRepStruct({
@@ -147,6 +173,7 @@ RepStruct createRepStruct({
   String? repMaxVelocity,
   String? repRangeOfMotion,
   String? repPower,
+  String? repMaxPower,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -158,6 +185,7 @@ RepStruct createRepStruct({
       repMaxVelocity: repMaxVelocity,
       repRangeOfMotion: repRangeOfMotion,
       repPower: repPower,
+      repMaxPower: repMaxPower,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

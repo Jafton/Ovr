@@ -27,6 +27,112 @@ bool isCorrectEmail(String email) {
   return isValidEmail(email);
 }
 
+List<DateOfExerciseRecord> sortDate(
+  List<DateOfExerciseRecord> dates,
+  String type,
+  List<SetRecord> sets,
+  String filteredValue,
+  String userUnits,
+) {
+  List<DateOfExerciseRecord> documents = [];
+  documents.addAll(dates);
+  List<SetRecord> setDocuments = [];
+  setDocuments.addAll(sets);
+
+  // SORTING
+  switch (type) {
+    case 'dateNew':
+      documents.sort((a, b) {
+        final dateA = a.creationDate;
+        final dateB = b.creationDate;
+        if (dateA != null && dateB != null) {
+          return dateB.compareTo(dateA);
+        }
+        return 0;
+      });
+      break;
+    case 'dateOld':
+      documents.sort((a, b) {
+        final dateA = a.creationDate;
+        final dateB = b.creationDate;
+        if (dateA != null && dateB != null) {
+          return dateA.compareTo(dateB);
+        }
+        return 0;
+      });
+      break;
+    case 'weightH':
+      setDocuments.sort((a, b) {
+        final weightA = userUnits == 'lb' ? a.setWeight : a.setWeightKg;
+        final weightB = userUnits == 'lb' ? b.setWeight : b.setWeightKg;
+        if (weightA != null && weightB != null) {
+          return int.parse(weightB).compareTo(int.parse(weightA));
+        }
+        return 0;
+      });
+
+      // Create a new list containing unique dateStrings from setDocuments
+      List<String> uniqueDateStrings = [];
+      for (SetRecord setDoc in setDocuments) {
+        final dateString = setDoc.dateString;
+        if (!uniqueDateStrings.contains(dateString)) {
+          uniqueDateStrings.add(dateString);
+        }
+      }
+
+      // Sort documents list by dateString using the order of uniqueDateStrings
+      documents.sort((a, b) {
+        final dateStringA = a.dateString;
+        final dateStringB = b.dateString;
+        return uniqueDateStrings.indexOf(dateStringA) -
+            uniqueDateStrings.indexOf(dateStringB);
+      });
+      break;
+
+    case 'weightL':
+      setDocuments.sort((a, b) {
+        final weightA = userUnits == 'lb' ? a.setWeight : a.setWeightKg;
+        final weightB = userUnits == 'lb' ? b.setWeight : b.setWeightKg;
+        if (weightA != null && weightB != null) {
+          return int.parse(weightA).compareTo(int.parse(weightB));
+        }
+        return 0;
+      });
+
+      // Create a new list containing unique dateStrings from setDocuments
+      List<String> uniqueDateStrings = [];
+      for (SetRecord setDoc in setDocuments) {
+        final dateString = setDoc.dateString;
+        if (!uniqueDateStrings.contains(dateString)) {
+          uniqueDateStrings.add(dateString);
+        }
+      }
+
+      // Sort documents list by dateString using the order of uniqueDateStrings
+      documents.sort((a, b) {
+        final dateStringA = a.dateString;
+        final dateStringB = b.dateString;
+        return uniqueDateStrings.indexOf(dateStringA) -
+            uniqueDateStrings.indexOf(dateStringB);
+      });
+      break;
+  }
+
+  // FILTRATION
+  // Filter setDocuments where setWeight or setWeightKg is equal to filteredValue
+  if (filteredValue != '') {
+    documents = documents.where((doc) {
+      final dateString = doc.dateString;
+      return setDocuments.any((setDoc) =>
+          (userUnits == 'lb' ? setDoc.setWeight : setDoc.setWeightKg) ==
+              filteredValue &&
+          setDoc.dateString == dateString);
+    }).toList();
+  }
+
+  return documents;
+}
+
 bool isEmailExist(String? email) {
   // accepts user email, check if email exists in firebase return bool
   bool emailExists = false;
@@ -387,4 +493,94 @@ bool dateCheckInfo(List<DateTime> dateTimes) {
   }
 
   return false;
+}
+
+String setNumberInDate(
+  List<SetRecord> documents,
+  DateTime date,
+) {
+  int finalNum = 0;
+  String formattedTime = DateFormat.yMd().format(date);
+
+  for (int i = 0; i < documents.length; i++) {
+    final DateTime? docDate = documents[i].setCreationDate;
+    if (docDate != null && DateFormat.yMd().format(docDate) == formattedTime) {
+      finalNum = finalNum + 1;
+    }
+  }
+
+  return finalNum.toString();
+}
+
+List<String> setMaxAndMinWeight(
+  List<SetRecord> documents,
+  String unit,
+) {
+  // accept list of documents, find max and min weights in set_weight converted to int, push it to list
+  List<int> weights = [];
+  if (unit == 'lb') {
+    for (var doc in documents) {
+      weights.add(int.parse(doc.setWeight));
+    }
+  } else {
+    for (var doc in documents) {
+      weights.add(int.parse(doc.setWeightKg));
+    }
+  }
+
+  int maxWeight = weights.reduce(math.max);
+  int minWeight = weights.reduce(math.min);
+  return ['$maxWeight', '$minWeight'];
+}
+
+String ymdFormat(DateTime date) {
+  return DateFormat.yMd().format(date);
+}
+
+List<String> setAvgVelocities(List<SetRecord> documents) {
+  List<double> velocities = [];
+  for (var doc in documents) {
+    double avgVelocity = 0;
+    int numberOfReps = 0;
+    for (var oneRet in doc.setListOfRep) {
+      avgVelocity = double.parse(oneRet.repVelocity) + avgVelocity;
+      numberOfReps++;
+    }
+    velocities.add(avgVelocity / numberOfReps);
+  }
+  double maxVelocity = velocities.reduce(math.max);
+  double minVelocity = velocities.reduce(math.min);
+  return [
+    '${maxVelocity.toStringAsFixed(2)}',
+    '${minVelocity.toStringAsFixed(2)}'
+  ];
+}
+
+String findAvg(List<String>? listOfStrings) {
+  // Convert strings to numbers, find their average, and return as a string
+  double sum = 0;
+  if (listOfStrings != null && listOfStrings.isNotEmpty) {
+    for (String str in listOfStrings) {
+      sum += double.tryParse(str) ?? 0;
+    }
+    double avg = sum / listOfStrings.length;
+    return avg.toStringAsFixed(2);
+  }
+  return '0';
+}
+
+List<SetRecord> filterSet(
+  List<SetRecord> setDocs,
+  String date,
+) {
+  // return list of docs where dateString is equal to date
+  List<SetRecord> filteredSetDocs = [];
+
+  for (var setDoc in setDocs) {
+    if (setDoc.dateString == date) {
+      filteredSetDocs.add(setDoc);
+    }
+  }
+
+  return filteredSetDocs;
 }

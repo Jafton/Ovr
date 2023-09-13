@@ -346,17 +346,17 @@ class FFAppState extends ChangeNotifier {
 
   List<RepStruct> _listOfReps = [
     RepStruct.fromSerializableMap(jsonDecode(
-        '{\"rep_velocity\":\"2\",\"rep_fatigue\":\"Hello World\",\"rep_max_velocity\":\"Hello World\",\"rep_range_of_motion\":\"Hello World\",\"rep_power\":\"1\"}')),
+        '{\"rep_velocity\":\"2\",\"rep_fatigue\":\"1\",\"rep_max_velocity\":\"2\",\"rep_range_of_motion\":\"3\",\"rep_power\":\"1\",\"rep_max_power\":\"2\"}')),
     RepStruct.fromSerializableMap(jsonDecode(
-        '{\"rep_velocity\":\"1\",\"rep_fatigue\":\"Hello World\",\"rep_max_velocity\":\"Hello World\",\"rep_range_of_motion\":\"Hello World\",\"rep_power\":\"Hello World\"}')),
+        '{\"rep_velocity\":\"1\",\"rep_fatigue\":\"2\",\"rep_max_velocity\":\"3\",\"rep_range_of_motion\":\"4\",\"rep_power\":\"5\",\"rep_max_power\":\"3\"}')),
     RepStruct.fromSerializableMap(jsonDecode(
-        '{\"rep_velocity\":\"4\",\"rep_fatigue\":\"Hello World\",\"rep_max_velocity\":\"Hello World\",\"rep_range_of_motion\":\"Hello World\",\"rep_power\":\"Hello World\"}')),
+        '{\"rep_velocity\":\"4\",\"rep_fatigue\":\"1\",\"rep_max_velocity\":\"2\",\"rep_range_of_motion\":\"3\",\"rep_power\":\"4\",\"rep_max_power\":\"2\"}')),
     RepStruct.fromSerializableMap(jsonDecode(
-        '{\"rep_velocity\":\"3\",\"rep_fatigue\":\"Hello World\",\"rep_max_velocity\":\"Hello World\",\"rep_range_of_motion\":\"Hello World\",\"rep_power\":\"Hello World\"}')),
+        '{\"rep_velocity\":\"3\",\"rep_fatigue\":\"1\",\"rep_max_velocity\":\"2\",\"rep_range_of_motion\":\"3\",\"rep_power\":\"4\",\"rep_max_power\":\"2\"}')),
     RepStruct.fromSerializableMap(jsonDecode(
-        '{\"rep_velocity\":\"2\",\"rep_fatigue\":\"Hello World\",\"rep_max_velocity\":\"Hello World\",\"rep_range_of_motion\":\"Hello World\",\"rep_power\":\"Hello World\"}')),
+        '{\"rep_velocity\":\"2\",\"rep_fatigue\":\"1\",\"rep_max_velocity\":\"2\",\"rep_range_of_motion\":\"3\",\"rep_power\":\"4\",\"rep_max_power\":\"1\"}')),
     RepStruct.fromSerializableMap(jsonDecode(
-        '{\"rep_velocity\":\"1\",\"rep_fatigue\":\"Hello World\",\"rep_max_velocity\":\"Hello World\",\"rep_range_of_motion\":\"Hello World\",\"rep_power\":\"Hello World\"}'))
+        '{\"rep_velocity\":\"1\",\"rep_fatigue\":\"2\",\"rep_max_velocity\":\"3\",\"rep_range_of_motion\":\"4\",\"rep_power\":\"5\",\"rep_max_power\":\"2\"}'))
   ];
   List<RepStruct> get listOfReps => _listOfReps;
   set listOfReps(List<RepStruct> _value) {
@@ -454,6 +454,18 @@ class FFAppState extends ChangeNotifier {
   bool get connected => _connected;
   set connected(bool _value) {
     _connected = _value;
+  }
+
+  String _setsSortState = '';
+  String get setsSortState => _setsSortState;
+  set setsSortState(String _value) {
+    _setsSortState = _value;
+  }
+
+  String _setFilteredState = '';
+  String get setFilteredState => _setFilteredState;
+  set setFilteredState(String _value) {
+    _setFilteredState = _value;
   }
 }
 

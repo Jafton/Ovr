@@ -1,7 +1,8 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -13,10 +14,12 @@ export 'date_of_set_model.dart';
 class DateOfSetWidget extends StatefulWidget {
   const DateOfSetWidget({
     Key? key,
-    this.dateRed,
+    this.dateRef,
+    this.exerciseRef,
   }) : super(key: key);
 
-  final DocumentReference? dateRed;
+  final DocumentReference? dateRef;
+  final DocumentReference? exerciseRef;
 
   @override
   _DateOfSetWidgetState createState() => _DateOfSetWidgetState();
@@ -49,7 +52,7 @@ class _DateOfSetWidgetState extends State<DateOfSetWidget> {
     context.watch<FFAppState>();
 
     return StreamBuilder<DateOfExerciseRecord>(
-      stream: DateOfExerciseRecord.getDocument(widget.dateRed!),
+      stream: DateOfExerciseRecord.getDocument(widget.dateRef!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -67,113 +70,236 @@ class _DateOfSetWidgetState extends State<DateOfSetWidget> {
         }
         final columnDateOfExerciseRecord = snapshot.data!;
         return Column(
-          mainAxisSize: MainAxisSize.max,
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
-                  child: RichText(
-                    textScaleFactor: MediaQuery.of(context).textScaleFactor,
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: '06\n',
-                          style: FlutterFlowTheme.of(context)
-                              .headlineMedium
-                              .override(
-                                fontFamily: 'Bicyclette',
-                                color: FlutterFlowTheme.of(context).txtText2,
-                                useGoogleFonts: false,
-                              ),
+            StreamBuilder<List<SetRecord>>(
+              stream: querySetRecord(
+                parent: widget.exerciseRef,
+                queryBuilder: (setRecord) => setRecord.where('date_string',
+                    isEqualTo: columnDateOfExerciseRecord.dateString),
+              ),
+              builder: (context, snapshot) {
+                // Customize what your widget looks like when it's loading.
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: SizedBox(
+                      width: 50.0,
+                      height: 50.0,
+                      child: CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                          FlutterFlowTheme.of(context).primary,
                         ),
-                        TextSpan(
-                          text: 'MAY',
-                          style: FlutterFlowTheme.of(context)
-                              .labelLarge
-                              .override(
-                                fontFamily: 'Bicyclette',
-                                color: FlutterFlowTheme.of(context).txtText2,
-                                useGoogleFonts: false,
-                              ),
-                        )
-                      ],
-                      style: FlutterFlowTheme.of(context).bodyMedium,
+                      ),
                     ),
-                  ),
-                ),
-                Expanded(
-                  child: RichText(
-                    textScaleFactor: MediaQuery.of(context).textScaleFactor,
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text:
-                              (columnDateOfExerciseRecord.setReference.length +
-                                      1)
-                                  .toString(),
-                          style: FlutterFlowTheme.of(context)
-                              .labelMedium
-                              .override(
-                                fontFamily: 'SF Pro Display',
-                                color: FlutterFlowTheme.of(context).txtText1,
-                                useGoogleFonts: false,
+                  );
+                }
+                List<SetRecord> containerSetRecordList = snapshot.data!;
+                return Container(
+                  decoration: BoxDecoration(),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
+                        child: RichText(
+                          textScaleFactor:
+                              MediaQuery.of(context).textScaleFactor,
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: dateTimeFormat(
+                                  'dd',
+                                  columnDateOfExerciseRecord.creationDate!,
+                                  locale:
+                                      FFLocalizations.of(context).languageCode,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .headlineMedium
+                                    .override(
+                                      fontFamily: 'Bicyclette',
+                                      color:
+                                          FlutterFlowTheme.of(context).txtText2,
+                                      useGoogleFonts: false,
+                                    ),
                               ),
-                        ),
-                        TextSpan(
-                          text: ' set(s) | ',
-                          style: FlutterFlowTheme.of(context).labelMedium,
-                        ),
-                        TextSpan(
-                          text: '135lb - 275lb ',
-                          style: FlutterFlowTheme.of(context)
-                              .bodyLarge
-                              .override(
-                                fontFamily: 'SF Pro Display',
-                                color: FlutterFlowTheme.of(context).txtText2,
-                                fontWeight: FontWeight.normal,
-                                useGoogleFonts: false,
+                              TextSpan(
+                                text: '\n',
+                                style: FlutterFlowTheme.of(context)
+                                    .labelLarge
+                                    .override(
+                                      fontFamily: 'Bicyclette',
+                                      color:
+                                          FlutterFlowTheme.of(context).txtText2,
+                                      useGoogleFonts: false,
+                                    ),
                               ),
-                        ),
-                        TextSpan(
-                          text: '0.91m/s - 0.28m/s',
-                          style: FlutterFlowTheme.of(context)
-                              .bodyLarge
-                              .override(
-                                fontFamily: 'SF Pro Display',
-                                color: FlutterFlowTheme.of(context).txtText2,
-                                fontWeight: FontWeight.normal,
-                                useGoogleFonts: false,
-                              ),
-                        )
-                      ],
-                      style: FlutterFlowTheme.of(context).bodyLarge.override(
-                            fontFamily: 'SF Pro Display',
-                            color: FlutterFlowTheme.of(context).txtText2,
-                            fontWeight: FontWeight.normal,
-                            useGoogleFonts: false,
+                              TextSpan(
+                                text: dateTimeFormat(
+                                  'MMM',
+                                  columnDateOfExerciseRecord.creationDate!,
+                                  locale:
+                                      FFLocalizations.of(context).languageCode,
+                                ).toUpperCase(),
+                                style: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      fontFamily: 'SF Pro Display',
+                                      color:
+                                          FlutterFlowTheme.of(context).txtText2,
+                                      fontWeight: FontWeight.w900,
+                                      useGoogleFonts: false,
+                                    ),
+                              )
+                            ],
+                            style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
-                    ),
+                        ),
+                      ),
+                      Expanded(
+                        child: RichText(
+                          textScaleFactor:
+                              MediaQuery.of(context).textScaleFactor,
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: containerSetRecordList.length.toString(),
+                                style: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      fontFamily: 'SF Pro Display',
+                                      color:
+                                          FlutterFlowTheme.of(context).txtText1,
+                                      useGoogleFonts: false,
+                                    ),
+                              ),
+                              TextSpan(
+                                text: ' set(s) | ',
+                                style: FlutterFlowTheme.of(context).labelMedium,
+                              ),
+                              TextSpan(
+                                text: functions
+                                    .setMaxAndMinWeight(
+                                        containerSetRecordList.toList(),
+                                        valueOrDefault(
+                                            currentUserDocument?.userUnits, ''))
+                                    .last,
+                                style: FlutterFlowTheme.of(context).labelMedium,
+                              ),
+                              TextSpan(
+                                text: ' - ',
+                                style: TextStyle(),
+                              ),
+                              TextSpan(
+                                text: functions
+                                    .setMaxAndMinWeight(
+                                        containerSetRecordList.toList(),
+                                        valueOrDefault(
+                                            currentUserDocument?.userUnits, ''))
+                                    .first,
+                                style: FlutterFlowTheme.of(context).labelMedium,
+                              ),
+                              TextSpan(
+                                text: valueOrDefault(
+                                    currentUserDocument?.userUnits, ''),
+                                style: FlutterFlowTheme.of(context).labelMedium,
+                              ),
+                              TextSpan(
+                                text: '\n',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .override(
+                                      fontFamily: 'SF Pro Display',
+                                      color:
+                                          FlutterFlowTheme.of(context).txtText2,
+                                      fontWeight: FontWeight.normal,
+                                      useGoogleFonts: false,
+                                    ),
+                              ),
+                              TextSpan(
+                                text: functions
+                                    .setAvgVelocities(
+                                        containerSetRecordList.toList())
+                                    .first,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .override(
+                                      fontFamily: 'SF Pro Display',
+                                      color:
+                                          FlutterFlowTheme.of(context).txtText2,
+                                      fontWeight: FontWeight.normal,
+                                      useGoogleFonts: false,
+                                    ),
+                              ),
+                              TextSpan(
+                                text: ' - ',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .override(
+                                      fontFamily: 'SF Pro Display',
+                                      color:
+                                          FlutterFlowTheme.of(context).txtText2,
+                                      fontWeight: FontWeight.normal,
+                                      useGoogleFonts: false,
+                                    ),
+                              ),
+                              TextSpan(
+                                text: functions
+                                    .setAvgVelocities(
+                                        containerSetRecordList.toList())
+                                    .last,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .override(
+                                      fontFamily: 'SF Pro Display',
+                                      color:
+                                          FlutterFlowTheme.of(context).txtText2,
+                                      fontWeight: FontWeight.normal,
+                                      useGoogleFonts: false,
+                                    ),
+                              ),
+                              TextSpan(
+                                text: ' m/s',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .override(
+                                      fontFamily: 'SF Pro Display',
+                                      color:
+                                          FlutterFlowTheme.of(context).txtText2,
+                                      fontWeight: FontWeight.normal,
+                                      useGoogleFonts: false,
+                                    ),
+                              )
+                            ],
+                            style: FlutterFlowTheme.of(context)
+                                .bodyLarge
+                                .override(
+                                  fontFamily: 'SF Pro Display',
+                                  color: FlutterFlowTheme.of(context).txtText2,
+                                  fontWeight: FontWeight.normal,
+                                  useGoogleFonts: false,
+                                ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: 40.0,
+                        height: 40.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).bgStroke,
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        child: Icon(
+                          FFIcons.karrowRight,
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          size: 20.0,
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-                FlutterFlowIconButton(
-                  borderColor: FlutterFlowTheme.of(context).bgStroke,
-                  borderRadius: 8.0,
-                  borderWidth: 0.0,
-                  buttonSize: 40.0,
-                  fillColor: FlutterFlowTheme.of(context).bgStroke,
-                  icon: Icon(
-                    FFIcons.karrowRight,
-                    color: FlutterFlowTheme.of(context).txtText2,
-                    size: 20.0,
-                  ),
-                  onPressed: () {
-                    print('IconButton pressed ...');
-                  },
-                ),
-              ],
+                );
+              },
             ),
             Divider(
               thickness: 1.0,

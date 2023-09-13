@@ -12,7 +12,6 @@ import '/profile/settings_sheet/settings_sheet_widget.dart';
 import '/update/checking/checking_widget.dart';
 import '/velocity/error_dialog/error_dialog_widget.dart';
 import '/velocity/velocity_or_jump/velocity_or_jump_widget.dart';
-import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_dialog/aligned_dialog.dart';
@@ -619,47 +618,6 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                     ),
                                   ],
                                 ),
-                              FFButtonWidget(
-                                onPressed: () async {
-                                  _model.result = await actions.connected();
-                                  await showDialog(
-                                    context: context,
-                                    builder: (alertDialogContext) {
-                                      return AlertDialog(
-                                        title: Text(_model.result!.toString()),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () => Navigator.pop(
-                                                alertDialogContext),
-                                            child: Text('Ok'),
-                                          ),
-                                        ],
-                                      );
-                                    },
-                                  );
-
-                                  setState(() {});
-                                },
-                                text: 'check',
-                                options: FFButtonOptions(
-                                  width: double.infinity,
-                                  height: 56.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color:
-                                      FlutterFlowTheme.of(context).btnDefault,
-                                  textStyle:
-                                      FlutterFlowTheme.of(context).titleMedium,
-                                  elevation: 0.0,
-                                  borderSide: BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                              ),
                             ],
                           ),
                         ),

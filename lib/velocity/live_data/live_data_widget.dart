@@ -149,6 +149,7 @@ class _LiveDataWidgetState extends State<LiveDataWidget> {
                       repMaxVelocity: (math.Random().nextInt(10)).toString(),
                       repRangeOfMotion: (math.Random().nextInt(10)).toString(),
                       repPower: (math.Random().nextInt(10)).toString(),
+                      repMaxPower: (math.Random().nextInt(10)).toString(),
                     ));
                   });
                 },

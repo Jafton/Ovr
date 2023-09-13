@@ -171,6 +171,8 @@ class _EndSetWidgetState extends State<EndSetWidget> {
                     child: StreamBuilder<List<SetRecord>>(
                       stream: querySetRecord(
                         parent: widget.parameter1,
+                        queryBuilder: (setRecord) =>
+                            setRecord.orderBy('set_creation_date'),
                       ),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
@@ -199,35 +201,18 @@ class _EndSetWidgetState extends State<EndSetWidget> {
                                       .withoutNulls
                                       .toList())) {
                                 setState(() {});
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('todays date already exist'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('Ok'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
                               } else {
                                 await DateOfExerciseRecord.createDoc(
                                         widget.parameter1!)
                                     .set(createDateOfExerciseRecordData(
                                   creationDate: getCurrentTimestamp,
+                                  dateString:
+                                      functions.ymdFormat(getCurrentTimestamp),
                                 ));
                               }
 
                               setState(() {
                                 FFAppState().pageIndex = 0;
-                                FFAppState().isGoalSwitchedOn = false;
-                                FFAppState().setGoal = '';
-                                FFAppState().weightSelection = '';
-                                FFAppState().listOfReps = [];
                               });
 
                               context.goNamed('MainPage');
@@ -237,19 +222,39 @@ class _EndSetWidgetState extends State<EndSetWidget> {
                                 ...createSetRecordData(
                                   setCreationDate: getCurrentTimestamp,
                                   setExerciseRef: widget.parameter1,
-                                  setWeight: FFAppState().weightSelection,
+                                  setWeight: valueOrDefault(
+                                              currentUserDocument?.userUnits,
+                                              '') ==
+                                          'lb'
+                                      ? FFAppState().weightSelection
+                                      : ((double.parse(FFAppState()
+                                                  .weightSelection) *
+                                              2.205)
+                                          .round()
+                                          .toString()),
                                   setGoal: FFAppState().setGoal,
+                                  dateString:
+                                      functions.ymdFormat(getCurrentTimestamp),
+                                  setWeightKg: valueOrDefault(
+                                              currentUserDocument?.userUnits,
+                                              '') ==
+                                          'kg'
+                                      ? FFAppState().weightSelection
+                                      : ((double.parse(FFAppState()
+                                                  .weightSelection) /
+                                              2.205)
+                                          .round()
+                                          .toString()),
                                 ),
                                 'set_list_of_rep': getRepListFirestoreData(
                                   FFAppState().listOfReps,
                                 ),
                               });
-
-                              await containerDateOfExerciseRecordList
-                                  .last.reference
-                                  .update({
-                                'set_reference': FieldValue.arrayUnion(
-                                    [buttonSetRecordList.last.reference]),
+                              setState(() {
+                                FFAppState().isGoalSwitchedOn = false;
+                                FFAppState().setGoal = '';
+                                FFAppState().weightSelection = '';
+                                FFAppState().listOfReps = [];
                               });
                             }
                           },

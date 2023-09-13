@@ -59,3 +59,5 @@ export '/offline_mode/lift_selection_copy/lift_selection_copy_widget.dart'
     show LiftSelectionCopyWidget;
 export '/offline_mode/jump_mode_selection_copy/jump_mode_selection_copy_widget.dart'
     show JumpModeSelectionCopyWidget;
+export '/velocity/exact_rep_data/exact_rep_data_widget.dart'
+    show ExactRepDataWidget;

@@ -1,0 +1,57 @@
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'empty_data_model.dart';
+export 'empty_data_model.dart';
+
+class EmptyDataWidget extends StatefulWidget {
+  const EmptyDataWidget({Key? key}) : super(key: key);
+
+  @override
+  _EmptyDataWidgetState createState() => _EmptyDataWidgetState();
+}
+
+class _EmptyDataWidgetState extends State<EmptyDataWidget> {
+  late EmptyDataModel _model;
+
+  @override
+  void setState(VoidCallback callback) {
+    super.setState(callback);
+    _model.onUpdate();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => EmptyDataModel());
+  }
+
+  @override
+  void dispose() {
+    _model.maybeDispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
+    return Align(
+      alignment: AlignmentDirectional(-1.00, 0.00),
+      child: Padding(
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+        child: Text(
+          'NO DATA FOUND.',
+          style: FlutterFlowTheme.of(context).labelMedium.override(
+                fontFamily: 'SF Pro Display',
+                color: FlutterFlowTheme.of(context).txtText2,
+                useGoogleFonts: false,
+              ),
+        ),
+      ),
+    );
+  }
+}

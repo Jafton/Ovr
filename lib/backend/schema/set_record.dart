@@ -66,6 +66,21 @@ class SetRecord extends FirestoreRecord {
   List<RepStruct> get setListOfRep => _setListOfRep ?? const [];
   bool hasSetListOfRep() => _setListOfRep != null;
 
+  // "set_dateOfExercise_ref" field.
+  DocumentReference? _setDateOfExerciseRef;
+  DocumentReference? get setDateOfExerciseRef => _setDateOfExerciseRef;
+  bool hasSetDateOfExerciseRef() => _setDateOfExerciseRef != null;
+
+  // "date_string" field.
+  String? _dateString;
+  String get dateString => _dateString ?? '';
+  bool hasDateString() => _dateString != null;
+
+  // "set_weight_kg" field.
+  String? _setWeightKg;
+  String get setWeightKg => _setWeightKg ?? '';
+  bool hasSetWeightKg() => _setWeightKg != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -82,6 +97,10 @@ class SetRecord extends FirestoreRecord {
       snapshotData['set_list_of_rep'],
       RepStruct.fromMap,
     );
+    _setDateOfExerciseRef =
+        snapshotData['set_dateOfExercise_ref'] as DocumentReference?;
+    _dateString = snapshotData['date_string'] as String?;
+    _setWeightKg = snapshotData['set_weight_kg'] as String?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -132,6 +151,9 @@ Map<String, dynamic> createSetRecordData({
   String? setRangeOfMotion,
   String? setAveragePower,
   String? setMaxPower,
+  DocumentReference? setDateOfExerciseRef,
+  String? dateString,
+  String? setWeightKg,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -144,6 +166,9 @@ Map<String, dynamic> createSetRecordData({
       'set_range_of_motion': setRangeOfMotion,
       'set_average_power': setAveragePower,
       'set_max_power': setMaxPower,
+      'set_dateOfExercise_ref': setDateOfExerciseRef,
+      'date_string': dateString,
+      'set_weight_kg': setWeightKg,
     }.withoutNulls,
   );
 
@@ -165,7 +190,10 @@ class SetRecordDocumentEquality implements Equality<SetRecord> {
         e1?.setRangeOfMotion == e2?.setRangeOfMotion &&
         e1?.setAveragePower == e2?.setAveragePower &&
         e1?.setMaxPower == e2?.setMaxPower &&
-        listEquality.equals(e1?.setListOfRep, e2?.setListOfRep);
+        listEquality.equals(e1?.setListOfRep, e2?.setListOfRep) &&
+        e1?.setDateOfExerciseRef == e2?.setDateOfExerciseRef &&
+        e1?.dateString == e2?.dateString &&
+        e1?.setWeightKg == e2?.setWeightKg;
   }
 
   @override
@@ -179,7 +207,10 @@ class SetRecordDocumentEquality implements Equality<SetRecord> {
         e?.setRangeOfMotion,
         e?.setAveragePower,
         e?.setMaxPower,
-        e?.setListOfRep
+        e?.setListOfRep,
+        e?.setDateOfExerciseRef,
+        e?.dateString,
+        e?.setWeightKg
       ]);
 
   @override

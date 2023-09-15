@@ -5,7 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/offline_mode/velocity_or_jump_copy/velocity_or_jump_copy_widget.dart';
-import '/velocity/exercise_copy/exercise_copy_widget.dart';
+import '/velocity/main_page/exercise/exercise_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';

@@ -66,11 +66,6 @@ class SetRecord extends FirestoreRecord {
   List<RepStruct> get setListOfRep => _setListOfRep ?? const [];
   bool hasSetListOfRep() => _setListOfRep != null;
 
-  // "set_dateOfExercise_ref" field.
-  DocumentReference? _setDateOfExerciseRef;
-  DocumentReference? get setDateOfExerciseRef => _setDateOfExerciseRef;
-  bool hasSetDateOfExerciseRef() => _setDateOfExerciseRef != null;
-
   // "date_string" field.
   String? _dateString;
   String get dateString => _dateString ?? '';
@@ -97,8 +92,6 @@ class SetRecord extends FirestoreRecord {
       snapshotData['set_list_of_rep'],
       RepStruct.fromMap,
     );
-    _setDateOfExerciseRef =
-        snapshotData['set_dateOfExercise_ref'] as DocumentReference?;
     _dateString = snapshotData['date_string'] as String?;
     _setWeightKg = snapshotData['set_weight_kg'] as String?;
   }
@@ -151,7 +144,6 @@ Map<String, dynamic> createSetRecordData({
   String? setRangeOfMotion,
   String? setAveragePower,
   String? setMaxPower,
-  DocumentReference? setDateOfExerciseRef,
   String? dateString,
   String? setWeightKg,
 }) {
@@ -166,7 +158,6 @@ Map<String, dynamic> createSetRecordData({
       'set_range_of_motion': setRangeOfMotion,
       'set_average_power': setAveragePower,
       'set_max_power': setMaxPower,
-      'set_dateOfExercise_ref': setDateOfExerciseRef,
       'date_string': dateString,
       'set_weight_kg': setWeightKg,
     }.withoutNulls,
@@ -191,7 +182,6 @@ class SetRecordDocumentEquality implements Equality<SetRecord> {
         e1?.setAveragePower == e2?.setAveragePower &&
         e1?.setMaxPower == e2?.setMaxPower &&
         listEquality.equals(e1?.setListOfRep, e2?.setListOfRep) &&
-        e1?.setDateOfExerciseRef == e2?.setDateOfExerciseRef &&
         e1?.dateString == e2?.dateString &&
         e1?.setWeightKg == e2?.setWeightKg;
   }
@@ -208,7 +198,6 @@ class SetRecordDocumentEquality implements Equality<SetRecord> {
         e?.setAveragePower,
         e?.setMaxPower,
         e?.setListOfRep,
-        e?.setDateOfExerciseRef,
         e?.dateString,
         e?.setWeightKg
       ]);

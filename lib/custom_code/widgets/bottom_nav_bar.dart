@@ -14,10 +14,10 @@ import 'package:ovr_performance/profile/profile_page/profile_page_widget.dart';
 
 import 'package:ovr_performance/jump/view_data_copy2/view_data_copy2_widget.dart';
 
-import 'package:ovr_performance/velocity/view_data/view_data_widget.dart';
+import 'package:ovr_performance/velocity/view_data/view_data/view_data_widget.dart';
 
 import 'package:ovr_performance/jump/jump_mode_selection/jump_mode_selection_widget.dart';
-import 'package:ovr_performance/velocity/lift_selection/lift_selection_widget.dart';
+import 'package:ovr_performance/velocity/main_page/lift_selection/lift_selection_widget.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({

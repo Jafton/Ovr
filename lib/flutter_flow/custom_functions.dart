@@ -466,13 +466,15 @@ List<int> listOfIndexes(List<RepStruct> dataStructure) {
   return indexes;
 }
 
-String maxValueInList(List<RepStruct> dataStruct) {
-  // accept datatype find the max value in rep_max_velocity converted to double
+String maxValueInList(List<String> list) {
+  // Accept a list of items and find the max value in rep_max_velocity converted to double
   double max = 0.0;
-  for (RepStruct rep in dataStruct) {
-    double repMaxVelocity = double.parse(rep.repVelocity);
-    if (repMaxVelocity > max) {
-      max = repMaxVelocity;
+  for (String? item in list) {
+    if (item != null && item != '') {
+      double itemMax = double.parse(item);
+      if (itemMax > max) {
+        max = itemMax;
+      }
     }
   }
   return max.toString();
@@ -556,7 +558,10 @@ List<String> setAvgVelocities(List<SetRecord> documents) {
   ];
 }
 
-String findAvg(List<String>? listOfStrings) {
+String findAvg(
+  List<String>? listOfStrings,
+  int numsAfterDot,
+) {
   // Convert strings to numbers, find their average, and return as a string
   double sum = 0;
   if (listOfStrings != null && listOfStrings.isNotEmpty) {
@@ -564,7 +569,7 @@ String findAvg(List<String>? listOfStrings) {
       sum += double.tryParse(str) ?? 0;
     }
     double avg = sum / listOfStrings.length;
-    return avg.toStringAsFixed(2);
+    return avg.toStringAsFixed(numsAfterDot);
   }
   return '0';
 }
@@ -583,4 +588,47 @@ List<SetRecord> filterSet(
   }
 
   return filteredSetDocs;
+}
+
+List<SetRecord> sortSetQuery(
+  List<SetRecord> setDocs,
+  String userUnits,
+  String value,
+) {
+  List<SetRecord> documents = [];
+  documents.addAll(setDocs);
+  documents.sort((a, b) {
+    final weightA = userUnits == 'lb' ? a.setWeight : a.setWeightKg;
+    final weightB = userUnits == 'lb' ? b.setWeight : b.setWeightKg;
+    if (weightA != null && weightB != null) {
+      return int.parse(weightB).compareTo(int.parse(weightA));
+    }
+    return 0;
+  });
+
+  if (documents.length > 5) {
+    // Divide the documents list into two lists
+    final firstList = documents.sublist(0, 3);
+    final secondList = documents.sublist(documents.length - 3);
+
+    // Return the appropriate list based on the 'value' parameter
+    if (value == 'max') {
+      return firstList;
+    } else if (value == 'min') {
+      return secondList;
+    }
+  }
+  return documents;
+}
+
+double getRandomDouble(
+  double minValue,
+  double maxValue,
+) {
+  if (minValue >= maxValue) {
+    throw ArgumentError('minValue must be less than maxValue');
+  }
+
+  final random = math.Random();
+  return minValue + random.nextDouble() * (maxValue - minValue);
 }

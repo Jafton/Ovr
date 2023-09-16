@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/velocity/velocity_or_jump/velocity_or_jump_widget.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
@@ -88,7 +89,7 @@ class _JumpModeSelectionWidgetState extends State<JumpModeSelectionWidget> {
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(-1.0, 0.0),
+                          alignment: AlignmentDirectional(-1.00, 0.00),
                           child: Icon(
                             FFIcons.karrowDown,
                             color: FlutterFlowTheme.of(context).secondaryText,

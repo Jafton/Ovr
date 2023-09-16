@@ -1,3 +1,18 @@
 {
-  "indexes": []
+  "indexes": [
+    {
+      "collectionGroup": "exercise",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "exercise_owner",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "exercise_type",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ]
 }

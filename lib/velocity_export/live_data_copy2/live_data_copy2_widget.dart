@@ -115,7 +115,7 @@ class _LiveDataCopy2WidgetState extends State<LiveDataCopy2Widget> {
             children: [
               Expanded(
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.00, 0.00),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
@@ -255,6 +255,10 @@ class _LiveDataCopy2WidgetState extends State<LiveDataCopy2Widget> {
                                                                   0.0,
                                                                   0.0),
                                                       child: RichText(
+                                                        textScaleFactor:
+                                                            MediaQuery.of(
+                                                                    context)
+                                                                .textScaleFactor,
                                                         text: TextSpan(
                                                           children: [
                                                             TextSpan(
@@ -346,6 +350,10 @@ class _LiveDataCopy2WidgetState extends State<LiveDataCopy2Widget> {
                                                                   0.0,
                                                                   0.0),
                                                       child: RichText(
+                                                        textScaleFactor:
+                                                            MediaQuery.of(
+                                                                    context)
+                                                                .textScaleFactor,
                                                         text: TextSpan(
                                                           children: [
                                                             TextSpan(
@@ -437,6 +445,10 @@ class _LiveDataCopy2WidgetState extends State<LiveDataCopy2Widget> {
                                                                   0.0,
                                                                   0.0),
                                                       child: RichText(
+                                                        textScaleFactor:
+                                                            MediaQuery.of(
+                                                                    context)
+                                                                .textScaleFactor,
                                                         text: TextSpan(
                                                           children: [
                                                             TextSpan(

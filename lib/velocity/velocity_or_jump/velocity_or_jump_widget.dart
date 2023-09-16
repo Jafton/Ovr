@@ -51,7 +51,7 @@ class _VelocityOrJumpWidgetState extends State<VelocityOrJumpWidget> {
         ),
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+        padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 26.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -74,6 +74,7 @@ class _VelocityOrJumpWidgetState extends State<VelocityOrJumpWidget> {
               onTap: () async {
                 setState(() {
                   FFAppState().velocityOrJump = 'Velocity';
+                  FFAppState().pageIndex = 1;
                 });
 
                 context.goNamed(
@@ -116,6 +117,7 @@ class _VelocityOrJumpWidgetState extends State<VelocityOrJumpWidget> {
               onTap: () async {
                 setState(() {
                   FFAppState().velocityOrJump = 'Jump';
+                  FFAppState().pageIndex = 1;
                 });
 
                 context.goNamed(
@@ -135,12 +137,16 @@ class _VelocityOrJumpWidgetState extends State<VelocityOrJumpWidget> {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
-                    child: Image.asset(
-                      'assets/images/OVR_JUMP_(app).png',
-                      width: MediaQuery.sizeOf(context).width * 0.33,
-                      fit: BoxFit.contain,
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: Image.asset(
+                        'assets/images/OVR_JUMP_(app).png',
+                        width: MediaQuery.sizeOf(context).width * 0.33,
+                        fit: BoxFit.contain,
+                      ),
                     ),
                   ),
                 ],

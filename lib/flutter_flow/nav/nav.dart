@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 
 import '../../auth/base_auth_user_provider.dart';
 
@@ -161,6 +162,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/weightInput',
           builder: (context, params) => WeightInputWidget(
             exerciseName: params.getParam('exerciseName', ParamType.String),
+            exerciseRef: params.getParam('exerciseRef',
+                ParamType.DocumentReference, false, ['exercise']),
           ),
         ),
         FFRoute(
@@ -168,6 +171,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/liveData',
           builder: (context, params) => LiveDataWidget(
             exerciseName: params.getParam('exerciseName', ParamType.String),
+            exerciseRef: params.getParam('exerciseRef',
+                ParamType.DocumentReference, false, ['exercise']),
           ),
         ),
         FFRoute(
@@ -244,11 +249,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => MainPageWidget(),
         ),
         FFRoute(
-          name: 'iconsTesting',
-          path: '/iconsTesting',
-          builder: (context, params) => IconsTestingWidget(),
-        ),
-        FFRoute(
           name: 'VerticalJumpLiveData',
           path: '/verticalJumpLiveData',
           builder: (context, params) => VerticalJumpLiveDataWidget(),
@@ -276,9 +276,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => HeightPageWidget(),
         ),
         FFRoute(
+          name: 'VideoRecording',
+          path: '/videoRecording',
+          builder: (context, params) => VideoRecordingWidget(),
+        ),
+        FFRoute(
           name: 'SportAndPositionPage',
           path: '/sportAndPositionPage',
           builder: (context, params) => SportAndPositionPageWidget(),
+        ),
+        FFRoute(
+          name: 'LiftSelectionCopy',
+          path: '/liftSelectionCopy',
+          builder: (context, params) => LiftSelectionCopyWidget(),
+        ),
+        FFRoute(
+          name: 'JumpModeSelectionCopy',
+          path: '/jumpModeSelectionCopy',
+          builder: (context, params) => JumpModeSelectionCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -458,15 +473,11 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primary,
-                      ),
-                    ),
+              ? Container(
+                  color: Colors.transparent,
+                  child: Image.asset(
+                    'assets/images/LOADER.png',
+                    fit: BoxFit.cover,
                   ),
                 )
               : page;

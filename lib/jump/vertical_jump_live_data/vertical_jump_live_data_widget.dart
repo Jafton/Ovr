@@ -53,7 +53,7 @@ class _VerticalJumpLiveDataWidgetState
             children: [
               Expanded(
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.00, 0.00),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -291,7 +291,7 @@ class _VerticalJumpLiveDataWidgetState
                                               ),
                                               child: Align(
                                                 alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
+                                                    0.00, 0.00),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(10.0, 10.0,
@@ -329,7 +329,7 @@ class _VerticalJumpLiveDataWidgetState
                                               ),
                                               child: Align(
                                                 alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
+                                                    0.00, 0.00),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(10.0, 10.0,
@@ -367,7 +367,7 @@ class _VerticalJumpLiveDataWidgetState
                                               ),
                                               child: Align(
                                                 alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
+                                                    0.00, 0.00),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(10.0, 10.0,
@@ -405,7 +405,7 @@ class _VerticalJumpLiveDataWidgetState
                                               ),
                                               child: Align(
                                                 alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
+                                                    0.00, 0.00),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(10.0, 10.0,
@@ -443,7 +443,7 @@ class _VerticalJumpLiveDataWidgetState
                                               ),
                                               child: Align(
                                                 alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
+                                                    0.00, 0.00),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(10.0, 10.0,

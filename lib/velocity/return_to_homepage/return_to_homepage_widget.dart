@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -59,7 +60,7 @@ class _ReturnToHomepageWidgetState extends State<ReturnToHomepageWidget> {
         ),
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
+        padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 40.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -87,15 +88,20 @@ class _ReturnToHomepageWidgetState extends State<ReturnToHomepageWidget> {
             ),
             FFButtonWidget(
               onPressed: () async {
-                context.goNamed('MainPage');
+                if (FFAppState().isOfflineMode) {
+                  context.goNamed('LiftSelectionCopy');
+                } else {
+                  FFAppState().update(() {
+                    FFAppState().pageIndex = 1;
+                    FFAppState().isGoalSwitchedOn = false;
+                    FFAppState().setGoal = '';
+                    FFAppState().weightSelection = '';
+                    FFAppState().jumpSandboxMode = false;
+                    FFAppState().listOfReps = [];
+                  });
 
-                FFAppState().update(() {
-                  FFAppState().pageIndex = 1;
-                  FFAppState().isGoalSwitchedOn = false;
-                  FFAppState().setGoal = '';
-                  FFAppState().weightSelection = '';
-                  FFAppState().jumpSandboxMode = false;
-                });
+                  context.goNamed('MainPage');
+                }
               },
               text: 'CONFIRM',
               options: FFButtonOptions(

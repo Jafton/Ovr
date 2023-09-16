@@ -50,6 +50,9 @@ class _SportsSelectorWidgetState extends State<SportsSelectorWidget> {
 
     return Container(
       width: double.infinity,
+      constraints: BoxConstraints(
+        maxHeight: MediaQuery.sizeOf(context).width < 430.0 ? 400.0 : 500.0,
+      ),
       decoration: BoxDecoration(
         color: Color(0xFF182433),
         borderRadius: BorderRadius.only(
@@ -60,91 +63,91 @@ class _SportsSelectorWidgetState extends State<SportsSelectorWidget> {
         ),
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 16.0),
-              child: Container(
-                width: 50.0,
-                height: 5.0,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).bgBg6,
+        padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 42.0),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 16.0),
+                child: Container(
+                  width: 50.0,
+                  height: 5.0,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).bgBg6,
+                  ),
                 ),
               ),
-            ),
-            StreamBuilder<List<SportsRecord>>(
-              stream: querySportsRecord(),
-              builder: (context, snapshot) {
-                // Customize what your widget looks like when it's loading.
-                if (!snapshot.hasData) {
-                  return Center(
-                    child: SizedBox(
-                      width: 50.0,
-                      height: 50.0,
-                      child: CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation<Color>(
-                          FlutterFlowTheme.of(context).primary,
+              StreamBuilder<List<SportsRecord>>(
+                stream: querySportsRecord(),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 50.0,
+                        height: 50.0,
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            FlutterFlowTheme.of(context).primary,
+                          ),
                         ),
-                      ),
-                    ),
-                  );
-                }
-                List<SportsRecord> listViewSportsRecordList = snapshot.data!;
-                return ListView.builder(
-                  padding: EdgeInsets.zero,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  itemCount: listViewSportsRecordList.length,
-                  itemBuilder: (context, listViewIndex) {
-                    final listViewSportsRecord =
-                        listViewSportsRecordList[listViewIndex];
-                    return FFButtonWidget(
-                      onPressed: () async {
-                        await widget.sportAndPositionRef!
-                            .update(createSportAndPositionRecordData(
-                          sport: listViewSportsRecord.name,
-                          sportRef: listViewSportsRecord.reference,
-                          position: 'N/A',
-                        ));
-                        setState(() {
-                          FFAppState().boolean = true;
-                        });
-                        Navigator.pop(context);
-                      },
-                      text: listViewSportsRecord.name,
-                      options: FFButtonOptions(
-                        width: double.infinity,
-                        height: 40.0,
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).bgBg5,
-                        textStyle:
-                            FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: 'SF Pro Display',
-                                  color: FlutterFlowTheme.of(context).txtText1,
-                                  fontWeight: FontWeight.w500,
-                                  useGoogleFonts: false,
-                                ),
-                        elevation: 0.0,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(8.0),
-                        hoverColor: FlutterFlowTheme.of(context).bgStroke,
-                        hoverElevation: 0.0,
                       ),
                     );
-                  },
-                );
-              },
-            ),
-          ],
+                  }
+                  List<SportsRecord> columnSportsRecordList = snapshot.data!;
+                  return Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: List.generate(columnSportsRecordList.length,
+                        (columnIndex) {
+                      final columnSportsRecord =
+                          columnSportsRecordList[columnIndex];
+                      return FFButtonWidget(
+                        onPressed: () async {
+                          Navigator.pop(context);
+
+                          await widget.sportAndPositionRef!
+                              .update(createSportAndPositionRecordData(
+                            sport: columnSportsRecord.name,
+                            sportRef: columnSportsRecord.reference,
+                            position: 'N/A',
+                          ));
+                          _model.updatePage(() {});
+                        },
+                        text: columnSportsRecord.name,
+                        options: FFButtonOptions(
+                          width: double.infinity,
+                          height: 40.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).bgBg5,
+                          textStyle: FlutterFlowTheme.of(context)
+                              .labelMedium
+                              .override(
+                                fontFamily: 'SF Pro Display',
+                                color: FlutterFlowTheme.of(context).txtText1,
+                                fontWeight: FontWeight.w500,
+                                useGoogleFonts: false,
+                              ),
+                          elevation: 0.0,
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
+                          hoverColor: FlutterFlowTheme.of(context).bgStroke,
+                          hoverElevation: 0.0,
+                        ),
+                      );
+                    }),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

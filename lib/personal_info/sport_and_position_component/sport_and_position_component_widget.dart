@@ -332,10 +332,9 @@ class _SportAndPositionComponentWidgetState
                   size: 16.0,
                 ),
                 onPressed: () async {
-                  await showModalBottomSheet(
+                  showModalBottomSheet(
                     isScrollControlled: true,
                     backgroundColor: Colors.transparent,
-                    enableDrag: false,
                     context: context,
                     builder: (context) {
                       return Padding(

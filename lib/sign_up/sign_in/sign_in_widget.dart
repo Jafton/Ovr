@@ -138,7 +138,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(0.0, 1.0),
+                          alignment: AlignmentDirectional(0.00, 1.00),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 40.0),
@@ -157,14 +157,19 @@ class _SignInWidgetState extends State<SignInWidget> {
                                   children: [
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(-1.0, 0.0),
+                                          AlignmentDirectional(-1.00, 0.00),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 8.0),
                                         child: Text(
                                           'TRAINING. SMARTER.',
                                           style: FlutterFlowTheme.of(context)
-                                              .headlineMedium,
+                                              .headlineMedium
+                                              .override(
+                                                fontFamily: 'Bicyclette',
+                                                fontSize: 27.0,
+                                                useGoogleFonts: false,
+                                              ),
                                         ),
                                       ),
                                     ),
@@ -632,6 +637,8 @@ class _SignInWidgetState extends State<SignInWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 16.0, 0.0, 16.0),
                                       child: RichText(
+                                        textScaleFactor: MediaQuery.of(context)
+                                            .textScaleFactor,
                                         text: TextSpan(
                                           children: [
                                             TextSpan(

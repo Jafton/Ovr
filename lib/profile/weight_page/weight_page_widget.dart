@@ -4,11 +4,9 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'weight_page_model.dart';
@@ -30,10 +28,6 @@ class _WeightPageWidgetState extends State<WeightPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => WeightPageModel());
-
-    _model.weightController ??= TextEditingController(
-        text: functions.removeLettersFromString(
-            valueOrDefault(currentUserDocument?.userWeight, '')));
   }
 
   @override
@@ -159,152 +153,13 @@ class _WeightPageWidgetState extends State<WeightPageWidget> {
                           ),
                         ),
                       ),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          AuthUserStreamWidget(
-                            builder: (context) => Container(
-                              width: 130.0,
-                              child: TextFormField(
-                                controller: _model.weightController,
-                                onChanged: (_) => EasyDebounce.debounce(
-                                  '_model.weightController',
-                                  Duration(milliseconds: 10),
-                                  () => setState(() {}),
-                                ),
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  hintStyle:
-                                      FlutterFlowTheme.of(context).displaySmall,
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  errorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context).error,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  focusedErrorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context).error,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  filled: true,
-                                  fillColor: FlutterFlowTheme.of(context).bgBg2,
-                                  contentPadding:
-                                      EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 8.0, 0.0, 7.0),
-                                ),
-                                style:
-                                    FlutterFlowTheme.of(context).displaySmall,
-                                textAlign: TextAlign.center,
-                                keyboardType: TextInputType.number,
-                                validator: _model.weightControllerValidator
-                                    .asValidator(context),
-                                inputFormatters: [
-                                  FilteringTextInputFormatter.allow(
-                                      RegExp('^(?:\\d{1,3}(?:\\.\\d{0,2})?)'))
-                                ],
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                6.0, 0.0, 6.0, 0.0),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                setState(() {
-                                  FFAppState().weightUnit = 'lbs';
-                                });
-                              },
-                              child: Container(
-                                width: 50.0,
-                                height: 50.0,
-                                decoration: BoxDecoration(
-                                  color: FFAppState().weightUnit == 'lbs'
-                                      ? FlutterFlowTheme.of(context).bgBg6
-                                      : FlutterFlowTheme.of(context).bgBg2,
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
-                                child: Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
-                                  child: Text(
-                                    'lbs',
-                                    textAlign: TextAlign.start,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Bicyclette',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          fontSize: 14.0,
-                                          fontWeight: FontWeight.w500,
-                                          useGoogleFonts: false,
-                                        ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              setState(() {
-                                FFAppState().weightUnit = 'kg';
-                              });
-                            },
-                            child: Container(
-                              width: 50.0,
-                              height: 50.0,
-                              decoration: BoxDecoration(
-                                color: FFAppState().weightUnit == 'kg'
-                                    ? FlutterFlowTheme.of(context).bgBg6
-                                    : FlutterFlowTheme.of(context).bgBg2,
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              child: Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
-                                child: Text(
-                                  'kg',
-                                  textAlign: TextAlign.start,
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Bicyclette',
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
-                                        fontSize: 14.0,
-                                        fontWeight: FontWeight.w500,
-                                        useGoogleFonts: false,
-                                      ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+                      Container(
+                        width: 235.0,
+                        height: 60.0,
+                        child: custom_widgets.Weight(
+                          width: 235.0,
+                          height: 60.0,
+                        ),
                       ),
                       Padding(
                         padding:
@@ -332,8 +187,14 @@ class _WeightPageWidgetState extends State<WeightPageWidget> {
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
                         child: AuthUserStreamWidget(
                           builder: (context) => FFButtonWidget(
-                            onPressed: (_model.weightController.text == null ||
-                                        _model.weightController.text == '') ||
+                            onPressed: (valueOrDefault(
+                                                currentUserDocument?.userWeight,
+                                                '') ==
+                                            null ||
+                                        valueOrDefault(
+                                                currentUserDocument?.userWeight,
+                                                '') ==
+                                            '') ||
                                     (valueOrDefault(
                                                 currentUserDocument
                                                     ?.userWeightUnit,
@@ -343,18 +204,18 @@ class _WeightPageWidgetState extends State<WeightPageWidget> {
                                                 currentUserDocument
                                                     ?.userWeightUnit,
                                                 '') ==
-                                            '') ||
-                                    (_model.weightController.text == '0') ||
-                                    (_model.weightController.text == '00') ||
-                                    (_model.weightController.text == '000')
+                                            '')
                                 ? null
                                 : () async {
                                     await currentUserReference!
                                         .update(createUserRecordData(
-                                      userWeight:
-                                          '${_model.weightController.text}${FFAppState().weightUnit}',
+                                      userWeight: FFAppState().weight,
                                       userWeightUnit: FFAppState().weightUnit,
                                     ));
+                                    setState(() {
+                                      FFAppState().weight = '180';
+                                      FFAppState().weightUnit = 'lbs';
+                                    });
                                     context.safePop();
                                   },
                             text: 'CONFIRM',

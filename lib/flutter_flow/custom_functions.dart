@@ -10,6 +10,7 @@ import 'place.dart';
 import 'uploaded_file.dart';
 import '/backend/backend.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '/backend/schema/structs/index.dart';
 import '/auth/firebase_auth/auth_util.dart';
 
 int checkListLength(List<String> list) {
@@ -330,4 +331,60 @@ bool containsDot(
 bool checkForDots(String string) {
   final regex = RegExp(r'^(?!.*\.\.)[a-zA-Z0-9.]+$');
   return regex.hasMatch(string);
+}
+
+List<double> stringToDoubleList(List<String> string) {
+  // accept list of strings convert it to double and return
+  List<double> doubleList = [];
+  for (String s in string) {
+    doubleList.add(double.parse(s));
+  }
+  return doubleList;
+}
+
+List<double> dataStructToList(List<RepStruct> dataStructure) {
+  // accept datatype convert its rep_velocity element to double and return list of it
+  List<double> repVelocities = [];
+  for (RepStruct rep in dataStructure) {
+    repVelocities.add(double.parse(rep.repVelocity));
+  }
+  return repVelocities;
+}
+
+List<int> listOfIndexes(List<RepStruct> dataStructure) {
+  // return list of indexes statring from 1
+  List<int> indexes = [];
+  for (int i = 0; i < dataStructure.length; i++) {
+    indexes.add(i + 1);
+  }
+  return indexes;
+}
+
+String maxValueInList(List<RepStruct> dataStruct) {
+  // accept datatype find the max value in rep_max_velocity converted to double
+  double max = 0.0;
+  for (RepStruct rep in dataStruct) {
+    double repMaxVelocity = double.parse(rep.repVelocity);
+    if (repMaxVelocity > max) {
+      max = repMaxVelocity;
+    }
+  }
+  return max.toString();
+}
+
+double stringToDouble(String string) {
+  return double.parse(string);
+}
+
+bool dateCheckInfo(List<DateTime> dateTimes) {
+  DateTime now = DateTime.now();
+  String formattedTime = DateFormat.yMd().format(now);
+
+  for (int i = 0; i < dateTimes.length; i++) {
+    if (DateFormat.yMd().format(dateTimes[i]) == formattedTime) {
+      return true;
+    }
+  }
+
+  return false;
 }

@@ -15,7 +15,6 @@ import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'personal_info_page_model.dart';
@@ -39,7 +38,6 @@ class _PersonalInfoPageWidgetState extends State<PersonalInfoPageWidget> {
     _model = createModel(context, () => PersonalInfoPageModel());
 
     _model.usernameFieldController ??= TextEditingController();
-    _model.weightController ??= TextEditingController(text: '180');
   }
 
   @override
@@ -107,7 +105,7 @@ class _PersonalInfoPageWidgetState extends State<PersonalInfoPageWidget> {
                                         setState(() {
                                           FFAppState().massUnit = 'lb';
                                           FFAppState().height = '5\' 9\"';
-                                          FFAppState().weight = '';
+                                          FFAppState().weight = '180';
                                           FFAppState().weightUnit = 'lbs';
                                           FFAppState().heightUnit = 'ft';
                                           FFAppState().country = null;
@@ -172,7 +170,7 @@ class _PersonalInfoPageWidgetState extends State<PersonalInfoPageWidget> {
                                 scrollDirection: Axis.horizontal,
                                 children: [
                                   Align(
-                                    alignment: AlignmentDirectional(0.0, 1.0),
+                                    alignment: AlignmentDirectional(0.00, 1.00),
                                     child: FutureBuilder<ApiCallResponse>(
                                       future: CountriesCall.call(),
                                       builder: (context, snapshot) {
@@ -359,7 +357,8 @@ class _PersonalInfoPageWidgetState extends State<PersonalInfoPageWidget> {
                                                                           context)
                                                                       .bgBg2,
                                                               prefixIcon: Icon(
-                                                                FFIcons.kuser,
+                                                                FFIcons
+                                                                    .kuserWithTick,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .txtText4,
@@ -751,9 +750,13 @@ class _PersonalInfoPageWidgetState extends State<PersonalInfoPageWidget> {
                                                                 children: [
                                                                   Text(
                                                                     dateTimeFormat(
-                                                                        'd/M/y',
-                                                                        FFAppState()
-                                                                            .dateOfBirth),
+                                                                      'yMd',
+                                                                      FFAppState()
+                                                                          .dateOfBirth,
+                                                                      locale: FFLocalizations.of(
+                                                                              context)
+                                                                          .languageCode,
+                                                                    ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyLarge
@@ -1279,7 +1282,7 @@ class _PersonalInfoPageWidgetState extends State<PersonalInfoPageWidget> {
                                     ),
                                   ),
                                   Align(
-                                    alignment: AlignmentDirectional(0.0, 1.0),
+                                    alignment: AlignmentDirectional(0.00, 1.00),
                                     child: Container(
                                       width: MediaQuery.sizeOf(context).width *
                                           0.9,
@@ -1432,14 +1435,12 @@ class _PersonalInfoPageWidgetState extends State<PersonalInfoPageWidget> {
                                                             FFAppState()
                                                                     .height ==
                                                                 '') ||
-                                                        (FFAppState().height ==
-                                                            '0') ||
-                                                        (FFAppState().height ==
-                                                            '0\' 0\"') ||
-                                                        (FFAppState().height ==
-                                                            '00') ||
-                                                        (FFAppState().height ==
-                                                            '000')
+                                                        (FFAppState()
+                                                                    .heightUnit ==
+                                                                null ||
+                                                            FFAppState()
+                                                                    .heightUnit ==
+                                                                '')
                                                     ? null
                                                     : () async {
                                                         await _model
@@ -1498,7 +1499,7 @@ class _PersonalInfoPageWidgetState extends State<PersonalInfoPageWidget> {
                                     ),
                                   ),
                                   Align(
-                                    alignment: AlignmentDirectional(0.0, 1.0),
+                                    alignment: AlignmentDirectional(0.00, 1.00),
                                     child: Container(
                                       width: MediaQuery.sizeOf(context).width *
                                           0.9,
@@ -1587,232 +1588,13 @@ class _PersonalInfoPageWidgetState extends State<PersonalInfoPageWidget> {
                                                 ),
                                               ),
                                             ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Container(
-                                                  width: 130.0,
-                                                  child: TextFormField(
-                                                    controller:
-                                                        _model.weightController,
-                                                    onChanged: (_) =>
-                                                        EasyDebounce.debounce(
-                                                      '_model.weightController',
-                                                      Duration(
-                                                          milliseconds: 10),
-                                                      () => setState(() {}),
-                                                    ),
-                                                    obscureText: false,
-                                                    decoration: InputDecoration(
-                                                      hintStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .displaySmall,
-                                                      enabledBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color:
-                                                              Color(0x00000000),
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10.0),
-                                                      ),
-                                                      focusedBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color:
-                                                              Color(0x00000000),
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10.0),
-                                                      ),
-                                                      errorBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10.0),
-                                                      ),
-                                                      focusedErrorBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10.0),
-                                                      ),
-                                                      filled: true,
-                                                      fillColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bgBg2,
-                                                      contentPadding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  8.0,
-                                                                  0.0,
-                                                                  7.0),
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .displaySmall,
-                                                    textAlign: TextAlign.center,
-                                                    keyboardType:
-                                                        TextInputType.number,
-                                                    validator: _model
-                                                        .weightControllerValidator
-                                                        .asValidator(context),
-                                                    inputFormatters: [
-                                                      FilteringTextInputFormatter
-                                                          .allow(RegExp(
-                                                              '^(?:\\d{1,3}(?:\\.\\d{0,2})?)'))
-                                                    ],
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          6.0, 0.0, 6.0, 0.0),
-                                                  child: InkWell(
-                                                    splashColor:
-                                                        Colors.transparent,
-                                                    focusColor:
-                                                        Colors.transparent,
-                                                    hoverColor:
-                                                        Colors.transparent,
-                                                    highlightColor:
-                                                        Colors.transparent,
-                                                    onTap: () async {
-                                                      setState(() {
-                                                        FFAppState()
-                                                            .weightUnit = 'lbs';
-                                                      });
-                                                    },
-                                                    child: Container(
-                                                      width: 50.0,
-                                                      height: 50.0,
-                                                      decoration: BoxDecoration(
-                                                        color: FFAppState()
-                                                                    .weightUnit ==
-                                                                'lbs'
-                                                            ? FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bgBg6
-                                                            : FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bgBg2,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10.0),
-                                                      ),
-                                                      child: Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                0.0, 0.0),
-                                                        child: Text(
-                                                          'lbs',
-                                                          textAlign:
-                                                              TextAlign.start,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Bicyclette',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryText,
-                                                                fontSize: 14.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                                useGoogleFonts:
-                                                                    false,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                InkWell(
-                                                  splashColor:
-                                                      Colors.transparent,
-                                                  focusColor:
-                                                      Colors.transparent,
-                                                  hoverColor:
-                                                      Colors.transparent,
-                                                  highlightColor:
-                                                      Colors.transparent,
-                                                  onTap: () async {
-                                                    setState(() {
-                                                      FFAppState().weightUnit =
-                                                          'kg';
-                                                    });
-                                                  },
-                                                  child: Container(
-                                                    width: 50.0,
-                                                    height: 50.0,
-                                                    decoration: BoxDecoration(
-                                                      color: FFAppState()
-                                                                  .weightUnit ==
-                                                              'kg'
-                                                          ? FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bgBg6
-                                                          : FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bgBg2,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10.0),
-                                                    ),
-                                                    child: Align(
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              0.0, 0.0),
-                                                      child: Text(
-                                                        'kg',
-                                                        textAlign:
-                                                            TextAlign.start,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Bicyclette',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                                  fontSize:
-                                                                      14.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                  useGoogleFonts:
-                                                                      false,
-                                                                ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
+                                            Container(
+                                              width: 235.0,
+                                              height: 60.0,
+                                              child: custom_widgets.Weight(
+                                                width: 235.0,
+                                                height: 60.0,
+                                              ),
                                             ),
                                             Padding(
                                               padding: EdgeInsetsDirectional
@@ -1841,31 +1623,18 @@ class _PersonalInfoPageWidgetState extends State<PersonalInfoPageWidget> {
                                               ),
                                             ),
                                             FFButtonWidget(
-                                              onPressed: (_model.weightController
-                                                                  .text ==
+                                              onPressed: (FFAppState().weight ==
                                                               null ||
-                                                          _model.weightController
-                                                                  .text ==
+                                                          FFAppState().weight ==
                                                               '') ||
-                                                      (FFAppState().weightUnit ==
+                                                      (FFAppState()
+                                                                  .weightUnit ==
                                                               null ||
-                                                          FFAppState().weightUnit ==
-                                                              '') ||
-                                                      (_model.weightController
-                                                              .text ==
-                                                          '0') ||
-                                                      (_model.weightController
-                                                              .text ==
-                                                          '00') ||
-                                                      (_model.weightController
-                                                              .text ==
-                                                          '000')
+                                                          FFAppState()
+                                                                  .weightUnit ==
+                                                              '')
                                                   ? null
                                                   : () async {
-                                                      setState(() {
-                                                        FFAppState().weight =
-                                                            '${_model.weightController.text}${FFAppState().weightUnit}';
-                                                      });
                                                       await _model
                                                           .pageViewController
                                                           ?.nextPage(
@@ -1916,7 +1685,7 @@ class _PersonalInfoPageWidgetState extends State<PersonalInfoPageWidget> {
                                     ),
                                   ),
                                   Align(
-                                    alignment: AlignmentDirectional(0.0, 1.0),
+                                    alignment: AlignmentDirectional(0.00, 1.00),
                                     child: StreamBuilder<
                                         List<SportAndPositionRecord>>(
                                       stream: querySportAndPositionRecord(
@@ -2094,8 +1863,10 @@ class _PersonalInfoPageWidgetState extends State<PersonalInfoPageWidget> {
                                                                   if ((containerSportAndPositionRecordList
                                                                               .length <
                                                                           1) ||
-                                                                      FFAppState()
-                                                                          .boolean) {
+                                                                      (containerSportAndPositionRecordList.last.sport !=
+                                                                              null &&
+                                                                          containerSportAndPositionRecordList.last.sport !=
+                                                                              '')) {
                                                                     await SportAndPositionRecord.createDoc(
                                                                             currentUserReference!)
                                                                         .set(
@@ -2158,112 +1929,176 @@ class _PersonalInfoPageWidgetState extends State<PersonalInfoPageWidget> {
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 16.0),
-                                                    child: FFButtonWidget(
-                                                      onPressed: () async {
-                                                        await currentUserReference!
-                                                            .update(
-                                                                createUserRecordData(
-                                                          displayName: _model
-                                                              .usernameFieldController
-                                                              .text,
-                                                          phoneNumber: '',
-                                                          userRegion:
-                                                              '${getJsonField(
-                                                            FFAppState()
-                                                                .country,
-                                                            r'''$.flag''',
-                                                          ).toString()} ${getJsonField(
-                                                            FFAppState()
-                                                                .country,
-                                                            r'''$.cca2''',
-                                                          ).toString()}${FFAppState().state == null ? '  ' : ' (${getJsonField(
-                                                                  FFAppState()
-                                                                      .state,
-                                                                  r'''$.abbreviation''',
-                                                                ).toString()})'}',
-                                                          userHeight:
-                                                              '${FFAppState().height} ${FFAppState().heightUnit}',
-                                                          userDateOfBirth:
-                                                              FFAppState()
-                                                                  .dateOfBirth,
-                                                          userWeight:
-                                                              FFAppState()
-                                                                  .weight,
-                                                          creationDate:
-                                                              getCurrentTimestamp,
-                                                          userHeightUnit:
-                                                              '${FFAppState().height} ${FFAppState().heightUnit}',
-                                                          userWeightUnit:
-                                                              FFAppState()
-                                                                  .weightUnit,
-                                                          userShowFatigue:
-                                                              false,
-                                                          userEccentric: false,
-                                                          userFilterJumps:
-                                                              false,
-                                                        ));
-
-                                                        context.goNamed(
-                                                            'MainPage');
-
-                                                        setState(() {
-                                                          FFAppState()
-                                                              .massUnit = 'lb';
-                                                          FFAppState().height =
-                                                              '5\' 9\"';
-                                                          FFAppState().weight =
-                                                              '';
-                                                          FFAppState()
-                                                                  .weightUnit =
-                                                              'lbs';
-                                                          FFAppState()
-                                                                  .heightUnit =
-                                                              'ft';
-                                                          FFAppState().country =
-                                                              null;
-                                                          FFAppState()
-                                                                  .dateOfBirth =
-                                                              null;
-                                                          FFAppState().boolean =
-                                                              false;
-                                                        });
-                                                      },
-                                                      text: 'CONFIRM',
-                                                      options: FFButtonOptions(
-                                                        width: double.infinity,
-                                                        height: 56.0,
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        iconPadding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .btnDefault,
-                                                        textStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleMedium,
-                                                        elevation: 0.0,
-                                                        borderSide: BorderSide(
-                                                          color: Colors
-                                                              .transparent,
-                                                          width: 1.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
+                                                    child: StreamBuilder<
+                                                        List<ExerciseRecord>>(
+                                                      stream:
+                                                          queryExerciseRecord(
+                                                        queryBuilder: (exerciseRecord) =>
+                                                            exerciseRecord.where(
+                                                                'exercise_owner',
+                                                                isEqualTo:
+                                                                    currentUserReference),
                                                       ),
+                                                      builder:
+                                                          (context, snapshot) {
+                                                        // Customize what your widget looks like when it's loading.
+                                                        if (!snapshot.hasData) {
+                                                          return Center(
+                                                            child: SizedBox(
+                                                              width: 50.0,
+                                                              height: 50.0,
+                                                              child:
+                                                                  CircularProgressIndicator(
+                                                                valueColor:
+                                                                    AlwaysStoppedAnimation<
+                                                                        Color>(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          );
+                                                        }
+                                                        List<ExerciseRecord>
+                                                            buttonExerciseRecordList =
+                                                            snapshot.data!;
+                                                        return FFButtonWidget(
+                                                          onPressed: () async {
+                                                            await currentUserReference!
+                                                                .update(
+                                                                    createUserRecordData(
+                                                              displayName: _model
+                                                                  .usernameFieldController
+                                                                  .text,
+                                                              phoneNumber: '',
+                                                              userRegion:
+                                                                  '${getJsonField(
+                                                                FFAppState()
+                                                                    .country,
+                                                                r'''$.flag''',
+                                                              ).toString()} ${getJsonField(
+                                                                FFAppState()
+                                                                    .country,
+                                                                r'''$.cca2''',
+                                                              ).toString()}${FFAppState().state == null ? '  ' : ' (${getJsonField(
+                                                                      FFAppState()
+                                                                          .state,
+                                                                      r'''$.abbreviation''',
+                                                                    ).toString()})'}',
+                                                              userHeight:
+                                                                  FFAppState()
+                                                                      .height,
+                                                              userDateOfBirth:
+                                                                  FFAppState()
+                                                                      .dateOfBirth,
+                                                              userWeight:
+                                                                  FFAppState()
+                                                                      .weight,
+                                                              creationDate:
+                                                                  getCurrentTimestamp,
+                                                              userHeightUnit:
+                                                                  FFAppState()
+                                                                      .heightUnit,
+                                                              userWeightUnit:
+                                                                  FFAppState()
+                                                                      .weightUnit,
+                                                              userShowFatigue:
+                                                                  false,
+                                                              userEccentric:
+                                                                  false,
+                                                              userFilterJumps:
+                                                                  false,
+                                                              userViewdataExercise:
+                                                                  buttonExerciseRecordList
+                                                                      .last
+                                                                      .reference,
+                                                            ));
+
+                                                            context.goNamed(
+                                                                'MainPage');
+
+                                                            setState(() {
+                                                              FFAppState()
+                                                                      .massUnit =
+                                                                  'lb';
+                                                              FFAppState()
+                                                                      .height =
+                                                                  '5\' 9\"';
+                                                              FFAppState()
+                                                                      .weight =
+                                                                  '180';
+                                                              FFAppState()
+                                                                      .weightUnit =
+                                                                  'lbs';
+                                                              FFAppState()
+                                                                      .heightUnit =
+                                                                  'ft';
+                                                              FFAppState()
+                                                                      .country =
+                                                                  null;
+                                                              FFAppState()
+                                                                      .dateOfBirth =
+                                                                  null;
+                                                              FFAppState()
+                                                                      .boolean =
+                                                                  false;
+                                                            });
+                                                            if (containerSportAndPositionRecordList
+                                                                        .last
+                                                                        .sport ==
+                                                                    null ||
+                                                                containerSportAndPositionRecordList
+                                                                        .last
+                                                                        .sport ==
+                                                                    '') {
+                                                              await containerSportAndPositionRecordList
+                                                                  .last
+                                                                  .reference
+                                                                  .delete();
+                                                            }
+                                                          },
+                                                          text: 'CONFIRM',
+                                                          options:
+                                                              FFButtonOptions(
+                                                            width:
+                                                                double.infinity,
+                                                            height: 56.0,
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            iconPadding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .btnDefault,
+                                                            textStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleMedium,
+                                                            elevation: 0.0,
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Colors
+                                                                  .transparent,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                        );
+                                                      },
                                                     ),
                                                   ),
                                                 ],
@@ -2282,7 +2117,7 @@ class _PersonalInfoPageWidgetState extends State<PersonalInfoPageWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0.0, 0.93),
+                      alignment: AlignmentDirectional(0.00, 0.93),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,

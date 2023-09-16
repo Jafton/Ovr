@@ -109,7 +109,7 @@ class _VerifyPasswordPageWidgetState extends State<VerifyPasswordPageWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0.00, 0.00),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,

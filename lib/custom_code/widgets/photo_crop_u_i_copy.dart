@@ -1,5 +1,6 @@
 // Automatic FlutterFlow imports
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom widgets
@@ -142,7 +143,7 @@ class _PhotoCropUICopyState extends State<PhotoCropUICopy> {
                   await Future.delayed(const Duration(milliseconds: 1000));
                   Navigator.pop(context);
                 },
-                text: 'Set photo',
+                text: 'SET PHOTO',
                 options: FFButtonOptions(
                   width: double.infinity,
                   height: 55,

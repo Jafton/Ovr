@@ -12,6 +12,7 @@ import '/profile/settings_sheet/settings_sheet_widget.dart';
 import '/update/checking/checking_widget.dart';
 import '/velocity/error_dialog/error_dialog_widget.dart';
 import '/velocity/velocity_or_jump/velocity_or_jump_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_dialog/aligned_dialog.dart';
@@ -208,7 +209,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
           body: SafeArea(
             top: true,
             child: Align(
-              alignment: AlignmentDirectional(0.0, 0.0),
+              alignment: AlignmentDirectional(0.00, 0.00),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
@@ -234,7 +235,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                 child: Stack(
                                   children: [
                                     Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      alignment:
+                                          AlignmentDirectional(0.00, 0.00),
                                       child: Container(
                                         width: 100.0,
                                         height: 100.0,
@@ -249,8 +251,9 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
-                                            if (currentUserPhoto != null &&
-                                                currentUserPhoto != '')
+                                            if (FFAppState().croppedImage !=
+                                                    null &&
+                                                FFAppState().croppedImage != '')
                                               AuthUserStreamWidget(
                                                 builder: (context) => ClipRRect(
                                                   borderRadius:
@@ -261,31 +264,30 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                         milliseconds: 500),
                                                     fadeOutDuration: Duration(
                                                         milliseconds: 500),
-                                                    imageUrl: FFAppState()
-                                                        .croppedImage,
+                                                    imageUrl: currentUserPhoto,
                                                     width: 100.0,
                                                     height: 100.0,
                                                     fit: BoxFit.cover,
                                                   ),
                                                 ),
                                               ),
-                                            if (currentUserPhoto == null ||
-                                                currentUserPhoto == '')
-                                              AuthUserStreamWidget(
-                                                builder: (context) => Icon(
-                                                  FFIcons.kuser,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                  size: 72.0,
-                                                ),
+                                            if (FFAppState().croppedImage ==
+                                                    null ||
+                                                FFAppState().croppedImage == '')
+                                              Icon(
+                                                FFIcons.kuser,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                size: 72.0,
                                               ),
                                           ],
                                         ),
                                       ),
                                     ),
                                     Align(
-                                      alignment: AlignmentDirectional(0.0, 1.0),
+                                      alignment:
+                                          AlignmentDirectional(0.00, 1.00),
                                       child: FlutterFlowIconButton(
                                         borderRadius: 10.0,
                                         buttonSize: 35.0,
@@ -297,7 +299,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                           size: 15.0,
                                         ),
                                         onPressed: () async {
-                                          await showModalBottomSheet(
+                                          showModalBottomSheet(
                                             isScrollControlled: true,
                                             backgroundColor: Colors.transparent,
                                             context: context,
@@ -617,6 +619,47 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                     ),
                                   ],
                                 ),
+                              FFButtonWidget(
+                                onPressed: () async {
+                                  _model.result = await actions.connected();
+                                  await showDialog(
+                                    context: context,
+                                    builder: (alertDialogContext) {
+                                      return AlertDialog(
+                                        title: Text(_model.result!.toString()),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () => Navigator.pop(
+                                                alertDialogContext),
+                                            child: Text('Ok'),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+
+                                  setState(() {});
+                                },
+                                text: 'check',
+                                options: FFButtonOptions(
+                                  width: double.infinity,
+                                  height: 56.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color:
+                                      FlutterFlowTheme.of(context).btnDefault,
+                                  textStyle:
+                                      FlutterFlowTheme.of(context).titleMedium,
+                                  elevation: 0.0,
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -878,7 +921,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        await showModalBottomSheet(
+                                        showModalBottomSheet(
                                           isScrollControlled: true,
                                           backgroundColor: Colors.transparent,
                                           context: context,
@@ -1003,7 +1046,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      await showModalBottomSheet(
+                                      showModalBottomSheet(
                                         isScrollControlled: true,
                                         backgroundColor: Colors.transparent,
                                         context: context,

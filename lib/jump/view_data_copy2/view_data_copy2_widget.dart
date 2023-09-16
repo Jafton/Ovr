@@ -2,6 +2,7 @@ import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/velocity/date_of_set/date_of_set_widget.dart';
 import '/velocity/velocity_or_jump/velocity_or_jump_widget.dart';
 import 'package:flutter/gestures.dart';
@@ -33,7 +34,7 @@ class _ViewDataCopy2WidgetState extends State<ViewDataCopy2Widget>
       vsync: this,
       length: 5,
       initialIndex: 0,
-    );
+    )..addListener(() => setState(() {}));
   }
 
   @override
@@ -96,7 +97,7 @@ class _ViewDataCopy2WidgetState extends State<ViewDataCopy2Widget>
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(-1.0, 0.0),
+                          alignment: AlignmentDirectional(-1.00, 0.00),
                           child: Icon(
                             FFIcons.karrowDown,
                             color: FlutterFlowTheme.of(context).secondaryText,
@@ -208,7 +209,6 @@ class _ViewDataCopy2WidgetState extends State<ViewDataCopy2Widget>
                               ),
                             ],
                             controller: _model.tabBarController,
-                            onTap: (value) => setState(() {}),
                           ),
                         ),
                         Expanded(
@@ -222,6 +222,8 @@ class _ViewDataCopy2WidgetState extends State<ViewDataCopy2Widget>
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 18.0, 0.0, 18.0),
                                     child: RichText(
+                                      textScaleFactor: MediaQuery.of(context)
+                                          .textScaleFactor,
                                       text: TextSpan(
                                         children: [
                                           TextSpan(

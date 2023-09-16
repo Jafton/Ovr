@@ -120,7 +120,7 @@ class _NewExercisePageJumpWidgetState extends State<NewExercisePageJumpWidget> {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(0.0, 1.0),
+                              alignment: AlignmentDirectional(0.00, 1.00),
                               child: Container(
                                 width: MediaQuery.sizeOf(context).width * 0.9,
                                 decoration: BoxDecoration(

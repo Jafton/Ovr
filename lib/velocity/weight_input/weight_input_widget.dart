@@ -1,10 +1,12 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,9 +18,11 @@ class WeightInputWidget extends StatefulWidget {
   const WeightInputWidget({
     Key? key,
     this.exerciseName,
+    this.exerciseRef,
   }) : super(key: key);
 
   final String? exerciseName;
+  final DocumentReference? exerciseRef;
 
   @override
   _WeightInputWidgetState createState() => _WeightInputWidgetState();
@@ -54,7 +58,7 @@ class _WeightInputWidgetState extends State<WeightInputWidget> {
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.0, -1.0),
+            alignment: AlignmentDirectional(0.00, -1.00),
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 20.0),
               child: SingleChildScrollView(
@@ -164,6 +168,9 @@ class _WeightInputWidgetState extends State<WeightInputWidget> {
                                               ),
                                         ),
                                         RichText(
+                                          textScaleFactor:
+                                              MediaQuery.of(context)
+                                                  .textScaleFactor,
                                           text: TextSpan(
                                             children: [
                                               TextSpan(
@@ -266,6 +273,9 @@ class _WeightInputWidgetState extends State<WeightInputWidget> {
                                                         ),
                                               ),
                                               RichText(
+                                                textScaleFactor:
+                                                    MediaQuery.of(context)
+                                                        .textScaleFactor,
                                                 text: TextSpan(
                                                   children: [
                                                     TextSpan(
@@ -694,12 +704,23 @@ class _WeightInputWidgetState extends State<WeightInputWidget> {
                                                 widget.exerciseName,
                                                 ParamType.String,
                                               ),
+                                              'exerciseRef': serializeParam(
+                                                widget.exerciseRef,
+                                                ParamType.DocumentReference,
+                                              ),
                                             }.withoutNulls,
                                           );
 
                                           setState(() {
                                             FFAppState().isSelected = false;
-                                            FFAppState().weightSelection = '';
+                                            FFAppState()
+                                                .addToListOfReps(RepStruct(
+                                              repVelocity: '0',
+                                              repFatigue: '0',
+                                              repMaxVelocity: '0',
+                                              repRangeOfMotion: '0',
+                                              repPower: '0',
+                                            ));
                                           });
                                           if (double.parse(
                                                   FFAppState().setGoal) >

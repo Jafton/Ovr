@@ -62,7 +62,7 @@ class _SettingsSheetWidgetState extends State<SettingsSheetWidget> {
         ),
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
+        padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 40.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -103,7 +103,11 @@ class _SettingsSheetWidgetState extends State<SettingsSheetWidget> {
                 ),
                 AuthUserStreamWidget(
                   builder: (context) => Text(
-                    dateTimeFormat('d/M/y', currentUserDocument!.creationDate!),
+                    dateTimeFormat(
+                      'd/M/y',
+                      currentUserDocument!.creationDate!,
+                      locale: FFLocalizations.of(context).languageCode,
+                    ),
                     style: FlutterFlowTheme.of(context).bodyLarge.override(
                           fontFamily: 'SF Pro Display',
                           fontSize: 16.0,

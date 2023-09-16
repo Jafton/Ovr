@@ -67,7 +67,11 @@ class _DateTimePickerWidgetState extends State<DateTimePickerWidget> {
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
             child: Text(
-              dateTimeFormat('d/M/y', FFAppState().dateOfBirth),
+              dateTimeFormat(
+                'yMd',
+                FFAppState().dateOfBirth,
+                locale: FFLocalizations.of(context).languageCode,
+              ),
               style: FlutterFlowTheme.of(context).titleSmall.override(
                     fontFamily: 'SF Pro Display',
                     color: FlutterFlowTheme.of(context).btnDefault,
@@ -77,7 +81,7 @@ class _DateTimePickerWidgetState extends State<DateTimePickerWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 52.0),
             child: Container(
               width: double.infinity,
               height: MediaQuery.sizeOf(context).height * 0.2,

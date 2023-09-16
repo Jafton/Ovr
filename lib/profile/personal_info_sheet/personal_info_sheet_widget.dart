@@ -2,7 +2,6 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -62,7 +61,7 @@ class _PersonalInfoSheetWidgetState extends State<PersonalInfoSheetWidget> {
         ),
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
+        padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 40.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -141,7 +140,10 @@ class _PersonalInfoSheetWidgetState extends State<PersonalInfoSheetWidget> {
                 AuthUserStreamWidget(
                   builder: (context) => Text(
                     dateTimeFormat(
-                        'd/M/y', currentUserDocument!.userDateOfBirth!),
+                      'yMd',
+                      currentUserDocument!.userDateOfBirth!,
+                      locale: FFLocalizations.of(context).languageCode,
+                    ),
                     style: FlutterFlowTheme.of(context).bodyLarge.override(
                           fontFamily: 'SF Pro Display',
                           color: FlutterFlowTheme.of(context).txtText1,
@@ -186,9 +188,12 @@ class _PersonalInfoSheetWidgetState extends State<PersonalInfoSheetWidget> {
                     highlightColor: Colors.transparent,
                     onTap: () async {
                       setState(() {
-                        FFAppState().height = functions.removeLettersFromString(
-                            valueOrDefault(
-                                currentUserDocument?.userHeight, ''));
+                        FFAppState().heightUnit = valueOrDefault(
+                            currentUserDocument?.userHeightUnit, '');
+                      });
+                      setState(() {
+                        FFAppState().height =
+                            valueOrDefault(currentUserDocument?.userHeight, '');
                       });
 
                       context.pushNamed('HeightPage');
@@ -203,7 +208,7 @@ class _PersonalInfoSheetWidgetState extends State<PersonalInfoSheetWidget> {
                             16.0, 10.0, 16.0, 10.0),
                         child: AuthUserStreamWidget(
                           builder: (context) => Text(
-                            valueOrDefault(currentUserDocument?.userHeight, ''),
+                            '${valueOrDefault(currentUserDocument?.userHeight, '')} ${valueOrDefault(currentUserDocument?.userHeightUnit, '')}',
                             style: FlutterFlowTheme.of(context)
                                 .bodyLarge
                                 .override(
@@ -257,6 +262,10 @@ class _PersonalInfoSheetWidgetState extends State<PersonalInfoSheetWidget> {
                         FFAppState().weightUnit = valueOrDefault(
                             currentUserDocument?.userWeightUnit, '');
                       });
+                      setState(() {
+                        FFAppState().weight =
+                            valueOrDefault(currentUserDocument?.userWeight, '');
+                      });
 
                       context.pushNamed('WeightPage');
                     },
@@ -270,7 +279,7 @@ class _PersonalInfoSheetWidgetState extends State<PersonalInfoSheetWidget> {
                             16.0, 10.0, 16.0, 10.0),
                         child: AuthUserStreamWidget(
                           builder: (context) => Text(
-                            valueOrDefault(currentUserDocument?.userWeight, ''),
+                            '${valueOrDefault(currentUserDocument?.userWeight, '')} ${valueOrDefault(currentUserDocument?.userWeightUnit, '')}',
                             style: FlutterFlowTheme.of(context)
                                 .bodyLarge
                                 .override(
@@ -341,6 +350,8 @@ class _PersonalInfoSheetWidgetState extends State<PersonalInfoSheetWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          context.pushNamed('SportAndPositionPage');
+
                           if (containerSportAndPositionRecordList.first.sport !=
                                   null &&
                               containerSportAndPositionRecordList.first.sport !=
@@ -349,8 +360,6 @@ class _PersonalInfoSheetWidgetState extends State<PersonalInfoSheetWidget> {
                               FFAppState().boolean = true;
                             });
                           }
-
-                          context.pushNamed('SportAndPositionPage');
                         },
                         child: Container(
                           decoration: BoxDecoration(

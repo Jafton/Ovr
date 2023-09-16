@@ -66,6 +66,11 @@ class ExerciseRecord extends FirestoreRecord {
   DateTime? get exerciseLastUsed => _exerciseLastUsed;
   bool hasExerciseLastUsed() => _exerciseLastUsed != null;
 
+  // "exercise_set_ref" field.
+  List<DocumentReference>? _exerciseSetRef;
+  List<DocumentReference> get exerciseSetRef => _exerciseSetRef ?? const [];
+  bool hasExerciseSetRef() => _exerciseSetRef != null;
+
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _exerciseE1RM = snapshotData['exercise_e1RM'] as String?;
@@ -77,6 +82,7 @@ class ExerciseRecord extends FirestoreRecord {
     _exerciseIsVisible = snapshotData['exercise_is_visible'] as bool?;
     _exerciseIsDeletable = snapshotData['exercise_is_deletable'] as bool?;
     _exerciseLastUsed = snapshotData['exercise_last_used'] as DateTime?;
+    _exerciseSetRef = getDataList(snapshotData['exercise_set_ref']);
   }
 
   static CollectionReference get collection =>
@@ -148,6 +154,7 @@ class ExerciseRecordDocumentEquality implements Equality<ExerciseRecord> {
 
   @override
   bool equals(ExerciseRecord? e1, ExerciseRecord? e2) {
+    const listEquality = ListEquality();
     return e1?.name == e2?.name &&
         e1?.exerciseE1RM == e2?.exerciseE1RM &&
         e1?.exerciseOwner == e2?.exerciseOwner &&
@@ -157,7 +164,8 @@ class ExerciseRecordDocumentEquality implements Equality<ExerciseRecord> {
         e1?.exercisePopularity == e2?.exercisePopularity &&
         e1?.exerciseIsVisible == e2?.exerciseIsVisible &&
         e1?.exerciseIsDeletable == e2?.exerciseIsDeletable &&
-        e1?.exerciseLastUsed == e2?.exerciseLastUsed;
+        e1?.exerciseLastUsed == e2?.exerciseLastUsed &&
+        listEquality.equals(e1?.exerciseSetRef, e2?.exerciseSetRef);
   }
 
   @override
@@ -171,7 +179,8 @@ class ExerciseRecordDocumentEquality implements Equality<ExerciseRecord> {
         e?.exercisePopularity,
         e?.exerciseIsVisible,
         e?.exerciseIsDeletable,
-        e?.exerciseLastUsed
+        e?.exerciseLastUsed,
+        e?.exerciseSetRef
       ]);
 
   @override

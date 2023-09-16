@@ -1,5 +1,6 @@
 // Automatic FlutterFlow imports
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom widgets
@@ -37,7 +38,8 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
   Widget build(BuildContext context) {
     List<Widget> _widgetOptions = <Widget>[
-      widget.type == 'Velocity' ? ViewDataWidget() : ViewDataCopy2Widget(),
+      ViewDataWidget(),
+      // widget.type == 'Velocity' ? ViewDataWidget() : ViewDataCopy2Widget(),
       widget.type == 'Velocity'
           ? LiftSelectionWidget()
           : JumpModeSelectionWidget(),

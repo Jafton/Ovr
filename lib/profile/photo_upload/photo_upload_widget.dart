@@ -59,7 +59,7 @@ class _PhotoUploadWidgetState extends State<PhotoUploadWidget> {
         ),
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+        padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 42.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -79,6 +79,7 @@ class _PhotoUploadWidgetState extends State<PhotoUploadWidget> {
               builder: (context) => FFButtonWidget(
                 onPressed: () async {
                   final selectedMedia = await selectMedia(
+                    imageQuality: 100,
                     mediaSource: MediaSource.photoGallery,
                     multiImage: false,
                   );
@@ -114,6 +115,7 @@ class _PhotoUploadWidgetState extends State<PhotoUploadWidget> {
                   _model.result = await actions.returnSizeInBytes(
                     _model.uploadedLocalFile1,
                   );
+                  Navigator.pop(context);
                   if (_model.result! > 5000000) {
                     showAlignedDialog(
                       barrierColor: Colors.transparent,
@@ -140,13 +142,10 @@ class _PhotoUploadWidgetState extends State<PhotoUploadWidget> {
                       _model.uploadedLocalFile1 =
                           FFUploadedFile(bytes: Uint8List.fromList([]));
                     });
-
-                    Navigator.pop(context);
                   } else {
                     if (_model.uploadedLocalFile1 != null &&
                         (_model.uploadedLocalFile1.bytes?.isNotEmpty ??
                             false)) {
-                      Navigator.pop(context);
                       showModalBottomSheet(
                         isScrollControlled: true,
                         backgroundColor: Colors.transparent,
@@ -252,6 +251,7 @@ class _PhotoUploadWidgetState extends State<PhotoUploadWidget> {
                     _model.uploadedLocalFile2,
                   );
                   if (_model.resultCopy! > 5000000) {
+                    Navigator.pop(context);
                     showAlignedDialog(
                       barrierColor: Colors.transparent,
                       context: context,
@@ -277,14 +277,12 @@ class _PhotoUploadWidgetState extends State<PhotoUploadWidget> {
                       _model.uploadedLocalFile2 =
                           FFUploadedFile(bytes: Uint8List.fromList([]));
                     });
-
-                    Navigator.pop(context);
                   } else {
                     if (_model.uploadedLocalFile2 != null &&
                         (_model.uploadedLocalFile2.bytes?.isNotEmpty ??
                             false)) {
                       Navigator.pop(context);
-                      await showModalBottomSheet(
+                      showModalBottomSheet(
                         isScrollControlled: true,
                         backgroundColor: Colors.transparent,
                         enableDrag: false,
@@ -352,13 +350,13 @@ class _PhotoUploadWidgetState extends State<PhotoUploadWidget> {
             ),
             if (currentUserPhoto != null && currentUserPhoto != '')
               Align(
-                alignment: AlignmentDirectional(-1.0, 0.0),
+                alignment: AlignmentDirectional(-1.00, 0.00),
                 child: Builder(
                   builder: (context) => AuthUserStreamWidget(
                     builder: (context) => FFButtonWidget(
                       onPressed: () async {
                         Navigator.pop(context);
-                        showAlignedDialog(
+                        await showAlignedDialog(
                           context: context,
                           isGlobal: true,
                           avoidOverflow: false,

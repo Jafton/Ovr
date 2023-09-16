@@ -1,5 +1,6 @@
 // Automatic FlutterFlow imports
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom actions
@@ -20,6 +21,6 @@ Future callbackAction(
   users
       .doc(docReference)
       .update({'photo_url': '$photoPath'})
-      .then((value) => print("User Updated"))
+      .then((value) => print('uploaded'))
       .catchError((error) => print("Failed to update user: $error"));
 }

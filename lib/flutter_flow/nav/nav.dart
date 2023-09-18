@@ -181,9 +181,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => ViewDataWidget(),
         ),
         FFRoute(
-          name: 'ViewDataCopy',
-          path: '/viewDataCopy',
-          builder: (context, params) => ViewDataCopyWidget(),
+          name: 'ViewDataShare',
+          path: '/viewDataShare',
+          builder: (context, params) => ViewDataShareWidget(
+            exerciseRef: params.getParam('exerciseRef',
+                ParamType.DocumentReference, false, ['exercise']),
+          ),
         ),
         FFRoute(
           name: 'JumpModeSelection',
@@ -229,9 +232,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => ViewDataJumpExportWidget(),
         ),
         FFRoute(
-          name: 'LiveDataCopy2',
-          path: '/liveDataCopy2',
-          builder: (context, params) => LiveDataCopy2Widget(),
+          name: 'SetDataShare',
+          path: '/setDataShare',
+          asyncParams: {
+            'setDoc': getDoc(['exercise', 'set'], SetRecord.fromSnapshot),
+          },
+          builder: (context, params) => SetDataShareWidget(
+            setDoc: params.getParam('setDoc', ParamType.Document),
+            exerciseName: params.getParam('exerciseName', ParamType.String),
+            parameter1: params.getParam('parameter1', ParamType.int),
+            parameter4: params.getParam('parameter4', ParamType.int),
+          ),
         ),
         FFRoute(
           name: 'SignIn',
@@ -294,6 +305,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'JumpModeSelectionCopy',
           path: '/jumpModeSelectionCopy',
           builder: (context, params) => JumpModeSelectionCopyWidget(),
+        ),
+        FFRoute(
+          name: 'ExactRepData',
+          path: '/exactRepData',
+          asyncParams: {
+            'setDocuments':
+                getDocList(['exercise', 'set'], SetRecord.fromSnapshot),
+          },
+          builder: (context, params) => ExactRepDataWidget(
+            exerciseName: params.getParam('exerciseName', ParamType.String),
+            date: params.getParam('date', ParamType.DateTime),
+            setDocuments: params.getParam<SetRecord>(
+                'setDocuments', ParamType.Document, true),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

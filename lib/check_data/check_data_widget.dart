@@ -31,20 +31,6 @@ class _CheckDataWidgetState extends State<CheckDataWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await actions.lockOrientation();
       if (true) {
-        await showDialog(
-          context: context,
-          builder: (alertDialogContext) {
-            return AlertDialog(
-              title: Text('You are online '),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: Text('Ok'),
-                ),
-              ],
-            );
-          },
-        );
         await Future.delayed(const Duration(milliseconds: 1500));
         if ((currentUserDisplayName == null || currentUserDisplayName == '') ||
             (valueOrDefault(currentUserDocument?.userUnits, '') == null ||

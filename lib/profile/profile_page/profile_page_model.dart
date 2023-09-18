@@ -12,7 +12,6 @@ import '/profile/settings_sheet/settings_sheet_widget.dart';
 import '/update/checking/checking_widget.dart';
 import '/velocity/error_dialog/error_dialog_widget.dart';
 import '/velocity/velocity_or_jump/velocity_or_jump_widget.dart';
-import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_dialog/aligned_dialog.dart';
@@ -34,8 +33,6 @@ class ProfilePageModel extends FlutterFlowModel {
   // State field(s) for TextField widget.
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
-  // Stores action output result for [Custom Action - connected] action in Button widget.
-  bool? result;
 
   /// Initialization and disposal methods.
 

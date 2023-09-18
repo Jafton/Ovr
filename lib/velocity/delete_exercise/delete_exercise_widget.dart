@@ -46,127 +46,130 @@ class _DeleteExerciseWidgetState extends State<DeleteExerciseWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Container(
-      width: 290.0,
-      decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).bgBg5,
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 3.0,
-            color: Color(0x33000000),
-            offset: Offset(0.0, 1.0),
-          )
-        ],
+    return Material(
+      color: Colors.transparent,
+      elevation: 0.0,
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(24.0),
       ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 0.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Text(
-                  'You are deleting the exercise',
-                  textAlign: TextAlign.start,
-                  style: FlutterFlowTheme.of(context).labelMedium.override(
-                        fontFamily: 'SF Pro Display',
-                        color: FlutterFlowTheme.of(context).txtText1,
-                        fontWeight: FontWeight.w600,
-                        useGoogleFonts: false,
-                      ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 16.0),
-                  child: Text(
-                    'This action cannot be undone\nDo you want to continue?',
-                    textAlign: TextAlign.center,
-                    style: FlutterFlowTheme.of(context).bodyLarge.override(
+      child: Container(
+        width: 290.0,
+        decoration: BoxDecoration(
+          color: FlutterFlowTheme.of(context).bgBg5,
+          borderRadius: BorderRadius.circular(24.0),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 0.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Text(
+                    'You are deleting the exercise',
+                    textAlign: TextAlign.start,
+                    style: FlutterFlowTheme.of(context).labelMedium.override(
                           fontFamily: 'SF Pro Display',
-                          color: FlutterFlowTheme.of(context).txtText2,
-                          fontWeight: FontWeight.normal,
+                          color: FlutterFlowTheme.of(context).txtText1,
+                          fontWeight: FontWeight.w600,
                           useGoogleFonts: false,
                         ),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 16.0),
+                    child: Text(
+                      'This action cannot be undone\nDo you want to continue?',
+                      textAlign: TextAlign.center,
+                      style: FlutterFlowTheme.of(context).bodyLarge.override(
+                            fontFamily: 'SF Pro Display',
+                            color: FlutterFlowTheme.of(context).txtText2,
+                            fontWeight: FontWeight.normal,
+                            useGoogleFonts: false,
+                          ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              width: double.infinity,
+              height: 1.0,
+              decoration: BoxDecoration(
+                color: Colors.black,
+              ),
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FFButtonWidget(
+                  onPressed: () async {
+                    await widget.exerciseRef!.delete();
+                    Navigator.pop(context);
+                  },
+                  text: 'Yes',
+                  options: FFButtonOptions(
+                    width: 130.0,
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).bgBg5,
+                    textStyle:
+                        FlutterFlowTheme.of(context).labelMedium.override(
+                              fontFamily: 'SF Pro Display',
+                              color: FlutterFlowTheme.of(context).redNo,
+                              fontWeight: FontWeight.w500,
+                              useGoogleFonts: false,
+                            ),
+                    elevation: 0.0,
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(0.0),
+                  ),
+                ),
+                Container(
+                  width: 1.0,
+                  height: 40.0,
+                  decoration: BoxDecoration(
+                    color: Colors.black,
+                  ),
+                ),
+                FFButtonWidget(
+                  onPressed: () async {
+                    Navigator.pop(context);
+                  },
+                  text: 'No',
+                  options: FFButtonOptions(
+                    width: 130.0,
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).bgBg5,
+                    textStyle:
+                        FlutterFlowTheme.of(context).labelMedium.override(
+                              fontFamily: 'SF Pro Display',
+                              color: FlutterFlowTheme.of(context).txtText2,
+                              fontWeight: FontWeight.w500,
+                              useGoogleFonts: false,
+                            ),
+                    elevation: 0.0,
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(0.0),
                   ),
                 ),
               ],
             ),
-          ),
-          Container(
-            width: double.infinity,
-            height: 1.0,
-            decoration: BoxDecoration(
-              color: Colors.black,
-            ),
-          ),
-          Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              FFButtonWidget(
-                onPressed: () async {
-                  await widget.exerciseRef!.delete();
-                  Navigator.pop(context);
-                },
-                text: 'Yes',
-                options: FFButtonOptions(
-                  width: 130.0,
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                  iconPadding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                  color: FlutterFlowTheme.of(context).bgBg5,
-                  textStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                        fontFamily: 'SF Pro Display',
-                        color: FlutterFlowTheme.of(context).redNo,
-                        fontWeight: FontWeight.w500,
-                        useGoogleFonts: false,
-                      ),
-                  elevation: 0.0,
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                    width: 1.0,
-                  ),
-                  borderRadius: BorderRadius.circular(0.0),
-                ),
-              ),
-              Container(
-                width: 1.0,
-                height: 40.0,
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                ),
-              ),
-              FFButtonWidget(
-                onPressed: () async {
-                  Navigator.pop(context);
-                },
-                text: 'No',
-                options: FFButtonOptions(
-                  width: 130.0,
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                  iconPadding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                  color: FlutterFlowTheme.of(context).bgBg5,
-                  textStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                        fontFamily: 'SF Pro Display',
-                        color: FlutterFlowTheme.of(context).txtText2,
-                        fontWeight: FontWeight.w500,
-                        useGoogleFonts: false,
-                      ),
-                  elevation: 0.0,
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                    width: 1.0,
-                  ),
-                  borderRadius: BorderRadius.circular(0.0),
-                ),
-              ),
-            ],
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

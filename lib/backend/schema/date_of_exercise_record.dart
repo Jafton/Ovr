@@ -21,16 +21,16 @@ class DateOfExerciseRecord extends FirestoreRecord {
   DateTime? get creationDate => _creationDate;
   bool hasCreationDate() => _creationDate != null;
 
-  // "set_reference" field.
-  List<DocumentReference>? _setReference;
-  List<DocumentReference> get setReference => _setReference ?? const [];
-  bool hasSetReference() => _setReference != null;
+  // "date_string" field.
+  String? _dateString;
+  String get dateString => _dateString ?? '';
+  bool hasDateString() => _dateString != null;
 
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
     _creationDate = snapshotData['creation_date'] as DateTime?;
-    _setReference = getDataList(snapshotData['set_reference']);
+    _dateString = snapshotData['date_string'] as String?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -74,10 +74,12 @@ class DateOfExerciseRecord extends FirestoreRecord {
 
 Map<String, dynamic> createDateOfExerciseRecordData({
   DateTime? creationDate,
+  String? dateString,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'creation_date': creationDate,
+      'date_string': dateString,
     }.withoutNulls,
   );
 
@@ -90,14 +92,13 @@ class DateOfExerciseRecordDocumentEquality
 
   @override
   bool equals(DateOfExerciseRecord? e1, DateOfExerciseRecord? e2) {
-    const listEquality = ListEquality();
     return e1?.creationDate == e2?.creationDate &&
-        listEquality.equals(e1?.setReference, e2?.setReference);
+        e1?.dateString == e2?.dateString;
   }
 
   @override
   int hash(DateOfExerciseRecord? e) =>
-      const ListEquality().hash([e?.creationDate, e?.setReference]);
+      const ListEquality().hash([e?.creationDate, e?.dateString]);
 
   @override
   bool isValidKey(Object? o) => o is DateOfExerciseRecord;

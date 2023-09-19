@@ -1,3 +1,8 @@
+import 'dart:async';
+
+import 'package:flutter_blue_plus/flutter_blue_plus.dart';
+import 'package:ovr_performance/app_bluetooth/app_bluetooth.dart';
+
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_charts.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -19,6 +24,10 @@ class LiveDataModel extends FlutterFlowModel {
   late RepDataModel repDataModel;
   // Model for endSet component.
   late EndSetModel endSetModel;
+  BluetoothCharacteristic? midSetChar;
+
+
+
 
   /// Initialization and disposal methods.
 
@@ -27,11 +36,32 @@ class LiveDataModel extends FlutterFlowModel {
     endSetModel = createModel(context, () => EndSetModel());
   }
 
+  Future<void> notifyLivDataVelocity(BluetoothDevice device) async {
+    late BluetoothService service;
+    List<BluetoothService> services = await device.discoverServices();
+    for (BluetoothService bluetoothService in services) {
+      if (bluetoothService.uuid.toString() == AppBluetooth.serviceUuid) {
+        service = bluetoothService;
+      }
+    }
+    var characteristics = service.characteristics;
+    for (BluetoothCharacteristic bluetoothCharacteristic in characteristics) {
+      if (bluetoothCharacteristic.uuid.toString() == AppBluetooth.notifyChar) {
+        midSetChar = bluetoothCharacteristic;
+      }
+    }
+    midSetChar!.setNotifyValue(true);
+
+  }
+
+
   void dispose() {
+
     unfocusNode.dispose();
     repDataModel.dispose();
     endSetModel.dispose();
   }
+
 
   /// Action blocks are added here.
 

@@ -1,3 +1,5 @@
+import 'package:ovr_performance/app_bluetooth/app_bluetooth.dart';
+
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_charts.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -36,6 +38,13 @@ class _LiveDataWidgetState extends State<LiveDataWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => LiveDataModel());
+    _model.notifyLivDataVelocity(AppBluetooth.connectedVelocityDevice!).then((value){
+      _model.midSetChar!.onValueReceived.listen((event) {
+        print(event);
+      });
+    });
+
+
   }
 
   @override

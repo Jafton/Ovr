@@ -207,16 +207,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'ViewDataCopy2',
-          path: '/viewDataCopy2',
-          builder: (context, params) => ViewDataCopy2Widget(),
-        ),
-        FFRoute(
-          name: 'VerticalJump',
-          path: '/verticalJump',
-          builder: (context, params) => VerticalJumpWidget(),
-        ),
-        FFRoute(
           name: 'RSILiveData',
           path: '/rSILiveData',
           builder: (context, params) => RSILiveDataWidget(),
@@ -327,6 +317,25 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'EditExercise',
           path: '/editExercise',
           builder: (context, params) => EditExerciseWidget(),
+        ),
+        FFRoute(
+          name: 'ViewDataJump',
+          path: '/viewDataJump',
+          builder: (context, params) => ViewDataJumpWidget(),
+        ),
+        FFRoute(
+          name: 'ExactRepDataJump',
+          path: '/exactRepDataJump',
+          asyncParams: {
+            'setDocuments':
+                getDocList(['exercise', 'set'], SetRecord.fromSnapshot),
+          },
+          builder: (context, params) => ExactRepDataJumpWidget(
+            exerciseName: params.getParam('exerciseName', ParamType.String),
+            date: params.getParam('date', ParamType.DateTime),
+            setDocuments: params.getParam<SetRecord>(
+                'setDocuments', ParamType.Document, true),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

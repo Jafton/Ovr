@@ -76,6 +76,11 @@ class SetRecord extends FirestoreRecord {
   String get setWeightKg => _setWeightKg ?? '';
   bool hasSetWeightKg() => _setWeightKg != null;
 
+  // "set_vertical_jump_reps" field.
+  List<String>? _setVerticalJumpReps;
+  List<String> get setVerticalJumpReps => _setVerticalJumpReps ?? const [];
+  bool hasSetVerticalJumpReps() => _setVerticalJumpReps != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -94,6 +99,7 @@ class SetRecord extends FirestoreRecord {
     );
     _dateString = snapshotData['date_string'] as String?;
     _setWeightKg = snapshotData['set_weight_kg'] as String?;
+    _setVerticalJumpReps = getDataList(snapshotData['set_vertical_jump_reps']);
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -183,7 +189,8 @@ class SetRecordDocumentEquality implements Equality<SetRecord> {
         e1?.setMaxPower == e2?.setMaxPower &&
         listEquality.equals(e1?.setListOfRep, e2?.setListOfRep) &&
         e1?.dateString == e2?.dateString &&
-        e1?.setWeightKg == e2?.setWeightKg;
+        e1?.setWeightKg == e2?.setWeightKg &&
+        listEquality.equals(e1?.setVerticalJumpReps, e2?.setVerticalJumpReps);
   }
 
   @override
@@ -199,7 +206,8 @@ class SetRecordDocumentEquality implements Equality<SetRecord> {
         e?.setMaxPower,
         e?.setListOfRep,
         e?.dateString,
-        e?.setWeightKg
+        e?.setWeightKg,
+        e?.setVerticalJumpReps
       ]);
 
   @override

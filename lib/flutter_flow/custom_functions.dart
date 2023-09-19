@@ -744,3 +744,40 @@ List<ExerciseRecord> sortExerciseAlphabetically(
 
   return exerciseDocs;
 }
+
+String numberOfVerticalJumps(List<SetRecord> docs) {
+  // map docs return number of all set_vertical_jump_reps length
+  int totalReps = 0;
+  for (var doc in docs) {
+    if (doc.setVerticalJumpReps != null) {
+      totalReps += doc.setVerticalJumpReps.length;
+    }
+  }
+  return totalReps.toString();
+}
+
+String? bestOfVerticalJump(List<SetRecord> set) {
+  // Map set docs, parse and find the maximum value out of all verticalJumpReps, and return it
+  double maxJump = 0.0;
+  for (var setRecord in set) {
+    final List<String>? jumpList = setRecord.setVerticalJumpReps;
+    if (jumpList != null) {
+      for (var jumpStr in jumpList) {
+        final double jump = double.tryParse(jumpStr) ?? 0.0;
+        if (jump > maxJump) {
+          maxJump = jump;
+        }
+      }
+    }
+  }
+  return maxJump.toStringAsFixed(1);
+}
+
+List<String> max5elements(List<String> list) {
+  // accept list of strings return maximum 5 last elements
+  if (list.length <= 5) {
+    return list;
+  } else {
+    return list.sublist(list.length - 5);
+  }
+}

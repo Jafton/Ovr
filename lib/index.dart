@@ -32,9 +32,6 @@ export '/jump/jump_mode_selection/jump_mode_selection_widget.dart'
     show JumpModeSelectionWidget;
 export '/jump/new_exercise_page_jump/new_exercise_page_jump_widget.dart'
     show NewExercisePageJumpWidget;
-export '/jump/view_data_copy2/view_data_copy2_widget.dart'
-    show ViewDataCopy2Widget;
-export '/jump/vertical_jump/vertical_jump_widget.dart' show VerticalJumpWidget;
 export '/jump/r_s_i_live_data/r_s_i_live_data_widget.dart'
     show RSILiveDataWidget;
 export '/jump/g_c_t_live_data/g_c_t_live_data_widget.dart'
@@ -65,3 +62,7 @@ export '/velocity/view_data/exact_rep_data/exact_rep_data_widget.dart'
     show ExactRepDataWidget;
 export '/velocity/main_page/edit_exercise/edit_exercise_widget.dart'
     show EditExerciseWidget;
+export '/jump/view_data_jump/view_data_jump_widget.dart'
+    show ViewDataJumpWidget;
+export '/jump/exact_rep_data_jump/exact_rep_data_jump_widget.dart'
+    show ExactRepDataJumpWidget;

@@ -101,7 +101,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                     width: double.infinity,
                     height: 100.0,
                     decoration: BoxDecoration(
-                      color: Color(0xE6121B26),
+                      color: Color(0xF80E161E),
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,

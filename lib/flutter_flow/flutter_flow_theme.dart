@@ -201,23 +201,23 @@ class ThemeTypography extends Typography {
 
   final FlutterFlowTheme theme;
 
-  String get displayLargeFamily => 'Bicyclette';
+  String get displayLargeFamily => 'Lulo';
   TextStyle get displayLarge => TextStyle(
-        fontFamily: 'Bicyclette',
+        fontFamily: 'Lulo',
         color: theme.primaryText,
         fontWeight: FontWeight.w900,
         fontSize: 64.0,
       );
-  String get displayMediumFamily => 'Bicyclette';
+  String get displayMediumFamily => 'Lulo';
   TextStyle get displayMedium => TextStyle(
-        fontFamily: 'Bicyclette',
+        fontFamily: 'Lulo',
         color: theme.primaryText,
         fontWeight: FontWeight.w900,
         fontSize: 48.0,
       );
-  String get displaySmallFamily => 'Bicyclette';
+  String get displaySmallFamily => 'Lulo';
   TextStyle get displaySmall => TextStyle(
-        fontFamily: 'Bicyclette',
+        fontFamily: 'Lulo',
         color: theme.primaryText,
         fontWeight: FontWeight.w900,
         fontSize: 36.0,
@@ -229,16 +229,16 @@ class ThemeTypography extends Typography {
         fontWeight: FontWeight.w500,
         fontSize: 36.0,
       );
-  String get headlineMediumFamily => 'Bicyclette';
+  String get headlineMediumFamily => 'Lulo';
   TextStyle get headlineMedium => TextStyle(
-        fontFamily: 'Bicyclette',
+        fontFamily: 'Lulo',
         color: theme.primaryText,
         fontWeight: FontWeight.w900,
         fontSize: 28.0,
       );
-  String get headlineSmallFamily => 'Bicyclette';
+  String get headlineSmallFamily => 'Lulo';
   TextStyle get headlineSmall => TextStyle(
-        fontFamily: 'Bicyclette',
+        fontFamily: 'Lulo',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 24.0,
@@ -250,9 +250,9 @@ class ThemeTypography extends Typography {
         fontWeight: FontWeight.w500,
         fontSize: 24.0,
       );
-  String get titleMediumFamily => 'Bicyclette';
+  String get titleMediumFamily => 'Lulo';
   TextStyle get titleMedium => TextStyle(
-        fontFamily: 'Bicyclette',
+        fontFamily: 'Lulo',
         color: theme.info,
         fontWeight: FontWeight.w900,
         fontSize: 18.0,
@@ -264,9 +264,9 @@ class ThemeTypography extends Typography {
         fontWeight: FontWeight.w500,
         fontSize: 18.0,
       );
-  String get labelLargeFamily => 'Bicyclette';
+  String get labelLargeFamily => 'Lulo';
   TextStyle get labelLarge => TextStyle(
-        fontFamily: 'Bicyclette',
+        fontFamily: 'Lulo',
         color: theme.primary,
         fontWeight: FontWeight.w900,
         fontSize: 16.0,
@@ -278,9 +278,9 @@ class ThemeTypography extends Typography {
         fontWeight: FontWeight.w500,
         fontSize: 16.0,
       );
-  String get labelSmallFamily => 'Bicyclette';
+  String get labelSmallFamily => 'Lulo';
   TextStyle get labelSmall => TextStyle(
-        fontFamily: 'Bicyclette',
+        fontFamily: 'Lulo',
         color: theme.primary,
         fontWeight: FontWeight.w900,
         fontSize: 14.0,
@@ -292,9 +292,9 @@ class ThemeTypography extends Typography {
         fontWeight: FontWeight.w500,
         fontSize: 14.0,
       );
-  String get bodyMediumFamily => 'Bicyclette';
+  String get bodyMediumFamily => 'Lulo';
   TextStyle get bodyMedium => TextStyle(
-        fontFamily: 'Bicyclette',
+        fontFamily: 'Lulo',
         color: theme.primaryText,
         fontWeight: FontWeight.w900,
         fontSize: 12.0,

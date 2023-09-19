@@ -123,7 +123,7 @@ class _RSILiveDataWidgetState extends State<RSILiveDataWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .headlineSmall
                                           .override(
-                                            fontFamily: 'Bicyclette',
+                                            fontFamily: 'Lulo',
                                             fontSize: MediaQuery.sizeOf(context)
                                                         .width <
                                                     430.0
@@ -144,7 +144,7 @@ class _RSILiveDataWidgetState extends State<RSILiveDataWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .displayLarge
                                           .override(
-                                            fontFamily: 'Bicyclette',
+                                            fontFamily: 'Lulo',
                                             fontSize: MediaQuery.sizeOf(context)
                                                         .width <
                                                     430.0
@@ -478,7 +478,7 @@ class _RSILiveDataWidgetState extends State<RSILiveDataWidget> {
                                                                 .displaySmall
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Bicyclette',
+                                                                      'Lulo',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .txtText2,
@@ -650,7 +650,7 @@ class _RSILiveDataWidgetState extends State<RSILiveDataWidget> {
                                                                 .displaySmall
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Bicyclette',
+                                                                      'Lulo',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .txtText2,
@@ -888,7 +888,7 @@ class _RSILiveDataWidgetState extends State<RSILiveDataWidget> {
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleMedium
                                   .override(
-                                    fontFamily: 'Bicyclette',
+                                    fontFamily: 'Lulo',
                                     color:
                                         FlutterFlowTheme.of(context).txtText2,
                                     useGoogleFonts: false,
@@ -925,7 +925,7 @@ class _RSILiveDataWidgetState extends State<RSILiveDataWidget> {
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleMedium
                                   .override(
-                                    fontFamily: 'Bicyclette',
+                                    fontFamily: 'Lulo',
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     useGoogleFonts: false,

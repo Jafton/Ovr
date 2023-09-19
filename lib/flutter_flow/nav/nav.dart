@@ -262,7 +262,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'VerticalJumpLiveData',
           path: '/verticalJumpLiveData',
-          builder: (context, params) => VerticalJumpLiveDataWidget(),
+          builder: (context, params) => VerticalJumpLiveDataWidget(
+            exerciseRef: params.getParam('exerciseRef',
+                ParamType.DocumentReference, false, ['exercise']),
+          ),
         ),
         FFRoute(
           name: 'ProfilePage',
@@ -319,6 +322,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             setDocuments: params.getParam<SetRecord>(
                 'setDocuments', ParamType.Document, true),
           ),
+        ),
+        FFRoute(
+          name: 'EditExercise',
+          path: '/editExercise',
+          builder: (context, params) => EditExerciseWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

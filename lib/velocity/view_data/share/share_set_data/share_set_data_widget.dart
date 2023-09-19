@@ -154,11 +154,11 @@ class _ShareSetDataWidgetState extends State<ShareSetDataWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 6.0, 0.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
                     child: Icon(
                       FFIcons.kmaxM,
                       color: FlutterFlowTheme.of(context).btnDefault,
-                      size: 24.0,
+                      size: 16.0,
                     ),
                   ),
                   RichText(
@@ -190,11 +190,11 @@ class _ShareSetDataWidgetState extends State<ShareSetDataWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 6.0, 0.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 3.0, 0.0),
                     child: Icon(
                       FFIcons.kmaxP,
                       color: FlutterFlowTheme.of(context).btnDefault,
-                      size: 24.0,
+                      size: 16.0,
                     ),
                   ),
                   RichText(

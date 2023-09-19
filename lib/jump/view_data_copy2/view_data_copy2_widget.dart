@@ -148,7 +148,7 @@ class _ViewDataCopy2WidgetState extends State<ViewDataCopy2Widget>
                           style: FlutterFlowTheme.of(context)
                               .headlineSmall
                               .override(
-                                fontFamily: 'Bicyclette',
+                                fontFamily: 'Lulo',
                                 color: FlutterFlowTheme.of(context).txtText1,
                                 fontSize:
                                     MediaQuery.sizeOf(context).width < 430.0
@@ -316,7 +316,7 @@ class _ViewDataCopy2WidgetState extends State<ViewDataCopy2Widget>
                                                                 .headlineSmall
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Bicyclette',
+                                                                      'Lulo',
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w900,
@@ -406,7 +406,7 @@ class _ViewDataCopy2WidgetState extends State<ViewDataCopy2Widget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Bicyclette',
+                                      fontFamily: 'Lulo',
                                       fontSize: 32.0,
                                       useGoogleFonts: false,
                                     ),
@@ -416,7 +416,7 @@ class _ViewDataCopy2WidgetState extends State<ViewDataCopy2Widget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Bicyclette',
+                                      fontFamily: 'Lulo',
                                       fontSize: 32.0,
                                       useGoogleFonts: false,
                                     ),
@@ -426,7 +426,7 @@ class _ViewDataCopy2WidgetState extends State<ViewDataCopy2Widget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Bicyclette',
+                                      fontFamily: 'Lulo',
                                       fontSize: 32.0,
                                       useGoogleFonts: false,
                                     ),
@@ -436,7 +436,7 @@ class _ViewDataCopy2WidgetState extends State<ViewDataCopy2Widget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Bicyclette',
+                                      fontFamily: 'Lulo',
                                       fontSize: 32.0,
                                       useGoogleFonts: false,
                                     ),

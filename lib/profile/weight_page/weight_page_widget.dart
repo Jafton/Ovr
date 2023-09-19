@@ -75,7 +75,7 @@ class _WeightPageWidgetState extends State<WeightPageWidget> {
                 'CHANGE\nWEIGHT',
                 textAlign: TextAlign.end,
                 style: FlutterFlowTheme.of(context).headlineSmall.override(
-                      fontFamily: 'Bicyclette',
+                      fontFamily: 'Lulo',
                       fontWeight: FontWeight.w900,
                       useGoogleFonts: false,
                     ),

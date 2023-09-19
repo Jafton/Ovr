@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/velocity/main_page/edit_exercise/edit_exercise_widget.dart';
 import '/velocity/main_page/exercise/exercise_widget.dart';
 import '/velocity/velocity_or_jump/velocity_or_jump_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;

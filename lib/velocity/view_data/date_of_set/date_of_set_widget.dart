@@ -118,7 +118,7 @@ class _DateOfSetWidgetState extends State<DateOfSetWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .headlineMedium
                                     .override(
-                                      fontFamily: 'Bicyclette',
+                                      fontFamily: 'Lulo',
                                       color:
                                           FlutterFlowTheme.of(context).txtText2,
                                       useGoogleFonts: false,
@@ -129,7 +129,7 @@ class _DateOfSetWidgetState extends State<DateOfSetWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .labelLarge
                                     .override(
-                                      fontFamily: 'Bicyclette',
+                                      fontFamily: 'Lulo',
                                       color:
                                           FlutterFlowTheme.of(context).txtText2,
                                       useGoogleFonts: false,

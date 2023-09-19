@@ -97,7 +97,7 @@ class _VerifyPasswordPageWidgetState extends State<VerifyPasswordPageWidget> {
                       style: FlutterFlowTheme.of(context)
                           .headlineSmall
                           .override(
-                            fontFamily: 'Bicyclette',
+                            fontFamily: 'Lulo',
                             fontSize: MediaQuery.sizeOf(context).width < 430.0
                                 ? 24.0
                                 : 36.0,
@@ -349,7 +349,7 @@ class _VerifyPasswordPageWidgetState extends State<VerifyPasswordPageWidget> {
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleMedium
                                           .override(
-                                            fontFamily: 'Bicyclette',
+                                            fontFamily: 'Lulo',
                                             color: FlutterFlowTheme.of(context)
                                                 .txtText2,
                                             useGoogleFonts: false,

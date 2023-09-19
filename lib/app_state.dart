@@ -467,6 +467,18 @@ class FFAppState extends ChangeNotifier {
   set setFilteredState(String _value) {
     _setFilteredState = _value;
   }
+
+  String _graphTimePeriod = '1mo';
+  String get graphTimePeriod => _graphTimePeriod;
+  set graphTimePeriod(String _value) {
+    _graphTimePeriod = _value;
+  }
+
+  DateTime? _timePeriod;
+  DateTime? get timePeriod => _timePeriod;
+  set timePeriod(DateTime? _value) {
+    _timePeriod = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

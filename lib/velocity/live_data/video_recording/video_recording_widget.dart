@@ -231,8 +231,7 @@ class _VideoRecordingWidgetState extends State<VideoRecordingWidget> {
                                                             context)
                                                         .displayLarge
                                                         .override(
-                                                          fontFamily:
-                                                              'Bicyclette',
+                                                          fontFamily: 'Lulo',
                                                           useGoogleFonts: false,
                                                           lineHeight: 1.0,
                                                         ),

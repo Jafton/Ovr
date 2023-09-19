@@ -109,7 +109,7 @@ class _Bluetooth1WidgetState extends State<Bluetooth1Widget> {
                           style: FlutterFlowTheme.of(context)
                               .headlineSmall
                               .override(
-                                fontFamily: 'Bicyclette',
+                                fontFamily: 'Lulo',
                                 fontSize:
                                     MediaQuery.sizeOf(context).width < 430.0
                                         ? 24.0

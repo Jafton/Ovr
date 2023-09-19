@@ -118,7 +118,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .headlineSmall
                                   .override(
-                                    fontFamily: 'Bicyclette',
+                                    fontFamily: 'Lulo',
                                     fontSize:
                                         MediaQuery.sizeOf(context).width < 430.0
                                             ? 24.0
@@ -357,7 +357,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                                   context)
                                               .titleMedium
                                               .override(
-                                                fontFamily: 'Bicyclette',
+                                                fontFamily: 'Lulo',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .txtText1,

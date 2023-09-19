@@ -127,15 +127,16 @@ class UserRecord extends FirestoreRecord {
   String get userVelocityOrJump => _userVelocityOrJump ?? '';
   bool hasUserVelocityOrJump() => _userVelocityOrJump != null;
 
-  // "user_viewData_exercise" field.
-  String? _userViewDataExercise;
-  String get userViewDataExercise => _userViewDataExercise ?? '';
-  bool hasUserViewDataExercise() => _userViewDataExercise != null;
-
   // "user_viewdata_exercise" field.
   DocumentReference? _userViewdataExercise;
   DocumentReference? get userViewdataExercise => _userViewdataExercise;
   bool hasUserViewdataExercise() => _userViewdataExercise != null;
+
+  // "user_viewData_exercise" field.
+  List<DocumentReference>? _userViewDataExercise;
+  List<DocumentReference> get userViewDataExercise =>
+      _userViewDataExercise ?? const [];
+  bool hasUserViewDataExercise() => _userViewDataExercise != null;
 
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
@@ -160,9 +161,9 @@ class UserRecord extends FirestoreRecord {
     _userHeightUnit = snapshotData['user_height_unit'] as String?;
     _userWeightUnit = snapshotData['user_weight_unit'] as String?;
     _userVelocityOrJump = snapshotData['user_velocity_or_jump'] as String?;
-    _userViewDataExercise = snapshotData['user_viewData_exercise'] as String?;
     _userViewdataExercise =
         snapshotData['user_viewdata_exercise'] as DocumentReference?;
+    _userViewDataExercise = getDataList(snapshotData['user_viewData_exercise']);
   }
 
   static CollectionReference get collection =>
@@ -220,7 +221,6 @@ Map<String, dynamic> createUserRecordData({
   String? userHeightUnit,
   String? userWeightUnit,
   String? userVelocityOrJump,
-  String? userViewDataExercise,
   DocumentReference? userViewdataExercise,
 }) {
   final firestoreData = mapToFirestore(
@@ -246,7 +246,6 @@ Map<String, dynamic> createUserRecordData({
       'user_height_unit': userHeightUnit,
       'user_weight_unit': userWeightUnit,
       'user_velocity_or_jump': userVelocityOrJump,
-      'user_viewData_exercise': userViewDataExercise,
       'user_viewdata_exercise': userViewdataExercise,
     }.withoutNulls,
   );
@@ -283,8 +282,8 @@ class UserRecordDocumentEquality implements Equality<UserRecord> {
         e1?.userHeightUnit == e2?.userHeightUnit &&
         e1?.userWeightUnit == e2?.userWeightUnit &&
         e1?.userVelocityOrJump == e2?.userVelocityOrJump &&
-        e1?.userViewDataExercise == e2?.userViewDataExercise &&
-        e1?.userViewdataExercise == e2?.userViewdataExercise;
+        e1?.userViewdataExercise == e2?.userViewdataExercise &&
+        listEquality.equals(e1?.userViewDataExercise, e2?.userViewDataExercise);
   }
 
   @override
@@ -311,8 +310,8 @@ class UserRecordDocumentEquality implements Equality<UserRecord> {
         e?.userHeightUnit,
         e?.userWeightUnit,
         e?.userVelocityOrJump,
-        e?.userViewDataExercise,
-        e?.userViewdataExercise
+        e?.userViewdataExercise,
+        e?.userViewDataExercise
       ]);
 
   @override

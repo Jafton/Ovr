@@ -200,7 +200,7 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                     color: FlutterFlowTheme.of(context).btnDefault,
                     textStyle:
                         FlutterFlowTheme.of(context).titleMedium.override(
-                              fontFamily: 'Bicyclette',
+                              fontFamily: 'Lulo',
                               color: FlutterFlowTheme.of(context).txtText1,
                               useGoogleFonts: false,
                             ),

@@ -63,3 +63,5 @@ export '/offline_mode/jump_mode_selection_copy/jump_mode_selection_copy_widget.d
     show JumpModeSelectionCopyWidget;
 export '/velocity/view_data/exact_rep_data/exact_rep_data_widget.dart'
     show ExactRepDataWidget;
+export '/velocity/main_page/edit_exercise/edit_exercise_widget.dart'
+    show EditExerciseWidget;

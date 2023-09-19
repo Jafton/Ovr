@@ -80,6 +80,8 @@ dependencies:
   plugin_platform_interface: 2.1.3
   provider: 6.0.4
   rxdart: 0.27.7
+  screenshot: ^2.1.0
+  share_plus: 6.3.1
   shared_preferences: 2.0.15
   shared_preferences_android: 2.1.0
   shared_preferences_ios: 2.1.1
@@ -192,6 +194,10 @@ flutter:
         - asset: assets/fonts/SF-Pro-Display-BlackItalic.otf
           weight: 900
           style: italic
+    - family: 'Lulo'
+      fonts:
+        - asset: assets/fonts/Lulo_Clean_W01_One_Bold.ttf
+          weight: 700
 
 
     - family: TwoIcons

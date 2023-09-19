@@ -172,7 +172,11 @@ class _LiveDataWidgetState extends State<LiveDataWidget> {
                   iconPadding:
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).btnDefault,
-                  textStyle: FlutterFlowTheme.of(context).titleMedium,
+                  textStyle: FlutterFlowTheme.of(context).titleMedium.override(
+                        fontFamily: 'Lulo',
+                        letterSpacing: 0.0,
+                        useGoogleFonts: false,
+                      ),
                   elevation: 0.0,
                   borderSide: BorderSide(
                     color: Colors.transparent,

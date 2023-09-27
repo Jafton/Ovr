@@ -56,7 +56,7 @@ class _ExactRepDataWidgetState extends State<ExactRepDataWidget> {
         body: Align(
           alignment: AlignmentDirectional(0.00, 1.00),
           child: Container(
-            width: double.infinity,
+            width: MediaQuery.sizeOf(context).width * 1.0,
             height: MediaQuery.sizeOf(context).height * 0.95,
             decoration: BoxDecoration(
               color: Color(0xFF182433),
@@ -97,19 +97,32 @@ class _ExactRepDataWidgetState extends State<ExactRepDataWidget> {
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Text(
-                              widget.exerciseName!.toUpperCase(),
-                              style: FlutterFlowTheme.of(context)
-                                  .headlineSmall
-                                  .override(
-                                    fontFamily: 'Bicyclette',
-                                    fontSize:
-                                        MediaQuery.sizeOf(context).width < 430.0
-                                            ? 24.0
-                                            : 36.0,
-                                    fontWeight: FontWeight.w900,
-                                    useGoogleFonts: false,
-                                  ),
+                            Container(
+                              width: MediaQuery.sizeOf(context).width * 0.8,
+                              decoration: BoxDecoration(
+                                color: Color(0xFF182433),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 0.0, 0.0, 0.0),
+                                child: Text(
+                                  widget.exerciseName!.toUpperCase(),
+                                  textAlign: TextAlign.end,
+                                  maxLines: 2,
+                                  style: FlutterFlowTheme.of(context)
+                                      .headlineSmall
+                                      .override(
+                                        fontFamily: 'Lulo',
+                                        fontSize:
+                                            MediaQuery.sizeOf(context).width <
+                                                    430.0
+                                                ? 24.0
+                                                : 36.0,
+                                        fontWeight: FontWeight.w900,
+                                        useGoogleFonts: false,
+                                      ),
+                                ),
+                              ),
                             ),
                             Text(
                               '${dateTimeFormat(

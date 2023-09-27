@@ -262,6 +262,7 @@ class _Bluetooth1WidgetState extends State<Bluetooth1Widget> {
                       setState(() {});
                     },
                     child: DeviceComponent(
+                      velocityName: velocityDeviceList[index].localName,
                       isVelocity: true,
                       isConnected: isConnectedDevice(
                         bluetoothDevice: velocityDeviceList[index],
@@ -318,6 +319,7 @@ class _Bluetooth1WidgetState extends State<Bluetooth1Widget> {
                       setState(() {});
                     },
                     child: DeviceComponent(
+                      velocityName: velocityDeviceList[index].localName,
                       isVelocity: false,
                       isConnected: isConnectedDevice(
                         bluetoothDevice: ovrJumpDeviceList[index],

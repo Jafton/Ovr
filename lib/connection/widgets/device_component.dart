@@ -4,11 +4,12 @@ import 'package:ovr_performance/flutter_flow/flutter_flow_theme.dart';
 class DeviceComponent extends StatefulWidget {
   final bool isVelocity;
   final bool isConnected;
+  final String velocityName;
 
   const DeviceComponent({
     Key? key,
     required this.isVelocity,
-    required this.isConnected,
+    required this.isConnected, required this.velocityName,
   }) : super(key: key);
 
   @override
@@ -39,7 +40,7 @@ class _DeviceComponentState extends State<DeviceComponent> {
               ),
             ),
             Text(
-              "widget",
+              widget.velocityName,
               style: FlutterFlowTheme.of(context).titleSmall.override(
                     fontFamily: 'SF Pro Display',
                     fontWeight: FontWeight.w600,

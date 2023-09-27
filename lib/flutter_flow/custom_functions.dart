@@ -594,6 +594,7 @@ List<SetRecord> sortSetQuery(
   List<SetRecord> setDocs,
   String userUnits,
   String value,
+  String timePeriod,
 ) {
   List<SetRecord> documents = [];
   documents.addAll(setDocs);
@@ -605,6 +606,59 @@ List<SetRecord> sortSetQuery(
     }
     return 0;
   });
+
+  // final currentDate = DateTime.now();
+  // switch (timePeriod) {
+  //   case '1mo':
+  //     // Filter documents where setCreationDate is equal to date of this month
+
+  //     final lastMonthDate =
+  //         DateTime(currentDate.year, currentDate.month - 1, currentDate.day);
+
+  //     documents = documents.where((doc) {
+  //       final docDate = doc.setCreationDate; // No need for toDate()
+  //       return docDate != null &&
+  //           docDate.isAfter(lastMonthDate) &&
+  //           docDate.isBefore(currentDate);
+  //     }).toList();
+  //     break;
+  //   case '3mo':
+  //     // Filter documents where setCreationDate is equal to date of this month and the last 2 months
+  //     final lastThreeMonthsDate =
+  //         DateTime(currentDate.year, currentDate.month - 3, currentDate.day);
+
+  //     documents = documents.where((doc) {
+  //       final docDate = doc.setCreationDate; // No need for toDate()
+  //       return docDate != null &&
+  //           docDate.isAfter(lastThreeMonthsDate) &&
+  //           docDate.isBefore(currentDate);
+  //     }).toList();
+  //     break;
+  //   case '6mo':
+  //     // Filter documents where setCreationDate is equal to date of this month and the last 5 months
+  //     final lastSixMonthsDate =
+  //         DateTime(currentDate.year, currentDate.month - 6, currentDate.day);
+
+  //     documents = documents.where((doc) {
+  //       final docDate = doc.setCreationDate; // No need for toDate()
+  //       return docDate != null &&
+  //           docDate.isAfter(lastSixMonthsDate) &&
+  //           docDate.isBefore(currentDate);
+  //     }).toList();
+  //     break;
+  //   case '1yr':
+  //     // Filter documents where setCreationDate is equal to date of this year
+  //     final lastYearDate =
+  //         DateTime(currentDate.year - 1, currentDate.month, currentDate.day);
+
+  //     documents = documents.where((doc) {
+  //       final docDate = doc.setCreationDate; // No need for toDate()
+  //       return docDate != null &&
+  //           docDate.isAfter(lastYearDate) &&
+  //           docDate.isBefore(currentDate);
+  //     }).toList();
+  //     break;
+  // }
 
   if (documents.length > 5) {
     // Divide the documents list into two lists
@@ -631,4 +685,99 @@ double getRandomDouble(
 
   final random = math.Random();
   return minValue + random.nextDouble() * (maxValue - minValue);
+}
+
+DateTime timePeriod(String period) {
+  final currentDate = DateTime.now();
+  DateTime startDate = DateTime.now();
+  ;
+  switch (period) {
+    case '1mo':
+      // Filter documents where setCreationDate is equal to date of this month
+
+      startDate =
+          DateTime(currentDate.year, currentDate.month - 1, currentDate.day);
+
+      break;
+    case '3mo':
+      // Filter documents where setCreationDate is equal to date of this month and the last 2 months
+      startDate =
+          DateTime(currentDate.year, currentDate.month - 3, currentDate.day);
+
+      break;
+    case '6mo':
+      // Filter documents where setCreationDate is equal to date of this month and the last 5 months
+      startDate =
+          DateTime(currentDate.year, currentDate.month - 6, currentDate.day);
+
+      break;
+    case '1yr':
+      // Filter documents where setCreationDate is equal to date of this year
+      startDate =
+          DateTime(currentDate.year - 1, currentDate.month, currentDate.day);
+
+      break;
+  }
+
+  return startDate;
+}
+
+List<ExerciseRecord> sortExerciseAlphabetically(
+  List<ExerciseRecord> exerciseDocs,
+  String filterValue,
+) {
+  // Accept exerciseDocs and sort it alphabetically by the name field in lowercase
+  exerciseDocs
+      .sort((a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()));
+
+  // Filter exerciseDocs based on filterValue
+  if (filterValue.isNotEmpty && filterValue.toLowerCase() == 'velocity') {
+    exerciseDocs = exerciseDocs
+        .where((doc) =>
+            doc.exerciseType.toLowerCase().contains(filterValue.toLowerCase()))
+        .toList();
+  } else {
+    exerciseDocs = exerciseDocs
+        .where((doc) => doc.exerciseType.toLowerCase() != 'velocity')
+        .toList();
+  }
+
+  return exerciseDocs;
+}
+
+String numberOfVerticalJumps(List<SetRecord> docs) {
+  // map docs return number of all set_vertical_jump_reps length
+  int totalReps = 0;
+  for (var doc in docs) {
+    if (doc.setVerticalJumpReps != null) {
+      totalReps += doc.setVerticalJumpReps.length;
+    }
+  }
+  return totalReps.toString();
+}
+
+String? bestOfVerticalJump(List<SetRecord> set) {
+  // Map set docs, parse and find the maximum value out of all verticalJumpReps, and return it
+  double maxJump = 0.0;
+  for (var setRecord in set) {
+    final List<String>? jumpList = setRecord.setVerticalJumpReps;
+    if (jumpList != null) {
+      for (var jumpStr in jumpList) {
+        final double jump = double.tryParse(jumpStr) ?? 0.0;
+        if (jump > maxJump) {
+          maxJump = jump;
+        }
+      }
+    }
+  }
+  return maxJump.toStringAsFixed(1);
+}
+
+List<String> max5elements(List<String> list) {
+  // accept list of strings return maximum 5 last elements
+  if (list.length <= 5) {
+    return list;
+  } else {
+    return list.sublist(list.length - 5);
+  }
 }

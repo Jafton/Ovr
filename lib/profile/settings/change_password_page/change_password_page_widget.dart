@@ -104,7 +104,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .headlineSmall
                                   .override(
-                                    fontFamily: 'Bicyclette',
+                                    fontFamily: 'Lulo',
                                     fontSize:
                                         MediaQuery.sizeOf(context).width < 430.0
                                             ? 24.0
@@ -986,7 +986,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .titleMedium
                                                     .override(
-                                                      fontFamily: 'Bicyclette',
+                                                      fontFamily: 'Lulo',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)

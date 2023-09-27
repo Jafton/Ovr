@@ -134,7 +134,7 @@ class _ViewDataJumpExportWidgetState extends State<ViewDataJumpExportWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .headlineSmall
                                     .override(
-                                      fontFamily: 'Bicyclette',
+                                      fontFamily: 'Lulo',
                                       color:
                                           FlutterFlowTheme.of(context).txtText1,
                                       fontSize:

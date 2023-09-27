@@ -208,8 +208,8 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .headlineMedium
                                                 .override(
-                                                  fontFamily: 'Bicyclette',
-                                                  fontSize: 27.0,
+                                                  fontFamily: 'Lulo',
+                                                  fontSize: 24.0,
                                                   useGoogleFonts: false,
                                                 ),
                                           ),

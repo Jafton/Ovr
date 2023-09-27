@@ -149,7 +149,7 @@ class _OvrVelocityGridWidgetState extends State<OvrVelocityGridWidget> {
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).bgStroke,
                   textStyle: FlutterFlowTheme.of(context).labelLarge.override(
-                        fontFamily: 'Bicyclette',
+                        fontFamily: 'Lulo',
                         color: FlutterFlowTheme.of(context).txtText2,
                         useGoogleFonts: false,
                       ),

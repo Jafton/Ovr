@@ -477,16 +477,17 @@ class _NewExercisePageWidgetState extends State<NewExercisePageWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .btnDefault,
-                                              textStyle: FlutterFlowTheme.of(
-                                                      context)
-                                                  .titleMedium
-                                                  .override(
-                                                    fontFamily: 'Bicyclette',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .txtText1,
-                                                    useGoogleFonts: false,
-                                                  ),
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .override(
+                                                        fontFamily: 'Lulo',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .txtText1,
+                                                        useGoogleFonts: false,
+                                                      ),
                                               elevation: 0.0,
                                               borderSide: BorderSide(
                                                 color: Colors.transparent,

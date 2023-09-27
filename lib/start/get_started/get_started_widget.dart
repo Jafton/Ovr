@@ -92,7 +92,7 @@ class _GetStartedWidgetState extends State<GetStartedWidget> {
                           style: FlutterFlowTheme.of(context)
                               .displayMedium
                               .override(
-                                fontFamily: 'Bicyclette',
+                                fontFamily: 'Lulo',
                                 fontSize:
                                     MediaQuery.sizeOf(context).width < 430.0
                                         ? 48.0
@@ -110,7 +110,7 @@ class _GetStartedWidgetState extends State<GetStartedWidget> {
                           style: FlutterFlowTheme.of(context)
                               .displayMedium
                               .override(
-                                fontFamily: 'Bicyclette',
+                                fontFamily: 'Lulo',
                                 fontSize: 30.0,
                                 useGoogleFonts: false,
                               ),
@@ -246,7 +246,7 @@ class _GetStartedWidgetState extends State<GetStartedWidget> {
                           ],
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Bicyclette',
+                                    fontFamily: 'Lulo',
                                     fontSize:
                                         MediaQuery.sizeOf(context).width < 430.0
                                             ? 12.0
@@ -281,7 +281,7 @@ class _GetStartedWidgetState extends State<GetStartedWidget> {
                             textStyle: FlutterFlowTheme.of(context)
                                 .headlineSmall
                                 .override(
-                                  fontFamily: 'Bicyclette',
+                                  fontFamily: 'Lulo',
                                   fontSize: 22.0,
                                   fontWeight: FontWeight.w900,
                                   useGoogleFonts: false,

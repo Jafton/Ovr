@@ -512,6 +512,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "mime",
+      "rootUri": "file:///Users/a1234/.pub-cache/hosted/pub.dev/mime-1.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "mime_type",
       "rootUri": "file:///Users/a1234/.pub-cache/hosted/pub.dev/mime_type-1.0.0",
       "packageUri": "lib/",
@@ -682,6 +688,24 @@
     {
       "name": "rxdart",
       "rootUri": "file:///Users/a1234/.pub-cache/hosted/pub.dev/rxdart-0.27.7",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "screenshot",
+      "rootUri": "file:///Users/a1234/.pub-cache/hosted/pub.dev/screenshot-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "share_plus",
+      "rootUri": "file:///Users/a1234/.pub-cache/hosted/pub.dev/share_plus-6.3.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "share_plus_platform_interface",
+      "rootUri": "file:///Users/a1234/.pub-cache/hosted/pub.dev/share_plus_platform_interface-3.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -962,7 +986,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-09-16T11:15:07.477322Z",
+  "generated": "2023-09-19T11:59:05.183975Z",
   "generator": "pub",
   "generatorVersion": "3.0.5"
 }

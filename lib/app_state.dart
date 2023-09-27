@@ -467,6 +467,47 @@ class FFAppState extends ChangeNotifier {
   set setFilteredState(String _value) {
     _setFilteredState = _value;
   }
+
+  String _graphTimePeriod = '1mo';
+  String get graphTimePeriod => _graphTimePeriod;
+  set graphTimePeriod(String _value) {
+    _graphTimePeriod = _value;
+  }
+
+  DateTime? _timePeriod;
+  DateTime? get timePeriod => _timePeriod;
+  set timePeriod(DateTime? _value) {
+    _timePeriod = _value;
+  }
+
+  List<String> _listOfRepsVertJump = ['0'];
+  List<String> get listOfRepsVertJump => _listOfRepsVertJump;
+  set listOfRepsVertJump(List<String> _value) {
+    _listOfRepsVertJump = _value;
+  }
+
+  void addToListOfRepsVertJump(String _value) {
+    _listOfRepsVertJump.add(_value);
+  }
+
+  void removeFromListOfRepsVertJump(String _value) {
+    _listOfRepsVertJump.remove(_value);
+  }
+
+  void removeAtIndexFromListOfRepsVertJump(int _index) {
+    _listOfRepsVertJump.removeAt(_index);
+  }
+
+  void updateListOfRepsVertJumpAtIndex(
+    int _index,
+    String Function(String) updateFn,
+  ) {
+    _listOfRepsVertJump[_index] = updateFn(_listOfRepsVertJump[_index]);
+  }
+
+  void insertAtIndexInListOfRepsVertJump(int _index, String _value) {
+    _listOfRepsVertJump.insert(_index, _value);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

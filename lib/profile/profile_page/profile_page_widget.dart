@@ -342,7 +342,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .headlineSmall
                                                 .override(
-                                                  fontFamily: 'Bicyclette',
+                                                  fontFamily: 'Lulo',
                                                   fontWeight: FontWeight.w900,
                                                   useGoogleFonts: false,
                                                 ),
@@ -1244,7 +1244,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                             textStyle: FlutterFlowTheme.of(context)
                                 .labelLarge
                                 .override(
-                                  fontFamily: 'Bicyclette',
+                                  fontFamily: 'Lulo',
                                   color: FlutterFlowTheme.of(context).txtText2,
                                   useGoogleFonts: false,
                                 ),
@@ -1296,7 +1296,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                             textStyle: FlutterFlowTheme.of(context)
                                 .labelLarge
                                 .override(
-                                  fontFamily: 'Bicyclette',
+                                  fontFamily: 'Lulo',
                                   color: FlutterFlowTheme.of(context).txtText2,
                                   useGoogleFonts: false,
                                 ),

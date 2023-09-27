@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/velocity/main_page/edit_exercise/edit_exercise_widget.dart';
 import '/velocity/main_page/exercise/exercise_widget.dart';
 import '/velocity/velocity_or_jump/velocity_or_jump_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -273,42 +272,26 @@ class _LiftSelectionWidgetState extends State<LiftSelectionWidget> {
                                                   size: 20.0,
                                                 ),
                                                 onPressed: () async {
+                                                  context.pushNamed(
+                                                    'EditExercise',
+                                                    extra: <String, dynamic>{
+                                                      kTransitionInfoKey:
+                                                          TransitionInfo(
+                                                        hasTransition: true,
+                                                        transitionType:
+                                                            PageTransitionType
+                                                                .fade,
+                                                        duration: Duration(
+                                                            milliseconds: 0),
+                                                      ),
+                                                    },
+                                                  );
+
                                                   setState(() {
                                                     FFAppState()
                                                             .isExerciseEditing =
                                                         true;
                                                   });
-                                                  showModalBottomSheet(
-                                                    isScrollControlled: true,
-                                                    backgroundColor:
-                                                        Colors.transparent,
-                                                    isDismissible: false,
-                                                    enableDrag: false,
-                                                    context: context,
-                                                    builder: (context) {
-                                                      return GestureDetector(
-                                                        onTap: () => FocusScope
-                                                                .of(context)
-                                                            .requestFocus(_model
-                                                                .unfocusNode),
-                                                        child: Padding(
-                                                          padding: MediaQuery
-                                                              .viewInsetsOf(
-                                                                  context),
-                                                          child: Container(
-                                                            height: MediaQuery
-                                                                        .sizeOf(
-                                                                            context)
-                                                                    .height *
-                                                                0.9,
-                                                            child:
-                                                                EditExerciseWidget(),
-                                                          ),
-                                                        ),
-                                                      );
-                                                    },
-                                                  ).then((value) =>
-                                                      setState(() {}));
                                                 },
                                               ),
                                             ),
@@ -380,112 +363,119 @@ class _LiftSelectionWidgetState extends State<LiftSelectionWidget> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  if (!FFAppState().isExerciseEditing)
-                                    Builder(
-                                      builder: (context) {
-                                        final exercise = functions
-                                            .sortFunction(
-                                                liftSelectionExerciseRecordList
-                                                    .toList(),
-                                                FFAppState().sortState)
-                                            .toList();
-                                        return GridView.builder(
-                                          padding: EdgeInsets.zero,
-                                          gridDelegate:
-                                              SliverGridDelegateWithFixedCrossAxisCount(
-                                            crossAxisCount: () {
-                                              if (MediaQuery.sizeOf(context)
-                                                      .width <
-                                                  kBreakpointSmall) {
-                                                return 2;
-                                              } else if (MediaQuery.sizeOf(
-                                                          context)
-                                                      .width <
-                                                  kBreakpointMedium) {
-                                                return 3;
-                                              } else if (MediaQuery.sizeOf(
-                                                          context)
-                                                      .width <
-                                                  kBreakpointLarge) {
-                                                return 3;
-                                              } else {
-                                                return 2;
-                                              }
-                                            }(),
-                                            crossAxisSpacing: 16.0,
-                                            mainAxisSpacing: 16.0,
-                                            childAspectRatio:
-                                                MediaQuery.sizeOf(context)
-                                                            .width <
-                                                        430.0
-                                                    ? 1.0
-                                                    : 1.5,
-                                          ),
-                                          primary: false,
-                                          shrinkWrap: true,
-                                          scrollDirection: Axis.vertical,
-                                          itemCount: exercise.length,
-                                          itemBuilder:
-                                              (context, exerciseIndex) {
-                                            final exerciseItem =
-                                                exercise[exerciseIndex];
-                                            return InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                setState(() {
-                                                  FFAppState()
-                                                      .isGoalSwitchedOn = false;
-                                                  FFAppState().setGoal = '';
-                                                  FFAppState().weightSelection =
-                                                      '';
-                                                  FFAppState().listOfReps = [];
-                                                });
+                                  Builder(
+                                    builder: (context) {
+                                      final exercise = functions
+                                          .sortFunction(
+                                              liftSelectionExerciseRecordList
+                                                  .toList(),
+                                              FFAppState().sortState)
+                                          .toList();
+                                      return GridView.builder(
+                                        padding: EdgeInsets.zero,
+                                        gridDelegate:
+                                            SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: () {
+                                            if (MediaQuery.sizeOf(context)
+                                                    .width <
+                                                kBreakpointSmall) {
+                                              return 2;
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                kBreakpointMedium) {
+                                              return 3;
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                kBreakpointLarge) {
+                                              return 3;
+                                            } else {
+                                              return 2;
+                                            }
+                                          }(),
+                                          crossAxisSpacing: 16.0,
+                                          mainAxisSpacing: 16.0,
+                                          childAspectRatio:
+                                              MediaQuery.sizeOf(context).width <
+                                                      430.0
+                                                  ? 1.0
+                                                  : 1.5,
+                                        ),
+                                        primary: false,
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: exercise.length,
+                                        itemBuilder: (context, exerciseIndex) {
+                                          final exerciseItem =
+                                              exercise[exerciseIndex];
+                                          return InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              setState(() {
+                                                FFAppState().isGoalSwitchedOn =
+                                                    false;
+                                                FFAppState().setGoal = '';
+                                                FFAppState().weightSelection =
+                                                    '';
+                                                FFAppState().listOfReps = [];
+                                              });
 
-                                                context.pushNamed(
-                                                  'WeightInput',
-                                                  queryParameters: {
-                                                    'exerciseName':
-                                                        serializeParam(
-                                                      exerciseItem.name,
-                                                      ParamType.String,
-                                                    ),
-                                                    'exerciseRef':
-                                                        serializeParam(
-                                                      exerciseItem.reference,
-                                                      ParamType
-                                                          .DocumentReference,
-                                                    ),
-                                                  }.withoutNulls,
-                                                );
+                                              context.pushNamed(
+                                                'WeightInput',
+                                                queryParameters: {
+                                                  'exerciseName':
+                                                      serializeParam(
+                                                    exerciseItem.name,
+                                                    ParamType.String,
+                                                  ),
+                                                  'exerciseRef': serializeParam(
+                                                    exerciseItem.reference,
+                                                    ParamType.DocumentReference,
+                                                  ),
+                                                }.withoutNulls,
+                                              );
 
-                                                await exerciseItem.reference
-                                                    .update({
-                                                  'exercise_popularity':
-                                                      FieldValue.increment(1),
-                                                });
+                                              await exerciseItem.reference
+                                                  .update({
+                                                'exercise_popularity':
+                                                    FieldValue.increment(1),
+                                              });
 
-                                                await currentUserReference!
-                                                    .update(
-                                                        createUserRecordData(
+                                              await currentUserReference!
+                                                  .update({
+                                                ...createUserRecordData(
                                                   userViewdataExercise:
                                                       exerciseItem.reference,
-                                                ));
-                                              },
-                                              child: ExerciseWidget(
-                                                key: Key(
-                                                    'Keyahr_${exerciseIndex}_of_${exercise.length}'),
-                                                exerciseRef:
-                                                    exerciseItem.reference,
-                                              ),
-                                            );
-                                          },
-                                        );
-                                      },
-                                    ),
+                                                ),
+                                                'user_viewData_exercise':
+                                                    FieldValue.arrayRemove([
+                                                  exerciseItem.reference
+                                                ]),
+                                              });
+
+                                              await currentUserReference!
+                                                  .update({
+                                                'user_viewData_exercise':
+                                                    FieldValue.arrayUnion([
+                                                  exerciseItem.reference
+                                                ]),
+                                              });
+                                            },
+                                            child: ExerciseWidget(
+                                              key: Key(
+                                                  'Keyahr_${exerciseIndex}_of_${exercise.length}'),
+                                              exerciseRef:
+                                                  exerciseItem.reference,
+                                            ),
+                                          );
+                                        },
+                                      );
+                                    },
+                                  ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 100.0),

@@ -274,7 +274,7 @@ class _EndSetWidgetState extends State<EndSetWidget> {
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleMedium
                                 .override(
-                                  fontFamily: 'Bicyclette',
+                                  fontFamily: 'Lulo',
                                   color: FlutterFlowTheme.of(context).txtText2,
                                   useGoogleFonts: false,
                                 ),
@@ -400,7 +400,7 @@ class _EndSetWidgetState extends State<EndSetWidget> {
                         textStyle: FlutterFlowTheme.of(context)
                             .titleMedium
                             .override(
-                              fontFamily: 'Bicyclette',
+                              fontFamily: 'Lulo',
                               color: FlutterFlowTheme.of(context).primaryText,
                               useGoogleFonts: false,
                             ),

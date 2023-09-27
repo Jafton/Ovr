@@ -12,6 +12,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 import 'view_data_share_model.dart';
 export 'view_data_share_model.dart';
 
@@ -117,7 +118,7 @@ class _ViewDataShareWidgetState extends State<ViewDataShareWidget> {
                         padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 0.0, 16.0, 0.0),
                         child: Text(
-                          '1mo',
+                          FFAppState().graphTimePeriod,
                           style:
                               FlutterFlowTheme.of(context).bodyLarge.override(
                                     fontFamily: 'SF Pro Display',
@@ -155,23 +156,31 @@ class _ViewDataShareWidgetState extends State<ViewDataShareWidget> {
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(
-                                  viewDataShareExerciseRecord.name
-                                      .toUpperCase(),
-                                  style: FlutterFlowTheme.of(context)
-                                      .headlineSmall
-                                      .override(
-                                        fontFamily: 'Bicyclette',
-                                        color: FlutterFlowTheme.of(context)
-                                            .txtText1,
-                                        fontSize:
-                                            MediaQuery.sizeOf(context).width <
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 0.0, 16.0, 0.0),
+                                    child: Text(
+                                      viewDataShareExerciseRecord.name
+                                          .toUpperCase(),
+                                      textAlign: TextAlign.center,
+                                      maxLines: 2,
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineSmall
+                                          .override(
+                                            fontFamily: 'Lulo',
+                                            color: FlutterFlowTheme.of(context)
+                                                .txtText1,
+                                            fontSize: MediaQuery.sizeOf(context)
+                                                        .width <
                                                     430.0
-                                                ? 24.0
-                                                : 36.0,
-                                        fontWeight: FontWeight.w900,
-                                        useGoogleFonts: false,
-                                      ),
+                                                ? 20.0
+                                                : 32.0,
+                                            fontWeight: FontWeight.w900,
+                                            useGoogleFonts: false,
+                                          ),
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
@@ -241,7 +250,7 @@ class _ViewDataShareWidgetState extends State<ViewDataShareWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 18.0),
                             child: Container(
-                              width: MediaQuery.sizeOf(context).width * 0.9,
+                              width: MediaQuery.sizeOf(context).width * 0.8,
                               height: 188.0,
                               child: FlutterFlowLineChart(
                                 data: [
@@ -280,6 +289,9 @@ class _ViewDataShareWidgetState extends State<ViewDataShareWidget> {
                           StreamBuilder<List<SetRecord>>(
                             stream: querySetRecord(
                               parent: widget.exerciseRef,
+                              queryBuilder: (setRecord) => setRecord.where(
+                                  'set_creation_date',
+                                  isGreaterThan: FFAppState().timePeriod),
                             ),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
@@ -317,7 +329,8 @@ class _ViewDataShareWidgetState extends State<ViewDataShareWidget> {
                                                       currentUserDocument
                                                           ?.userUnits,
                                                       ''),
-                                                  'max')
+                                                  'max',
+                                                  FFAppState().graphTimePeriod)
                                               .toList();
                                           return Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -401,7 +414,9 @@ class _ViewDataShareWidgetState extends State<ViewDataShareWidget> {
                                                         currentUserDocument
                                                             ?.userUnits,
                                                         ''),
-                                                    'min')
+                                                    'min',
+                                                    FFAppState()
+                                                        .graphTimePeriod)
                                                 .toList();
                                             return Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -442,29 +457,34 @@ class _ViewDataShareWidgetState extends State<ViewDataShareWidget> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
-                    child: FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
-                      },
-                      text: 'SHARE',
-                      options: FFButtonOptions(
-                        width: MediaQuery.sizeOf(context).width * 0.9,
-                        height: 56.0,
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).btnDefault,
-                        textStyle: FlutterFlowTheme.of(context).titleMedium,
-                        elevation: 0.0,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1.0,
+                  Builder(
+                    builder: (context) => Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          await Share.share(
+                            '',
+                            sharePositionOrigin: getWidgetBoundingBox(context),
+                          );
+                        },
+                        text: 'SHARE',
+                        options: FFButtonOptions(
+                          width: MediaQuery.sizeOf(context).width * 0.9,
+                          height: 56.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).btnDefault,
+                          textStyle: FlutterFlowTheme.of(context).titleMedium,
+                          elevation: 0.0,
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
-                        borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
                   ),

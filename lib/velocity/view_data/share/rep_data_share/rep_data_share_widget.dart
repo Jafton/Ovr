@@ -66,11 +66,13 @@ class _RepDataShareWidgetState extends State<RepDataShareWidget> {
             children: [
               Text(
                 widget.exerciseName!.toUpperCase(),
+                textAlign: TextAlign.center,
+                maxLines: 2,
                 style: FlutterFlowTheme.of(context).headlineSmall.override(
-                      fontFamily: 'Bicyclette',
+                      fontFamily: 'Lulo',
                       fontSize: MediaQuery.sizeOf(context).width < 430.0
-                          ? 24.0
-                          : 36.0,
+                          ? 20.0
+                          : 32.0,
                       fontWeight: FontWeight.w900,
                       useGoogleFonts: false,
                     ),
@@ -88,7 +90,7 @@ class _RepDataShareWidgetState extends State<RepDataShareWidget> {
                         CircularPercentIndicator(
                           percent: double.parse(
                                   FFAppState().listOfReps.last.repVelocity) /
-                              10,
+                              2,
                           radius: MediaQuery.sizeOf(context).width * 0.21,
                           lineWidth: 20.0,
                           animation: true,
@@ -127,8 +129,8 @@ class _RepDataShareWidgetState extends State<RepDataShareWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .displayLarge
                                     .override(
-                                      fontFamily: 'Bicyclette',
-                                      fontSize: 60.0,
+                                      fontFamily: 'Lulo',
+                                      fontSize: 46.0,
                                       useGoogleFonts: false,
                                       lineHeight: 1.0,
                                     ),

@@ -3,7 +3,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/custom_code/widgets/index.dart' as custom_widgets;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'main_page_model.dart';
@@ -25,6 +27,15 @@ class _MainPageWidgetState extends State<MainPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => MainPageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        FFAppState().graphTimePeriod = '1mo';
+        FFAppState().timePeriod =
+            functions.timePeriod(FFAppState().graphTimePeriod);
+      });
+    });
   }
 
   @override
@@ -40,89 +51,62 @@ class _MainPageWidgetState extends State<MainPageWidget> {
 
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).bgBg2,
-        body: SafeArea(
-          top: true,
-          child: Stack(
-            children: [
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Expanded(
-                    child: Container(
-                      width: MediaQuery.sizeOf(context).width * 1.0,
-                      height: MediaQuery.sizeOf(context).height * 1.0,
-                      child: custom_widgets.BottomNavBar(
+      child: WillPopScope(
+        onWillPop: () async => false,
+        child: Scaffold(
+          key: scaffoldKey,
+          backgroundColor: FlutterFlowTheme.of(context).bgBg2,
+          body: SafeArea(
+            top: true,
+            child: Stack(
+              children: [
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
+                      child: Container(
                         width: MediaQuery.sizeOf(context).width * 1.0,
                         height: MediaQuery.sizeOf(context).height * 1.0,
-                        type: FFAppState().velocityOrJump,
+                        child: custom_widgets.BottomNavBar(
+                          width: MediaQuery.sizeOf(context).width * 1.0,
+                          height: MediaQuery.sizeOf(context).height * 1.0,
+                          type: FFAppState().velocityOrJump,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              Align(
-                alignment: AlignmentDirectional(0.00, 1.00),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(0.0),
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(
-                      sigmaX: 2.0,
-                      sigmaY: 2.0,
-                    ),
-                    child: Container(
-                      width: MediaQuery.sizeOf(context).width * 1.0,
-                      height: 100.0,
-                      decoration: BoxDecoration(
-                        color: Color(0x00121B26),
+                  ],
+                ),
+                Align(
+                  alignment: AlignmentDirectional(0.00, 1.00),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(0.0),
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(
+                        sigmaX: 2.0,
+                        sigmaY: 2.0,
+                      ),
+                      child: Container(
+                        width: MediaQuery.sizeOf(context).width * 1.0,
+                        height: 100.0,
+                        decoration: BoxDecoration(
+                          color: Color(0x00121B26),
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              Align(
-                alignment: AlignmentDirectional(0.00, 1.00),
-                child: Container(
-                  width: double.infinity,
-                  height: 100.0,
-                  decoration: BoxDecoration(
-                    color: Color(0xE6121B26),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          setState(() {
-                            FFAppState().pageIndex = 0;
-                          });
-                        },
-                        child: Container(
-                          width: 64.0,
-                          height: 64.0,
-                          decoration: BoxDecoration(
-                            color: FFAppState().pageIndex == 0
-                                ? FlutterFlowTheme.of(context).btnDefault
-                                : Color(0x00000000),
-                            borderRadius: BorderRadius.circular(16.0),
-                          ),
-                          child: Icon(
-                            FFIcons.kchart,
-                            color: FFAppState().pageIndex == 0
-                                ? FlutterFlowTheme.of(context).txtText1
-                                : FlutterFlowTheme.of(context).txtText2,
-                            size: 24.0,
-                          ),
-                        ),
-                      ),
-                      if (FFAppState().velocityOrJump == 'Velocity')
+                Align(
+                  alignment: AlignmentDirectional(0.00, 1.00),
+                  child: Container(
+                    width: double.infinity,
+                    height: 100.0,
+                    decoration: BoxDecoration(
+                      color: Color(0xF80E161E),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
                         InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
@@ -130,98 +114,128 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                           highlightColor: Colors.transparent,
                           onTap: () async {
                             setState(() {
-                              FFAppState().pageIndex = 1;
+                              FFAppState().pageIndex = 0;
                             });
                           },
                           child: Container(
                             width: 64.0,
                             height: 64.0,
                             decoration: BoxDecoration(
-                              color: FFAppState().pageIndex == 1
+                              color: FFAppState().pageIndex == 0
                                   ? FlutterFlowTheme.of(context).btnDefault
                                   : Color(0x00000000),
                               borderRadius: BorderRadius.circular(16.0),
                             ),
                             child: Icon(
-                              FFIcons.kweight,
-                              color: valueOrDefault<Color>(
-                                FFAppState().pageIndex == 1
-                                    ? FlutterFlowTheme.of(context).txtText1
-                                    : FlutterFlowTheme.of(context).txtText2,
-                                FlutterFlowTheme.of(context).txtText2,
-                              ),
-                              size: 24.0,
-                            ),
-                          ),
-                        ),
-                      if (FFAppState().velocityOrJump != 'Velocity')
-                        InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            setState(() {
-                              FFAppState().pageIndex = 1;
-                            });
-                          },
-                          child: Container(
-                            width: 64.0,
-                            height: 64.0,
-                            decoration: BoxDecoration(
-                              color: FFAppState().pageIndex == 1
-                                  ? FlutterFlowTheme.of(context).btnDefault
-                                  : Color(0x00000000),
-                              borderRadius: BorderRadius.circular(16.0),
-                            ),
-                            child: Icon(
-                              FFIcons.kforward,
-                              color: valueOrDefault<Color>(
-                                FFAppState().pageIndex == 1
-                                    ? FlutterFlowTheme.of(context).txtText1
-                                    : FlutterFlowTheme.of(context).txtText2,
-                                FlutterFlowTheme.of(context).txtText2,
-                              ),
-                              size: 24.0,
-                            ),
-                          ),
-                        ),
-                      InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          setState(() {
-                            FFAppState().pageIndex = 2;
-                          });
-                        },
-                        child: Container(
-                          width: 64.0,
-                          height: 64.0,
-                          decoration: BoxDecoration(
-                            color: FFAppState().pageIndex == 2
-                                ? FlutterFlowTheme.of(context).btnDefault
-                                : Color(0x00121B26),
-                            borderRadius: BorderRadius.circular(16.0),
-                          ),
-                          child: Icon(
-                            FFIcons.kuser,
-                            color: valueOrDefault<Color>(
-                              FFAppState().pageIndex == 2
+                              FFIcons.kchart,
+                              color: FFAppState().pageIndex == 0
                                   ? FlutterFlowTheme.of(context).txtText1
                                   : FlutterFlowTheme.of(context).txtText2,
-                              FlutterFlowTheme.of(context).txtText2,
+                              size: 24.0,
                             ),
-                            size: 24.0,
                           ),
                         ),
-                      ),
-                    ],
+                        if (FFAppState().velocityOrJump == 'Velocity')
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              setState(() {
+                                FFAppState().pageIndex = 1;
+                              });
+                            },
+                            child: Container(
+                              width: 64.0,
+                              height: 64.0,
+                              decoration: BoxDecoration(
+                                color: FFAppState().pageIndex == 1
+                                    ? FlutterFlowTheme.of(context).btnDefault
+                                    : Color(0x00000000),
+                                borderRadius: BorderRadius.circular(16.0),
+                              ),
+                              child: Icon(
+                                FFIcons.kweight,
+                                color: valueOrDefault<Color>(
+                                  FFAppState().pageIndex == 1
+                                      ? FlutterFlowTheme.of(context).txtText1
+                                      : FlutterFlowTheme.of(context).txtText2,
+                                  FlutterFlowTheme.of(context).txtText2,
+                                ),
+                                size: 24.0,
+                              ),
+                            ),
+                          ),
+                        if (FFAppState().velocityOrJump != 'Velocity')
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              setState(() {
+                                FFAppState().pageIndex = 1;
+                              });
+                            },
+                            child: Container(
+                              width: 64.0,
+                              height: 64.0,
+                              decoration: BoxDecoration(
+                                color: FFAppState().pageIndex == 1
+                                    ? FlutterFlowTheme.of(context).btnDefault
+                                    : Color(0x00000000),
+                                borderRadius: BorderRadius.circular(16.0),
+                              ),
+                              child: Icon(
+                                FFIcons.kforward,
+                                color: valueOrDefault<Color>(
+                                  FFAppState().pageIndex == 1
+                                      ? FlutterFlowTheme.of(context).txtText1
+                                      : FlutterFlowTheme.of(context).txtText2,
+                                  FlutterFlowTheme.of(context).txtText2,
+                                ),
+                                size: 24.0,
+                              ),
+                            ),
+                          ),
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            setState(() {
+                              FFAppState().pageIndex = 2;
+                            });
+                          },
+                          child: Container(
+                            width: 64.0,
+                            height: 64.0,
+                            decoration: BoxDecoration(
+                              color: FFAppState().pageIndex == 2
+                                  ? FlutterFlowTheme.of(context).btnDefault
+                                  : Color(0x00121B26),
+                              borderRadius: BorderRadius.circular(16.0),
+                            ),
+                            child: Icon(
+                              FFIcons.kuser,
+                              color: valueOrDefault<Color>(
+                                FFAppState().pageIndex == 2
+                                    ? FlutterFlowTheme.of(context).txtText1
+                                    : FlutterFlowTheme.of(context).txtText2,
+                                FlutterFlowTheme.of(context).txtText2,
+                              ),
+                              size: 24.0,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

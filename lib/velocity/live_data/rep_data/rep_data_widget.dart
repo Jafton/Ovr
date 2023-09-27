@@ -64,47 +64,61 @@ class _RepDataWidgetState extends State<RepDataWidget> {
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  FlutterFlowIconButton(
-                    borderColor: FlutterFlowTheme.of(context).bgBg2,
-                    borderRadius: 10.0,
-                    borderWidth: 1.0,
-                    buttonSize: 40.0,
-                    fillColor: FlutterFlowTheme.of(context).bgBg2,
-                    icon: Icon(
-                      FFIcons.kclose,
-                      color: FlutterFlowTheme.of(context).txtText3,
-                      size: 20.0,
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    FlutterFlowIconButton(
+                      borderColor: FlutterFlowTheme.of(context).bgBg2,
+                      borderRadius: 10.0,
+                      borderWidth: 1.0,
+                      buttonSize: 40.0,
+                      fillColor: FlutterFlowTheme.of(context).bgBg2,
+                      icon: Icon(
+                        FFIcons.kclose,
+                        color: FlutterFlowTheme.of(context).txtText3,
+                        size: 20.0,
+                      ),
+                      onPressed: () async {
+                        showModalBottomSheet(
+                          isScrollControlled: true,
+                          backgroundColor: Colors.transparent,
+                          context: context,
+                          builder: (context) {
+                            return Padding(
+                              padding: MediaQuery.viewInsetsOf(context),
+                              child: ReturnToHomepageWidget(),
+                            );
+                          },
+                        ).then((value) => setState(() {}));
+                      },
                     ),
-                    onPressed: () async {
-                      showModalBottomSheet(
-                        isScrollControlled: true,
-                        backgroundColor: Colors.transparent,
-                        context: context,
-                        builder: (context) {
-                          return Padding(
-                            padding: MediaQuery.viewInsetsOf(context),
-                            child: ReturnToHomepageWidget(),
-                          );
-                        },
-                      ).then((value) => setState(() {}));
-                    },
-                  ),
-                  Text(
-                    widget.parameter1!.toUpperCase(),
-                    style: FlutterFlowTheme.of(context).headlineSmall.override(
-                          fontFamily: 'Bicyclette',
-                          fontSize: MediaQuery.sizeOf(context).width < 430.0
-                              ? 24.0
-                              : 36.0,
-                          fontWeight: FontWeight.w900,
-                          useGoogleFonts: false,
+                    Expanded(
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                        child: Text(
+                          widget.parameter1!.toUpperCase(),
+                          textAlign: TextAlign.end,
+                          maxLines: 2,
+                          style: FlutterFlowTheme.of(context)
+                              .headlineSmall
+                              .override(
+                                fontFamily: 'Lulo',
+                                fontSize:
+                                    MediaQuery.sizeOf(context).width < 430.0
+                                        ? 20.0
+                                        : 32.0,
+                                fontWeight: FontWeight.w900,
+                                useGoogleFonts: false,
+                              ),
                         ),
-                  ),
-                ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
               Row(
                 mainAxisSize: MainAxisSize.max,
@@ -130,7 +144,7 @@ class _RepDataWidgetState extends State<RepDataWidget> {
                         percent: double.parse(
                                 FFAppState().listOfReps.last.repVelocity) /
                             2,
-                        radius: MediaQuery.sizeOf(context).width * 0.21,
+                        radius: MediaQuery.sizeOf(context).width * 0.2,
                         lineWidth: 20.0,
                         animation: true,
                         progressColor: FlutterFlowTheme.of(context).btnDefault,
@@ -138,8 +152,8 @@ class _RepDataWidgetState extends State<RepDataWidget> {
                         startAngle: 180.0,
                       ),
                       Container(
-                        width: MediaQuery.sizeOf(context).width * 0.38,
-                        height: MediaQuery.sizeOf(context).width * 0.38,
+                        width: MediaQuery.sizeOf(context).width * 0.36,
+                        height: MediaQuery.sizeOf(context).width * 0.36,
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
@@ -166,8 +180,8 @@ class _RepDataWidgetState extends State<RepDataWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .displayLarge
                                   .override(
-                                    fontFamily: 'Bicyclette',
-                                    fontSize: 60.0,
+                                    fontFamily: 'Lulo',
+                                    fontSize: 46.0,
                                     useGoogleFonts: false,
                                     lineHeight: 1.0,
                                   ),

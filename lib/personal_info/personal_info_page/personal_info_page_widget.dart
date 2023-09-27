@@ -1966,54 +1966,60 @@ class _PersonalInfoPageWidgetState extends State<PersonalInfoPageWidget> {
                                                         return FFButtonWidget(
                                                           onPressed: () async {
                                                             await currentUserReference!
-                                                                .update(
-                                                                    createUserRecordData(
-                                                              displayName: _model
-                                                                  .usernameFieldController
-                                                                  .text,
-                                                              phoneNumber: '',
-                                                              userRegion:
-                                                                  '${getJsonField(
-                                                                FFAppState()
-                                                                    .country,
-                                                                r'''$.flag''',
-                                                              ).toString()} ${getJsonField(
-                                                                FFAppState()
-                                                                    .country,
-                                                                r'''$.cca2''',
-                                                              ).toString()}${FFAppState().state == null ? '  ' : ' (${getJsonField(
-                                                                      FFAppState()
-                                                                          .state,
-                                                                      r'''$.abbreviation''',
-                                                                    ).toString()})'}',
-                                                              userHeight:
+                                                                .update({
+                                                              ...createUserRecordData(
+                                                                displayName: _model
+                                                                    .usernameFieldController
+                                                                    .text,
+                                                                phoneNumber: '',
+                                                                userRegion:
+                                                                    '${getJsonField(
                                                                   FFAppState()
-                                                                      .height,
-                                                              userDateOfBirth:
+                                                                      .country,
+                                                                  r'''$.flag''',
+                                                                ).toString()} ${getJsonField(
                                                                   FFAppState()
-                                                                      .dateOfBirth,
-                                                              userWeight:
-                                                                  FFAppState()
-                                                                      .weight,
-                                                              creationDate:
-                                                                  getCurrentTimestamp,
-                                                              userHeightUnit:
-                                                                  FFAppState()
-                                                                      .heightUnit,
-                                                              userWeightUnit:
-                                                                  FFAppState()
-                                                                      .weightUnit,
-                                                              userShowFatigue:
-                                                                  false,
-                                                              userEccentric:
-                                                                  false,
-                                                              userFilterJumps:
-                                                                  false,
-                                                              userViewdataExercise:
+                                                                      .country,
+                                                                  r'''$.cca2''',
+                                                                ).toString()}${FFAppState().state == null ? '  ' : ' (${getJsonField(
+                                                                        FFAppState()
+                                                                            .state,
+                                                                        r'''$.abbreviation''',
+                                                                      ).toString()})'}',
+                                                                userHeight:
+                                                                    FFAppState()
+                                                                        .height,
+                                                                userDateOfBirth:
+                                                                    FFAppState()
+                                                                        .dateOfBirth,
+                                                                userWeight:
+                                                                    FFAppState()
+                                                                        .weight,
+                                                                creationDate:
+                                                                    getCurrentTimestamp,
+                                                                userHeightUnit:
+                                                                    FFAppState()
+                                                                        .heightUnit,
+                                                                userWeightUnit:
+                                                                    FFAppState()
+                                                                        .weightUnit,
+                                                                userShowFatigue:
+                                                                    false,
+                                                                userEccentric:
+                                                                    false,
+                                                                userFilterJumps:
+                                                                    false,
+                                                                userViewdataExercise:
+                                                                    buttonExerciseRecordList
+                                                                        .last
+                                                                        .reference,
+                                                              ),
+                                                              'user_viewData_exercise':
                                                                   buttonExerciseRecordList
-                                                                      .last
-                                                                      .reference,
-                                                            ));
+                                                                      .map((e) =>
+                                                                          e.reference)
+                                                                      .toList(),
+                                                            });
 
                                                             context.goNamed(
                                                                 'MainPage');

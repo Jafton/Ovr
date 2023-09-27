@@ -85,7 +85,7 @@ class _RSImodeWidgetState extends State<RSImodeWidget> {
                       'RSI MODE',
                       style:
                           FlutterFlowTheme.of(context).headlineSmall.override(
-                                fontFamily: 'Bicyclette',
+                                fontFamily: 'Lulo',
                                 fontWeight: FontWeight.w900,
                                 useGoogleFonts: false,
                               ),
@@ -538,7 +538,7 @@ class _RSImodeWidgetState extends State<RSImodeWidget> {
                         color: FlutterFlowTheme.of(context).bgBg2,
                         textStyle:
                             FlutterFlowTheme.of(context).labelSmall.override(
-                                  fontFamily: 'Bicyclette',
+                                  fontFamily: 'Lulo',
                                   color: FlutterFlowTheme.of(context).txtText2,
                                   useGoogleFonts: false,
                                 ),

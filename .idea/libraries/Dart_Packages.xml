@@ -597,6 +597,13 @@
             </list>
           </value>
         </entry>
+        <entry key="mime">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/mime-1.0.4/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="mime_type">
           <value>
             <list>
@@ -797,6 +804,27 @@
           <value>
             <list>
               <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/rxdart-0.27.7/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="screenshot">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/screenshot-2.1.0/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="share_plus">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/share_plus-6.3.1/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="share_plus_platform_interface">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/share_plus_platform_interface-3.2.1/lib" />
             </list>
           </value>
         </entry>
@@ -1199,6 +1227,7 @@
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/material_color_utilities-0.2.0/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/maybe_just_nothing-0.5.3/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/meta-1.9.1/lib" />
+      <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/mime-1.0.4/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/mime_type-1.0.0/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/nested-1.0.0/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/octo_image-1.0.2/lib" />
@@ -1228,6 +1257,9 @@
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/quiver-3.2.1/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/rfc_6901-0.1.1/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/rxdart-0.27.7/lib" />
+      <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/screenshot-2.1.0/lib" />
+      <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/share_plus-6.3.1/lib" />
+      <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/share_plus_platform_interface-3.2.1/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/shared_preferences-2.0.15/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/shared_preferences_android-2.1.0/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/shared_preferences_ios-2.1.1/lib" />

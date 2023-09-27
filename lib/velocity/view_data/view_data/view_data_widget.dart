@@ -1,6 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_charts.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -27,8 +26,7 @@ class ViewDataWidget extends StatefulWidget {
   _ViewDataWidgetState createState() => _ViewDataWidgetState();
 }
 
-class _ViewDataWidgetState extends State<ViewDataWidget>
-    with TickerProviderStateMixin {
+class _ViewDataWidgetState extends State<ViewDataWidget> {
   late ViewDataModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -37,12 +35,6 @@ class _ViewDataWidgetState extends State<ViewDataWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => ViewDataModel());
-
-    _model.tabBarController = TabController(
-      vsync: this,
-      length: 5,
-      initialIndex: 0,
-    )..addListener(() => setState(() {}));
   }
 
   @override
@@ -59,7 +51,7 @@ class _ViewDataWidgetState extends State<ViewDataWidget>
     return AuthUserStreamWidget(
       builder: (context) => StreamBuilder<ExerciseRecord>(
         stream: ExerciseRecord.getDocument(
-            currentUserDocument!.userViewdataExercise!),
+            (currentUserDocument?.userViewDataExercise?.toList() ?? []).last),
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
@@ -223,7 +215,7 @@ class _ViewDataWidgetState extends State<ViewDataWidget>
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 16.0, 0.0, 8.0),
+                                      0.0, 16.0, 0.0, 16.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -253,25 +245,29 @@ class _ViewDataWidgetState extends State<ViewDataWidget>
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        Text(
-                                          viewDataExerciseRecord.name
-                                              .toUpperCase(),
-                                          style: FlutterFlowTheme.of(context)
-                                              .headlineSmall
-                                              .override(
-                                                fontFamily: 'Bicyclette',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .txtText1,
-                                                fontSize:
-                                                    MediaQuery.sizeOf(context)
-                                                                .width <
-                                                            430.0
-                                                        ? 24.0
-                                                        : 36.0,
-                                                fontWeight: FontWeight.w900,
-                                                useGoogleFonts: false,
-                                              ),
+                                        Flexible(
+                                          child: Text(
+                                            viewDataExerciseRecord.name
+                                                .toUpperCase(),
+                                            textAlign: TextAlign.center,
+                                            maxLines: 2,
+                                            style: FlutterFlowTheme.of(context)
+                                                .headlineSmall
+                                                .override(
+                                                  fontFamily: 'Lulo',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .txtText1,
+                                                  fontSize:
+                                                      MediaQuery.sizeOf(context)
+                                                                  .width <
+                                                              430.0
+                                                          ? 20.0
+                                                          : 32.0,
+                                                  fontWeight: FontWeight.w900,
+                                                  useGoogleFonts: false,
+                                                ),
+                                          ),
                                         ),
                                         Icon(
                                           FFIcons.karrowDown,
@@ -283,302 +279,471 @@ class _ViewDataWidgetState extends State<ViewDataWidget>
                                     ),
                                   ),
                                 ),
+                                Container(
+                                  width: MediaQuery.sizeOf(context).width * 0.9,
+                                  height: 50.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context).bgBg5,
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        6.0, 0.0, 0.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Flexible(
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 6.0, 0.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                setState(() {
+                                                  FFAppState().graphTimePeriod =
+                                                      '1mo';
+                                                  FFAppState().timePeriod =
+                                                      functions.timePeriod(
+                                                          FFAppState()
+                                                              .graphTimePeriod);
+                                                });
+                                              },
+                                              child: Container(
+                                                height: 37.0,
+                                                decoration: BoxDecoration(
+                                                  color: FFAppState()
+                                                              .graphTimePeriod ==
+                                                          '1mo'
+                                                      ? FlutterFlowTheme.of(
+                                                              context)
+                                                          .bgBg6
+                                                      : FlutterFlowTheme.of(
+                                                              context)
+                                                          .bgBg2,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                child: Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.00, 0.00),
+                                                  child: Text(
+                                                    '1mo',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'SF Pro Display',
+                                                          fontSize: MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width <
+                                                                  430.0
+                                                              ? 14.0
+                                                              : 16.0,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Flexible(
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 6.0, 0.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                setState(() {
+                                                  FFAppState().graphTimePeriod =
+                                                      '3mo';
+                                                  FFAppState().timePeriod =
+                                                      functions.timePeriod(
+                                                          FFAppState()
+                                                              .graphTimePeriod);
+                                                });
+                                              },
+                                              child: Container(
+                                                height: 37.0,
+                                                decoration: BoxDecoration(
+                                                  color: FFAppState()
+                                                              .graphTimePeriod ==
+                                                          '3mo'
+                                                      ? FlutterFlowTheme.of(
+                                                              context)
+                                                          .bgBg6
+                                                      : FlutterFlowTheme.of(
+                                                              context)
+                                                          .bgBg2,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                child: Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.00, 0.00),
+                                                  child: Text(
+                                                    '3mo',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'SF Pro Display',
+                                                          fontSize: MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width <
+                                                                  430.0
+                                                              ? 14.0
+                                                              : 16.0,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Flexible(
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 6.0, 0.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                setState(() {
+                                                  FFAppState().graphTimePeriod =
+                                                      '6mo';
+                                                  FFAppState().timePeriod =
+                                                      functions.timePeriod(
+                                                          FFAppState()
+                                                              .graphTimePeriod);
+                                                });
+                                              },
+                                              child: Container(
+                                                height: 37.0,
+                                                decoration: BoxDecoration(
+                                                  color: FFAppState()
+                                                              .graphTimePeriod ==
+                                                          '6mo'
+                                                      ? FlutterFlowTheme.of(
+                                                              context)
+                                                          .bgBg6
+                                                      : FlutterFlowTheme.of(
+                                                              context)
+                                                          .bgBg2,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                child: Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.00, 0.00),
+                                                  child: Text(
+                                                    '6mo',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'SF Pro Display',
+                                                          fontSize: MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width <
+                                                                  430.0
+                                                              ? 14.0
+                                                              : 16.0,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Flexible(
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 6.0, 0.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                setState(() {
+                                                  FFAppState().graphTimePeriod =
+                                                      '1yr';
+                                                  FFAppState().timePeriod =
+                                                      functions.timePeriod(
+                                                          FFAppState()
+                                                              .graphTimePeriod);
+                                                });
+                                              },
+                                              child: Container(
+                                                height: 37.0,
+                                                decoration: BoxDecoration(
+                                                  color: FFAppState()
+                                                              .graphTimePeriod ==
+                                                          '1yr'
+                                                      ? FlutterFlowTheme.of(
+                                                              context)
+                                                          .bgBg6
+                                                      : FlutterFlowTheme.of(
+                                                              context)
+                                                          .bgBg2,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                child: Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.00, 0.00),
+                                                  child: Text(
+                                                    '1yr',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'SF Pro Display',
+                                                          fontSize: MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width <
+                                                                  430.0
+                                                              ? 14.0
+                                                              : 16.0,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Flexible(
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 6.0, 0.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                setState(() {
+                                                  FFAppState().graphTimePeriod =
+                                                      'Pr';
+                                                  FFAppState().timePeriod =
+                                                      functions.timePeriod(
+                                                          FFAppState()
+                                                              .graphTimePeriod);
+                                                });
+                                              },
+                                              child: Container(
+                                                height: 37.0,
+                                                decoration: BoxDecoration(
+                                                  color: FFAppState()
+                                                              .graphTimePeriod ==
+                                                          'Pr'
+                                                      ? FlutterFlowTheme.of(
+                                                              context)
+                                                          .bgBg6
+                                                      : FlutterFlowTheme.of(
+                                                              context)
+                                                          .bgBg2,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                child: Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.00, 0.00),
+                                                  child: Text(
+                                                    'Pr',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'SF Pro Display',
+                                                          fontSize: MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width <
+                                                                  430.0
+                                                              ? 14.0
+                                                              : 16.0,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 18.0, 0.0, 18.0),
+                                      child: RichText(
+                                        textScaleFactor: MediaQuery.of(context)
+                                            .textScaleFactor,
+                                        text: TextSpan(
+                                          children: [
+                                            TextSpan(
+                                              text: 'e1RM:',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily:
+                                                        'SF Pro Display',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .txtText2,
+                                                    fontSize: MediaQuery.sizeOf(
+                                                                    context)
+                                                                .width <
+                                                            430.0
+                                                        ? 18.0
+                                                        : 24.0,
+                                                    fontWeight: FontWeight.w600,
+                                                    useGoogleFonts: false,
+                                                  ),
+                                            ),
+                                            TextSpan(
+                                              text: ' 319',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'SF Pro Display',
+                                                        fontSize: MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width <
+                                                                430.0
+                                                            ? 18.0
+                                                            : 24.0,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        useGoogleFonts: false,
+                                                      ),
+                                            ),
+                                            TextSpan(
+                                              text: valueOrDefault(
+                                                  currentUserDocument
+                                                      ?.userUnits,
+                                                  ''),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'SF Pro Display',
+                                                        fontSize: MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width <
+                                                                430.0
+                                                            ? 18.0
+                                                            : 24.0,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        useGoogleFonts: false,
+                                                      ),
+                                            )
+                                          ],
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Lulo',
+                                                fontSize:
+                                                    MediaQuery.sizeOf(context)
+                                                                .width <
+                                                            430.0
+                                                        ? 12.0
+                                                        : 24.0,
+                                                useGoogleFonts: false,
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 12.0),
                                   child: Container(
-                                    width: double.infinity,
-                                    height: 333.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
-                                    child: Column(
-                                      children: [
-                                        Align(
-                                          alignment: Alignment(0.0, 0),
-                                          child: FlutterFlowButtonTabBar(
-                                            useToggleButtonStyle: true,
-                                            labelStyle: FlutterFlowTheme.of(
-                                                    context)
-                                                .bodyLarge
-                                                .override(
-                                                  fontFamily: 'SF Pro Display',
-                                                  fontSize:
-                                                      MediaQuery.sizeOf(context)
-                                                                  .width <
-                                                              430.0
-                                                          ? 14.0
-                                                          : 16.0,
-                                                  useGoogleFonts: false,
-                                                ),
-                                            unselectedLabelStyle: TextStyle(),
-                                            labelColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .txtText1,
-                                            unselectedLabelColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .txtText2,
-                                            backgroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .bgBg6,
-                                            unselectedBackgroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .bgBg2,
-                                            borderColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .bgBg6,
-                                            unselectedBorderColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .bgBg6,
-                                            borderWidth: 1.0,
-                                            borderRadius: 8.0,
-                                            elevation: 0.0,
-                                            buttonMargin:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    8.0, 0.0, 8.0, 0.0),
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    4.0, 4.0, 4.0, 4.0),
-                                            tabs: [
-                                              Tab(
-                                                text: '1mo',
-                                              ),
-                                              Tab(
-                                                text: '3mo',
-                                              ),
-                                              Tab(
-                                                text: '6mo',
-                                              ),
-                                              Tab(
-                                                text: '1yr',
-                                              ),
-                                              Tab(
-                                                text: 'PR',
-                                              ),
-                                            ],
-                                            controller: _model.tabBarController,
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 0.8,
+                                    height: 200.0,
+                                    child: FlutterFlowLineChart(
+                                      data: [
+                                        FFLineChartData(
+                                          xData: FFAppState().chartData,
+                                          yData: FFAppState().chartDataY,
+                                          settings: LineChartBarData(
+                                            color: FlutterFlowTheme.of(context)
+                                                .btnDefault,
+                                            barWidth: 2.0,
+                                            belowBarData: BarAreaData(
+                                              show: true,
+                                              color: Color(0x00000000),
+                                            ),
                                           ),
-                                        ),
-                                        Expanded(
-                                          child: TabBarView(
-                                            controller: _model.tabBarController,
-                                            physics:
-                                                const NeverScrollableScrollPhysics(),
-                                            children: [
-                                              Column(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 18.0,
-                                                                0.0, 18.0),
-                                                    child: RichText(
-                                                      textScaleFactor:
-                                                          MediaQuery.of(context)
-                                                              .textScaleFactor,
-                                                      text: TextSpan(
-                                                        children: [
-                                                          TextSpan(
-                                                            text: 'e1RM:',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .titleSmall
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'SF Pro Display',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .txtText2,
-                                                                  fontSize:
-                                                                      MediaQuery.sizeOf(context).width <
-                                                                              430.0
-                                                                          ? 18.0
-                                                                          : 24.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                  useGoogleFonts:
-                                                                      false,
-                                                                ),
-                                                          ),
-                                                          TextSpan(
-                                                            text: ' 319',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .titleSmall
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'SF Pro Display',
-                                                                  fontSize:
-                                                                      MediaQuery.sizeOf(context).width <
-                                                                              430.0
-                                                                          ? 18.0
-                                                                          : 24.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                  useGoogleFonts:
-                                                                      false,
-                                                                ),
-                                                          ),
-                                                          TextSpan(
-                                                            text: valueOrDefault(
-                                                                currentUserDocument
-                                                                    ?.userUnits,
-                                                                ''),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .titleSmall
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'SF Pro Display',
-                                                                  fontSize:
-                                                                      MediaQuery.sizeOf(context).width <
-                                                                              430.0
-                                                                          ? 18.0
-                                                                          : 24.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                  useGoogleFonts:
-                                                                      false,
-                                                                ),
-                                                          )
-                                                        ],
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Bicyclette',
-                                                                  fontSize:
-                                                                      MediaQuery.sizeOf(context).width <
-                                                                              430.0
-                                                                          ? 12.0
-                                                                          : 24.0,
-                                                                  useGoogleFonts:
-                                                                      false,
-                                                                ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 12.0),
-                                                    child: Container(
-                                                      width: MediaQuery.sizeOf(
-                                                                  context)
-                                                              .width *
-                                                          0.9,
-                                                      height: 200.0,
-                                                      child:
-                                                          FlutterFlowLineChart(
-                                                        data: [
-                                                          FFLineChartData(
-                                                            xData: FFAppState()
-                                                                .chartData,
-                                                            yData: FFAppState()
-                                                                .chartDataY,
-                                                            settings:
-                                                                LineChartBarData(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .btnDefault,
-                                                              barWidth: 2.0,
-                                                              belowBarData:
-                                                                  BarAreaData(
-                                                                show: true,
-                                                                color: Color(
-                                                                    0x00000000),
-                                                              ),
-                                                            ),
-                                                          )
-                                                        ],
-                                                        chartStylingInfo:
-                                                            ChartStylingInfo(
-                                                          enableTooltip: true,
-                                                          backgroundColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .secondaryBackground,
-                                                          showGrid: true,
-                                                          showBorder: false,
-                                                        ),
-                                                        axisBounds:
-                                                            AxisBounds(),
-                                                        xAxisLabelInfo:
-                                                            AxisLabelInfo(
-                                                          showLabels: true,
-                                                          labelTextStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall,
-                                                          labelInterval: 1.0,
-                                                        ),
-                                                        yAxisLabelInfo:
-                                                            AxisLabelInfo(),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                              Text(
-                                                'Tab View 2',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Bicyclette',
-                                                          fontSize: 32.0,
-                                                          useGoogleFonts: false,
-                                                        ),
-                                              ),
-                                              Text(
-                                                'Tab View 3',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Bicyclette',
-                                                          fontSize: 32.0,
-                                                          useGoogleFonts: false,
-                                                        ),
-                                              ),
-                                              Text(
-                                                'Tab View 4',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Bicyclette',
-                                                          fontSize: 32.0,
-                                                          useGoogleFonts: false,
-                                                        ),
-                                              ),
-                                              Text(
-                                                'Tab View 5',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Bicyclette',
-                                                          fontSize: 32.0,
-                                                          useGoogleFonts: false,
-                                                        ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
+                                        )
                                       ],
+                                      chartStylingInfo: ChartStylingInfo(
+                                        enableTooltip: true,
+                                        backgroundColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                        showGrid: true,
+                                        showBorder: false,
+                                      ),
+                                      axisBounds: AxisBounds(),
+                                      xAxisLabelInfo: AxisLabelInfo(
+                                        showLabels: true,
+                                        labelTextStyle:
+                                            FlutterFlowTheme.of(context)
+                                                .titleSmall,
+                                        labelInterval: 1.0,
+                                      ),
+                                      yAxisLabelInfo: AxisLabelInfo(),
                                     ),
                                   ),
                                 ),
@@ -646,7 +811,7 @@ class _ViewDataWidgetState extends State<ViewDataWidget>
                                                                 .headlineSmall
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Bicyclette',
+                                                                      'Lulo',
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w900,

@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 
 import 'package:ovr_performance/profile/profile_page/profile_page_widget.dart';
 
-import 'package:ovr_performance/jump/view_data_copy2/view_data_copy2_widget.dart';
+import 'package:ovr_performance/jump/view_data_jump/view_data_jump_widget.dart';
 
 import 'package:ovr_performance/velocity/view_data/view_data/view_data_widget.dart';
 
@@ -38,8 +38,8 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
   Widget build(BuildContext context) {
     List<Widget> _widgetOptions = <Widget>[
-      ViewDataWidget(),
-      // widget.type == 'Velocity' ? ViewDataWidget() : ViewDataCopy2Widget(),
+      // ViewDataWidget(),
+      widget.type == 'Velocity' ? ViewDataWidget() : ViewDataJumpWidget(),
       widget.type == 'Velocity'
           ? LiftSelectionWidget()
           : JumpModeSelectionWidget(),

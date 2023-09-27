@@ -1,3 +1,5 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -108,8 +110,14 @@ class _DeleteExerciseWidgetState extends State<DeleteExerciseWidget> {
               children: [
                 FFButtonWidget(
                   onPressed: () async {
-                    await widget.exerciseRef!.delete();
                     Navigator.pop(context);
+
+                    await currentUserReference!.update({
+                      'user_viewData_exercise':
+                          FieldValue.arrayRemove([widget.exerciseRef]),
+                    });
+                    await widget.exerciseRef!.delete();
+                    FFAppState().update(() {});
                   },
                   text: 'Yes',
                   options: FFButtonOptions(

@@ -68,10 +68,13 @@ class _SortJumpWidgetState extends State<SortJumpWidget> {
               ),
             ),
             FFButtonWidget(
-              onPressed: () {
-                print('Button pressed ...');
+              onPressed: () async {
+                Navigator.pop(context);
+                setState(() {
+                  FFAppState().setsSortState = 'dateNew';
+                });
               },
-              text: 'Date',
+              text: 'Date - Newest First',
               options: FFButtonOptions(
                 width: double.infinity,
                 height: 40.0,
@@ -95,7 +98,7 @@ class _SortJumpWidgetState extends State<SortJumpWidget> {
               onPressed: () {
                 print('Button pressed ...');
               },
-              text: 'RSI',
+              text: 'Datee - Oldest First',
               options: FFButtonOptions(
                 width: double.infinity,
                 height: 40.0,
@@ -114,6 +117,177 @@ class _SortJumpWidgetState extends State<SortJumpWidget> {
                 ),
                 borderRadius: BorderRadius.circular(8.0),
               ),
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                FFButtonWidget(
+                  onPressed: () {
+                    print('Button pressed ...');
+                  },
+                  text: 'RSI',
+                  options: FFButtonOptions(
+                    width: double.infinity,
+                    height: 40.0,
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).bgBg4,
+                    textStyle:
+                        FlutterFlowTheme.of(context).labelMedium.override(
+                              fontFamily: 'SF Pro Display',
+                              color: FlutterFlowTheme.of(context).txtText2,
+                              useGoogleFonts: false,
+                            ),
+                    elevation: 0.0,
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+                FFButtonWidget(
+                  onPressed: () {
+                    print('Button pressed ...');
+                  },
+                  text: 'RSI',
+                  options: FFButtonOptions(
+                    width: double.infinity,
+                    height: 40.0,
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).bgBg4,
+                    textStyle:
+                        FlutterFlowTheme.of(context).labelMedium.override(
+                              fontFamily: 'SF Pro Display',
+                              color: FlutterFlowTheme.of(context).txtText2,
+                              useGoogleFonts: false,
+                            ),
+                    elevation: 0.0,
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+              ],
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                FFButtonWidget(
+                  onPressed: () {
+                    print('Button pressed ...');
+                  },
+                  text: 'Jump Height',
+                  options: FFButtonOptions(
+                    width: double.infinity,
+                    height: 40.0,
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).bgBg4,
+                    textStyle:
+                        FlutterFlowTheme.of(context).labelMedium.override(
+                              fontFamily: 'SF Pro Display',
+                              color: FlutterFlowTheme.of(context).txtText2,
+                              useGoogleFonts: false,
+                            ),
+                    elevation: 0.0,
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+                FFButtonWidget(
+                  onPressed: () {
+                    print('Button pressed ...');
+                  },
+                  text: 'Jump Height',
+                  options: FFButtonOptions(
+                    width: double.infinity,
+                    height: 40.0,
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).bgBg4,
+                    textStyle:
+                        FlutterFlowTheme.of(context).labelMedium.override(
+                              fontFamily: 'SF Pro Display',
+                              color: FlutterFlowTheme.of(context).txtText2,
+                              useGoogleFonts: false,
+                            ),
+                    elevation: 0.0,
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+              ],
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                FFButtonWidget(
+                  onPressed: () {
+                    print('Button pressed ...');
+                  },
+                  text: 'GCT',
+                  options: FFButtonOptions(
+                    width: double.infinity,
+                    height: 40.0,
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).bgBg4,
+                    textStyle:
+                        FlutterFlowTheme.of(context).labelMedium.override(
+                              fontFamily: 'SF Pro Display',
+                              color: FlutterFlowTheme.of(context).txtText2,
+                              useGoogleFonts: false,
+                            ),
+                    elevation: 0.0,
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+                FFButtonWidget(
+                  onPressed: () {
+                    print('Button pressed ...');
+                  },
+                  text: 'GCT',
+                  options: FFButtonOptions(
+                    width: double.infinity,
+                    height: 40.0,
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).bgBg4,
+                    textStyle:
+                        FlutterFlowTheme.of(context).labelMedium.override(
+                              fontFamily: 'SF Pro Display',
+                              color: FlutterFlowTheme.of(context).txtText2,
+                              useGoogleFonts: false,
+                            ),
+                    elevation: 0.0,
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

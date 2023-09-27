@@ -4,13 +4,105 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be7338df-957b-4024-9ac9-d3dcb94b19fc" name="Changes" comment="merged to ff">
+    <list default="true" id="be7338df-957b-4024-9ac9-d3dcb94b19fc" name="Changes" comment="last commit">
+      <change afterPath="$PROJECT_DIR$/assets/fonts/Lulo_Clean_W01_One_Bold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/components/date_of_set_jump_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/components/date_of_set_jump_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/custom_code/widgets/screenshot_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/jump/exact_rep_data_jump/exact_rep_data_jump_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/jump/view_data_jump/view_data_jump_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/velocity/num_pad/num_pad_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/velocity/num_pad/num_pad_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/dartpad/web_plugin_registrant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/dartpad/web_plugin_registrant.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Ovr.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Ovr.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/app_bluetooth/app_bluetooth.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app_bluetooth/app_bluetooth.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/velocity/live_data/live_data/live_data_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/velocity/live_data/live_data/live_data_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app_state.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/backend/schema/firestore.indexes.json" beforeDir="false" afterPath="$PROJECT_DIR$/lib/backend/schema/firestore.indexes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/backend/schema/firestore.rules" beforeDir="false" afterPath="$PROJECT_DIR$/lib/backend/schema/firestore.rules" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/backend/schema/set_record.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/backend/schema/set_record.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/backend/schema/user_record.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/backend/schema/user_record.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/connection/bluetooth_1/bluetooth1_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/connection/bluetooth_1/bluetooth1_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/connection/ovr_velocity_grid/ovr_velocity_grid_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/connection/ovr_velocity_grid/ovr_velocity_grid_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/connection/widgets/device_component.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/connection/widgets/device_component.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/custom_code/widgets/bottom_nav_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/custom_code/widgets/bottom_nav_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/custom_code/widgets/index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/custom_code/widgets/index.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/flutter_flow/custom_functions.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flutter_flow/custom_functions.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/flutter_flow/flutter_flow_button_tabbar.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/flutter_flow/flutter_flow_theme.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flutter_flow/flutter_flow_theme.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/flutter_flow/flutter_flow_util.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flutter_flow/flutter_flow_util.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/flutter_flow/keep_alive_wrapper.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/flutter_flow/nav/nav.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flutter_flow/nav/nav.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/index.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jump/exact_rep_data_copy/exact_rep_data_copy_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jump/exact_rep_data_copy/exact_rep_data_copy_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jump/g_c_t_live_data/g_c_t_live_data_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jump/g_c_t_live_data/g_c_t_live_data_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jump/jump_exercise/jump_exercise_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jump/jump_exercise/jump_exercise_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jump/jump_exercise/jump_exercise_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jump/jump_exercise/jump_exercise_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jump/jump_exercise_selection/jump_exercise_selection_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jump/jump_exercise_selection/jump_exercise_selection_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jump/jump_mode_selection/jump_mode_selection_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jump/jump_mode_selection/jump_mode_selection_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jump/new_exercise_page_jump/new_exercise_page_jump_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jump/new_exercise_page_jump/new_exercise_page_jump_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jump/r_s_i_live_data/r_s_i_live_data_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jump/r_s_i_live_data/r_s_i_live_data_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jump/r_s_imode/r_s_imode_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jump/r_s_imode/r_s_imode_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jump/vertical_jump/vertical_jump_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jump/exact_rep_data_jump/exact_rep_data_jump_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jump/vertical_jump/vertical_jump_widget.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jump/vertical_jump_live_data/vertical_jump_live_data_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jump/vertical_jump_live_data/vertical_jump_live_data_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jump/vertical_jump_live_data/vertical_jump_live_data_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jump/vertical_jump_live_data/vertical_jump_live_data_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jump/view_data_copy2/view_data_copy2_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jump/view_data_jump/view_data_jump_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jump/view_data_copy2/view_data_copy2_widget.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jump_export/view_data_jump_export/view_data_jump_export_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jump_export/view_data_jump_export/view_data_jump_export_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jump_filter_sort/sort_jump/sort_jump_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jump_filter_sort/sort_jump/sort_jump_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main_page/main_page_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main_page/main_page_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main_page/main_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main_page/main_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/offline_mode/jump_mode_selection_copy/jump_mode_selection_copy_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/offline_mode/jump_mode_selection_copy/jump_mode_selection_copy_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/personal_info/delete_sport/delete_sport_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/personal_info/delete_sport/delete_sport_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/personal_info/personal_info_page/personal_info_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/personal_info/personal_info_page/personal_info_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/profile/height_page/height_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/profile/height_page/height_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/profile/profile_page/profile_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/profile/profile_page/profile_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/profile/settings/about_us_page/about_us_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/profile/settings/about_us_page/about_us_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/profile/settings/change_password_page/change_password_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/profile/settings/change_password_page/change_password_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/profile/settings/delete_account/delete_account_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/profile/settings/delete_account/delete_account_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/profile/settings/privacy_policy/privacy_policy_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/profile/settings/privacy_policy/privacy_policy_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/profile/settings/terms_and_conditions/terms_and_conditions_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/profile/settings/terms_and_conditions/terms_and_conditions_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/profile/settings/verify_password_page/verify_password_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/profile/settings/verify_password_page/verify_password_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/profile/sport_and_position_page/sport_and_position_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/profile/sport_and_position_page/sport_and_position_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/profile/weight_page/weight_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/profile/weight_page/weight_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/sign_up/forgot_password/forgot_password_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/sign_up/forgot_password/forgot_password_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/sign_up/sign_in/sign_in_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/sign_up/sign_in/sign_in_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/sign_up/sign_up/sign_up_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/sign_up/sign_up/sign_up_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/start/get_started/get_started_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/start/get_started/get_started_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/velocity/delete_exercise/delete_exercise_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/velocity/main_page/delete_exercise/delete_exercise_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/velocity/delete_exercise/delete_exercise_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/velocity/main_page/delete_exercise/delete_exercise_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/velocity/live_data/end_set/end_set_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/velocity/live_data/end_set/end_set_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/velocity/live_data/live_data/live_data_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/velocity/live_data/live_data/live_data_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/velocity/live_data/rep_data/rep_data_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/velocity/live_data/rep_data/rep_data_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/velocity/live_data/return_to_homepage/return_to_homepage_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/velocity/live_data/return_to_homepage/return_to_homepage_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/velocity/live_data/video_recording/video_recording_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/velocity/live_data/video_recording/video_recording_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/velocity/main_page/edit_exercise/edit_exercise_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/velocity/main_page/edit_exercise/edit_exercise_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/velocity/main_page/edit_exercise/edit_exercise_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/velocity/main_page/edit_exercise/edit_exercise_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/velocity/main_page/exercise/exercise_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/velocity/main_page/exercise/exercise_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/velocity/main_page/exercise/exercise_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/velocity/main_page/exercise/exercise_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/velocity/main_page/lift_selection/lift_selection_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/velocity/main_page/lift_selection/lift_selection_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/velocity/main_page/lift_selection/lift_selection_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/velocity/main_page/lift_selection/lift_selection_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/velocity/new_exercise_velocity/new_exercise_page/new_exercise_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/velocity/new_exercise_velocity/new_exercise_page/new_exercise_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/velocity/view_data/date_of_set/date_of_set_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/velocity/view_data/date_of_set/date_of_set_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/velocity/view_data/exact_rep_data/exact_rep_data_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/velocity/view_data/exact_rep_data/exact_rep_data_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/velocity/view_data/exercise_choice/exercise_choice_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/velocity/view_data/exercise_choice/exercise_choice_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/velocity/view_data/exercise_choice/exercise_choice_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/velocity/view_data/exercise_choice/exercise_choice_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/velocity/view_data/share/rep_data_share/rep_data_share_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/velocity/view_data/share/rep_data_share/rep_data_share_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/velocity/view_data/share/share_set_data/share_set_data_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/velocity/view_data/share/share_set_data/share_set_data_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/velocity/view_data/share/view_data_share/view_data_share_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/velocity/view_data/share/view_data_share/view_data_share_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/velocity/view_data/share/view_data_share/view_data_share_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/velocity/view_data/share/view_data_share/view_data_share_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/velocity/view_data/view_data/view_data_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/velocity/view_data/view_data/view_data_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/velocity/view_data/view_data/view_data_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/velocity/view_data/view_data/view_data_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/velocity/weight_input/weight_input_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/velocity/weight_input/weight_input_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/velocity/weight_input/weight_input_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/velocity/weight_input/weight_input_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,21 +152,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "cidr.known.project.marker": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "io.flutter.reload.alreadyRun": "true",
-    "last_opened_file_path": "/Users/a1234/OvrT",
-    "settings.editor.selected.configurable": "flutter.settings",
-    "show.migrate.to.gradle.popup": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/a1234/OvrT&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;flutter.settings&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -124,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695036252384</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="last commit">
+      <created>1695124401470</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1695124401470</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -141,7 +240,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
     <MESSAGE value="merged to ff" />
-    <option name="LAST_COMMIT_MESSAGE" value="merged to ff" />
+    <MESSAGE value="last commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="last commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -160,11 +260,6 @@
           <url>file://$PROJECT_DIR$/lib/velocity/live_data/live_data/live_data_model.dart</url>
           <line>52</line>
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/velocity/live_data/live_data/live_data_widget.dart</url>
-          <line>42</line>
-          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

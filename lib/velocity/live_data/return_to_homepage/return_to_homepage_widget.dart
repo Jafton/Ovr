@@ -137,7 +137,7 @@ class _ReturnToHomepageWidgetState extends State<ReturnToHomepageWidget> {
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).bgStroke,
                   textStyle: FlutterFlowTheme.of(context).titleMedium.override(
-                        fontFamily: 'Bicyclette',
+                        fontFamily: 'Lulo',
                         color: FlutterFlowTheme.of(context).txtText2,
                         useGoogleFonts: false,
                       ),

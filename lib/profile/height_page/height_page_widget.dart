@@ -75,7 +75,7 @@ class _HeightPageWidgetState extends State<HeightPageWidget> {
                 'CHANGE\nHEIGHT',
                 textAlign: TextAlign.end,
                 style: FlutterFlowTheme.of(context).headlineSmall.override(
-                      fontFamily: 'Bicyclette',
+                      fontFamily: 'Lulo',
                       fontWeight: FontWeight.w900,
                       useGoogleFonts: false,
                     ),
